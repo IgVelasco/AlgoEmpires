@@ -24,7 +24,7 @@ TP2 - Algo Empires: juego por turnos basado en el clásico juego Age of Empires 
 - [ ] Pruebas de reparación
   - [ ] Aldeano
     - [ ] Verificar reparación
-    - [ ] Verificar que se finalizada la reparación, sume oro
+    - [ ] Verificar que finalizada la reparación, sume oro
     
 ## Pruebas de edificios
 - [ ] Cuartel crea:
