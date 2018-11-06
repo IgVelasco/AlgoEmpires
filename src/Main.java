@@ -5,7 +5,7 @@ public class Main {
     }
 }
 
-public string Test () {
+public String test () {
     
     return "Test";
 }
