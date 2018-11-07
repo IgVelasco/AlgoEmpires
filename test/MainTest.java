@@ -4,7 +4,7 @@ import org.junit.Test;
 public class MainTest {
   
   @Test
-  public void testAlgo() {
+  public void testLaFuncionDevuelveLoIndicado() {
     Main main = new Main();
     
     Assert.assertEquals("Test", main.test());
