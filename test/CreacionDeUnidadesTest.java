@@ -5,28 +5,28 @@ import static org.junit.Assert.assertEquals;
 public class CreacionDeUnidadesTest {
 
     @Test
-    public void AldeanoSeCreaCon50DeVida() {
+    public void testAldeanoSeCreaCon50DeVida() {
         Aldeano unAldeano = new Aldeano();
 
         assertEquals(50, unAldeano.getVida());
     }
 
     @Test
-    public void EspadachinSeCreaCon100DeVida() {
+    public void testEspadachinSeCreaCon100DeVida() {
         Espadachin unEspadachin = new Espadachin();
 
         assertEquals(100, unEspadachin.getVida());
     }
 
     @Test
-    public void ArqueroSeCreaCon75DeVida() {
+    public void testArqueroSeCreaCon75DeVida() {
         Arquero unArquero = new Arquero();
 
         assertEquals(75, unArquero.getVida());
     }
 
     @Test
-    public void ArmaDeAsedioSeCreaCon150DeVida() {
+    public void testArmaDeAsedioSeCreaCon150DeVida() {
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
         assertEquals(150, unArma.getVida());
