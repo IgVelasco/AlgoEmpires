@@ -8,7 +8,7 @@ public class CreacionDeUnidadesTest {
     public void AldeanoSeCreaCon50DeVida() {
         Aldeano unAldeano = new Aldeano();
 
-        assertEquals(50, unAldeano.getVida()):
+        assertEquals(50, unAldeano.getVida());
     }
 
     @Test
