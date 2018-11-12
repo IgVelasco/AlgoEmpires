@@ -8,6 +8,6 @@ public class CastilloTest{
     public void testCastilloSeCreaCon1000DeVida() {
         Castillo unCastillo = new Castillo();
 
-        assertEquals(450, unCastillo.getVida());
+        assertEquals(1000, unCastillo.getVida());
     }
 }
