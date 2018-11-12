@@ -1,5 +1,8 @@
 package espacio;
 
+import Excepciones.CasilleroOcupado;
+import contenibles.Contenible;
+
 public class Mapa {
 
     private int cantCeldas;
@@ -19,4 +22,16 @@ public class Mapa {
     }
 
     public int getCantCeldas() { return this.cantCeldas;}
+
+    public Contenible getContenido (int x, int y) {
+        return this.mapa[x][y].getContenido();
+    }
+
+    public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado {
+        this.mapa[x][y].contener(unidad);
+    }
+
+    public void liberarUbicacion(int x, int y) {
+        this.mapa[x][y].liberar();
+    }
 }
