@@ -1,7 +1,9 @@
+package espacio;
+
 public class Mapa {
 
     private int cantCeldas;
-    Casillero [][] mapa;
+    Casillero[][] mapa;
 
     public Mapa(int x, int y) {
         mapa = new Casillero[x][y];

@@ -7,7 +7,7 @@ TP2 - Algo Empires: juego por turnos basado en el clásico juego Age of Empires 
 
 # Entrega 1 (Semana del 12 de noviembre)
 
-## Pruebas del Mapa
+## Pruebas del espacio.Mapa
 - [ ] Tamaño
 - [ ] Colocar unidades y edificios
 
