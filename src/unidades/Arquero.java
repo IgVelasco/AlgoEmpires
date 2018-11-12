@@ -1,8 +1,7 @@
 package unidades;
 
-import contenibles.Contenible;
 
-public class Arquero implements Contenible {
+public class Arquero extends UnidadMovil {
 
     private int vida = 75;
 

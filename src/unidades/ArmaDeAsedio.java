@@ -1,8 +1,7 @@
 package unidades;
 
-import contenibles.Contenible;
 
-public class ArmaDeAsedio implements Contenible {
+public class ArmaDeAsedio extends UnidadMovil {
 
     private int vida = 150;
 
