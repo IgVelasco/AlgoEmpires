@@ -1,11 +1,10 @@
+import Excepciones.CasilleroOcupado;
 import contenibles.Contenible;
 import espacio.Casillero;
 import unidades.Aldeano;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class CasilleroTest {
@@ -19,7 +18,7 @@ public class CasilleroTest {
     }
 
     @Test
-    public void testCasilleroPuedeContenerUnaUnidadContenible(){
+    public void testCasilleroPuedeContenerUnaUnidadContenible() throws CasilleroOcupado {
         Contenible unAldeano = new Aldeano();
         Casillero unCasillero = new Casillero();
 
@@ -28,6 +27,30 @@ public class CasilleroTest {
         assertTrue(unCasillero.casilleroEstaOcupado());
         assertEquals( unAldeano, unCasillero.getContenido());
 
+
+    }
+
+    @Test
+    public void testCasilleroQuedaLibreLuegoDeLiberarlo() throws CasilleroOcupado {
+        Contenible unAldeano = new Aldeano();
+        Casillero unCasillero = new Casillero();
+
+        unCasillero.contener(unAldeano);
+
+        unCasillero.liberar();
+
+        assertFalse(unCasillero.casilleroEstaOcupado());
+        assertNull(unCasillero.getContenido());
+    }
+
+    @Test(expected = CasilleroOcupado.class)
+    public void testCasilleroLanzaExcepcionSiSeIntentaContenerMientrasEstaOcupado() throws CasilleroOcupado {
+        Contenible unAldeano = new Aldeano();
+        Casillero unCasillero = new Casillero();
+        unCasillero.contener(unAldeano);
+
+        Contenible otroAldeano = new Aldeano();
+        unCasillero.contener(otroAldeano);
 
     }
 }
