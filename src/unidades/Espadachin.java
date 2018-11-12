@@ -1,6 +1,8 @@
 package unidades;
 
-public class Espadachin {
+import contenibles.Contenible;
+
+public class Espadachin implements Contenible {
 
     private int vida = 100;
 

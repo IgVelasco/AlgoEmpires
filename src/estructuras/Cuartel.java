@@ -1,6 +1,8 @@
 package estructuras;
 
-public class Cuartel {
+import contenibles.Contenible;
+
+public class Cuartel implements Contenible {
 
     private int vida = 250;
 

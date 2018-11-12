@@ -1,6 +1,8 @@
 package unidades;
 
-public class ArmaDeAsedio {
+import contenibles.Contenible;
+
+public class ArmaDeAsedio implements Contenible {
 
     private int vida = 150;
 
