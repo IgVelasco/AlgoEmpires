@@ -13,7 +13,7 @@ public class CasilleroTest {
     @Test
     public void testCasilleroSeCreaSinContenido(){
         Casillero unCasillero = new Casillero();
-        assertFalse(String.valueOf(false), unCasillero.casilleroEstaOcupado() );
+        assertFalse(unCasillero.casilleroEstaOcupado() );
 
 
     }
@@ -25,7 +25,7 @@ public class CasilleroTest {
 
         unCasillero.contener(unAldeano);
 
-        assertTrue(String.valueOf(true), unCasillero.casilleroEstaOcupado());
+        assertTrue(unCasillero.casilleroEstaOcupado());
         assertEquals( unAldeano, unCasillero.getContenido());
 
 
