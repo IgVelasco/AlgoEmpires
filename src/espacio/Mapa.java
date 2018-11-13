@@ -33,7 +33,8 @@ public class Mapa {
         this.mapa[x][y].contener(unidad);
     }
 
-    public void colocarEstructuraEn(Contenible unidad, int x, int y, int dimension) throws CasilleroOcupado {
+
+    public void colocarEstructuraEn(Contenible unidad, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         casillerosEstanOcupados(x, y, dimension);
         for(int i = 0; i < dimension ; i++){
             for(int j = 0; j < dimension ; j++){
@@ -42,10 +43,15 @@ public class Mapa {
         }
     }
 
-    private void casillerosEstanOcupados(int x , int y, int dimensiones) {
+    //TODO Arreglar este problema con la excepcion no se me esta ocurriendo
+    private void casillerosEstanOcupados(int x , int y, int dimensiones) throws CasilleroOcupado,ExcedeLimiteDelMapa {
         for(int i = 0; i < dimensiones ; i++){
             for(int j = 0; j < dimensiones ; j++){
-                this.mapa[x + i][y + j].casilleroEstaOcupado();
+               try{
+                   this.mapa[x + i][y + j].casilleroEstaOcupado(); // Necesito  que tire excepcion CasilleroOcupado
+               }catch (IndexOutOfBoundsException errorDeLimites){
+                   throw new ExcedeLimiteDelMapa();
+               }
             }
         }
     }
