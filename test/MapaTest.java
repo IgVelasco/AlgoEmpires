@@ -29,7 +29,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testSePuedeColocarUnidadEnPosicionEspecifica() throws CasilleroOcupado {
+    public void testSePuedeColocarUnidadEnPosicionEspecifica() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(5, 5);
         Contenible aldeano = new Aldeano();
 
@@ -39,7 +39,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testAlEliminarContenidoDeUnaPosicionSeLibera() throws CasilleroOcupado {
+    public void testAlEliminarContenidoDeUnaPosicionSeLibera() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(5, 5);
         Contenible aldeano = new Aldeano();
 

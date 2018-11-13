@@ -29,8 +29,13 @@ public class Mapa {
         return this.mapa[x][y].getContenido();
     }
 
-    public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado {
-        this.mapa[x][y].contener(unidad);
+    public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        //this.mapa[x][y].contener(unidad)
+        try {
+            this.mapa[x][y].contener(unidad); // Podriamos hacer que casillero esta ocupado tire la excepcion
+        } catch (IndexOutOfBoundsException errorDeLimites) {
+            throw new ExcedeLimiteDelMapa();
+        }
     }
 
 
