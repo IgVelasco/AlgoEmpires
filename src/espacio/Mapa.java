@@ -33,6 +33,16 @@ public class Mapa {
         this.mapa[x][y].contener(unidad);
     }
 
+    public void colocarEstructuraEn(Contenible unidad, int x, int y, int dimension) throws CasilleroOcupado {
+        casillerosEstanOcupados(x, y, dimension);
+        for(int i = 0; i < dimension ; i++){
+            for(int j = 0; j < dimension ; j++){
+                this.mapa[x + i][y + j].contener(unidad);
+            }
+        }
+    }
+
+
     public void liberarUbicacion(int x, int y) {
         this.mapa[x][y].liberar();
     }
@@ -78,4 +88,23 @@ public class Mapa {
     public void moverIzquierdaInferior(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         this.mover(x, y, -1, -1);
     }
+
+    public boolean casillerosEstanOcupados(int x , int y, int dimensiones) {
+        for(int i = 0; i < dimensiones ; i++){
+            for(int j = 0; j < dimensiones ; j++){
+                this.mapa[x + i][y + j].casilleroEstaOcupado();
+            }
+
+        }
+        return true;
+    }
+
+
+
+
+
+
+
 }
+
+
