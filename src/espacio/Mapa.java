@@ -7,7 +7,7 @@ import unidades.UnidadMovil;
 public class Mapa {
 
     private int cantCeldas;
-    Casillero[][] mapa;
+    private Casillero[][] mapa;
 
     public Mapa(int x, int y) {
         mapa = new Casillero[x][y];
@@ -36,41 +36,41 @@ public class Mapa {
         this.mapa[x][y].liberar();
     }
 
-    public void moverWrapper(int x, int y, int incX, int incY) throws CasilleroOcupado {
+    private void mover(int x, int y, int incX, int incY) throws CasilleroOcupado {
         UnidadMovil unidad = (UnidadMovil) this.getContenido( x, y); // aca hay que lanzar error si es estructura.
-        this. liberarUbicacion( x, y);
+        this.liberarUbicacion( x, y);
         this.colocarUnidadEn(unidad, x + incX, y + incY);
     }
 
     public void moverDerecha(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper( x, y, 1, 0);
+        this.mover( x, y, 1, 0);
     }
 
     public void moverIzquierda(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, -1, 0);
+        this.mover(x, y, -1, 0);
     }
 
     public void moverArriba(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, 0, 1);
+        this.mover(x, y, 0, 1);
     }
 
     public void moverAbajo(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, 0, -1);
+        this.mover(x, y, 0, -1);
     }
 
     public void moverDerechaSuperior(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, 1, 1);
+        this.mover(x, y, 1, 1);
     }
 
     public void moverDerechaInferior(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, 1, -1);
+        this.mover(x, y, 1, -1);
     }
 
     public void moverIzquierdaSuperior(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, -1, 1);
+        this.mover(x, y, -1, 1);
     }
 
     public void moverIzquierdaInferior(int x, int y) throws CasilleroOcupado {
-        this.moverWrapper(x, y, -1, -1);
+        this.mover(x, y, -1, -1);
     }
 }
