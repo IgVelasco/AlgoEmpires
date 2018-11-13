@@ -44,5 +44,6 @@ public class MapaTest {
 
         assertNull(mapa.getContenido(4, 4));
     }
+
 }
 
