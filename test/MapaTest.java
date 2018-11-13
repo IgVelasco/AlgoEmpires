@@ -153,7 +153,6 @@ public class MapaTest {
         mapa.moverIzquierda(0,0);
     }
 
-
     @Test
     public void testSePuedeColocarEstructuraEnPosicionEspecifica() throws CasilleroOcupado {
         Mapa mapa = new Mapa(20,20);
@@ -179,4 +178,6 @@ public class MapaTest {
         assertNull(mapa.getContenido(19, 6));
         assertNull(mapa.getContenido(19, 5));
     }
+
+
 }
