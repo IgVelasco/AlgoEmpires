@@ -44,19 +44,6 @@ public class MapaTest {
 
         assertNull(mapa.getContenido(4, 4));
     }
-
-    @Test
-    public void testMoverWrapperMueveUnidad () throws CasilleroOcupado {
-        Mapa mapa = new Mapa(10, 10);
-        Contenible aldeano = new Aldeano();
-
-        mapa.colocarUnidadEn(aldeano, 5, 5);
-        mapa.moverWrapper(5, 5, 1, 1);
-
-        assertNull(mapa.getContenido(5,5));
-        assertEquals(aldeano, mapa.getContenido(6,6));
-    }
-
     @Test
     public void testMoverUnidadALaDerechaValida() throws CasilleroOcupado {
         Mapa mapa = new Mapa(10, 10);
