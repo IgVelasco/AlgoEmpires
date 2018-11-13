@@ -1,5 +1,6 @@
 import Excepciones.CasilleroOcupado;
 import contenibles.Contenible;
+import estructuras.Castillo;
 import org.junit.Test;
 import espacio.Mapa;
 import unidades.Aldeano;
@@ -151,5 +152,32 @@ public class MapaTest {
 
         assertNull(mapa.getContenido(5, 5));
         assertEquals(aldeano, mapa.getContenido(4, 4));
+    }
+
+
+    @Test
+    public void testSePuedeColocarEstructuraEnPosicionEspecifica() throws CasilleroOcupado {
+        Mapa mapa = new Mapa(20,20);
+        Contenible castillo = new Castillo();
+
+        mapa.colocarEstructuraEn(castillo, 5, 5, 4);
+
+        assertEquals(castillo, mapa.getContenido(8, 8));
+        assertEquals(castillo, mapa.getContenido(7, 7));
+        assertEquals(castillo, mapa.getContenido(6, 6));
+        assertEquals(castillo, mapa.getContenido(5, 5));
+    }
+
+    @Test
+    public void testNoSePuedeColocarFueraDeMapa() throws CasilleroOcupado {
+        Mapa mapa = new Mapa(20,20);
+        Contenible castillo = new Castillo();
+
+        mapa.colocarEstructuraEn(castillo, 5, 5, 4);
+
+        assertNull(mapa.getContenido(19, 8));
+        assertNull(mapa.getContenido(19, 7));
+        assertNull(mapa.getContenido(19, 6));
+        assertNull(mapa.getContenido(19, 5));
     }
 }
