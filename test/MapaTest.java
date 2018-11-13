@@ -1,8 +1,11 @@
 import Excepciones.CasilleroOcupado;
+import Excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
 import org.junit.Test;
 import espacio.Mapa;
 import unidades.Aldeano;
+import unidades.Arquero;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -45,7 +48,7 @@ public class MapaTest {
         assertNull(mapa.getContenido(4, 4));
     }
     @Test
-    public void testMoverUnidadALaDerechaValida() throws CasilleroOcupado {
+    public void testMoverUnidadALaDerechaValida() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -57,7 +60,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidadALaIzquierdaValida() throws CasilleroOcupado {
+    public void testMoverUnidadALaIzquierdaValida() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -69,7 +72,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidadArribaValido() throws CasilleroOcupado {
+    public void testMoverUnidadArribaValido() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -81,7 +84,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidadAbajoValido() throws CasilleroOcupado {
+    public void testMoverUnidadAbajoValido() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -93,7 +96,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidaDerechaSuperiorValido() throws CasilleroOcupado {
+    public void testMoverUnidaDerechaSuperiorValido() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -105,7 +108,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidadDerechaInferiorValido() throws CasilleroOcupado {
+    public void testMoverUnidadDerechaInferiorValido() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -117,7 +120,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidadIzquierdaSuperiorValido() throws CasilleroOcupado {
+    public void testMoverUnidadIzquierdaSuperiorValido() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -129,7 +132,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testMoverUnidadIzquierdaInferiorValido() throws CasilleroOcupado {
+    public void testMoverUnidadIzquierdaInferiorValido() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10, 10);
         Contenible aldeano = new Aldeano();
 
@@ -138,5 +141,14 @@ public class MapaTest {
 
         assertNull(mapa.getContenido(5, 5));
         assertEquals(aldeano, mapa.getContenido(4, 4));
+    }
+
+    @Test(expected = ExcedeLimiteDelMapa.class)
+    public void testMoverAfueraDelMapaLanzaExcedeLimiteDelMapaError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(5,5);
+        Contenible unArquero = new Arquero();
+
+        mapa.colocarUnidadEn(unArquero,0,0);
+        mapa.moverIzquierda(0,0);
     }
 }
