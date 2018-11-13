@@ -164,20 +164,10 @@ public class MapaTest {
         assertEquals(castillo, mapa.getContenido(7, 7));
         assertEquals(castillo, mapa.getContenido(6, 6));
         assertEquals(castillo, mapa.getContenido(5, 5));
+
+        assertNull(mapa.getContenido(4, 4));
     }
 
-    @Test
-    public void testNoSePuedeColocarFueraDeMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        Mapa mapa = new Mapa(20,20);
-        Contenible castillo = new Castillo();
-
-        mapa.colocarEstructuraEn(castillo, 5, 5, 4);
-
-        assertNull(mapa.getContenido(19, 8));
-        assertNull(mapa.getContenido(19, 7));
-        assertNull(mapa.getContenido(19, 6));
-        assertNull(mapa.getContenido(19, 5));
-    }
 
     @Test(expected = ExcedeLimiteDelMapa.class)
     public void testConstruirAfueraDelMapaError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
@@ -199,4 +189,21 @@ public class MapaTest {
         // TODO tiene que tirar error mirar fuera del mapa (en otra prueba que no espere la excepcion
         //assertNull(mapa.getContenido(5, 3));
     }
+
+    @Test(expected = CasilleroOcupado.class)
+    public void testConstruirDosCastillosEnMismoLugar() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20,20);
+        Contenible unCastillo = new Castillo();
+        Contenible otroCastillo = new Castillo();
+
+        mapa.colocarEstructuraEn(unCastillo,5,5, 4);
+        mapa.colocarEstructuraEn(otroCastillo,5,5, 4);
+
+        assertEquals(unCastillo, mapa.getContenido(8, 8));
+        assertEquals(unCastillo, mapa.getContenido(7, 7));
+        assertEquals(unCastillo, mapa.getContenido(6, 6));
+        assertEquals(unCastillo, mapa.getContenido(5, 5));
+    }
+
+
 }

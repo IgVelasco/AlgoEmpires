@@ -30,7 +30,6 @@ public class Mapa {
     }
 
     public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        //this.mapa[x][y].contener(unidad)
         try {
             this.mapa[x][y].contener(unidad); // Podriamos hacer que casillero esta ocupado tire la excepcion
         } catch (IndexOutOfBoundsException errorDeLimites) {
@@ -40,7 +39,8 @@ public class Mapa {
 
 
     public void colocarEstructuraEn(Contenible unidad, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        casillerosEstanOcupados(x, y, dimension);
+        if(!casillerosEstanOcupados(x, y, dimension))
+            throw new CasilleroOcupado();
         for(int i = 0; i < dimension ; i++){
             for(int j = 0; j < dimension ; j++){
                 this.mapa[x + i][y + j].contener(unidad);
@@ -48,17 +48,19 @@ public class Mapa {
         }
     }
 
-    //TODO Arreglar este problema con la excepcion no se me esta ocurriendo
-    private void casillerosEstanOcupados(int x , int y, int dimensiones) throws CasilleroOcupado,ExcedeLimiteDelMapa {
+    private boolean casillerosEstanOcupados(int x , int y, int dimensiones) throws CasilleroOcupado,ExcedeLimiteDelMapa {
         for(int i = 0; i < dimensiones ; i++){
             for(int j = 0; j < dimensiones ; j++){
                try{
-                   this.mapa[x + i][y + j].casilleroEstaOcupado(); // Necesito  que tire excepcion CasilleroOcupado
+                  if (this.mapa[x + i][y + j].casilleroEstaOcupado()){
+                      return false;
+                  }
                }catch (IndexOutOfBoundsException errorDeLimites){
                    throw new ExcedeLimiteDelMapa();
                }
             }
         }
+        return true;
     }
 
 
