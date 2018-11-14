@@ -3,7 +3,7 @@ package juego;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Turno {
-    private int turnoActual = 0;
+    private int turnoActual;
 
 
 

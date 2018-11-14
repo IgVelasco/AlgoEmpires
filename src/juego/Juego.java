@@ -17,7 +17,8 @@ public class Juego {
 
         jugadores[1] = new Jugador(mapa, DimensionHorizontal / 2, 0);
         jugadores[0] = new Jugador(mapa, DimensionHorizontal / 2, DimensionVertical - 4);
-    }
 
+
+    }
 
 }

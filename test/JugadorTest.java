@@ -1,6 +1,6 @@
+import espacio.Mapa;
 import excepciones.CasilleroOcupado;
 import excepciones.ExcedeLimiteDelMapa;
-import espacio.Mapa;
 import juego.Jugador;
 import org.junit.Test;
 
