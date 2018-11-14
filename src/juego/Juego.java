@@ -1,9 +1,8 @@
-package Juego;
+package juego;
 
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
-import estructuras.Castillo;
 
 
 public class Juego {
@@ -16,9 +15,10 @@ public class Juego {
 
         mapa = new Mapa(DimensionHorizontal, DimensionVertical);
 
-        jugadores[1] = new Jugador(mapa, 0, (DimensionVertical / 2));
-        jugadores[0] = new Jugador(mapa, DimensionVertical - 5, DimensionVertical / 2);
+        jugadores[1] = new Jugador(mapa, DimensionHorizontal / 2, 0);
+        jugadores[0] = new Jugador(mapa, DimensionHorizontal / 2, DimensionVertical - 4);
 
 
     }
+
 }
