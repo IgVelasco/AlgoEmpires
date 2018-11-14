@@ -5,13 +5,14 @@ import contenibles.Contenible;
 import juego.Jugador;
 import unidades.Aldeano;
 
-public class PlazaCentral implements Contenible, Estructura{
-    private int vida = 450;
+public class PlazaCentral extends Estructura implements Contenible {
     private int precioAldeano = 25;
     public Jugador perteneceA;
-    private int vidaMaxima = 450;
 
     public PlazaCentral(Jugador jugador) {
+        vida = 450;
+        vidaMaxima = 450;
+        velocidadDeReparacion = 25;
         this.perteneceA = jugador;
     }
 

@@ -1,4 +1,7 @@
 package estructuras;
 
-public interface Estructura {
+public abstract class Estructura {
+    int vida;
+    int vidaMaxima;
+    int velocidadDeReparacion;
 }
