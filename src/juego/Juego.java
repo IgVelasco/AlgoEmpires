@@ -27,4 +27,12 @@ public class Juego {
     public void cambiarTurno() {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
+
+
+    public Jugador[] getJugadores() {
+        return jugadores;
+    }
 }
+
+
+
