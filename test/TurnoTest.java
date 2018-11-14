@@ -7,7 +7,7 @@ public class TurnoTest {
     public void testEmpiezaJugadorEstaEnIntervalo() {
         Turno unTurno = new Turno();
 
-      int value = unTurno.empiezaJugador();
+      int value = unTurno.primerTurno();
 
       assert(value <= 2 && value >= 1 );
 

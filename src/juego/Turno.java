@@ -10,7 +10,7 @@ public class Turno {
 
 
 //Si alguno se le ocurre mas simple
-    public int empiezaJugador(){
+    public int primerTurno(){
         turnoActual =  (ThreadLocalRandom.current().nextInt(0, 2)) ;
         return turnoActual + 1;
     }
