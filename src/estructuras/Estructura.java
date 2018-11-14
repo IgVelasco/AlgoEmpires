@@ -19,4 +19,9 @@ public abstract class Estructura {
     public int getVida() {
         return vida;
     }
+
+    public  void ataqueDeEspadachin(){
+        int dañoDeEspadachin  = 25;
+        vida = vida - dañoDeEspadachin;
+    };
 }

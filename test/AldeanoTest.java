@@ -3,10 +3,15 @@ import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estados.Construyendo;
 import estados.GenerandoOro;
+import estados.Reparando;
+import estructuras.Castillo;
+import estructuras.Estructura;
 import juego.Juego;
 import juego.Jugador;
 import unidades.Aldeano;
 import org.junit.Test;
+import unidades.Espadachin;
+
 import static org.junit.Assert.assertEquals;
 
 public class AldeanoTest {
@@ -24,9 +29,8 @@ public class AldeanoTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
 
-
         jugador.construirCuartel(unAldeano);
-        assertEquals(jugador.getOro(), 100);
+        assertEquals(100, jugador.getOro());
 
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
@@ -37,14 +41,43 @@ public class AldeanoTest {
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(GenerandoOro.class, unAldeano.getEstado().getClass());
 
-        assertEquals(jugador.getOro(), 100);
+        assertEquals(100, jugador.getOro());
 
         unAldeano.realizarAccionCorrespondiente();
-        assertEquals(jugador.getOro(), 120);
+        assertEquals(120,jugador.getOro() );
 
     }
 
     @Test
     public void testAldeanoEstaReparando() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Aldeano unAldeano = new Aldeano(jugador);
+        Castillo unCastillo = new Castillo(jugador) ;
+
+        unCastillo.ataqueDeEspadachin();
+
+        unAldeano.comenzarReparacion(unCastillo);
+        assertEquals(100, jugador.getOro());
+
+        unAldeano.realizarAccionCorrespondiente();
+        assertEquals(Reparando.class, unAldeano.getEstado().getClass());
+
+        unAldeano.realizarAccionCorrespondiente();
+        assertEquals(GenerandoOro.class, unAldeano.getEstado().getClass());
+
+        assertEquals(100, jugador.getOro());
+
+        unAldeano.realizarAccionCorrespondiente();
+        assertEquals(120,jugador.getOro() );
+
+
+
+
     }
+
+
+
+
+
 }
