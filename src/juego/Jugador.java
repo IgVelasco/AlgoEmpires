@@ -69,6 +69,15 @@ public class Jugador {
         aldeano.comenzarConstruccion(unaPlazaCentral);
     }
 
+    public void construirCuartel(Aldeano aldeano) {
+        Cuartel unCuartel = new Cuartel();
+
+        cuarteles.add(unCuartel);
+        aldeanosOcupados.add(aldeano);
+
+        aldeano.comenzarConstruccion(unCuartel);
+    }
+
 
     public void finalizarConstruccion(Estructura estructura) {
         Aldeano aldeano = aldeanosOcupados.get(0);
