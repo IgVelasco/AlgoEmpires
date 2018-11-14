@@ -1,5 +1,6 @@
 package juego;
 
+import Excepciones.AldeanoOcupado;
 import Excepciones.CasilleroOcupado;
 import Excepciones.EdificioConVidaMaxima;
 import Excepciones.ExcedeLimiteDelMapa;
@@ -61,16 +62,16 @@ public class Jugador {
         this.oro += unidadesDeOro;
     }
 
-    public void construirPlazaCentral (Aldeano aldeano) { // Podria ser asi o que se le pase un indez de array
+    public void construirPlazaCentral (Aldeano aldeano) throws AldeanoOcupado { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
-
+        aldeano.comenzarConstruccion(unaPlazaCentral);
         plazasCentrales.add(unaPlazaCentral);
         aldeanosOcupados.add(aldeano);
 
-        aldeano.comenzarConstruccion(unaPlazaCentral);
+
     }
 
-    public void construirCuartel(Aldeano aldeano) {
+    public void construirCuartel(Aldeano aldeano) throws AldeanoOcupado {
         Cuartel unCuartel = new Cuartel();
 
         cuarteles.add(unCuartel);
@@ -80,9 +81,8 @@ public class Jugador {
     }
 
 
-    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) throws EdificioConVidaMaxima {
+    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) throws EdificioConVidaMaxima, AldeanoOcupado {
         aldeanosOcupados.add(unAldeano);
-
         unAldeano.comenzarReparacion(unCuartel);
     }
 

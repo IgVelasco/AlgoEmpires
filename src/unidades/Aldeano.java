@@ -1,10 +1,8 @@
 package unidades;
 
+import Excepciones.AldeanoOcupado;
 import Excepciones.EdificioConVidaMaxima;
-import estados.Construyendo;
-import estados.Estado;
-import estados.GenerandoOro;
-import estados.Reparando;
+import estados.*;
 import estructuras.Estructura;
 import juego.Jugador;
 
@@ -26,8 +24,14 @@ public class Aldeano extends UnidadMovil {
         this.estado.realizarAccionPasiva(this);
     }
 
-    public void comenzarConstruccion(Estructura estructura) {
+    public void comenzarConstruccion(Estructura estructura) throws AldeanoOcupado {
+        this.estaOcupado();
         this.estado = new Construyendo(estructura);
+    }
+
+    public void estaOcupado() throws AldeanoOcupado {
+        if(estado instanceof Ocupado)
+            throw new AldeanoOcupado();
     }
 
     public void finalizarConstruccion(Estructura unaEstructura){
@@ -36,7 +40,8 @@ public class Aldeano extends UnidadMovil {
     }
 
 
-    public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima {
+    public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
+        this.estaOcupado();
         unaEstructura.reparar();
         estado = new Reparando(unaEstructura);
     }

@@ -30,4 +30,12 @@ public class JugadorTest {
     }
 
 
+    @Test
+    public void testJugadorTurnoDaOroCorrecto() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador (mapa, 20/2, 0, null);
+        unJugador.nuevoTurno();
+
+        assertEquals(160, unJugador.getOro());
+    }
 }

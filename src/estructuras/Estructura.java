@@ -27,7 +27,7 @@ public abstract class Estructura {
 
     ;
 
-    public void reparar() throws EdificioConVidaMaxima {
+    public void reparar() throws EdificioConVidaMaxima { //TODO esto tendria que ser un estado
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
 

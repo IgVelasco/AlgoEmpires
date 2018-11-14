@@ -1,3 +1,4 @@
+import Excepciones.AldeanoOcupado;
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
@@ -13,7 +14,7 @@ import static org.junit.Assert.assertEquals;
 public class ConstruyendoTest {
 
     @Test
-    public void testFinalizarConstruccionDesocupaAldeano () throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testFinalizarConstruccionDesocupaAldeano () throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado {
         Mapa unMapa = new Mapa (20, 20);
         Jugador unJugador = new Jugador(unMapa, 10, 0, null);
         Cuartel unCuartel = new Cuartel();

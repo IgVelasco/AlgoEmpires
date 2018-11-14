@@ -3,7 +3,7 @@ package estados;
 import estructuras.Estructura;
 import unidades.Aldeano;
 
-public class Reparando implements Estado {
+public class Reparando implements Ocupado {
 
     public Estructura estructura;
 
