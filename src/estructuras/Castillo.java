@@ -1,6 +1,7 @@
 package estructuras;
 
 import contenibles.Contenible;
+import unidades.ArmaDeAsedio;
 
 public class Castillo implements Contenible {
 
@@ -8,5 +9,9 @@ public class Castillo implements Contenible {
 
     public int getVida() {
         return this.vida;
+    }
+
+    public ArmaDeAsedio crearArmaDeAsedio() {
+        return new ArmaDeAsedio();
     }
 }

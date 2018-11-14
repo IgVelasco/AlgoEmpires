@@ -1,6 +1,8 @@
 package estructuras;
 
 import contenibles.Contenible;
+import unidades.Arquero;
+import unidades.Espadachin;
 
 public class Cuartel implements Contenible {
 
@@ -8,5 +10,13 @@ public class Cuartel implements Contenible {
 
     public int getVida() {
         return this.vida;
+    }
+
+    public Espadachin crearEspadachin() {
+        return new Espadachin();
+    }
+
+    public Arquero crearArquero() {
+        return new Arquero();
     }
 }
