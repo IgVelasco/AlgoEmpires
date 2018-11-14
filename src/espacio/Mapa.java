@@ -39,7 +39,7 @@ public class Mapa {
 
 
     public void colocarEstructuraEn(Contenible unidad, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        if(!casillerosEstanOcupados(x, y, dimension))
+        if(casillerosEstanOcupados(x, y, dimension))
             throw new CasilleroOcupado();
         for(int i = 0; i < dimension ; i++){
             for(int j = 0; j < dimension ; j++){
@@ -53,14 +53,14 @@ public class Mapa {
             for(int j = 0; j < dimensiones ; j++){
                try{
                   if (this.mapa[x + i][y + j].casilleroEstaOcupado()){
-                      return false;
+                      return true;
                   }
                }catch (IndexOutOfBoundsException errorDeLimites){
                    throw new ExcedeLimiteDelMapa();
                }
             }
         }
-        return true;
+        return false;
     }
 
 
