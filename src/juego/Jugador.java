@@ -78,6 +78,12 @@ public class Jugador {
         aldeano.comenzarConstruccion(unCuartel);
     }
 
+    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) {
+        aldeanosOcupados.add(unAldeano);
+
+        unAldeano.comenzarReparacion(unCuartel);
+    }
+
     public int getOro() {
         return this.oro;
     }

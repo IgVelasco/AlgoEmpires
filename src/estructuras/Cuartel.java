@@ -7,19 +7,13 @@ import unidades.Espadachin;
 
 public class Cuartel extends Estructura implements Contenible {
 
-    private int vida = 250;
     private int precioEspadachin = 50;
     private int precioArquero = 75;
-    private int vidaMaxima = 250;
 
     public Cuartel() {
         vida = 250;
         vidaMaxima = 250;
         velocidadDeReparacion = 50;
-    }
-
-    public int getVida() {
-        return this.vida;
     }
 
     public Espadachin crearEspadachin(int oroDisponible) throws OroInsuficiente {

@@ -17,10 +17,6 @@ public class Castillo extends Estructura implements Contenible {
         velocidadDeReparacion = 15;
     }
 
-    public int getVida() {
-        return vida;
-    }
-
     public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente {
         if(oroDisponible < precioArmaDeAsedio) {
             throw new OroInsuficiente();

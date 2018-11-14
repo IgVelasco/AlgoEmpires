@@ -15,9 +15,6 @@ public class Reparando implements Estado {
 
     @Override
     public  void realizarAccionPasiva(Aldeano unAldeano) {
-        cantTurnos ++;
-        if (cantTurnos == maxTurnos) {
-            unAldeano.finalizarReparacion(estructura);
-        }
+        estructura.reparar(unAldeano);
     }
 }

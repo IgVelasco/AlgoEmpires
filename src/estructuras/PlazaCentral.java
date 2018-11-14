@@ -16,10 +16,6 @@ public class PlazaCentral extends Estructura implements Contenible {
         this.perteneceA = jugador;
     }
 
-    public int getVida() {
-        return this.vida;
-    }
-
     public Aldeano crearAldeano(int oroDisponible) throws OroInsuficiente {
         if(oroDisponible < precioAldeano) throw new OroInsuficiente();
         return new Aldeano(this.perteneceA);
