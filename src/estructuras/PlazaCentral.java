@@ -5,7 +5,7 @@ import contenibles.Contenible;
 import juego.Jugador;
 import unidades.Aldeano;
 
-public class PlazaCentral implements Contenible {
+public class PlazaCentral implements Contenible, Estructura{
     private int vida = 450;
     private int precioAldeano = 25;
     public Jugador perteneceA;

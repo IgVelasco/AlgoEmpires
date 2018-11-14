@@ -5,7 +5,7 @@ import contenibles.Contenible;
 import juego.Jugador;
 import unidades.ArmaDeAsedio;
 
-public class Castillo implements Contenible {
+public class Castillo implements Contenible, Estructura {
 
     private int vida = 1000;
     private int precioArmaDeAsedio = 200;

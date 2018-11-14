@@ -27,7 +27,7 @@ public class Jugador {
         castillo = new Castillo(this);
         plazasCentrales.add(new PlazaCentral(this));
 
-        this.juego = juego;
+        //this.juego = juego;
         this.turnoNumero = 0;
         this.oro = 100;
 
@@ -42,12 +42,10 @@ public class Jugador {
 
     public void nuevoTurno() {
         this.turnoNumero++;
-        int i = 0;
         Iterator<Aldeano> iterador = aldeanos.iterator();
 
         while (iterador.hasNext()) {
             iterador.next().realizarAccionCorrespondiente();
-
         }
     }
 

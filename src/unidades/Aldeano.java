@@ -1,7 +1,9 @@
 package unidades;
 
+import estados.Construyendo;
 import estados.Estado;
 import estados.GenerandoOro;
+import estructuras.Estructura;
 import juego.Jugador;
 
 public class Aldeano extends UnidadMovil {
@@ -21,6 +23,11 @@ public class Aldeano extends UnidadMovil {
 
     public void realizarAccionCorrespondiente() {
         estado.realizarAccionPasiva(this.perteneceA);
+    }
+
+    public void comenzarConstruccion(Estructura estructura) {
+        estado = new Construyendo(estructura);
+
     }
 
 }

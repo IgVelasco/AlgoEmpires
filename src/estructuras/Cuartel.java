@@ -5,7 +5,7 @@ import contenibles.Contenible;
 import unidades.Arquero;
 import unidades.Espadachin;
 
-public class Cuartel implements Contenible {
+public class Cuartel implements Contenible, Estructura {
 
     private int vida = 250;
     private int precioEspadachin = 50;
