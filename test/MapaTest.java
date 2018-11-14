@@ -1,6 +1,7 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
+import estructuras.Castillo;
 import org.junit.Test;
 import espacio.Mapa;
 import unidades.Aldeano;
@@ -21,14 +22,14 @@ public class MapaTest {
     }
 
     @Test
-    public void testPreguntarContenidoEnUbicacionVaciaDevuelveNada() {
+    public void testPreguntarContenidoEnUbicacionVaciaDevuelveNada() throws ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(5, 5);
 
         assertNull(mapa.getContenido(4, 4));
     }
 
     @Test
-    public void testSePuedeColocarUnidadEnPosicionEspecifica() throws CasilleroOcupado {
+    public void testSePuedeColocarUnidadEnPosicionEspecifica() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(5, 5);
         Contenible aldeano = new Aldeano();
 
@@ -38,7 +39,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testAlEliminarContenidoDeUnaPosicionSeLibera() throws CasilleroOcupado {
+    public void testAlEliminarContenidoDeUnaPosicionSeLibera() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(5, 5);
         Contenible aldeano = new Aldeano();
 
@@ -149,6 +150,72 @@ public class MapaTest {
         Contenible unArquero = new Arquero();
 
         mapa.colocarUnidadEn(unArquero,0,0);
+        mapa.moverIzquierda(0,0);
+    }
+
+    @Test
+    public void testSePuedeColocarEstructuraEnPosicionEspecifica() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20,20);
+        Contenible castillo = new Castillo();
+
+        mapa.colocarEstructuraEn(castillo, 5, 5, 4);
+
+        assertEquals(castillo, mapa.getContenido(8, 8));
+        assertEquals(castillo, mapa.getContenido(7, 7));
+        assertEquals(castillo, mapa.getContenido(6, 6));
+        assertEquals(castillo, mapa.getContenido(5, 5));
+
+        assertNull(mapa.getContenido(4, 4));
+    }
+
+
+    @Test(expected = ExcedeLimiteDelMapa.class)
+    public void testConstruirAfueraDelMapaError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(5,5);
+        Contenible unCastillo = new Castillo();
+
+        mapa.colocarEstructuraEn(unCastillo,-1,-1, 4);
+    }
+
+
+    @Test(expected = ExcedeLimiteDelMapa.class)
+    public void testConstruirParteAfueraDelMapaError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(5,5);
+        Contenible unCastillo = new Castillo();
+
+        mapa.colocarEstructuraEn(unCastillo,3,3, 4);
+        assertNull(mapa.getContenido(3, 3));
+        assertNull(mapa.getContenido(4, 3));
+    }
+
+    @Test(expected = CasilleroOcupado.class)
+    public void testConstruirDosCastillosEnMismoLugar() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20,20);
+        Contenible unCastillo = new Castillo();
+        Contenible otroCastillo = new Castillo();
+
+        mapa.colocarEstructuraEn(unCastillo,5,5, 4);
+        mapa.colocarEstructuraEn(otroCastillo,5,5, 4);
+
+        assertEquals(unCastillo, mapa.getContenido(8, 8));
+        assertEquals(unCastillo, mapa.getContenido(7, 7));
+        assertEquals(unCastillo, mapa.getContenido(6, 6));
+        assertEquals(unCastillo, mapa.getContenido(5, 5));
+    }
+
+    @Test (expected = ExcedeLimiteDelMapa.class)
+    public void testPedirContenidoAfueraDelMapaError() throws ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(5, 5);
+
+        mapa.getContenido(-1, -1);
+    }
+
+    @Test (expected = ExcedeLimiteDelMapa.class)
+    public void testMoverUnidadAfueraDelMapaError() throws ExcedeLimiteDelMapa, CasilleroOcupado {
+        Mapa mapa = new Mapa (5, 5);
+        Contenible aldeano = new Aldeano();
+
+        mapa.colocarUnidadEn(aldeano, 0,0);
         mapa.moverIzquierda(0,0);
     }
 }
