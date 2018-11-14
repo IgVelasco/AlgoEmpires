@@ -6,7 +6,7 @@ public class AldeanoTest {
 
     @Test
     public void testAldeanoSeCreaCon50DeVida() {
-        Aldeano unAldeano = new Aldeano();
+        Aldeano unAldeano = new Aldeano(null);
 
         assertEquals(50, unAldeano.getVida());
     }

@@ -12,14 +12,14 @@ public class PlazaCentralTest{
 
     @Test
     public void testPlazaCentralSeCreaCon450DeVida() {
-        PlazaCentral plaza = new PlazaCentral();
+        PlazaCentral plaza = new PlazaCentral(null);
 
         assertEquals(450, plaza.getVida());
     }
 
     @Test
     public void testCrearAldeanoDevuelveUnaUnidadDeClaseAldeano() throws OroInsuficiente {
-        PlazaCentral unaPlaza = new PlazaCentral();
+        PlazaCentral unaPlaza = new PlazaCentral(null);
 
         Contenible unaUnidad = unaPlaza.crearAldeano(25);
 
@@ -28,7 +28,7 @@ public class PlazaCentralTest{
 
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente {
-        PlazaCentral unaPlaza = new PlazaCentral();
+        PlazaCentral unaPlaza = new PlazaCentral(null);
 
         unaPlaza.crearAldeano(10);
     }

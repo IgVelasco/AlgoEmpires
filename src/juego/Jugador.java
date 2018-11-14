@@ -9,6 +9,7 @@ import estructuras.PlazaCentral;
 import unidades.Aldeano;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Jugador {
     private Mapa mapa;
@@ -16,15 +17,15 @@ public class Jugador {
     private Castillo castillo;
     private ArrayList<PlazaCentral> plazasCentrales = new ArrayList<PlazaCentral>();
     private ArrayList<Cuartel> cuarteles = new ArrayList<Cuartel>();
-    private ArrayList<Aldeano> aldeanosLibres = new ArrayList<Aldeano>();
-    private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
+    private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
+    //private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     public int oro;
     public int turnoNumero;
    // private Dictionary<String Estructuras[]> Necesito estructuras para ir actualizando sus turnos de construccion
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        castillo = new Castillo();
-        plazasCentrales.add(new PlazaCentral());
+        castillo = new Castillo(this);
+        plazasCentrales.add(new PlazaCentral(this));
 
         this.juego = juego;
         this.turnoNumero = 0;
@@ -34,17 +35,28 @@ public class Jugador {
         mapa.colocarEstructuraEn(plazasCentrales.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
 
         for (int i = 0; i < 3; i++) {
-            aldeanosLibres.add(i, new Aldeano());
-            mapa.colocarUnidadEn(aldeanosLibres.get(i), posicionCastilloHorizontal - 3, posicionCastilloVertical + i);
+            aldeanos.add(i, new Aldeano(this));
+            mapa.colocarUnidadEn(aldeanos.get(i), posicionCastilloHorizontal - 3, posicionCastilloVertical + i);
         }
     }
 
     public void nuevoTurno() {
-        this.turnoNumero ++;
+        this.turnoNumero++;
+        int i = 0;
+        Iterator<Aldeano> iterador = aldeanos.iterator();
 
+        while (iterador.hasNext()) {
+            iterador.next().realizarAccionCorrespondiente();
+
+        }
     }
 
     public void finalizarTurno() {
         juego.cambiarTurno();
+    }
+
+
+    public void sumarOro(int unidadesDeOro) {
+        this.oro += unidadesDeOro;
     }
 }
