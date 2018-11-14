@@ -8,42 +8,40 @@ import estructuras.Cuartel;
 import estructuras.PlazaCentral;
 import unidades.Aldeano;
 
+import java.util.ArrayList;
+
 public class Jugador {
     private Mapa mapa;
     private Juego juego;
     private Castillo castillo;
-    private PlazaCentral[] plazaCentrales;
-    private Cuartel[] cuarteles;
-    private int aldeanosLibres;
-    private int aldeanosOcupados;
+    private ArrayList<PlazaCentral> plazasCentrales = new ArrayList<PlazaCentral>();
+    private ArrayList<Cuartel> cuarteles = new ArrayList<Cuartel>();
+    private ArrayList<Aldeano> aldeanosLibres = new ArrayList<Aldeano>();
+    private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     public int oro;
     public int turnoNumero;
    // private Dictionary<String Estructuras[]> Necesito estructuras para ir actualizando sus turnos de construccion
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        Castillo castillo = new Castillo();
-        PlazaCentral plaza = new PlazaCentral();
-        Aldeano aldeano1 = new Aldeano();
-        Aldeano aldeano2 = new Aldeano();
-        Aldeano aldeano3 = new Aldeano();
+        castillo = new Castillo();
+        plazasCentrales.add(new PlazaCentral());
 
         this.juego = juego;
         this.turnoNumero = 0;
         this.oro = 100;
-        this.aldeanosLibres = 3;
-        this.aldeanosOcupados = 0;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4);
-        mapa.colocarEstructuraEn(plaza, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2 );
+        mapa.colocarEstructuraEn(plazasCentrales.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
 
-        mapa.colocarUnidadEn(aldeano1, posicionCastilloHorizontal - 3, posicionCastilloVertical);
-        mapa.colocarUnidadEn(aldeano2, posicionCastilloHorizontal - 3, posicionCastilloVertical + 1);
-        mapa.colocarUnidadEn(aldeano3, posicionCastilloHorizontal - 3, posicionCastilloVertical + 2);
+        for (int i = 0; i < 3; i++) {
+            aldeanosLibres.add(i, new Aldeano());
+            mapa.colocarUnidadEn(aldeanosLibres.get(i), posicionCastilloHorizontal - 3, posicionCastilloVertical + i);
+        }
     }
 
     public void nuevoTurno() {
         this.turnoNumero ++;
-        this.oro += this.aldeanosLibres*25;
+
     }
 
     public void finalizarTurno() {
