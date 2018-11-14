@@ -1,8 +1,8 @@
+import Excepciones.OroInsuficiente;
 import contenibles.Contenible;
 import estructuras.PlazaCentral;
 import org.junit.Test;
 import unidades.Aldeano;
-import unidades.Espadachin;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
@@ -18,11 +18,18 @@ public class PlazaCentralTest{
     }
 
     @Test
-    public void testCrearAldeanoDevuelveUnaUnidadDeClaseAldeano(){
+    public void testCrearAldeanoDevuelveUnaUnidadDeClaseAldeano() throws OroInsuficiente {
         PlazaCentral unaPlaza = new PlazaCentral();
 
-        Contenible unaUnidad = unaPlaza.crearAldeano();
+        Contenible unaUnidad = unaPlaza.crearAldeano(25);
 
         assertThat(unaUnidad, instanceOf(Aldeano.class));
+    }
+
+    @Test(expected = OroInsuficiente.class)
+    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente {
+        PlazaCentral unaPlaza = new PlazaCentral();
+
+        unaPlaza.crearAldeano(10);
     }
 }

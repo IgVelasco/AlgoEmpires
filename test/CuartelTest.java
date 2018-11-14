@@ -1,3 +1,4 @@
+import Excepciones.OroInsuficiente;
 import estructuras.Cuartel;
 import org.junit.Test;
 import contenibles.Contenible;
@@ -18,20 +19,35 @@ public class CuartelTest {
     }
 
     @Test
-    public void testCrearEspadachinCreaUnaUnidadDelTipoEspadachin(){
+    public void testCrearEspadachinCreaUnaUnidadDelTipoEspadachin() throws OroInsuficiente {
         Cuartel unCuartel = new Cuartel();
 
-        Contenible unaUnidad = unCuartel.crearEspadachin();
+        Contenible unaUnidad = unCuartel.crearEspadachin(50);
 
         assertThat(unaUnidad, instanceOf(Espadachin.class));
     }
 
     @Test
-    public void testCrearArqueroCreaUnaUnidadDelTipoArquero(){
+    public void testCrearArqueroCreaUnaUnidadDelTipoArquero() throws OroInsuficiente {
         Cuartel unCuartel = new Cuartel();
 
-        Contenible unaUnidad = unCuartel.crearArquero();
+        Contenible unaUnidad = unCuartel.crearArquero(75);
 
         assertThat(unaUnidad, instanceOf(Arquero.class));
+    }
+
+    @Test(expected = OroInsuficiente.class)
+    public void testNoCrearEspadachinSinOroSuficiente() throws OroInsuficiente {
+        Cuartel unCuartel = new Cuartel();
+
+        unCuartel.crearEspadachin(25);
+
+    }
+
+    @Test(expected = OroInsuficiente.class)
+    public void testNoCrearArqueroSinOroSuficiente() throws OroInsuficiente {
+        Cuartel unCuartel = new Cuartel();
+
+        unCuartel.crearArquero(25);
     }
 }
