@@ -1,5 +1,6 @@
 package unidades;
 
+import Excepciones.EdificioConVidaMaxima;
 import estados.Construyendo;
 import estados.Estado;
 import estados.GenerandoOro;
@@ -35,7 +36,8 @@ public class Aldeano extends UnidadMovil {
     }
 
 
-    public void comenzarReparacion(Estructura unaEstructura){
+    public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima {
+        unaEstructura.reparar();
         estado = new Reparando(unaEstructura);
     }
 

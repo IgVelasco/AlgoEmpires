@@ -1,4 +1,5 @@
 import Excepciones.CasilleroOcupado;
+import Excepciones.EdificioConVidaMaxima;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estados.Construyendo;
@@ -49,7 +50,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoEstaReparandoNoDaOro() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoEstaReparandoNoDaOro() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
@@ -74,7 +75,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoReparaVidaCorrecta() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoReparaVidaCorrecta() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
@@ -91,6 +92,18 @@ public class AldeanoTest {
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(1000, unCastillo.getVida());
 
+    }
+
+
+    @Test (expected = EdificioConVidaMaxima.class)
+    public void testAldeanoNoReparaEdificioConVidaMaxima() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Aldeano unAldeano = new Aldeano(jugador);
+        Castillo unCastillo = new Castillo(jugador);
+
+        unAldeano.comenzarReparacion(unCastillo);
+        assertEquals(GenerandoOro.class, unAldeano.getEstado().getClass());
     }
 
 

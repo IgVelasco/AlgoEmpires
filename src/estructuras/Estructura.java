@@ -1,5 +1,5 @@
 package estructuras;
-
+import Excepciones.EdificioConVidaMaxima;
 import unidades.Aldeano;
 
 public abstract class Estructura {
@@ -20,8 +20,16 @@ public abstract class Estructura {
         return vida;
     }
 
-    public  void ataqueDeEspadachin(){
-        int dañoDeEspadachin  = 25;
+    public void ataqueDeEspadachin() {
+        int dañoDeEspadachin = 25;
         vida = vida - dañoDeEspadachin;
-    };
+    }
+
+    ;
+
+    public void reparar() throws EdificioConVidaMaxima {
+        if (vida == vidaMaxima)
+            throw new EdificioConVidaMaxima();
+
+    }
 }

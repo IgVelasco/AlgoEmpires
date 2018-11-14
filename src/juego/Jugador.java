@@ -1,6 +1,7 @@
 package juego;
 
 import Excepciones.CasilleroOcupado;
+import Excepciones.EdificioConVidaMaxima;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estructuras.Castillo;
@@ -79,7 +80,7 @@ public class Jugador {
     }
 
 
-    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) {
+    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) throws EdificioConVidaMaxima {
         aldeanosOcupados.add(unAldeano);
 
         unAldeano.comenzarReparacion(unCuartel);
