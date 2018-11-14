@@ -1,12 +1,11 @@
 package estados;
 
-import contenibles.Contenible;
-import juego.Jugador;
+import unidades.Aldeano;
 
 public class GenerandoOro implements Estado {
 
     @Override
-    public void realizarAccionPasiva(Jugador jugador) {
-        jugador.sumarOro(20);
+    public void realizarAccionPasiva(Aldeano unAldeano) {
+        unAldeano.recolectarOro(20);
     }
 }

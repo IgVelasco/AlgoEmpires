@@ -9,6 +9,7 @@ public class PlazaCentral implements Contenible, Estructura{
     private int vida = 450;
     private int precioAldeano = 25;
     public Jugador perteneceA;
+    private int vidaMaxima = 450;
 
     public PlazaCentral(Jugador jugador) {
         this.perteneceA = jugador;

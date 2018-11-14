@@ -10,6 +10,7 @@ public class Cuartel implements Contenible, Estructura {
     private int vida = 250;
     private int precioEspadachin = 50;
     private int precioArquero = 75;
+    private int vidaMaxima = 250;
 
     public int getVida() {
         return this.vida;

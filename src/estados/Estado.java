@@ -1,8 +1,8 @@
 package estados;
 
-import juego.Jugador;
+import unidades.Aldeano;
 
 public interface Estado {
 
-    void realizarAccionPasiva(Jugador jugador);
+    void realizarAccionPasiva(Aldeano jugador);
 }

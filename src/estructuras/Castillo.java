@@ -10,6 +10,8 @@ public class Castillo implements Contenible, Estructura {
     private int vida = 1000;
     private int precioArmaDeAsedio = 200;
     public Jugador perteneceA;
+    private int vidaMaxima = 1000;
+
 
     public Castillo(Jugador jugador) {
         perteneceA = jugador;
