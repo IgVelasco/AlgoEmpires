@@ -29,7 +29,7 @@ public class Aldeano extends UnidadMovil {
         this.estado = new Construyendo(estructura);
     }
     public void finalizarConstruccion(Estructura unaEstructura){
-        //Estaado Estructura
+        //Estado Estructura
         this.liberarAldeano();
     }
 
@@ -50,5 +50,9 @@ public class Aldeano extends UnidadMovil {
 
     public void recolectarOro(int oro) {
         this.propietario.sumarOro(oro);
+    }
+
+    public Estado getEstado() {
+        return estado;
     }
 }
