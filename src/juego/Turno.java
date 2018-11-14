@@ -12,10 +12,12 @@ public class Turno {
 //Si alguno se le ocurre mas simple
     public int primerTurno(){
         turnoActual =  (ThreadLocalRandom.current().nextInt(0, 2)) ;
-        return turnoActual + 1;
+        return turnoActual;
     }
 
-
-
+    public int siguienteTurno() {
+        turnoActual = (turnoActual + 1) % 2;
+        return turnoActual;
+    }
 
 }
