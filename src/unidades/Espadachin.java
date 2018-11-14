@@ -1,6 +1,7 @@
 package unidades;
 
-public class Espadachin {
+
+public class Espadachin extends UnidadMovil {
 
     private int vida = 100;
 

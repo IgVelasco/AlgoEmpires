@@ -1,6 +1,8 @@
 package estructuras;
 
-public class Castillo {
+import contenibles.Contenible;
+
+public class Castillo implements Contenible {
 
     private int vida = 1000;
 

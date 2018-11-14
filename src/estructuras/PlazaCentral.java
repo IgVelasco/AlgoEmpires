@@ -1,6 +1,8 @@
 package estructuras;
 
-public class PlazaCentral {
+import contenibles.Contenible;
+
+public class PlazaCentral implements Contenible {
     private int vida = 450;
 
     public int getVida() {
