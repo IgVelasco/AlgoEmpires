@@ -1,5 +1,7 @@
 import juego.Turno;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class TurnoTest {
 
@@ -25,12 +27,11 @@ public class TurnoTest {
 
         turnoActual = unTurno.siguienteTurno();
 
-        assert (turnoInicial != turnoActual);
-
+        assertNotEquals(turnoInicial, turnoActual);
 
         turnoActual = unTurno.siguienteTurno();
 
-        assert (turnoInicial == turnoActual);
+        assertEquals(turnoInicial, turnoActual);
 
     }
 }
