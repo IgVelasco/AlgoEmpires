@@ -5,8 +5,6 @@ import unidades.Aldeano;
 
 public class Reparando implements Estado {
 
-    private int cantTurnos = 0;
-    private int maxTurnos = 3;
     public Estructura estructura;
 
     public Reparando(Estructura unaEstructura) {
