@@ -28,6 +28,7 @@ public class Aldeano extends UnidadMovil {
     public void comenzarConstruccion(Estructura estructura) {
         this.estado = new Construyendo(estructura);
     }
+
     public void finalizarConstruccion(Estructura unaEstructura){
         //Estaado Estructura
         this.liberarAldeano();
@@ -43,12 +44,15 @@ public class Aldeano extends UnidadMovil {
         this.liberarAldeano();
     }
 
-
     private void liberarAldeano() {
         this.estado = new GenerandoOro();
     }
 
     public void recolectarOro(int oro) {
         this.propietario.sumarOro(oro);
+    }
+
+    public Estado getEstado() {
+        return estado;
     }
 }

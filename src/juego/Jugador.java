@@ -78,6 +78,7 @@ public class Jugador {
         aldeano.comenzarConstruccion(unCuartel);
     }
 
-
-
+    public int getOro() {
+        return oro;
+    }
 }
