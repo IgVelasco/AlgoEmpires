@@ -1,7 +1,7 @@
 package juego;
 
-import excepciones.CasilleroOcupado;
-import excepciones.ExcedeLimiteDelMapa;
+import Excepciones.CasilleroOcupado;
+import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estructuras.Castillo;
 import estructuras.Cuartel;
