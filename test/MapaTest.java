@@ -210,4 +210,12 @@ public class MapaTest {
         mapa.getContenido(-1, -1);
     }
 
+    @Test (expected = ExcedeLimiteDelMapa.class)
+    public void testMoverUnidadAfueraDelMapaError() throws ExcedeLimiteDelMapa, CasilleroOcupado {
+        Mapa mapa = new Mapa (5, 5);
+        Contenible aldeano = new Aldeano();
+
+        mapa.colocarUnidadEn(aldeano, 0,0);
+        mapa.moverIzquierda(0,0);
+    }
 }
