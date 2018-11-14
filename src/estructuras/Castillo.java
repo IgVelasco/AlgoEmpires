@@ -5,20 +5,16 @@ import contenibles.Contenible;
 import juego.Jugador;
 import unidades.ArmaDeAsedio;
 
-public class Castillo implements Contenible, Estructura {
+public class Castillo extends Estructura implements Contenible {
 
-    private int vida = 1000;
     private int precioArmaDeAsedio = 200;
-    public Jugador perteneceA;
-    private int vidaMaxima = 1000;
-
+    private Jugador perteneceA;
 
     public Castillo(Jugador jugador) {
         perteneceA = jugador;
-    }
-
-    public int getVida() {
-        return this.vida;
+        vida = 1000;
+        vidaMaxima = 1000;
+        velocidadDeReparacion = 15;
     }
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente {
@@ -27,4 +23,5 @@ public class Castillo implements Contenible, Estructura {
         }
         return new ArmaDeAsedio();
     }
+
 }

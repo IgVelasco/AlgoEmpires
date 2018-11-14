@@ -30,7 +30,7 @@ public class Aldeano extends UnidadMovil {
     }
 
     public void finalizarConstruccion(Estructura unaEstructura){
-        //Estaado Estructura
+        //Estado Estructura
         this.liberarAldeano();
     }
 

@@ -21,8 +21,8 @@ public class Jugador {
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
     private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     //private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
-    public int oro;
-    public int turnoNumero;
+    private int oro;
+    //private int turnoNumero;
    // private Dictionary<String Estructuras[]> Necesito estructuras para ir actualizando sus turnos de construccion
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
@@ -30,7 +30,7 @@ public class Jugador {
         plazasCentrales.add(new PlazaCentral(this));
 
         //this.juego = juego;
-        this.turnoNumero = 0;
+        //this.turnoNumero = 0;
         this.oro = 100;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4);
@@ -43,7 +43,7 @@ public class Jugador {
     }
 
     public void nuevoTurno() {
-        this.turnoNumero++;
+        //this.turnoNumero++;
         Iterator<Aldeano> iterador = aldeanos.iterator();
 
         while (iterador.hasNext()) {
@@ -78,7 +78,14 @@ public class Jugador {
         aldeano.comenzarConstruccion(unCuartel);
     }
 
+
+    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) {
+        aldeanosOcupados.add(unAldeano);
+
+        unAldeano.comenzarReparacion(unCuartel);
+    }
+
     public int getOro() {
-        return oro;
+        return this.oro;
     }
 }
