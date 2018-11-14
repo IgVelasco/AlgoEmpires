@@ -1,7 +1,7 @@
 package espacio;
 
-import excepciones.CasilleroOcupado;
-import excepciones.ExcedeLimiteDelMapa;
+import Excepciones.CasilleroOcupado;
+import Excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
 import unidades.UnidadMovil;
 
