@@ -6,7 +6,7 @@ import unidades.Aldeano;
 
 public class Construyendo implements Estado {
     private int cantTurnos = 0;
-    private int maxTurnos = 2;
+    private int maxTurnos = 3;
     public Estructura estructura;
 
     public Construyendo(Estructura estruct) {
