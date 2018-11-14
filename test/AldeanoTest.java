@@ -49,7 +49,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoEstaReparando() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoEstaReparandoNoDaOro() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
@@ -71,10 +71,28 @@ public class AldeanoTest {
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(120,jugador.getOro() );
 
+    }
 
+    @Test
+    public void testAldeanoReparaVidaCorrecta() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Aldeano unAldeano = new Aldeano(jugador);
+        Castillo unCastillo = new Castillo(jugador) ;
 
+        unCastillo.ataqueDeEspadachin();
+
+        unAldeano.comenzarReparacion(unCastillo);
+        assertEquals(975, unCastillo.getVida());
+
+        unAldeano.realizarAccionCorrespondiente();
+        assertEquals(990, unCastillo.getVida());
+
+        unAldeano.realizarAccionCorrespondiente();
+        assertEquals(1000, unCastillo.getVida());
 
     }
+
 
 
 
