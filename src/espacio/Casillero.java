@@ -8,6 +8,7 @@ public class Casillero {
     private boolean estaOcupado = false;
     private Contenible contenido;
 
+
     public boolean casilleroEstaOcupado() {
         return this.estaOcupado;
     }
@@ -26,4 +27,5 @@ public class Casillero {
         contenido = null;
         estaOcupado = false;
     }
+
 }
