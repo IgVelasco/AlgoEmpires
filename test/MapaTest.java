@@ -1,5 +1,5 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
+import excepciones.CasilleroOcupado;
+import excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
 import estructuras.Castillo;
 import org.junit.Test;

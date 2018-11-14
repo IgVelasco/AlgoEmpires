@@ -1,6 +1,6 @@
 package espacio;
 
-import Excepciones.CasilleroOcupado;
+import excepciones.CasilleroOcupado;
 import contenibles.Contenible;
 
 public class Casillero {

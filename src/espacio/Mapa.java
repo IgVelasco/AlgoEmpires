@@ -1,7 +1,7 @@
 package espacio;
 
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
+import excepciones.CasilleroOcupado;
+import excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
 import unidades.UnidadMovil;
 
@@ -52,7 +52,7 @@ public class Mapa {
         }
     }
 
-    private boolean casillerosEstanOcupados(int x , int y, int dimensiones) throws CasilleroOcupado,ExcedeLimiteDelMapa {
+    public boolean casillerosEstanOcupados(int x , int y, int dimensiones) throws CasilleroOcupado,ExcedeLimiteDelMapa {
         for(int i = 0; i < dimensiones ; i++){
             for(int j = 0; j < dimensiones ; j++){
                try{

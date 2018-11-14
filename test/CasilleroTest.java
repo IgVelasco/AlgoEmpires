@@ -1,4 +1,4 @@
-import Excepciones.CasilleroOcupado;
+import excepciones.CasilleroOcupado;
 import contenibles.Contenible;
 import espacio.Casillero;
 import unidades.Aldeano;
