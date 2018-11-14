@@ -79,11 +79,5 @@ public class Jugador {
     }
 
 
-    public void finalizarConstruccion(Estructura estructura) {
-        Aldeano aldeano = aldeanosOcupados.get(0);
-        aldeanosOcupados.remove(0);
 
-        //mapa.colocarEstructuraEn(); TODO ver como se llama desde el principio para pasar ubicacion.
-        aldeano.desocuparse();
-    }
 }
