@@ -27,7 +27,10 @@ public class Aldeano extends UnidadMovil {
 
     public void comenzarConstruccion(Estructura estructura) {
         estado = new Construyendo(estructura);
+    }
 
+    public void desocuparse () {
+        estado = new GenerandoOro();
     }
 
 }

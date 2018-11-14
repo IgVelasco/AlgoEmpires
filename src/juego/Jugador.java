@@ -5,6 +5,7 @@ import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estructuras.Castillo;
 import estructuras.Cuartel;
+import estructuras.Estructura;
 import estructuras.PlazaCentral;
 import unidades.Aldeano;
 
@@ -18,6 +19,7 @@ public class Jugador {
     private ArrayList<PlazaCentral> plazasCentrales = new ArrayList<PlazaCentral>();
     private ArrayList<Cuartel> cuarteles = new ArrayList<Cuartel>();
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
+    private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     //private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     public int oro;
     public int turnoNumero;
@@ -56,5 +58,23 @@ public class Jugador {
 
     public void sumarOro(int unidadesDeOro) {
         this.oro += unidadesDeOro;
+    }
+
+    public void construirPlazaCentral (Aldeano aldeano) { // Podria ser asi o que se le pase un indez de array
+        PlazaCentral unaPlazaCentral = new PlazaCentral(this);
+
+        plazasCentrales.add(unaPlazaCentral);
+        aldeanosOcupados.add(aldeano);
+
+        aldeano.comenzarConstruccion(unaPlazaCentral);
+    }
+
+
+    public void finalizarConstruccion(Estructura estructura) {
+        Aldeano aldeano = aldeanosOcupados.get(0);
+        aldeanosOcupados.remove(0);
+
+        //mapa.colocarEstructuraEn(); TODO ver como se llama desde el principio para pasar ubicacion.
+        aldeano.desocuparse();
     }
 }
