@@ -22,7 +22,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testPreguntarContenidoEnUbicacionVaciaDevuelveNada() {
+    public void testPreguntarContenidoEnUbicacionVaciaDevuelveNada() throws ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(5, 5);
 
         assertNull(mapa.getContenido(4, 4));
@@ -186,8 +186,6 @@ public class MapaTest {
         mapa.colocarEstructuraEn(unCastillo,3,3, 4);
         assertNull(mapa.getContenido(3, 3));
         assertNull(mapa.getContenido(4, 3));
-        // TODO tiene que tirar error mirar fuera del mapa (en otra prueba que no espere la excepcion
-        //assertNull(mapa.getContenido(5, 3));
     }
 
     @Test(expected = CasilleroOcupado.class)
@@ -205,5 +203,11 @@ public class MapaTest {
         assertEquals(unCastillo, mapa.getContenido(5, 5));
     }
 
+    @Test (expected = ExcedeLimiteDelMapa.class)
+    public void testPedirContenidoAfueraDelMapaError() throws ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(5, 5);
+
+        mapa.getContenido(-1, -1);
+    }
 
 }

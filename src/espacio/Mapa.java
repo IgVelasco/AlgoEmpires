@@ -25,8 +25,12 @@ public class Mapa {
 
     public int getCantCeldas() { return this.cantCeldas;}
 
-    public Contenible getContenido (int x, int y) {
-        return this.mapa[x][y].getContenido();
+    public Contenible getContenido (int x, int y) throws ExcedeLimiteDelMapa {
+        try {
+            return this.mapa[x][y].getContenido();
+        } catch (IndexOutOfBoundsException errorDeLimites) {
+            throw new ExcedeLimiteDelMapa();
+        }
     }
 
     public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
