@@ -1,5 +1,6 @@
 package estados;
 
+import Excepciones.AldeanoOcupado;
 import estructuras.Estructura;
 import juego.Jugador;
 import unidades.Aldeano;
@@ -11,6 +12,10 @@ public class Construyendo implements Ocupado {
 
     public Construyendo(Estructura estruct) {
         estructura = estruct;
+    }
+
+    public void estaOcupado() throws AldeanoOcupado {
+        throw new AldeanoOcupado();
     }
 
     @Override

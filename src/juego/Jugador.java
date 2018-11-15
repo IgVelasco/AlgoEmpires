@@ -21,7 +21,6 @@ public class Jugador {
     private ArrayList<PlazaCentral> plazasCentrales = new ArrayList<PlazaCentral>();
     private ArrayList<Cuartel> cuarteles = new ArrayList<Cuartel>();
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
-    private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     //private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     private int oro;
     //private int turnoNumero;
@@ -62,27 +61,22 @@ public class Jugador {
         this.oro += unidadesDeOro;
     }
 
-    public void construirPlazaCentral (Aldeano aldeano) throws AldeanoOcupado { // Podria ser asi o que se le pase un indez de array
+    public void construirPlazaCentral (Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         aldeano.comenzarConstruccion(unaPlazaCentral);
         plazasCentrales.add(unaPlazaCentral);
-        aldeanosOcupados.add(aldeano);
-
-
+        mapa.colocarEstructuraEn(unaPlazaCentral, x, y ,2);
     }
 
-    public void construirCuartel(Aldeano aldeano) throws AldeanoOcupado {
+    public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
         Cuartel unCuartel = new Cuartel();
-
         cuarteles.add(unCuartel);
-        aldeanosOcupados.add(aldeano);
-
         aldeano.comenzarConstruccion(unCuartel);
+        mapa.colocarEstructuraEn(unCuartel, x, y ,2);
     }
 
 
     public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) throws EdificioConVidaMaxima, AldeanoOcupado {
-        aldeanosOcupados.add(unAldeano);
         unAldeano.comenzarReparacion(unCuartel);
     }
 

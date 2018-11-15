@@ -8,4 +8,7 @@ public class GenerandoOro implements Estado {
     public void realizarAccionPasiva(Aldeano unAldeano) {
         unAldeano.recolectarOro(20);
     }
+
+    public void estaOcupado(){
+    }
 }

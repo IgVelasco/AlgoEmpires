@@ -1,5 +1,6 @@
 package estados;
 
+import Excepciones.AldeanoOcupado;
 import estructuras.Estructura;
 import unidades.Aldeano;
 
@@ -9,6 +10,11 @@ public class Reparando implements Ocupado {
 
     public Reparando(Estructura unaEstructura) {
         this.estructura = unaEstructura;
+    }
+
+    @Override
+    public void estaOcupado() throws AldeanoOcupado {
+        throw new AldeanoOcupado();
     }
 
     @Override

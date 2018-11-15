@@ -25,14 +25,10 @@ public class Aldeano extends UnidadMovil {
     }
 
     public void comenzarConstruccion(Estructura estructura) throws AldeanoOcupado {
-        this.estaOcupado();
+        estado.estaOcupado();
         this.estado = new Construyendo(estructura);
     }
 
-    private void estaOcupado() throws AldeanoOcupado {
-        if(estado instanceof Ocupado)
-            throw new AldeanoOcupado();
-    }
 
     public void finalizarConstruccion(Estructura unaEstructura){
         //Estado Estructura
@@ -41,7 +37,7 @@ public class Aldeano extends UnidadMovil {
 
 
     public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
-        this.estaOcupado();
+        estado.estaOcupado();
         unaEstructura.reparar();
         estado = new Reparando(unaEstructura);
     }
