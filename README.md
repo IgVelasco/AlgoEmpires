@@ -5,31 +5,34 @@ TP2 - Algo Empires: juego por turnos basado en el clásico juego Age of Empires 
 [![Build Status](https://travis-ci.org/iPetrignani/solid-octo-broccoli.svg?branch=master)](https://travis-ci.org/iPetrignani/solid-octo-broccoli)
 [![codecov](https://codecov.io/gh/iPetrignani/solid-octo-broccoli/branch/master/graph/badge.svg)](https://codecov.io/gh/iPetrignani/solid-octo-broccoli)
 
+### Informe
+https://www.overleaf.com/2372179491qrtpxnkzggcx
+
 # Entrega 1 (Semana del 12 de noviembre)
 
 ## Pruebas del espacio mapa
-- [ ] Tamaño
-- [ ] Colocar unidades y edificios
+- [x] Tamaño
+- [x] Colocar unidades y edificios
 
 ## Pruebas de unidades
-- [ ] Pruebas de movimiento y dirección (1 casillero por turno en las 8 posibles direcciones, siempre y cuando no intenten ir más allá del mapa)
-  - [ ] Aldeano
-  - [ ] Arquero
-  - [ ] Espadachín
-  - [ ] Arma de asedio
-- [ ] Pruebas de construcción
-  - [ ] Aldeano
-    - [ ] Verificar construcción de cuartel y plaza central
-    - [ ] Verificar que se haga en los turnos propios al jugador
-    - [ ] Verificar que no suma oro
-- [ ] Pruebas de reparación
-  - [ ] Aldeano
-    - [ ] Verificar reparación
-    - [ ] Verificar que finalizada la reparación, sume oro
+- [x] Pruebas de movimiento y dirección (1 casillero por turno en las 8 posibles direcciones, siempre y cuando no intenten ir más allá del mapa)
+  - [x] Aldeano
+  - [x] Arquero
+  - [x] Espadachín
+  - [x] Arma de asedio
+- [x] Pruebas de construcción
+  - [x] Aldeano
+    - [x] Verificar construcción de cuartel y plaza central
+    - [x] Verificar que se haga en los turnos propios al jugador
+    - [x] Verificar que no suma oro
+- [x] Pruebas de reparación
+  - [x] Aldeano
+    - [x] Verificar reparación
+    - [x] Verificar que finalizada la reparación, sume oro
     
 ## Pruebas de edificios
-- [ ] Cuartel crea:
-  - [ ] Espadachín
-  - [ ] Arquero
-- [ ] Plaza central crea aldeano
-- [ ] Castillo crea arma de asedio
+- [x] Cuartel crea:
+  - [x] Espadachín
+  - [x] Arquero
+- [x] Plaza central crea aldeano
+- [x] Castillo crea arma de asedio
