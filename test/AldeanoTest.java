@@ -7,6 +7,7 @@ import estados.Construyendo;
 import estados.GenerandoOro;
 import estados.Reparando;
 import estructuras.Castillo;
+import estructuras.Cuartel;
 import estructuras.Estructura;
 import juego.Juego;
 import juego.Jugador;
@@ -108,7 +109,7 @@ public class AldeanoTest {
     }
 
     @Test (expected = AldeanoOcupado.class)
-    public void testAldeanoOcupadoException() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima, AldeanoOcupado {
+    public void testAldeanoOcupadoReparandoException() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima, AldeanoOcupado {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
@@ -120,6 +121,19 @@ public class AldeanoTest {
 
         unAldeano.comenzarReparacion(unCastillo);
         unAldeano.comenzarReparacion(otroCastillo);
+
+    }
+
+    @Test (expected = AldeanoOcupado.class)
+    public void testAldeanoConstruyendoxception() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima, AldeanoOcupado {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Aldeano unAldeano = new Aldeano(jugador);
+        Cuartel unCuartel = new Cuartel();
+        Cuartel otroCuartel = new Cuartel();
+
+        unAldeano.comenzarConstruccion(unCuartel);
+        unAldeano.comenzarConstruccion(otroCuartel);
 
     }
 
