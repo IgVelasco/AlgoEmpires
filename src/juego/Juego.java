@@ -28,10 +28,6 @@ public class Juego {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
 
-
-    public Jugador[] getJugadores() {
-        return jugadores;
-    }
 }
 
 

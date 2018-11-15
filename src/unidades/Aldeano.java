@@ -29,7 +29,7 @@ public class Aldeano extends UnidadMovil {
         this.estado = new Construyendo(estructura);
     }
 
-    public void estaOcupado() throws AldeanoOcupado {
+    private void estaOcupado() throws AldeanoOcupado {
         if(estado instanceof Ocupado)
             throw new AldeanoOcupado();
     }
