@@ -7,7 +7,6 @@ import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estructuras.Castillo;
 import estructuras.Cuartel;
-import estructuras.Estructura;
 import estructuras.PlazaCentral;
 import unidades.Aldeano;
 
@@ -29,7 +28,7 @@ public class Jugador {
     public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         castillo = new Castillo(this);
         plazasCentrales.add(new PlazaCentral(this));
-
+        this.mapa = mapa;
         //this.juego = juego;
         //this.turnoNumero = 0;
         this.oro = 100;
@@ -53,7 +52,7 @@ public class Jugador {
     }
 
     public void finalizarTurno() {
-        juego.cambiarTurno();
+        juego.siguienteTurno();
     }
 
 
