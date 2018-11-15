@@ -24,7 +24,7 @@ public class Juego {
     }
 
 
-    public void cambiarTurno() {
+    public void siguienteTurno() {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
 

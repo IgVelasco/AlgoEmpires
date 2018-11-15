@@ -31,7 +31,7 @@ public class AldeanoTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
 
-        jugador.construirCuartel(unAldeano);
+        jugador.construirCuartel(unAldeano,10 , 10);
         assertEquals(100, jugador.getOro());
 
         unAldeano.realizarAccionCorrespondiente();
