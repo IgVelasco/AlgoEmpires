@@ -4,7 +4,7 @@ import Excepciones.AldeanoOcupado;
 import estructuras.Estructura;
 import unidades.Aldeano;
 
-public class Reparando implements Ocupado {
+public class Reparando implements Estado {
 
     public Estructura estructura;
 

@@ -1,8 +1,9 @@
 package estructuras;
 import Excepciones.EdificioConVidaMaxima;
+import contenibles.Contenible;
 import unidades.Aldeano;
 
-public abstract class Estructura {
+public abstract class Estructura implements Contenible {
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;

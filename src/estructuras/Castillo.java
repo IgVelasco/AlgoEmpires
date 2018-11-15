@@ -5,7 +5,7 @@ import contenibles.Contenible;
 import juego.Jugador;
 import unidades.ArmaDeAsedio;
 
-public class Castillo extends Estructura implements Contenible {
+public class Castillo extends Estructura {
 
     private int precioArmaDeAsedio = 200;
     private Jugador perteneceA;
