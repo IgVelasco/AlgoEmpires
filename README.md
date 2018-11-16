@@ -36,3 +36,18 @@ https://www.overleaf.com/2372179491qrtpxnkzggcx
   - [x] Arquero
 - [x] Plaza central crea aldeano
 - [x] Castillo crea arma de asedio
+
+# Entrega 2 (Semana del 19 de noviembre)
+
+## Distribución de los jugadores en el mapa
+- [ ] Pruebas de inicio del juego, posición, edificios, aldeanos y oro necesarios
+
+## Reglas de población
+- [ ] Crear unidades => sube la población
+- [ ] Matar unidades => baja población
+- [ ] Matar aldeanos => baja población y baja producción de oro
+- [ ] Verificar tope poblacional
+
+## Pruebas de distancia y ataques
+- [ ] Unidades
+- [ ] Castillo
