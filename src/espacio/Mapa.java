@@ -72,6 +72,8 @@ public class Mapa {
         this.mapa[x][y].liberar();
     }
 
+    // TODO ESTO ME PARECE MAL POR QUE YO LE DIGO AL MAPA QUE ME MUEVA LAS COSAS NO A LA UNIDAD MOVIBLE, MOVETE.
+
     private void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido( x, y); // aca hay que lanzar error si es estructura.
             this.colocarUnidadEn(unidad, x + incX, y + incY);

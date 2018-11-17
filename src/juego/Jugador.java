@@ -7,6 +7,7 @@ import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estructuras.Castillo;
 import estructuras.Cuartel;
+import estructuras.Estructura;
 import estructuras.PlazaCentral;
 import unidades.Aldeano;
 
@@ -17,24 +18,18 @@ public class Jugador {
     private Mapa mapa;
     private Juego juego;
     private Castillo castillo;
-    private ArrayList<PlazaCentral> plazasCentrales = new ArrayList<PlazaCentral>();
-    private ArrayList<Cuartel> cuarteles = new ArrayList<Cuartel>();
+    private ArrayList<Estructura> estructuras = new ArrayList<Estructura>();
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
-    //private ArrayList<Aldeano> aldeanosOcupados = new ArrayList<Aldeano>();
     private int oro;
-    //private int turnoNumero;
-   // private Dictionary<String Estructuras[]> Necesito estructuras para ir actualizando sus turnos de construccion
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         castillo = new Castillo(this);
-        plazasCentrales.add(new PlazaCentral(this));
+        estructuras.add(new PlazaCentral(this));
         this.mapa = mapa;
-        //this.juego = juego;
-        //this.turnoNumero = 0;
         this.oro = 100;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4);
-        mapa.colocarEstructuraEn(plazasCentrales.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
+        mapa.colocarEstructuraEn(estructuras.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
 
         for (int i = 0; i < 3; i++) {
             aldeanos.add(i, new Aldeano(this));
@@ -63,13 +58,13 @@ public class Jugador {
     public void construirPlazaCentral (Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         aldeano.comenzarConstruccion(unaPlazaCentral);
-        plazasCentrales.add(unaPlazaCentral);
+        estructuras.add(unaPlazaCentral);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y ,2);
     }
 
     public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
         Cuartel unCuartel = new Cuartel();
-        cuarteles.add(unCuartel);
+        estructuras.add(unCuartel);
         aldeano.comenzarConstruccion(unCuartel);
         mapa.colocarEstructuraEn(unCuartel, x, y ,2);
     }

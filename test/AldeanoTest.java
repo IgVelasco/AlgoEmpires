@@ -117,7 +117,7 @@ public class AldeanoTest {
         Castillo otroCastillo = new Castillo(jugador);
 
         unCastillo.ataqueDeEspadachin();
-        otroCastillo.ataqueDeEspadachin();
+        otroCastillo.ataqueDeArquero();
 
         unAldeano.comenzarReparacion(unCastillo);
         unAldeano.comenzarReparacion(otroCastillo);
