@@ -21,7 +21,7 @@ public class Construyendo implements Estado {
     public  void realizarAccionPasiva(Aldeano unAldeano) {
         cantTurnos ++;
         if (cantTurnos == maxTurnos) {
-            unAldeano.finalizarConstruccion(estructura);
+            unAldeano.liberarAldeano();
         }
     }
 

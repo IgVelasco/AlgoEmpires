@@ -30,24 +30,13 @@ public class Aldeano extends UnidadMovil {
     }
 
 
-    public void finalizarConstruccion(Estructura unaEstructura){
-        //Estado Estructura
-        this.liberarAldeano();
-    }
-
-
     public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
         estado.estaOcupado();
-        unaEstructura.reparar();
+        unaEstructura.ponerAReparar();
         estado = new Reparando(unaEstructura);
     }
 
-    public void finalizarReparacion(Estructura unaEstructura) {
-       //Estructura estados falta
-        this.liberarAldeano();
-    }
-
-    private void liberarAldeano() {
+    public void liberarAldeano() {
         this.estado = new GenerandoOro();
     }
 

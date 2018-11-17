@@ -11,7 +11,7 @@ public abstract class Estructura implements Contenible {
     public void reparar(Aldeano unAldeano) {
         if (vida + velocidadDeReparacion > vidaMaxima) {
             vida = vidaMaxima;
-            unAldeano.finalizarReparacion(this);
+            unAldeano.liberarAldeano();
             return;
         }
         vida += velocidadDeReparacion;
@@ -28,7 +28,7 @@ public abstract class Estructura implements Contenible {
 
     ;
 
-    public void reparar() throws EdificioConVidaMaxima { //TODO esto tendria que ser un estado
+    public void ponerAReparar() throws EdificioConVidaMaxima { //TODO esto tendria que ser un estado
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
 
