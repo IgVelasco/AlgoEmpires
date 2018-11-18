@@ -139,10 +139,9 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverseALaDerechaLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
-        Jugador unJugador = new Jugador(mapa,5,5,null);
-        Aldeano unAldeano = new Aldeano(unJugador);
+        Aldeano unAldeano = new Aldeano(null);
 
         mapa.colocarUnidadEn(unAldeano,0,0);
         unAldeano.moverDerecha(mapa);
@@ -150,19 +149,55 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverseALaDerechaActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
-        Jugador unJugador = new Jugador(mapa, 5,5,null);
-        Aldeano unAldeano = new Aldeano(unJugador);
+        Aldeano unAldeano = new Aldeano(null);
 
         mapa.colocarUnidadEn(unAldeano,1,1);
-        unAldeano.moverDerecha(mapa);
-        assertEquals(2, unAldeano.getPosicionHorizontal());
+        unAldeano.moverIzquierda(mapa);
+        assertEquals(0, unAldeano.getPosicionHorizontal());
     }
 
+    @Test
+    public void testAldeanoMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
 
+        mapa.colocarUnidadEn(unAldeano,1,1);
+        unAldeano.moverArriba(mapa);
+        assertEquals(unAldeano, mapa.getContenido(1,2));
+    }
 
+    @Test
+    public void testAldeanoMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
 
+        mapa.colocarUnidadEn(unAldeano,1,1);
+        unAldeano.moverAbajo(mapa);
+        assertEquals(0, unAldeano.getPosicionVertical());
+    }
+
+    @Test
+    public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
+
+        mapa.colocarUnidadEn(unAldeano,1,1);
+        unAldeano.moverDerechaSuperior(mapa);
+        assertEquals(unAldeano, mapa.getContenido(2,2));
+    }
+
+    @Test
+    public void testAldeanoMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
+
+        mapa.colocarUnidadEn(unAldeano,1,1);
+        unAldeano.moverIzquierdaInferior(mapa);
+        assertEquals(0, unAldeano.getPosicionHorizontal());
+        assertEquals(0,unAldeano.getPosicionVertical());
+    }
 
 
 }

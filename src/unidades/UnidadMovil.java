@@ -65,4 +65,8 @@ public abstract class UnidadMovil implements Contenible {
     public int getPosicionHorizontal() {
         return this.posX;
     }
+
+    public int getPosicionVertical() {
+        return this.posY;
+    }
 }
