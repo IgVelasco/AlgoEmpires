@@ -39,6 +39,7 @@ public class Mapa {
         } catch (IndexOutOfBoundsException errorDeLimites) {
             throw new ExcedeLimiteDelMapa();
         }
+        unidad.setPosicion(x,y);
     }
 
 

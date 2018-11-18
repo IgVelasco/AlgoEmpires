@@ -24,4 +24,9 @@ public class Castillo extends Estructura {
         return new ArmaDeAsedio();
     }
 
+    @Override
+    public void setPosicion(int x, int y) {
+        this.posX = x;
+        this.posY = y;
+    }
 }

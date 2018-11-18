@@ -10,7 +10,7 @@ public class Aldeano extends UnidadMovil {
 
     private int vida = 50;
     private Estado estado = new GenerandoOro();
-    public Jugador propietario;
+    private Jugador propietario;
 
     public Aldeano(Jugador jugador) {
         propietario = jugador;
@@ -46,5 +46,11 @@ public class Aldeano extends UnidadMovil {
 
     public Estado getEstado() {
         return estado;
+    }
+
+    @Override
+    public void setPosicion(int x, int y) {
+        this.posX = x;
+        this.posY = y;
     }
 }

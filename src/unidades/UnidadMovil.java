@@ -8,8 +8,8 @@ import espacio.Mapa;
 public abstract class UnidadMovil implements Contenible {
 
     private int vida;
-    private int posX;
-    private int posY;
+    int posX;
+    int posY;
 
 
     /* int posicionHorizontal;
@@ -62,4 +62,7 @@ public abstract class UnidadMovil implements Contenible {
         mapa.mover(this.posX, this.posY, -1, -1);
     }
 
+    public int getPosicionHorizontal() {
+        return this.posX;
+    }
 }

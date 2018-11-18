@@ -9,4 +9,9 @@ public class ArmaDeAsedio extends UnidadMovil {
         return this.vida;
     }
 
+    @Override
+    public void setPosicion(int x, int y) {
+        this.posX = x;
+        this.posY = y;
+    }
 }

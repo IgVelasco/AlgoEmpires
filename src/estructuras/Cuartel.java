@@ -28,4 +28,9 @@ public class Cuartel extends Estructura {
     }
 
 
+    @Override
+    public void setPosicion(int x, int y) {
+        this.posX = x;
+        this.posY = y;
+    }
 }

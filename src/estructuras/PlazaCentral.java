@@ -7,7 +7,7 @@ import unidades.Aldeano;
 
 public class PlazaCentral extends Estructura {
     private int precioAldeano = 25;
-    public Jugador perteneceA;
+    private Jugador perteneceA;
 
     public PlazaCentral(Jugador jugador) {
         vida = 450;
@@ -19,5 +19,11 @@ public class PlazaCentral extends Estructura {
     public Aldeano crearAldeano(int oroDisponible) throws OroInsuficiente {
         if(oroDisponible < precioAldeano) throw new OroInsuficiente();
         return new Aldeano(this.perteneceA);
+    }
+
+    @Override
+    public void setPosicion(int x, int y) {
+        this.posX = x;
+        this.posY = y;
     }
 }

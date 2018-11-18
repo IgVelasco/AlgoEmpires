@@ -4,6 +4,8 @@ import contenibles.Contenible;
 import unidades.Aldeano;
 
 public abstract class Estructura implements Contenible {
+    int posY;
+    int posX;
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
