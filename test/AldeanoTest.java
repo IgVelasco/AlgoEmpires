@@ -126,7 +126,7 @@ public class AldeanoTest {
     }
 
     @Test (expected = AldeanoOcupado.class)
-    public void testAldeanoConstruyendoxception() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima, AldeanoOcupado {
+    public void testAldeanoConstruyendoxception() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
@@ -136,6 +136,17 @@ public class AldeanoTest {
         unAldeano.comenzarConstruccion(unCuartel);
         unAldeano.comenzarConstruccion(otroCuartel);
 
+    }
+
+    @Test
+    public void testAldeanoMoverseALaDerechaLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Jugador unJugador = new Jugador(mapa,5,5,null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano,0,0);
+        unAldeano.moverDerecha(mapa);
+        assertEquals(unAldeano, mapa.getContenido(1,0));
     }
 
 
