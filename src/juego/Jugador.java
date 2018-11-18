@@ -39,10 +39,9 @@ public class Jugador {
 
     public void nuevoTurno() {
         //this.turnoNumero++;
-        Iterator<Aldeano> iterador = aldeanos.iterator();
 
-        while (iterador.hasNext()) {
-            iterador.next().realizarAccionCorrespondiente();
+        for (Aldeano aldeano : aldeanos) {
+            aldeano.realizarAccionCorrespondiente();
         }
     }
 

@@ -84,12 +84,13 @@ public class AldeanoTest {
         Castillo unCastillo = new Castillo(jugador) ;
 
         unCastillo.ataqueDeEspadachin();
+        unCastillo.ataqueDeEspadachin();
 
         unAldeano.comenzarReparacion(unCastillo);
-        assertEquals(975, unCastillo.getVida());
+        assertEquals(970, unCastillo.getVida());
 
         unAldeano.realizarAccionCorrespondiente();
-        assertEquals(990, unCastillo.getVida());
+        assertEquals(985, unCastillo.getVida());
 
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(1000, unCastillo.getVida());

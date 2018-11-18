@@ -22,13 +22,13 @@ public abstract class Estructura implements Contenible {
     }
 
     public void ataqueDeEspadachin() {
-        int golpeDeEspadachin = 25;
-        vida = vida - golpeDeEspadachin;
+        int golpeDeEspadachin = 15;
+        vida -= golpeDeEspadachin;
     }
 
     public void ataqueDeArquero() {
-        int golpeDeArquero = 25;
-        vida = vida - golpeDeArquero;
+        int golpeDeArquero = 10;
+        vida -= golpeDeArquero;
     }
 
 
@@ -36,6 +36,5 @@ public abstract class Estructura implements Contenible {
     public void ponerAReparar() throws EdificioConVidaMaxima { //TODO esto tendria que ser un estado
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
-
     }
 }
