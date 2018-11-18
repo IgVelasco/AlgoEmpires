@@ -199,5 +199,26 @@ public class AldeanoTest {
         assertEquals(0,unAldeano.getPosicionVertical());
     }
 
+    @Test(expected = ExcedeLimiteDelMapa.class)
+    public void testAldeanoNoSeVaDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
+
+        mapa.colocarUnidadEn(unAldeano,0,0);
+        unAldeano.moverIzquierda(mapa);
+    }
+
+    @Test(expected = CasilleroOcupado.class)
+    public void testAldeanoNoSePuedeMoverHaciaUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10, 10);
+        Aldeano unAldeano = new Aldeano(null);
+        Aldeano otroAldeano = new Aldeano(null);
+
+        mapa.colocarUnidadEn(unAldeano, 1,1);
+        mapa.colocarUnidadEn(otroAldeano,0,0);
+
+        unAldeano.moverIzquierdaInferior(mapa);
+    }
+
 
 }
