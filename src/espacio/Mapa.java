@@ -77,7 +77,7 @@ public class Mapa {
 
     public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido( x, y); // aca hay que lanzar error si es estructura.
-            this.colocarUnidadEn(unidad, x + incX, y + incY);
+        this.colocarUnidadEn(unidad, x + incX, y + incY);
         this.liberarUbicacion( x, y);
     }
 

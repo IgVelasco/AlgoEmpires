@@ -1,7 +1,4 @@
-import Excepciones.AldeanoOcupado;
-import Excepciones.CasilleroOcupado;
-import Excepciones.EdificioConVidaMaxima;
-import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.*;
 import espacio.Mapa;
 import estados.Construyendo;
 import estados.GenerandoOro;
@@ -139,7 +136,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -149,7 +146,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -159,7 +156,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -169,7 +166,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -179,7 +176,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -189,7 +186,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -200,7 +197,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testAldeanoNoSeVaDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoNoSeVaDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -209,7 +206,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupado.class)
-    public void testAldeanoNoSePuedeMoverHaciaUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoNoSePuedeMoverHaciaUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
         Aldeano otroAldeano = new Aldeano(null);
@@ -218,6 +215,33 @@ public class AldeanoTest {
         mapa.colocarUnidadEn(otroAldeano,0,0);
 
         unAldeano.moverIzquierdaInferior(mapa);
+    }
+
+    @Test (expected = UnidadYaUtilizada.class)
+    public void testAldeanoNoSePuedeMoverDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
+
+        mapa.colocarUnidadEn(unAldeano,2,2);
+
+        unAldeano.moverIzquierdaInferior(mapa);
+        unAldeano.moverIzquierdaInferior(mapa);
+    }
+
+    @Test
+    public void testAldeanoSePuedeMoverDosVecesSiPasaElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(10,10);
+        Aldeano unAldeano = new Aldeano(null);
+
+        mapa.colocarUnidadEn(unAldeano,2,2);
+
+        unAldeano.moverIzquierdaInferior(mapa);
+        assertEquals(unAldeano, mapa.getContenido(1,1));
+
+        unAldeano.permitirMovimiento();
+
+        unAldeano.moverIzquierdaInferior(mapa);
+        assertEquals(unAldeano, mapa.getContenido(0,0));
     }
 
 

@@ -1,5 +1,6 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.UnidadYaUtilizada;
 import espacio.Mapa;
 import unidades.Espadachin;
 import unidades.Espadachin;
@@ -15,7 +16,7 @@ public class EspadachinTest {
         assertEquals(100, unEspadachin.getVida());
     }
     @Test
-    public void testEspadachinMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testEspadachinMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Espadachin unEspadachin = new Espadachin();
 
@@ -25,7 +26,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testEspadachinMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Espadachin unEspadachin = new Espadachin();
 
@@ -35,7 +36,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testEspadachinMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Espadachin unEspadachin = new Espadachin();
 
@@ -45,7 +46,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testEspadachinMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Espadachin unEspadachin = new Espadachin();
 
@@ -55,7 +56,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testEspadachinMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Espadachin unEspadachin = new Espadachin();
 
@@ -65,7 +66,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testEspadachinMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Espadachin unEspadachin = new Espadachin();
 

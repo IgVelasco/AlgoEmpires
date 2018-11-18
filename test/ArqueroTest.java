@@ -1,5 +1,6 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.UnidadYaUtilizada;
 import espacio.Mapa;
 import unidades.Arquero;
 import unidades.Arquero;
@@ -15,7 +16,7 @@ public class ArqueroTest {
         assertEquals(75, unArquero.getVida());
     }
     @Test
-    public void testArqueroMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Arquero unArquero = new Arquero();
 
@@ -25,7 +26,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Arquero unArquero = new Arquero();
 
@@ -35,7 +36,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Arquero unArquero = new Arquero();
 
@@ -45,7 +46,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Arquero unArquero = new Arquero();
 
@@ -55,7 +56,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Arquero unArquero = new Arquero();
 
@@ -65,7 +66,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         Arquero unArquero = new Arquero();
 

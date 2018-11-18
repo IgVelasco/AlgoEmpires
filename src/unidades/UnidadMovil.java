@@ -2,6 +2,7 @@ package unidades;
 
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.UnidadYaUtilizada;
 import contenibles.Contenible;
 import espacio.Mapa;
 
@@ -10,6 +11,11 @@ public abstract class UnidadMovil implements Contenible {
     private int vida;
     int posX;
     int posY;
+    boolean sePuedeMover;
+
+    public UnidadMovil() {
+        sePuedeMover = true;
+    }
 
 
     /* int posicionHorizontal;
@@ -30,36 +36,52 @@ public abstract class UnidadMovil implements Contenible {
         vida -= golpeDeArquero;
     }
 
-    public void moverDerecha(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverDerecha(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover( this.posX, this.posY, 1, 0);
+        sePuedeMover = false;
     }
 
-    public void moverIzquierda(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverIzquierda(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, -1, 0);
+        sePuedeMover = false;
     }
 
-    public void moverArriba(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverArriba(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, 0, 1);
+        sePuedeMover = false;
     }
 
-    public void moverAbajo(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverAbajo(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, 0, -1);
+        sePuedeMover = false;
     }
 
-    public void moverDerechaSuperior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverDerechaSuperior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, 1, 1);
+        sePuedeMover = false;
     }
 
-    public void moverDerechaInferior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverDerechaInferior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, 1, -1);
+        sePuedeMover = false;
     }
 
-    public void moverIzquierdaSuperior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverIzquierdaSuperior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, -1, 1);
+        sePuedeMover = false;
     }
 
-    public void moverIzquierdaInferior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void moverIzquierdaInferior(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+        if (!sePuedeMover) throw new UnidadYaUtilizada();
         mapa.mover(this.posX, this.posY, -1, -1);
+        sePuedeMover = false;
     }
 
     public int getPosicionHorizontal() {
@@ -69,4 +91,9 @@ public abstract class UnidadMovil implements Contenible {
     public int getPosicionVertical() {
         return this.posY;
     }
+
+    public void permitirMovimiento(){
+        sePuedeMover = true;
+    }
+
 }

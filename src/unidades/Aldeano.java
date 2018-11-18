@@ -14,6 +14,7 @@ public class Aldeano extends UnidadMovil {
 
     public Aldeano(Jugador jugador) {
         propietario = jugador;
+        sePuedeMover = true;
     }
 
     public int getVida() {
@@ -53,4 +54,5 @@ public class Aldeano extends UnidadMovil {
         this.posX = x;
         this.posY = y;
     }
+
 }

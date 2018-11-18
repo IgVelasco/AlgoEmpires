@@ -1,5 +1,6 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.UnidadYaUtilizada;
 import espacio.Mapa;
 import unidades.Aldeano;
 import unidades.ArmaDeAsedio;
@@ -16,7 +17,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaAsedioMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArmaAsedioMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
@@ -26,7 +27,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaAsedioMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArmaAsedioMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
@@ -36,7 +37,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaAsedioMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArmaAsedioMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
@@ -46,7 +47,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaAsedioMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArmaAsedioMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
@@ -56,7 +57,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
@@ -66,7 +67,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaAsedioMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArmaAsedioMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
         ArmaDeAsedio unArma = new ArmaDeAsedio();
 
