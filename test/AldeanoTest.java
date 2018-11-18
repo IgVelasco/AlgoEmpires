@@ -149,6 +149,17 @@ public class AldeanoTest {
         assertEquals(unAldeano, mapa.getContenido(1,0));
     }
 
+    @Test
+    public void testAldeanoMoverseALaDerechaActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(10,10);
+        Jugador unJugador = new Jugador(mapa, 5,5,null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano,1,1);
+        unAldeano.moverDerecha(mapa);
+        assertEquals(2, unAldeano.getPosicionHorizontal());
+    }
+
 
 
 
