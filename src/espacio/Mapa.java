@@ -52,7 +52,7 @@ public class Mapa {
         }
     }
 
-    public boolean casillerosEstanOcupados(int x, int y, int dimensiones) throws CasilleroOcupado,ExcedeLimiteDelMapa {
+    public boolean casillerosEstanOcupados(int x, int y, int dimensiones) throws ExcedeLimiteDelMapa {
         for(int i = 0; i < dimensiones ; i++){
             for(int j = 0; j < dimensiones ; j++){
                try{
@@ -74,43 +74,10 @@ public class Mapa {
 
     // TODO ESTO ME PARECE MAL POR QUE YO LE DIGO AL MAPA QUE ME MUEVA LAS COSAS NO A LA UNIDAD MOVIBLE, MOVETE.
 
-    private void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido( x, y); // aca hay que lanzar error si es estructura.
             this.colocarUnidadEn(unidad, x + incX, y + incY);
         this.liberarUbicacion( x, y);
-    }
-
-
-    public void moverDerecha(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover( x, y, 1, 0);
-    }
-
-    public void moverIzquierda(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, -1, 0);
-    }
-
-    public void moverArriba(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, 0, 1);
-    }
-
-    public void moverAbajo(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, 0, -1);
-    }
-
-    public void moverDerechaSuperior(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, 1, 1);
-    }
-
-    public void moverDerechaInferior(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, 1, -1);
-    }
-
-    public void moverIzquierdaSuperior(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, -1, 1);
-    }
-
-    public void moverIzquierdaInferior(int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        this.mover(x, y, -1, -1);
     }
 
 }
