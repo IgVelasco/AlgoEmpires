@@ -55,7 +55,6 @@ public abstract class Estructura implements Contenible {
     }
 
     public int distancia(int x, int y) {
-        ArrayList<Integer> distancias = new ArrayList<Integer>();
         int distanciaMinima = 20;
         Iterator<Integer> iterX = posX.iterator();
         Iterator<Integer> iterY = posY.iterator();
