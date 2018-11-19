@@ -6,6 +6,9 @@ import Excepciones.UnidadYaUtilizada;
 import contenibles.Contenible;
 import espacio.Mapa;
 
+import static java.lang.Math.abs;
+import static sun.swing.MenuItemLayoutHelper.max;
+
 public abstract class UnidadMovil implements Contenible {
 
     private int vida;
@@ -25,6 +28,17 @@ public abstract class UnidadMovil implements Contenible {
 
     }
      */
+
+    public int distancia(int x, int y){
+        return max(abs(x - this.posX), abs(y - posY));
+    }
+
+
+    public int rangoDeContenible(Contenible unContenible){
+        return unContenible.distancia(this.posX, this.posY);
+
+    }
+
 
     public void ataqueDeEspadachin() {
         int golpeDeEspadachin = 25;

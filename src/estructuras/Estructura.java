@@ -3,6 +3,9 @@ import Excepciones.EdificioConVidaMaxima;
 import contenibles.Contenible;
 import unidades.Aldeano;
 
+import static java.lang.Math.abs;
+import static java.lang.Math.max;
+
 public abstract class Estructura implements Contenible {
     int posY;
     int posX;
@@ -39,4 +42,9 @@ public abstract class Estructura implements Contenible {
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
     }
+
+    public int distancia(int x, int y){
+        return max(abs(x - this.posX), abs(y - posY));
+    }
+
 }
