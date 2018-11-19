@@ -32,7 +32,7 @@ public class Cuartel extends Estructura {
 
     @Override
     public void setPosicion(int x, int y) {
-        this.posX = x;
-        this.posY = y;
+        this.posX.add(x);
+        this.posY.add(y);
     }
 }

@@ -4,16 +4,21 @@ import contenibles.Contenible;
 import juego.Jugador;
 import unidades.Aldeano;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 public abstract class Estructura implements Contenible {
-    int posY;
-    int posX;
+    ArrayList<Integer> posY = new ArrayList<Integer>();
+    ArrayList<Integer> posX = new ArrayList<Integer>();
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
     Jugador propietario;
+
 
     public void reparar(Aldeano unAldeano) {
         if (vida + velocidadDeReparacion > vidaMaxima) {
@@ -49,8 +54,22 @@ public abstract class Estructura implements Contenible {
     }
 
     public int distancia(int x, int y) {
-        return max(abs(x - this.posX), abs(y - posY));
+        ArrayList<Integer> distancias = new ArrayList<Integer>();
+        int distanciaMinima = 20;
+        Iterator<Integer> iterX = posX.iterator();
+        Iterator<Integer> iterY = posY.iterator();
+        while (iterX.hasNext()) {
+            int pX = iterX.next();
+            int pY = iterY.next();
+            int distancia =max(abs(x - pX),abs(y - pY));
+
+            if (distanciaMinima > distancia) {
+                distanciaMinima = distancia;
+            }
+        }
+        return distanciaMinima;
     }
+
 
 }
 
