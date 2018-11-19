@@ -53,4 +53,5 @@ public abstract class Estructura implements Contenible {
         return max(abs(x - this.posX), abs(y - posY));
     }
 
+    public abstract void atacar(Castillo otroCastillo);
 }
