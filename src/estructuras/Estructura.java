@@ -24,6 +24,10 @@ public abstract class Estructura implements Contenible {
         vida += velocidadDeReparacion;
     }
 
+    public boolean sonDelMismoJugador(Jugador unPropietario){
+        return (unPropietario == this.propietario);
+    }
+
     public int getVida() {
         return vida;
     }

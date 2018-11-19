@@ -36,9 +36,8 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public int rangoDeContenible(Contenible unContenible){
-        return unContenible.distancia(this.posX, this.posY);
-
+    public boolean sonDelMismoJugador(Jugador unPropietario){
+        return (unPropietario == this.propietario);
     }
 
 

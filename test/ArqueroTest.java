@@ -1,9 +1,7 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.ContenibleFueraDeRango;
-import Excepciones.ExcedeLimiteDelMapa;
-import Excepciones.UnidadYaUtilizada;
+import Excepciones.*;
 import espacio.Mapa;
 import estructuras.Castillo;
+import juego.Jugador;
 import unidades.Arquero;
 import unidades.Arquero;
 import org.junit.Test;
@@ -79,7 +77,7 @@ public class ArqueroTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArqueroAtacaArqueroFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroAtacaArqueroFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
         Mapa mapa = new Mapa(10,10);
 
         Arquero unArquero = new Arquero(null);
@@ -97,12 +95,34 @@ public class ArqueroTest {
     }
 
 
-    @Test
-    public void testArqueroAtacaArqueroEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
-        Mapa mapa = new Mapa(10,10);
 
-        Arquero unArquero = new Arquero(null);
-        Arquero otroArquero = new Arquero(null);
+    @Test(expected = ContenibleDelMismoJugador.class)
+    public void testArqueroNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa(10,10);
+        Jugador jugador = new Jugador(mapa, 5 ,5, null );
+
+        Arquero unArquero = new Arquero(jugador);
+        Arquero otroArquero = new Arquero(jugador);
+
+
+
+        mapa.colocarUnidadEn(unArquero,1,1);
+        mapa.colocarUnidadEn(otroArquero,1,2);
+
+        unArquero.atacar(otroArquero);
+
+        assertEquals(100, otroArquero.getVida());
+
+    }
+
+    @Test
+    public void testArqueroAtacaArqueroEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa(20,20);
+        Jugador jugador = new Jugador(mapa, 5 ,5, null );
+        Jugador otroJugador = new Jugador(mapa, 13 ,5, null );
+
+        Arquero unArquero = new Arquero(jugador);
+        Arquero otroArquero = new Arquero(otroJugador);
 
 
 
@@ -116,11 +136,13 @@ public class ArqueroTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArqueroAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
         Mapa mapa = new Mapa(20,20);
+        Jugador jugador = new Jugador(mapa, 5 ,5, null );
+        Jugador otroJugador = new Jugador(mapa, 13 ,5, null );
 
-        Arquero unArquero = new Arquero(null);
-        Castillo unCastillo = new Castillo(null);
+        Arquero unArquero = new Arquero(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
 
 
 
@@ -134,12 +156,13 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArqueroAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
         Mapa mapa = new Mapa(20,20);
+        Jugador jugador = new Jugador(mapa, 5 ,5, null );
+        Jugador otroJugador = new Jugador(mapa, 13 ,5, null );
 
-        Arquero unArquero = new Arquero(null);
-        Castillo unCastillo = new Castillo(null);
-
+        Arquero unArquero = new Arquero(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
 
 
         mapa.colocarUnidadEn(unArquero,0,0);
@@ -151,6 +174,7 @@ public class ArqueroTest {
 
 
     }
+
 
 
 }

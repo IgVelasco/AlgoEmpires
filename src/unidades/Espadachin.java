@@ -1,6 +1,7 @@
 package unidades;
 
 
+import Excepciones.ContenibleDelMismoJugador;
 import Excepciones.ContenibleFueraDeRango;
 import contenibles.Contenible;
 import juego.Jugador;
@@ -23,9 +24,11 @@ public class Espadachin extends UnidadMovil {
         this.posY = y;
     }
 
-    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango {
-        if(rangoDeContenible(unContenible) != 1)
+    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador {
+        if(unContenible.distancia(this.posX , this.posY) != 1)
             throw new ContenibleFueraDeRango();
+        if(unContenible.sonDelMismoJugador(this.propietario))
+            throw new ContenibleDelMismoJugador();
         unContenible.ataqueDeEspadachin();
     }
 }
