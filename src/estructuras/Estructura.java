@@ -1,6 +1,7 @@
 package estructuras;
 import Excepciones.EdificioConVidaMaxima;
 import contenibles.Contenible;
+import juego.Jugador;
 import unidades.Aldeano;
 
 import static java.lang.Math.abs;
@@ -12,6 +13,7 @@ public abstract class Estructura implements Contenible {
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
+    Jugador propietario;
 
     public void reparar(Aldeano unAldeano) {
         if (vida + velocidadDeReparacion > vidaMaxima) {
@@ -20,6 +22,10 @@ public abstract class Estructura implements Contenible {
             return;
         }
         vida += velocidadDeReparacion;
+    }
+
+    public boolean sonDelMismoJugador(Jugador unPropietario){
+        return (unPropietario == this.propietario);
     }
 
     public int getVida() {

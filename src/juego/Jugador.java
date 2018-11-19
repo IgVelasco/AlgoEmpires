@@ -62,7 +62,7 @@ public class Jugador {
     }
 
     public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
-        Cuartel unCuartel = new Cuartel();
+        Cuartel unCuartel = new Cuartel(this);
         estructuras.add(unCuartel);
         aldeano.comenzarConstruccion(unCuartel);
         mapa.colocarEstructuraEn(unCuartel, x, y ,2);

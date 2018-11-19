@@ -1,9 +1,11 @@
 package unidades;
 
 
+import juego.Jugador;
+
 public class ArmaDeAsedio extends UnidadMovil {
 
-    private int vida = 150;
+
 
     public int getVida() {
         return this.vida;
@@ -13,5 +15,11 @@ public class ArmaDeAsedio extends UnidadMovil {
     public void setPosicion(int x, int y) {
         this.posX = x;
         this.posY = y;
+    }
+
+    public ArmaDeAsedio(Jugador unJugador){
+        vida = 150;
+        propietario = unJugador;
+
     }
 }

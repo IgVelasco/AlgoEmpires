@@ -5,6 +5,7 @@ import Excepciones.ExcedeLimiteDelMapa;
 import Excepciones.UnidadYaUtilizada;
 import contenibles.Contenible;
 import espacio.Mapa;
+import juego.Jugador;
 
 import static java.lang.Math.abs;
 import static sun.swing.MenuItemLayoutHelper.max;
@@ -15,6 +16,7 @@ public abstract class UnidadMovil implements Contenible {
     int posX;
     int posY;
     boolean sePuedeMover;
+    Jugador propietario;
 
     public UnidadMovil() {
         sePuedeMover = true;
@@ -34,9 +36,8 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public int rangoDeContenible(Contenible unContenible){
-        return unContenible.distancia(this.posX, this.posY);
-
+    public boolean sonDelMismoJugador(Jugador unPropietario){
+        return (unPropietario == this.propietario);
     }
 
 
