@@ -11,7 +11,7 @@ import static sun.swing.MenuItemLayoutHelper.max;
 
 public abstract class UnidadMovil implements Contenible {
 
-    private int vida;
+    public int vida;
     int posX;
     int posY;
     boolean sePuedeMover;
@@ -42,12 +42,12 @@ public abstract class UnidadMovil implements Contenible {
 
     public void ataqueDeEspadachin() {
         int golpeDeEspadachin = 25;
-        vida -= golpeDeEspadachin;
+        this.vida -= golpeDeEspadachin;
     }
 
     public void ataqueDeArquero() {
         int golpeDeArquero = 10;
-        vida -= golpeDeArquero;
+        this.vida -= golpeDeArquero;
     }
 
     public void moverDerecha(Mapa mapa) throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {

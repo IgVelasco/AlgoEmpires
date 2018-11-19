@@ -99,6 +99,8 @@ public class EspadachinTest {
 
     }
 
+
+    @Test
     public void testEspadachinAtacaEspadachinEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
 
@@ -134,6 +136,7 @@ public class EspadachinTest {
 
     }
 
+    @Test
     public void testEspadachinAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
 
