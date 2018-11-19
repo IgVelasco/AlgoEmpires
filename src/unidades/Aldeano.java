@@ -8,13 +8,13 @@ import juego.Jugador;
 
 public class Aldeano extends UnidadMovil {
 
-    private int vida = 50;
     private Estado estado = new GenerandoOro();
     private Jugador propietario;
 
     public Aldeano(Jugador jugador) {
         propietario = jugador;
         sePuedeMover = true;
+        vida = 50;
     }
 
     public int getVida() {

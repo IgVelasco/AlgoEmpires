@@ -46,7 +46,7 @@ public abstract class UnidadMovil implements Contenible {
     }
 
     public void ataqueDeArquero() {
-        int golpeDeArquero = 10;
+        int golpeDeArquero = 15;
         this.vida -= golpeDeArquero;
     }
 
