@@ -89,7 +89,7 @@ public class EspadachinTest {
 
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
-        mapa.colocarUnidadEn(unEspadachin,1,9);
+        mapa.colocarUnidadEn(otroEspadachin,1,9);
 
         unEspadachin.atacar(otroEspadachin);
 

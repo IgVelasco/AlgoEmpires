@@ -17,15 +17,9 @@ public class Arquero extends UnidadMovil {
         return this.vida;
     }
 
-    @Override
-    public void setPosicion(int x, int y) {
-        this.posX = x;
-        this.posY = y;
-    }
-
 
     public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador {
-        if(unContenible.distancia(this.posX, this.posY) > 3)
+        if(unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
             throw new ContenibleFueraDeRango();
         if(unContenible.sonDelMismoJugador(this.propietario))
             throw new ContenibleDelMismoJugador();

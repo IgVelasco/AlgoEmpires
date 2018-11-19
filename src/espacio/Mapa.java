@@ -39,7 +39,7 @@ public class Mapa {
     public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Posicion posicion = this.getPosicion(x, y);
         mapa.get(posicion).contener(unidad);
-        unidad.setPosicion(x,y);
+        unidad.setPosicion(posicion);
     }
 
 
@@ -50,7 +50,7 @@ public class Mapa {
             for(int j = 0; j < dimension ; j++){
                 Posicion posicion = this.getPosicion(x + i, y + j);
                 mapa.get(posicion).contener(unidad);
-                unidad.setPosicion(x + i, y + j);
+                unidad.setPosicion(posicion);
             }
         }
     }

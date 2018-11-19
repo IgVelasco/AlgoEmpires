@@ -2,6 +2,7 @@ package estructuras;
 
 import Excepciones.OroInsuficiente;
 import contenibles.Contenible;
+import espacio.Posicion;
 import juego.Jugador;
 import unidades.Aldeano;
 
@@ -21,8 +22,7 @@ public class PlazaCentral extends Estructura {
     }
 
     @Override
-    public void setPosicion(int x, int y) {
-        this.posX.add(x);
-        this.posY.add(y);
+    public void setPosicion(Posicion pos) {
+       posicion = pos;
     }
 }
