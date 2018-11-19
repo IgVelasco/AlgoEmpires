@@ -11,7 +11,7 @@ public class ArmaDeAsedioTest {
 
     @Test
     public void testArmaDeAsedioSeCreaCon150DeVida() {
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio();
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null);
 
         assertEquals(150, unArmaDeAsedio.getVida());
     }
@@ -19,7 +19,7 @@ public class ArmaDeAsedioTest {
     @Test
     public void testArmaAsedioMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        ArmaDeAsedio unArma = new ArmaDeAsedio();
+        ArmaDeAsedio unArma = new ArmaDeAsedio(null);
 
         mapa.colocarUnidadEn(unArma,0,0);
         unArma.moverDerecha(mapa);
@@ -29,7 +29,7 @@ public class ArmaDeAsedioTest {
     @Test
     public void testArmaAsedioMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        ArmaDeAsedio unArma = new ArmaDeAsedio();
+        ArmaDeAsedio unArma = new ArmaDeAsedio(null);
 
         mapa.colocarUnidadEn(unArma,1,1);
         unArma.moverIzquierda(mapa);
@@ -39,7 +39,7 @@ public class ArmaDeAsedioTest {
     @Test
     public void testArmaAsedioMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        ArmaDeAsedio unArma = new ArmaDeAsedio();
+        ArmaDeAsedio unArma = new ArmaDeAsedio(null);
 
         mapa.colocarUnidadEn(unArma,1,1);
         unArma.moverArriba(mapa);
@@ -49,7 +49,7 @@ public class ArmaDeAsedioTest {
     @Test
     public void testArmaAsedioMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        ArmaDeAsedio unArma = new ArmaDeAsedio();
+        ArmaDeAsedio unArma = new ArmaDeAsedio(null);
 
         mapa.colocarUnidadEn(unArma,1,1);
         unArma.moverAbajo(mapa);
@@ -59,7 +59,7 @@ public class ArmaDeAsedioTest {
     @Test
     public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        ArmaDeAsedio unArma = new ArmaDeAsedio();
+        ArmaDeAsedio unArma = new ArmaDeAsedio(null);
 
         mapa.colocarUnidadEn(unArma,1,1);
         unArma.moverDerechaSuperior(mapa);
@@ -69,7 +69,7 @@ public class ArmaDeAsedioTest {
     @Test
     public void testArmaAsedioMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        ArmaDeAsedio unArma = new ArmaDeAsedio();
+        ArmaDeAsedio unArma = new ArmaDeAsedio(null);
 
         mapa.colocarUnidadEn(unArma,1,1);
         unArma.moverIzquierdaInferior(mapa);

@@ -13,7 +13,7 @@ public abstract class Estructura implements Contenible {
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
-    Jugador jugador;
+    Jugador propietario;
 
     public void reparar(Aldeano unAldeano) {
         if (vida + velocidadDeReparacion > vidaMaxima) {

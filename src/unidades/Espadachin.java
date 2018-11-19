@@ -3,12 +3,14 @@ package unidades;
 
 import Excepciones.ContenibleFueraDeRango;
 import contenibles.Contenible;
+import juego.Jugador;
 
 public class Espadachin extends UnidadMovil {
 
 
-    public Espadachin() {
+    public Espadachin(Jugador unJugador) {
         vida = 100;
+        propietario = unJugador;
     }
 
     public int getVida() {

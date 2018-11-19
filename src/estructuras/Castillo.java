@@ -8,10 +8,9 @@ import unidades.ArmaDeAsedio;
 public class Castillo extends Estructura {
 
     private int precioArmaDeAsedio = 200;
-    private Jugador perteneceA;
 
     public Castillo(Jugador jugador) {
-        perteneceA = jugador;
+        propietario = jugador;
         vida = 1000;
         vidaMaxima = 1000;
         velocidadDeReparacion = 15;
@@ -21,7 +20,7 @@ public class Castillo extends Estructura {
         if(oroDisponible < precioArmaDeAsedio) {
             throw new OroInsuficiente();
         }
-        return new ArmaDeAsedio();
+        return new ArmaDeAsedio(propietario);
     }
 
     @Override

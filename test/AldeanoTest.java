@@ -127,8 +127,8 @@ public class AldeanoTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
-        Cuartel unCuartel = new Cuartel();
-        Cuartel otroCuartel = new Cuartel();
+        Cuartel unCuartel = new Cuartel(null);
+        Cuartel otroCuartel = new Cuartel(null);
 
         unAldeano.comenzarConstruccion(unCuartel);
         unAldeano.comenzarConstruccion(otroCuartel);

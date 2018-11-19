@@ -17,7 +17,7 @@ public class ConstruyendoTest {
     public void testFinalizarConstruccionDesocupaAldeano () throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado {
         Mapa unMapa = new Mapa (20, 20);
         Jugador unJugador = new Jugador(unMapa, 10, 0, null);
-        Cuartel unCuartel = new Cuartel();
+        Cuartel unCuartel = new Cuartel(null);
         Construyendo unEstado = new Construyendo(unCuartel);
         Aldeano unAldeano = new Aldeano(unJugador);
 

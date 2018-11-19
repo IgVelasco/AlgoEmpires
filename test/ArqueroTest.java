@@ -13,14 +13,14 @@ public class ArqueroTest {
 
     @Test
     public void testArqueroSeCreaCon75DeVida() {
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         assertEquals(75, unArquero.getVida());
     }
     @Test
     public void testArqueroMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         mapa.colocarUnidadEn(unArquero,0,0);
         unArquero.moverDerecha(mapa);
@@ -30,7 +30,7 @@ public class ArqueroTest {
     @Test
     public void testArqueroMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         mapa.colocarUnidadEn(unArquero,1,1);
         unArquero.moverIzquierda(mapa);
@@ -40,7 +40,7 @@ public class ArqueroTest {
     @Test
     public void testArqueroMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         mapa.colocarUnidadEn(unArquero,1,1);
         unArquero.moverArriba(mapa);
@@ -50,7 +50,7 @@ public class ArqueroTest {
     @Test
     public void testArqueroMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         mapa.colocarUnidadEn(unArquero,1,1);
         unArquero.moverAbajo(mapa);
@@ -60,7 +60,7 @@ public class ArqueroTest {
     @Test
     public void testArqueroMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         mapa.colocarUnidadEn(unArquero,1,1);
         unArquero.moverDerechaSuperior(mapa);
@@ -70,7 +70,7 @@ public class ArqueroTest {
     @Test
     public void testArqueroMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
 
         mapa.colocarUnidadEn(unArquero,1,1);
         unArquero.moverIzquierdaInferior(mapa);
@@ -82,8 +82,8 @@ public class ArqueroTest {
     public void testArqueroAtacaArqueroFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
 
-        Arquero unArquero = new Arquero();
-        Arquero otroArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
+        Arquero otroArquero = new Arquero(null);
 
 
 
@@ -101,8 +101,8 @@ public class ArqueroTest {
     public void testArqueroAtacaArqueroEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
 
-        Arquero unArquero = new Arquero();
-        Arquero otroArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
+        Arquero otroArquero = new Arquero(null);
 
 
 
@@ -119,7 +119,7 @@ public class ArqueroTest {
     public void testArqueroAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
 
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
         Castillo unCastillo = new Castillo(null);
 
 
@@ -137,7 +137,7 @@ public class ArqueroTest {
     public void testArqueroAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
 
-        Arquero unArquero = new Arquero();
+        Arquero unArquero = new Arquero(null);
         Castillo unCastillo = new Castillo(null);
 
 

@@ -14,14 +14,14 @@ public class EspadachinTest {
 
     @Test
     public void testEspadachinSeCreaCon100DeVida() {
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         assertEquals(100, unEspadachin.getVida());
     }
     @Test
     public void testEspadachinMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         mapa.colocarUnidadEn(unEspadachin,0,0);
         unEspadachin.moverDerecha(mapa);
@@ -31,7 +31,7 @@ public class EspadachinTest {
     @Test
     public void testEspadachinMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
         unEspadachin.moverIzquierda(mapa);
@@ -41,7 +41,7 @@ public class EspadachinTest {
     @Test
     public void testEspadachinMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
         unEspadachin.moverArriba(mapa);
@@ -51,7 +51,7 @@ public class EspadachinTest {
     @Test
     public void testEspadachinMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
         unEspadachin.moverAbajo(mapa);
@@ -61,7 +61,7 @@ public class EspadachinTest {
     @Test
     public void testEspadachinMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
         unEspadachin.moverDerechaSuperior(mapa);
@@ -72,7 +72,7 @@ public class EspadachinTest {
     @Test
     public void testEspadachinMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
         Mapa mapa = new Mapa(10,10);
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
         unEspadachin.moverIzquierdaInferior(mapa);
@@ -85,8 +85,8 @@ public class EspadachinTest {
     public void testEspadachinAtacaEspadachinFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
 
-        Espadachin unEspadachin = new Espadachin();
-        Espadachin otroEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
+        Espadachin otroEspadachin = new Espadachin(null);
 
 
 
@@ -99,13 +99,12 @@ public class EspadachinTest {
 
     }
 
-
     @Test
     public void testEspadachinAtacaEspadachinEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(10,10);
 
-        Espadachin unEspadachin = new Espadachin();
-        Espadachin otroEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
+        Espadachin otroEspadachin = new Espadachin(null);
 
 
 
@@ -122,7 +121,7 @@ public class EspadachinTest {
     public void testEspadachinAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
 
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
         Castillo unCastillo = new Castillo(null);
 
 
@@ -136,11 +135,10 @@ public class EspadachinTest {
 
     }
 
-    @Test
     public void testEspadachinAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
 
-        Espadachin unEspadachin = new Espadachin();
+        Espadachin unEspadachin = new Espadachin(null);
         Castillo unCastillo = new Castillo(null);
 
 
