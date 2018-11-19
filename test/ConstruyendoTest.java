@@ -22,12 +22,12 @@ public class ConstruyendoTest {
         Aldeano unAldeano = new Aldeano(unJugador);
 
         unAldeano.comenzarConstruccion(unCuartel);
-        unEstado.realizarAccionPasiva(unAldeano);
+        unEstado.realizarAccion(unAldeano);
 
         assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
 
-        unEstado.realizarAccionPasiva(unAldeano);
-        unEstado.realizarAccionPasiva(unAldeano);
+        unEstado.realizarAccion(unAldeano);
+        unEstado.realizarAccion(unAldeano);
 
         assertEquals(GenerandoOro.class, unAldeano.getEstado().getClass());
     }

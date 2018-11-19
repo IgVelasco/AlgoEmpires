@@ -13,12 +13,12 @@ public class Construyendo implements Estado {
         estructura = estruct;
     }
 
-    public void estaOcupado() throws AldeanoOcupado {
+    public void ocupar() throws AldeanoOcupado {
         throw new AldeanoOcupado();
     }
 
     @Override
-    public  void realizarAccionPasiva(Aldeano unAldeano) {
+    public  void realizarAccion(Aldeano unAldeano) {
         cantTurnos ++;
         if (cantTurnos == maxTurnos) {
             unAldeano.liberarAldeano();

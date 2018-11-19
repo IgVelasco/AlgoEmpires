@@ -17,7 +17,7 @@ public class GenerandoOroTest {
         Jugador unJugador = new Jugador(unMapa, 20/2,0, null);
         Aldeano unAldeano = new Aldeano(unJugador);
 
-        unEstado.realizarAccionPasiva(unAldeano);
+        unEstado.realizarAccion(unAldeano);
 
         assertEquals(120, unJugador.getOro());
     }

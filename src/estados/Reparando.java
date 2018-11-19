@@ -13,12 +13,12 @@ public class Reparando implements Estado {
     }
 
     @Override
-    public void estaOcupado() throws AldeanoOcupado {
+    public void ocupar() throws AldeanoOcupado {
         throw new AldeanoOcupado();
     }
 
     @Override
-    public  void realizarAccionPasiva(Aldeano unAldeano) {
+    public  void realizarAccion(Aldeano unAldeano) {
         estructura.reparar(unAldeano);
     }
 }

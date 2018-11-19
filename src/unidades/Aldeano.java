@@ -21,17 +21,17 @@ public class Aldeano extends UnidadMovil {
     }
 
     public void realizarAccionCorrespondiente() {
-        this.estado.realizarAccionPasiva(this);
+        this.estado.realizarAccion(this);
     }
 
     public void comenzarConstruccion(Estructura estructura) throws AldeanoOcupado {
-        estado.estaOcupado();
+        estado.ocupar();
         this.estado = new Construyendo(estructura);
     }
 
 
     public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
-        estado.estaOcupado();
+        estado.ocupar();
         unaEstructura.ponerAReparar();
         estado = new Reparando(unaEstructura);
     }

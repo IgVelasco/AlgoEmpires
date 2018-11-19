@@ -5,6 +5,6 @@ import unidades.Aldeano;
 
 public interface Estado {
 
-    void realizarAccionPasiva(Aldeano jugador);
-    void estaOcupado() throws AldeanoOcupado;
+    void realizarAccion(Aldeano jugador);
+    void ocupar() throws AldeanoOcupado;
 }
