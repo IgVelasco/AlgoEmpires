@@ -1,4 +1,4 @@
-# solid-octo-broccoli
+﻿# solid-octo-broccoli
 TP2 - Algo Empires: juego por turnos basado en el clásico juego Age of Empires II.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -6,7 +6,8 @@ TP2 - Algo Empires: juego por turnos basado en el clásico juego Age of Empires 
 [![codecov](https://codecov.io/gh/iPetrignani/solid-octo-broccoli/branch/master/graph/badge.svg)](https://codecov.io/gh/iPetrignani/solid-octo-broccoli)
 
 ### Informe
-https://www.overleaf.com/2372179491qrtpxnkzggcx
+https://www.overleaf.com/read/cyrypgjrkfmx
+
 
 # Entrega 1 (Semana del 12 de noviembre)
 
