@@ -24,7 +24,7 @@ public abstract class Estructura implements Contenible {
         vida += velocidadDeReparacion;
     }
 
-    public boolean sonDelMismoJugador(Jugador unPropietario){
+    public boolean sonDelMismoJugador(Jugador unPropietario) {
         return (unPropietario == this.propietario);
     }
 
@@ -43,15 +43,14 @@ public abstract class Estructura implements Contenible {
     }
 
 
-
     public void ponerAReparar() throws EdificioConVidaMaxima { //TODO esto tendria que ser un estado
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
     }
 
-    public int distancia(int x, int y){
+    public int distancia(int x, int y) {
         return max(abs(x - this.posX), abs(y - posY));
     }
 
-    public abstract void atacar(Castillo otroCastillo);
 }
+

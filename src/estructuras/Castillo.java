@@ -28,4 +28,8 @@ public class Castillo extends Estructura {
         this.posX = x;
         this.posY = y;
     }
+
+    public void atacar(Castillo otroCastillo) {
+
+    }
 }
