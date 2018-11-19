@@ -4,6 +4,7 @@ package unidades;
 import Excepciones.ContenibleDelMismoJugador;
 import Excepciones.ContenibleFueraDeRango;
 import contenibles.Contenible;
+import espacio.Posicion;
 import juego.Jugador;
 
 public class Espadachin extends UnidadMovil {
@@ -19,13 +20,12 @@ public class Espadachin extends UnidadMovil {
     }
 
     @Override
-    public void setPosicion(int x, int y) {
-        this.posX = x;
-        this.posY = y;
+    public void setPosicion(Posicion pos) {
+        posicion = pos;
     }
 
     public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador {
-        if(unContenible.distancia(this.posX , this.posY) != 1)
+        if(unContenible.calcularDistancia(this.posicion.getPosX() , this.posicion.getPosY()) != 1)
             throw new ContenibleFueraDeRango();
         if(unContenible.sonDelMismoJugador(this.propietario))
             throw new ContenibleDelMismoJugador();

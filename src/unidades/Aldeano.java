@@ -48,10 +48,4 @@ public class Aldeano extends UnidadMovil {
         return estado;
     }
 
-    @Override
-    public void setPosicion(int x, int y) {
-        this.posX = x;
-        this.posY = y;
-    }
-
 }

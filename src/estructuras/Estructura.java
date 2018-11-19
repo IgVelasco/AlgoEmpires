@@ -1,6 +1,7 @@
 package estructuras;
 import Excepciones.EdificioConVidaMaxima;
 import contenibles.Contenible;
+import espacio.Posicion;
 import juego.Jugador;
 import unidades.Aldeano;
 
@@ -19,6 +20,7 @@ public abstract class Estructura implements Contenible {
     int vidaMaxima;
     int velocidadDeReparacion;
     Jugador propietario;
+    Posicion posicion;
 
 
     public void reparar(Aldeano unAldeano) {
@@ -54,18 +56,9 @@ public abstract class Estructura implements Contenible {
             throw new EdificioConVidaMaxima();
     }
 
-    public int distancia(int x, int y) {
-        int distanciaMinima = 20;
-        Iterator<Integer> iterX = posX.iterator();
-        Iterator<Integer> iterY = posY.iterator();
-        while (iterX.hasNext()) {
-            int pX = iterX.next();
-            int pY = iterY.next();
-            distanciaMinima = min(distanciaMinima, max(abs(x - pX),abs(y - pY)));
-        }
-        return distanciaMinima;
+    public int calcularDistancia(int x, int y) {
+        return posicion.distancia(x, y);
+
     }
-
-
 }
 

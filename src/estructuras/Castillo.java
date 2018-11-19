@@ -2,6 +2,7 @@ package estructuras;
 
 import Excepciones.OroInsuficiente;
 import contenibles.Contenible;
+import espacio.Posicion;
 import juego.Jugador;
 import unidades.ArmaDeAsedio;
 
@@ -23,13 +24,13 @@ public class Castillo extends Estructura {
         return new ArmaDeAsedio(propietario);
     }
 
-    @Override
-    public void setPosicion(int x, int y) {
-        this.posX.add(x);
-        this.posY.add(y);
-    }
-
     public void atacar(Castillo otroCastillo) {
 
     }
+
+    @Override
+    public void setPosicion(Posicion pos) {
+        posicion = pos;
+    }
+
 }

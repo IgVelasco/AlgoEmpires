@@ -2,6 +2,7 @@ package estructuras;
 
 import Excepciones.OroInsuficiente;
 import contenibles.Contenible;
+import espacio.Posicion;
 import juego.Jugador;
 import unidades.Arquero;
 import unidades.Espadachin;
@@ -31,8 +32,7 @@ public class Cuartel extends Estructura {
 
 
     @Override
-    public void setPosicion(int x, int y) {
-        this.posX.add(x);
-        this.posY.add(y);
+    public void setPosicion(Posicion pos) {
+        posicion = pos;
     }
 }

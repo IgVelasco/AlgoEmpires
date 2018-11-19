@@ -86,7 +86,7 @@ public class ArqueroTest {
 
 
         mapa.colocarUnidadEn(unArquero,1,1);
-        mapa.colocarUnidadEn(unArquero,1,9);
+        mapa.colocarUnidadEn(otroArquero,1,9);
 
         unArquero.atacar(otroArquero);
 
