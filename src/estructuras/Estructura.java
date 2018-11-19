@@ -8,6 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static java.lang.Integer.min;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
@@ -61,11 +62,7 @@ public abstract class Estructura implements Contenible {
         while (iterX.hasNext()) {
             int pX = iterX.next();
             int pY = iterY.next();
-            int distancia =max(abs(x - pX),abs(y - pY));
-
-            if (distanciaMinima > distancia) {
-                distanciaMinima = distancia;
-            }
+            distanciaMinima = min(distanciaMinima, max(abs(x - pX),abs(y - pY)));
         }
         return distanciaMinima;
     }
