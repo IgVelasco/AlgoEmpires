@@ -3,11 +3,13 @@ package unidades;
 
 import Excepciones.ContenibleFueraDeRango;
 import contenibles.Contenible;
+import juego.Jugador;
 
 public class Arquero extends UnidadMovil {
 
-    public Arquero(){
+    public Arquero(Jugador unJugador){
         vida = 75;
+        propietario = unJugador;
     }
 
     public int getVida() {
