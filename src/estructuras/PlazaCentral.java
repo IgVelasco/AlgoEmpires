@@ -6,6 +6,8 @@ import espacio.Posicion;
 import juego.Jugador;
 import unidades.Aldeano;
 
+import java.util.LinkedList;
+
 public class PlazaCentral extends Estructura {
     private int precioAldeano = 25;
 
@@ -14,6 +16,8 @@ public class PlazaCentral extends Estructura {
         vidaMaxima = 450;
         velocidadDeReparacion = 25;
         propietario = jugador;
+        posiciones = new LinkedList<Posicion>();
+
     }
 
     public Aldeano crearAldeano(int oroDisponible) throws OroInsuficiente {
@@ -21,8 +25,4 @@ public class PlazaCentral extends Estructura {
         return new Aldeano(this.propietario);
     }
 
-    @Override
-    public void setPosicion(Posicion pos) {
-       posicion = pos;
-    }
 }

@@ -7,6 +7,8 @@ import juego.Jugador;
 import unidades.Arquero;
 import unidades.Espadachin;
 
+import java.util.LinkedList;
+
 public class Cuartel extends Estructura {
 
     private int precioEspadachin = 50;
@@ -17,6 +19,7 @@ public class Cuartel extends Estructura {
         vidaMaxima = 250;
         velocidadDeReparacion = 50;
         propietario = unJugador;
+        posiciones = new LinkedList<Posicion>();
     }
 
     public Espadachin crearEspadachin(int oroDisponible) throws OroInsuficiente {
@@ -30,9 +33,4 @@ public class Cuartel extends Estructura {
         return new Arquero(propietario);
     }
 
-
-    @Override
-    public void setPosicion(Posicion pos) {
-        posicion = pos;
-    }
 }

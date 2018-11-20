@@ -8,6 +8,7 @@ import unidades.Aldeano;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 import static java.lang.Integer.min;
 import static java.lang.Math.abs;
@@ -15,13 +16,11 @@ import static java.lang.Math.max;
 
 public abstract class Estructura implements Contenible {
 
-    ArrayList<Integer> posY = new ArrayList<Integer>();
-    ArrayList<Integer> posX = new ArrayList<Integer>();
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
     Jugador propietario;
-    Posicion posicion;
+    LinkedList<Posicion> posiciones;
 
 
     public void reparar(Aldeano unAldeano) {
@@ -58,8 +57,16 @@ public abstract class Estructura implements Contenible {
     }
 
     public int calcularDistancia(int x, int y) {
-        return posicion.distancia(x, y);
+        int distanciaMinima = Integer.MAX_VALUE;
+        for (Posicion posicion : posiciones) {
+            distanciaMinima = min(distanciaMinima, posicion.distancia(x, y));
+        }
+        return distanciaMinima;
 
+    }
+
+    public  void agregarPosicion(Posicion posicion){
+        posiciones.add(posicion);
     }
 }
 

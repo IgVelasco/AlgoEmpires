@@ -87,7 +87,7 @@ public class ArqueroTest {
 
 
         mapa.colocarUnidadEn(unArquero,1,1);
-        mapa.colocarUnidadEn(unCastillo,1,9);
+        mapa.colocarEstructuraEn(unCastillo,1,9, 4);
 
         unArquero.atacar(unCastillo);
 
@@ -106,7 +106,7 @@ public class ArqueroTest {
 
 
         mapa.colocarUnidadEn(unArquero,0,0);
-        mapa.colocarUnidadEn(unCastillo,1,1);
+        mapa.colocarEstructuraEn(unCastillo,1,1, 4);
 
         unArquero.atacar(unCastillo);
 
