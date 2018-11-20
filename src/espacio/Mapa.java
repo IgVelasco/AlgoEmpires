@@ -3,6 +3,7 @@ package espacio;
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
+import estructuras.Estructura;
 import unidades.UnidadMovil;
 
 import java.util.HashMap;
@@ -23,7 +24,6 @@ public class Mapa {
             for (int j = 0; j < y; j++) {
                 Posicion posicion = new Posicion(i,j);
                 Casillero casillero = new Casillero();
-                int[] pos = {i,j};
                 mapa.put(posicion,casillero);
             }
         }
@@ -36,21 +36,21 @@ public class Mapa {
         return mapa.get(posicion).getContenido();
     }
 
-    public void colocarUnidadEn(Contenible unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void colocarUnidadEn(UnidadMovil unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Posicion posicion = this.getPosicion(x, y);
         mapa.get(posicion).contener(unidad);
         unidad.setPosicion(posicion);
     }
 
 
-    public void colocarEstructuraEn(Contenible unidad, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void colocarEstructuraEn(Estructura unaEstructura, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         if(casillerosEstanOcupados(x, y, dimension))
             throw new CasilleroOcupado();
         for(int i = 0; i < dimension ; i++){
             for(int j = 0; j < dimension ; j++){
                 Posicion posicion = this.getPosicion(x + i, y + j);
-                mapa.get(posicion).contener(unidad);
-                unidad.setPosicion(posicion);
+                mapa.get(posicion).contener(unaEstructura);
+                unaEstructura.agregarPosicion(posicion);
             }
         }
     }

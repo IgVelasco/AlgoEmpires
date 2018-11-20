@@ -87,7 +87,7 @@ public class EspadachinTest {
 
 
         mapa.colocarUnidadEn(unEspadachin,1,1);
-        mapa.colocarUnidadEn(unCastillo,1,9);
+        mapa.colocarEstructuraEn(unCastillo,1,9, 4);
 
         unEspadachin.atacar(unCastillo);
 
@@ -106,7 +106,7 @@ public class EspadachinTest {
 
 
         mapa.colocarUnidadEn(unEspadachin,0,0);
-        mapa.colocarUnidadEn(unCastillo,1,1);
+        mapa.colocarEstructuraEn(unCastillo,1,1, 4);
 
         unEspadachin.atacar(unCastillo);
 

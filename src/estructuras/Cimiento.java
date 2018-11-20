@@ -5,7 +5,9 @@ import Excepciones.CimientoNoFinalizado;
 import contenibles.Contenible;
 import espacio.Posicion;
 
-public class Cimiento extends Estructura{
+import java.util.LinkedList;
+
+public class Cimiento extends Estructura {
 
     private Estructura estructuraCorrespondiente;
     private int turnosRestantes = 3;
@@ -13,6 +15,8 @@ public class Cimiento extends Estructura{
     public Cimiento(Estructura unaEstructura) {
 
         estructuraCorrespondiente = unaEstructura;
+        posiciones = new LinkedList<Posicion>();
+
 
     }
 
@@ -21,19 +25,13 @@ public class Cimiento extends Estructura{
     }
 
     public void avanzarConstruccion() throws CimientoFinalizado {
-        if(turnosRestantes == 0) throw new CimientoFinalizado();
+        if (turnosRestantes == 0) throw new CimientoFinalizado();
 
-        turnosRestantes --;
+        turnosRestantes--;
     }
 
     public Estructura finalizarConstruccion() throws CimientoNoFinalizado {
         if (turnosRestantes != 0) throw new CimientoNoFinalizado();
-
         return estructuraCorrespondiente;
-    }
-
-    @Override
-    public void setPosicion(Posicion posicion) {
-         this.posicion = posicion;
     }
 }

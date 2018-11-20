@@ -6,6 +6,8 @@ import espacio.Posicion;
 import juego.Jugador;
 import unidades.ArmaDeAsedio;
 
+import java.util.LinkedList;
+
 public class Castillo extends Estructura {
 
     private int precioArmaDeAsedio = 200;
@@ -15,6 +17,7 @@ public class Castillo extends Estructura {
         vida = 1000;
         vidaMaxima = 1000;
         velocidadDeReparacion = 15;
+        posiciones = new LinkedList<Posicion>();
     }
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente {
@@ -28,9 +31,5 @@ public class Castillo extends Estructura {
 
     }
 
-    @Override
-    public void setPosicion(Posicion pos) {
-        posicion = pos;
-    }
 
 }
