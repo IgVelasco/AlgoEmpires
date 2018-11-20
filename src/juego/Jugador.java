@@ -65,7 +65,7 @@ public class Jugador {
         Cimiento elCimiento = new Cimiento(unCuartel);
         //estructuras.add(unCuartel);  Todavia no deberia agregarse
         aldeano.comenzarCimientos(elCimiento);
-        mapa.colocarEstructuraEn((Contenible) elCimiento, x, y ,2);
+        mapa.colocarEstructuraEn((Estructura) elCimiento, x, y ,2);
     }
 
 
