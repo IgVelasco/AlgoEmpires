@@ -14,6 +14,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 public abstract class Estructura implements Contenible {
+
     ArrayList<Integer> posY = new ArrayList<Integer>();
     ArrayList<Integer> posX = new ArrayList<Integer>();
     int vida;
