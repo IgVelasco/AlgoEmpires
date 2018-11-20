@@ -1,16 +1,17 @@
 package estados;
 
 import Excepciones.AldeanoOcupado;
-import estructuras.Estructura;
+import Excepciones.CimientoFinalizado;
+import estructuras.Cimiento;
 import unidades.Aldeano;
 
 public class Construyendo implements Estado {
-    private int cantTurnos = 0;
-    private int maxTurnos = 3;
-    public Estructura estructura;
+    private Cimiento cimiento;
 
-    public Construyendo(Estructura estruct) {
-        estructura = estruct;
+    public Construyendo(Cimiento cimiento) {
+
+        this.cimiento = cimiento;
+
     }
 
     public void ocupar() throws AldeanoOcupado {
@@ -19,8 +20,9 @@ public class Construyendo implements Estado {
 
     @Override
     public  void realizarAccion(Aldeano unAldeano) {
-        cantTurnos ++;
-        if (cantTurnos == maxTurnos) {
+        try{
+            cimiento.avanzarConstruccion();
+        } catch (CimientoFinalizado finalizado) {
             unAldeano.liberarAldeano();
         }
     }

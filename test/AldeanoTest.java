@@ -5,6 +5,7 @@ import estados.Construyendo;
 import estados.GenerandoOro;
 import estados.Reparando;
 import estructuras.Castillo;
+import estructuras.Cimiento;
 import estructuras.Cuartel;
 import estructuras.Estructura;
 import juego.Juego;
@@ -30,8 +31,11 @@ public class AldeanoTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
 
-        jugador.construirCuartel(unAldeano,10 , 10);
+        jugador.comenzarCuartel(unAldeano,10 , 10);
         assertEquals(100, jugador.getOro());
+
+        unAldeano.realizarAccionCorrespondiente();
+        assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
 
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
@@ -130,9 +134,11 @@ public class AldeanoTest {
         Aldeano unAldeano = new Aldeano(jugador);
         Cuartel unCuartel = new Cuartel(null);
         Cuartel otroCuartel = new Cuartel(null);
+        Cimiento unCimiento = new Cimiento(unCuartel);
+        Cimiento otroCimiento = new Cimiento(otroCuartel);
 
-        unAldeano.comenzarConstruccion(unCuartel);
-        unAldeano.comenzarConstruccion(otroCuartel);
+        unAldeano.comenzarCimientos(unCimiento);
+        unAldeano.comenzarCimientos(otroCimiento);
 
     }
 
