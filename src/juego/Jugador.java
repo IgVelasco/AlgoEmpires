@@ -4,11 +4,9 @@ import Excepciones.AldeanoOcupado;
 import Excepciones.CasilleroOcupado;
 import Excepciones.EdificioConVidaMaxima;
 import Excepciones.ExcedeLimiteDelMapa;
+import contenibles.Contenible;
 import espacio.Mapa;
-import estructuras.Castillo;
-import estructuras.Cuartel;
-import estructuras.Estructura;
-import estructuras.PlazaCentral;
+import estructuras.*;
 import unidades.Aldeano;
 
 import java.util.ArrayList;
@@ -56,16 +54,18 @@ public class Jugador {
 
     public void construirPlazaCentral (Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
-        aldeano.comenzarConstruccion(unaPlazaCentral);
+        Cimiento unCimiento = new Cimiento(unaPlazaCentral);
+        aldeano.comenzarCimientos(unCimiento);
         estructuras.add(unaPlazaCentral);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y ,2);
     }
 
-    public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void comenzarCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
         Cuartel unCuartel = new Cuartel(this);
-        estructuras.add(unCuartel);
-        aldeano.comenzarConstruccion(unCuartel);
-        mapa.colocarEstructuraEn(unCuartel, x, y ,2);
+        Cimiento elCimiento = new Cimiento(unCuartel);
+        //estructuras.add(unCuartel);  Todavia no deberia agregarse
+        aldeano.comenzarCimientos(elCimiento);
+        mapa.colocarEstructuraEn((Contenible) elCimiento, x, y ,2);
     }
 
 
