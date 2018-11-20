@@ -1,4 +1,5 @@
 import Excepciones.*;
+import espacio.Casillero;
 import espacio.Mapa;
 import estados.Construyendo;
 import estados.GenerandoOro;
@@ -136,113 +137,83 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoMoverHorizontalmenteLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
+    public void testAldeanoSeMueveCorrectamenteHaciaAtras() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
+        Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano,0,0);
-        unAldeano.moverDerecha(mapa);
-        assertEquals(unAldeano, mapa.getContenido(1,0));
+        mapa.colocarUnidadEn(unAldeano,2, 2);
+
+        unAldeano.realizarMovimiento(mapa, -1, -1);
+        assertEquals(unAldeano, mapa.getContenido(1,1));
     }
 
     @Test
-    public void testAldeanoMoverseHorizontalmenteActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
+    public void testAldeanoSeMueveCorrectamenteHaciaAdelante() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
+        Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano,1,1);
-        unAldeano.moverIzquierda(mapa);
-        assertEquals(0, unAldeano.getPosicionHorizontal());
+        mapa.colocarUnidadEn(unAldeano, 2, 2);
+
+        unAldeano.realizarMovimiento(mapa, 1, 1);
+        assertEquals(unAldeano, mapa.getContenido(3, 3));
     }
 
-    @Test
-    public void testAldeanoMoverEnVerticalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
+    @Test (expected = MovimientoFueraDeRango.class)
+    public void testAldeanoNoPuedeMoverseMasDeUnCasillero() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
+        Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano,1,1);
-        unAldeano.moverArriba(mapa);
-        assertEquals(unAldeano, mapa.getContenido(1,2));
+        mapa.colocarUnidadEn(unAldeano, 2,2);
+
+        unAldeano.realizarMovimiento(mapa, 2, 2);
     }
 
-    @Test
-    public void testAldeanoMoverVerticalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
+    @Test (expected = ExcedeLimiteDelMapa.class)
+    public void testAldeanoNoPuedeMoverseFueraDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
+        Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano,1,1);
-        unAldeano.moverAbajo(mapa);
-        assertEquals(0, unAldeano.getPosicionVertical());
+        mapa.colocarUnidadEn(unAldeano, 0,0);
+
+        unAldeano.realizarMovimiento(mapa, -1, -1);
     }
 
-    @Test
-    public void testAldeanoMoverseDiagonalLoRealizaCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
-        Aldeano unAldeano = new Aldeano(null);
-
-        mapa.colocarUnidadEn(unAldeano,1,1);
-        unAldeano.moverDerechaSuperior(mapa);
-        assertEquals(unAldeano, mapa.getContenido(2,2));
-    }
-
-    @Test
-    public void testAldeanoMoverseDiagonalActualizaPosicion() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
-        Aldeano unAldeano = new Aldeano(null);
-
-        mapa.colocarUnidadEn(unAldeano,1,1);
-        unAldeano.moverIzquierdaInferior(mapa);
-        assertEquals(0, unAldeano.getPosicionHorizontal());
-        assertEquals(0,unAldeano.getPosicionVertical());
-    }
-
-    @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testAldeanoNoSeVaDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
-        Aldeano unAldeano = new Aldeano(null);
-
-        mapa.colocarUnidadEn(unAldeano,0,0);
-        unAldeano.moverIzquierda(mapa);
-    }
-
-    @Test(expected = CasilleroOcupado.class)
-    public void testAldeanoNoSePuedeMoverHaciaUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
+    @Test (expected = CasilleroOcupado.class)
+    public void testAldeanoNoPuedeMoverseAUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
         Aldeano otroAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano, 1,1);
-        mapa.colocarUnidadEn(otroAldeano,0,0);
+        mapa.colocarUnidadEn(unAldeano, 0, 0);
+        mapa.colocarUnidadEn(otroAldeano, 1, 1);
 
-        unAldeano.moverIzquierdaInferior(mapa);
+        unAldeano.realizarMovimiento(mapa, 1, 1);
     }
 
     @Test (expected = UnidadYaUtilizada.class)
-    public void testAldeanoNoSePuedeMoverDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
+    public void testAldeanoNoPuedeMoverseDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
+        Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano,2,2);
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
 
-        unAldeano.moverIzquierdaInferior(mapa);
-        unAldeano.moverIzquierdaInferior(mapa);
+        unAldeano.realizarMovimiento(mapa, 1, 1);
+        unAldeano.realizarMovimiento(mapa, 1, 1);
     }
 
     @Test
-    public void testAldeanoSePuedeMoverDosVecesSiPasaElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada {
-        Mapa mapa = new Mapa(10,10);
+    public void testAldeanoPuedeMoverseDevueltaAlPasarElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango {
+        Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano,2,2);
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
 
-        unAldeano.moverIzquierdaInferior(mapa);
-        assertEquals(unAldeano, mapa.getContenido(1,1));
+        unAldeano.realizarMovimiento(mapa, 1, 1);
+        assertEquals(unAldeano, mapa.getContenido(2, 2));
 
         unAldeano.permitirMovimiento();
-
-        unAldeano.moverIzquierdaInferior(mapa);
-        assertEquals(unAldeano, mapa.getContenido(0,0));
+        unAldeano.realizarMovimiento(mapa, 1, 1);
+        assertEquals(unAldeano, mapa.getContenido(3, 3));
     }
-
 
 }
