@@ -1,4 +1,5 @@
 import Excepciones.OroInsuficiente;
+import Excepciones.PoblacionLimiteAlcanzada;
 import estructuras.Cuartel;
 import org.junit.Test;
 import contenibles.Contenible;
@@ -37,7 +38,7 @@ public class CuartelTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearEspadachinSinOroSuficiente() throws OroInsuficiente {
+    public void testNoCrearEspadachinSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         Cuartel unCuartel = new Cuartel(null);
 
         unCuartel.crearEspadachin(25);
@@ -45,7 +46,7 @@ public class CuartelTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearArqueroSinOroSuficiente() throws OroInsuficiente {
+    public void testNoCrearArqueroSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         Cuartel unCuartel = new Cuartel(null);
 
         unCuartel.crearArquero(25);

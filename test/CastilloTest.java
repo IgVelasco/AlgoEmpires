@@ -29,7 +29,7 @@ public class CastilloTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente {
+    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         Castillo unCastillo = new Castillo(null);
 
         unCastillo.crearArmaDeAsedio(10);

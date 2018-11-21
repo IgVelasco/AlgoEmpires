@@ -1,4 +1,5 @@
 import Excepciones.OroInsuficiente;
+import Excepciones.PoblacionLimiteAlcanzada;
 import contenibles.Contenible;
 import estructuras.PlazaCentral;
 import org.junit.Test;
@@ -27,7 +28,7 @@ public class PlazaCentralTest{
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente {
+    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         PlazaCentral unaPlaza = new PlazaCentral(null);
 
         unaPlaza.crearAldeano(10);

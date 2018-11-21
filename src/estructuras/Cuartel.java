@@ -1,6 +1,7 @@
 package estructuras;
 
 import Excepciones.OroInsuficiente;
+import Excepciones.PoblacionLimiteAlcanzada;
 import contenibles.Contenible;
 import espacio.Posicion;
 import juego.Jugador;
@@ -22,14 +23,15 @@ public class Cuartel extends Estructura {
         posiciones = new LinkedList<Posicion>();
     }
 
-    public Espadachin crearEspadachin(int oroDisponible) throws OroInsuficiente {
+    public Espadachin crearEspadachin(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
         if(oroDisponible < precioEspadachin ) throw new OroInsuficiente();
-
+        this.propietario.aumentarPoblacion();
         return new Espadachin(propietario);
     }
 
-    public Arquero crearArquero(int oroDisponible) throws OroInsuficiente {
+    public Arquero crearArquero(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
         if(oroDisponible < precioArquero) throw new OroInsuficiente();
+        this.propietario.aumentarPoblacion();
         return new Arquero(propietario);
     }
 

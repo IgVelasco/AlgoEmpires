@@ -3,6 +3,7 @@ package estructuras;
 import Excepciones.ContenibleDelMismoJugador;
 import Excepciones.ExcedeLimiteDelMapa;
 import Excepciones.OroInsuficiente;
+import Excepciones.PoblacionLimiteAlcanzada;
 import contenibles.Contenible;
 import espacio.Mapa;
 import espacio.Posicion;
@@ -26,10 +27,11 @@ public class Castillo extends Estructura {
 
     }
 
-    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente {
+    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
         if(oroDisponible < precioArmaDeAsedio) {
             throw new OroInsuficiente();
         }
+        this.propietario.aumentarPoblacion();
         return new ArmaDeAsedio(propietario);
     }
 
