@@ -2,7 +2,7 @@ import org.junit.Test;
 
 public class ReparandoTest {
     @Test
-    public void reparandoTest01(){
+    public void reparandoTest01() {
     }
 
 }

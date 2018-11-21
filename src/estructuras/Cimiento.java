@@ -2,7 +2,6 @@ package estructuras;
 
 import Excepciones.CimientoFinalizado;
 import Excepciones.CimientoNoFinalizado;
-import contenibles.Contenible;
 import espacio.Posicion;
 
 import java.util.LinkedList;

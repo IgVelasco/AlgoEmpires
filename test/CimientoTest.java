@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class CimientoTest {
 
     @Test
-    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente(){
+    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() {
 
         Cuartel unCuartel = new Cuartel(null);
         Cimiento cimientoCuartel = new Cimiento(unCuartel);

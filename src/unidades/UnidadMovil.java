@@ -9,9 +9,6 @@ import espacio.Mapa;
 import espacio.Posicion;
 import juego.Jugador;
 
-import static java.lang.Math.abs;
-import static sun.swing.MenuItemLayoutHelper.max;
-
 public abstract class UnidadMovil implements Contenible {
 
     public int vida;
@@ -32,7 +29,7 @@ public abstract class UnidadMovil implements Contenible {
     }
      */
 
-    public boolean sonDelMismoJugador(Jugador unPropietario){
+    public boolean sonDelMismoJugador(Jugador unPropietario) {
         return (unPropietario == this.propietario);
     }
 
@@ -47,14 +44,14 @@ public abstract class UnidadMovil implements Contenible {
         this.vida -= golpeDeArquero;
     }
 
-    public void ataqueDeCastillo(){
+    public void ataqueDeCastillo() {
         int golpeDeCastillo = 20;
         vida -= golpeDeCastillo;
     }
 
     public void realizarMovimiento(Mapa mapa, int x, int y) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado {
         if (!sePuedeMover) throw new UnidadYaUtilizada();
-        if (this.calcularDistancia( this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)
+        if (this.calcularDistancia(this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)
             throw new MovimientoFueraDeRango();
         mapa.mover(this.posicion.getPosX(), this.posicion.getPosY(), x, y);
         sePuedeMover = false;
@@ -68,7 +65,7 @@ public abstract class UnidadMovil implements Contenible {
         posicion = pos;
     }
 
-    public void permitirMovimiento(){
+    public void permitirMovimiento() {
         sePuedeMover = true;
     }
 

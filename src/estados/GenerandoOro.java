@@ -9,6 +9,6 @@ public class GenerandoOro implements Estado {
         unAldeano.recolectarOro(20);
     }
 
-    public void ocupar(){
+    public void ocupar() {
     }
 }

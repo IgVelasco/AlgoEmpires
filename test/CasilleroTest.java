@@ -1,8 +1,8 @@
 import Excepciones.CasilleroOcupado;
 import contenibles.Contenible;
 import espacio.Casillero;
-import unidades.Aldeano;
 import org.junit.Test;
+import unidades.Aldeano;
 
 import static org.junit.Assert.*;
 
@@ -10,9 +10,9 @@ import static org.junit.Assert.*;
 public class CasilleroTest {
 
     @Test
-    public void testCasilleroSeCreaSinContenido(){
+    public void testCasilleroSeCreaSinContenido() {
         Casillero unCasillero = new Casillero();
-        assertFalse(unCasillero.casilleroEstaOcupado() );
+        assertFalse(unCasillero.casilleroEstaOcupado());
 
 
     }
@@ -25,7 +25,7 @@ public class CasilleroTest {
         unCasillero.contener(unAldeano);
 
         assertTrue(unCasillero.casilleroEstaOcupado());
-        assertEquals( unAldeano, unCasillero.getContenido());
+        assertEquals(unAldeano, unCasillero.getContenido());
 
 
     }

@@ -25,9 +25,9 @@ public class Espadachin extends UnidadMovil {
     }
 
     public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador {
-        if(unContenible.calcularDistancia(this.posicion.getPosX() , this.posicion.getPosY()) > 1)
+        if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 1)
             throw new ContenibleFueraDeRango();
-        if(unContenible.sonDelMismoJugador(this.propietario))
+        if (unContenible.sonDelMismoJugador(this.propietario))
             throw new ContenibleDelMismoJugador();
         unContenible.ataqueDeEspadachin();
     }

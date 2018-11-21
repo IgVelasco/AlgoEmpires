@@ -6,5 +6,6 @@ import unidades.Aldeano;
 public interface Estado {
 
     void realizarAccion(Aldeano jugador);
+
     void ocupar() throws AldeanoOcupado;
 }

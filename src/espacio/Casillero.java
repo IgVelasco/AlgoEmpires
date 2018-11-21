@@ -15,12 +15,11 @@ public class Casillero {
 
 
     public void contener(Contenible unContenible) throws CasilleroOcupado {
-        if(estaOcupado) throw new CasilleroOcupado();
+        if (estaOcupado) throw new CasilleroOcupado();
         contenido = unContenible;
         estaOcupado = true;
     }
-    
-    
+
 
     public Contenible getContenido() {
         return this.contenido;

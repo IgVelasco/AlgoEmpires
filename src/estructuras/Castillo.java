@@ -1,6 +1,5 @@
 package estructuras;
 
-import Excepciones.ContenibleDelMismoJugador;
 import Excepciones.ExcedeLimiteDelMapa;
 import Excepciones.OroInsuficiente;
 import Excepciones.PoblacionLimiteAlcanzada;
@@ -10,7 +9,6 @@ import espacio.Posicion;
 import juego.Jugador;
 import unidades.ArmaDeAsedio;
 
-import java.awt.*;
 import java.util.LinkedList;
 
 public class Castillo extends Estructura {
@@ -28,7 +26,7 @@ public class Castillo extends Estructura {
     }
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
-        if(oroDisponible < precioArmaDeAsedio) {
+        if (oroDisponible < precioArmaDeAsedio) {
             throw new OroInsuficiente();
         }
         this.propietario.aumentarPoblacion();
@@ -41,9 +39,9 @@ public class Castillo extends Estructura {
 
 
     public void atacar(Mapa mapa) throws ExcedeLimiteDelMapa {
-        LinkedList<Contenible> atacables = mapa.getConteniblesEnRango(posiciones, alcance , this);
-        for (Contenible atacable:atacables) {
-            if(atacable.sonDelMismoJugador(this.propietario))
+        LinkedList<Contenible> atacables = mapa.getConteniblesEnRango(posiciones, alcance, this);
+        for (Contenible atacable : atacables) {
+            if (atacable.sonDelMismoJugador(this.propietario))
                 continue;
             atacable.ataqueDeCastillo();
 

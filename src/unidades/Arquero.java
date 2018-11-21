@@ -8,7 +8,7 @@ import juego.Jugador;
 
 public class Arquero extends UnidadMovil {
 
-    public Arquero(Jugador unJugador){
+    public Arquero(Jugador unJugador) {
         vida = 75;
         propietario = unJugador;
     }
@@ -19,9 +19,9 @@ public class Arquero extends UnidadMovil {
 
 
     public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador {
-        if(unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
+        if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
             throw new ContenibleFueraDeRango();
-        if(unContenible.sonDelMismoJugador(this.propietario))
+        if (unContenible.sonDelMismoJugador(this.propietario))
             throw new ContenibleDelMismoJugador();
         unContenible.ataqueDeArquero();
     }

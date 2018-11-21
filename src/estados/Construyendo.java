@@ -19,8 +19,8 @@ public class Construyendo implements Estado {
     }
 
     @Override
-    public  void realizarAccion(Aldeano unAldeano) {
-        try{
+    public void realizarAccion(Aldeano unAldeano) {
+        try {
             cimiento.avanzarConstruccion();
         } catch (CimientoFinalizado finalizado) {
             unAldeano.liberarAldeano();

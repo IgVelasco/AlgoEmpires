@@ -1,4 +1,4 @@
 package Excepciones;
 
-public class ContenibleFueraDeRango extends Exception{
+public class ContenibleFueraDeRango extends Exception {
 }

@@ -18,7 +18,7 @@ public class Reparando implements Estado {
     }
 
     @Override
-    public  void realizarAccion(Aldeano unAldeano) {
+    public void realizarAccion(Aldeano unAldeano) {
         estructura.reparar(unAldeano);
     }
 }

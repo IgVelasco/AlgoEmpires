@@ -15,7 +15,7 @@ public class Jugador {
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
     private int oro, poblacionActual, poblacionMaxima;
 
-    public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         castillo = new Castillo(this);
         estructuras.add(new PlazaCentral(this));
         this.mapa = mapa;
@@ -49,12 +49,12 @@ public class Jugador {
         this.oro += unidadesDeOro;
     }
 
-    public void construirPlazaCentral (Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa { // Podria ser asi o que se le pase un indez de array
+    public void construirPlazaCentral(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral);
         aldeano.comenzarCimientos(unCimiento);
         estructuras.add(unaPlazaCentral);
-        mapa.colocarEstructuraEn(unaPlazaCentral, x, y ,2);
+        mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
     }
 
     public void comenzarCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
@@ -62,7 +62,7 @@ public class Jugador {
         Cimiento elCimiento = new Cimiento(unCuartel);
         //estructuras.add(unCuartel);  Todavia no deberia agregarse
         aldeano.comenzarCimientos(elCimiento);
-        mapa.colocarEstructuraEn((Estructura) elCimiento, x, y ,2);
+        mapa.colocarEstructuraEn(elCimiento, x, y, 2);
     }
 
 
@@ -75,13 +75,13 @@ public class Jugador {
     }
 
     public void disminuirPoblacion() throws PoblacionNula {
-        if ( poblacionActual == 0 )
+        if (poblacionActual == 0)
             throw new PoblacionNula();
         this.poblacionActual--;
     }
 
     public void aumentarPoblacion() throws PoblacionLimiteAlcanzada {
-        if ( poblacionActual == poblacionMaxima )
+        if (poblacionActual == poblacionMaxima)
             throw new PoblacionLimiteAlcanzada();
         this.poblacionActual++;
     }

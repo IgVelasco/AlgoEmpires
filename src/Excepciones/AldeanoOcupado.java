@@ -1,4 +1,4 @@
 package Excepciones;
 
-public class AldeanoOcupado extends Exception{
+public class AldeanoOcupado extends Exception {
 }

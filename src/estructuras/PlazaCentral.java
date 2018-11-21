@@ -2,7 +2,6 @@ package estructuras;
 
 import Excepciones.OroInsuficiente;
 import Excepciones.PoblacionLimiteAlcanzada;
-import contenibles.Contenible;
 import espacio.Posicion;
 import juego.Jugador;
 import unidades.Aldeano;
@@ -21,8 +20,8 @@ public class PlazaCentral extends Estructura {
 
     }
 
-    public Aldeano crearAldeano(int oroDisponible)throws OroInsuficiente, PoblacionLimiteAlcanzada {
-        if(oroDisponible < precioAldeano) throw new OroInsuficiente();
+    public Aldeano crearAldeano(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
+        if (oroDisponible < precioAldeano) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Aldeano(this.propietario);
     }

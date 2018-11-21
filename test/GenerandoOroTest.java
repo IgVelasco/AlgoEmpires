@@ -14,7 +14,7 @@ public class GenerandoOroTest {
     public void testSeSuma20DeOro() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         GenerandoOro unEstado = new GenerandoOro();
         Mapa unMapa = new Mapa(20, 20);
-        Jugador unJugador = new Jugador(unMapa, 20/2,0, null);
+        Jugador unJugador = new Jugador(unMapa, 20 / 2, 0, null);
         Aldeano unAldeano = new Aldeano(unJugador);
 
         unEstado.realizarAccion(unAldeano);

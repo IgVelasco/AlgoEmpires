@@ -2,7 +2,10 @@ package unidades;
 
 import Excepciones.AldeanoOcupado;
 import Excepciones.EdificioConVidaMaxima;
-import estados.*;
+import estados.Construyendo;
+import estados.Estado;
+import estados.GenerandoOro;
+import estados.Reparando;
 import estructuras.Cimiento;
 import estructuras.Estructura;
 import juego.Jugador;

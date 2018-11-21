@@ -14,25 +14,27 @@ import java.util.Set;
 public class Mapa {
 
     private int cantCeldas;
-    private Map <Posicion, Casillero> mapa;
+    private Map<Posicion, Casillero> mapa;
 
     public Mapa(int x, int y) {
         mapa = new HashMap<Posicion, Casillero>();
 
-        cantCeldas = x*y;
+        cantCeldas = x * y;
 
-        for (int i = 0 ; i < x; i++) {
+        for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
-                Posicion posicion = new Posicion(i,j);
+                Posicion posicion = new Posicion(i, j);
                 Casillero casillero = new Casillero();
-                mapa.put(posicion,casillero);
+                mapa.put(posicion, casillero);
             }
         }
     }
 
-    public int getCantCeldas() { return this.cantCeldas;}
+    public int getCantCeldas() {
+        return this.cantCeldas;
+    }
 
-    public Contenible getContenido (int x, int y) throws ExcedeLimiteDelMapa {
+    public Contenible getContenido(int x, int y) throws ExcedeLimiteDelMapa {
         Posicion posicion = this.getPosicion(x, y);
         return mapa.get(posicion).getContenido();
     }
@@ -45,10 +47,10 @@ public class Mapa {
 
 
     public void colocarEstructuraEn(Estructura unaEstructura, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        if(casillerosEstanOcupados(x, y, dimension))
+        if (casillerosEstanOcupados(x, y, dimension))
             throw new CasilleroOcupado();
-        for(int i = 0; i < dimension ; i++){
-            for(int j = 0; j < dimension ; j++){
+        for (int i = 0; i < dimension; i++) {
+            for (int j = 0; j < dimension; j++) {
                 Posicion posicion = this.getPosicion(x + i, y + j);
                 mapa.get(posicion).contener(unaEstructura);
                 unaEstructura.agregarPosicion(posicion);
@@ -57,8 +59,8 @@ public class Mapa {
     }
 
     public boolean casillerosEstanOcupados(int x, int y, int dimensiones) throws ExcedeLimiteDelMapa {
-        for(int i = 0; i < dimensiones ; i++){
-            for(int j = 0; j < dimensiones ; j++){
+        for (int i = 0; i < dimensiones; i++) {
+            for (int j = 0; j < dimensiones; j++) {
                 Posicion posicion = this.getPosicion(x + i, y + j);
                 if (mapa.get(posicion).casilleroEstaOcupado()) {
                     return true;
@@ -76,22 +78,22 @@ public class Mapa {
 
 
     public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        UnidadMovil unidad = (UnidadMovil) this.getContenido( x, y); // aca hay que lanzar error si es estructura.
+        UnidadMovil unidad = (UnidadMovil) this.getContenido(x, y); // aca hay que lanzar error si es estructura.
         this.colocarUnidadEn(unidad, x + incX, y + incY);
-        this.liberarUbicacion( x, y);
+        this.liberarUbicacion(x, y);
     }
 
     private Posicion getPosicion(int x, int y) throws ExcedeLimiteDelMapa {
         Set<Posicion> posiciones = this.mapa.keySet();
-        for (Posicion pos: posiciones) {
-            if(pos.posicionCorrespondiente(x, y)) {
+        for (Posicion pos : posiciones) {
+            if (pos.posicionCorrespondiente(x, y)) {
                 return pos;
             }
         }
         throw new ExcedeLimiteDelMapa();
     }
 
-//Bad Code incoming
+    //Bad Code incoming
     public LinkedList<Contenible> getConteniblesEnRango(LinkedList<Posicion> posiciones, int alcance, Estructura estructura) throws ExcedeLimiteDelMapa {
         int x = posiciones.getFirst().getPosX();
         int y = posiciones.getFirst().getPosY();
@@ -99,17 +101,17 @@ public class Mapa {
         x -= alcance;
         y -= alcance;
 
-        LinkedList<Contenible> conteniblesEnRango = new LinkedList<Contenible>() ;
+        LinkedList<Contenible> conteniblesEnRango = new LinkedList<Contenible>();
 
-        for(int i = 0; i < 4 + (alcance*2); i++){
-            for(int j = 0; j< (4 + (alcance*2)); j++){
-                try{
-                   if(getContenido(x+i,y+j) == null)
-                       continue;
+        for (int i = 0; i < 4 + (alcance * 2); i++) {
+            for (int j = 0; j < (4 + (alcance * 2)); j++) {
+                try {
+                    if (getContenido(x + i, y + j) == null)
+                        continue;
                 } catch (ExcedeLimiteDelMapa excedeLimiteDelMapa) {
                     continue;
                 }
-                conteniblesEnRango.add(this.getContenido(x+i,y+j));
+                conteniblesEnRango.add(this.getContenido(x + i, y + j));
             }
 
         }

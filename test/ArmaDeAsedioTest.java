@@ -1,10 +1,6 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
-import Excepciones.UnidadYaUtilizada;
-import espacio.Mapa;
-import unidades.Aldeano;
-import unidades.ArmaDeAsedio;
 import org.junit.Test;
+import unidades.ArmaDeAsedio;
+
 import static org.junit.Assert.assertEquals;
 
 public class ArmaDeAsedioTest {

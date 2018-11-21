@@ -1,17 +1,13 @@
 package espacio;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import static java.lang.Integer.max;
-import static java.lang.Integer.min;
 import static java.lang.Math.abs;
 
 public class Posicion {
     int posX;
     int posY;
 
-    public Posicion (int x, int y) {
+    public Posicion(int x, int y) {
         posX = x;
         posY = y;
     }

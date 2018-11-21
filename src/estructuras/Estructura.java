@@ -1,18 +1,14 @@
 package estructuras;
+
 import Excepciones.EdificioConVidaMaxima;
 import contenibles.Contenible;
 import espacio.Posicion;
 import juego.Jugador;
 import unidades.Aldeano;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import static java.lang.Integer.min;
-import static java.lang.Math.abs;
-import static java.lang.Math.max;
 
 public abstract class Estructura implements Contenible {
 
@@ -50,7 +46,7 @@ public abstract class Estructura implements Contenible {
         vida -= golpeDeArquero;
     }
 
-    public void ataqueDeCastillo(){
+    public void ataqueDeCastillo() {
         int golpeDeCastillo = 20;
         vida -= golpeDeCastillo;
     }
@@ -70,7 +66,7 @@ public abstract class Estructura implements Contenible {
 
     }
 
-    public  void agregarPosicion(Posicion posicion){
+    public void agregarPosicion(Posicion posicion) {
         posiciones.add(posicion);
     }
 
