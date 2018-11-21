@@ -47,6 +47,11 @@ public abstract class UnidadMovil implements Contenible {
         this.vida -= golpeDeArquero;
     }
 
+    public void ataqueDeCastillo(){
+        int golpeDeCastillo = 20;
+        vida -= golpeDeCastillo;
+    }
+
     public void realizarMovimiento(Mapa mapa, int x, int y) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado {
         if (!sePuedeMover) throw new UnidadYaUtilizada();
         if (this.calcularDistancia( this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)

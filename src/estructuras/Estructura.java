@@ -50,8 +50,13 @@ public abstract class Estructura implements Contenible {
         vida -= golpeDeArquero;
     }
 
+    public void ataqueDeCastillo(){
+        int golpeDeCastillo = 20;
+        vida -= golpeDeCastillo;
+    }
 
-    public void ponerAReparar() throws EdificioConVidaMaxima { //TODO esto tendria que ser un estado
+
+    public void ponerAReparar() throws EdificioConVidaMaxima {
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
     }
@@ -68,5 +73,7 @@ public abstract class Estructura implements Contenible {
     public  void agregarPosicion(Posicion posicion){
         posiciones.add(posicion);
     }
+
+
 }
 

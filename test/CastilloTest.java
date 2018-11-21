@@ -36,85 +36,83 @@ public class CastilloTest {
     }
 
 
-/*
-    @Test(expected = ContenibleDelMismoJugador.class)
-    public void testCastilloNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
-        Mapa mapa = new Mapa(10,10);
-        Jugador jugador = new Jugador(mapa, 5 ,5, null );
 
-        Castillo unCastillo = new Castillo(jugador);
-        Castillo otroCastillo = new Castillo(jugador);
+    @Test
+    public void testCastilloAtacaAUnidadEnRango() throws  CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20,20);
+        Jugador unJugador = new Jugador(mapa, 15 ,15, null );
+        Jugador otroJugador = new Jugador(mapa, 10 ,10, null );
+
+        Castillo unCastillo = new Castillo(unJugador);
+        Espadachin unEspadachin = new Espadachin(otroJugador);
+
+        mapa.colocarUnidadEn(unEspadachin,4,7);
+        mapa.colocarEstructuraEn(unCastillo,0,7, 4);
+
+        unCastillo.atacar(mapa);
+
+        assertEquals(80, unEspadachin.getVida());
+
+    }
 
 
+    @Test
+    public void testCastilloNoAtacaUnidadFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20,20);
+        Jugador unJugador = new Jugador(mapa, 15 ,15, null );
+        Jugador otroJugador = new Jugador(mapa, 10 ,10, null );
 
-        mapa.colocarUnidadEn(unCastillo,1,1);
-        mapa.colocarUnidadEn(otroCastillo,1,2);
+        Castillo unCastillo = new Castillo(unJugador);
+        Espadachin unEspadachin = new Espadachin(otroJugador);
 
-        unCastillo.atacar(otroCastillo);
+        mapa.colocarUnidadEn(unEspadachin,8,8);
+        mapa.colocarEstructuraEn(unCastillo,0,7, 4);
 
-        assertEquals(100, otroCastillo.getVida());
+        unCastillo.atacar(mapa);
+
+        assertEquals(100, unEspadachin.getVida());
 
     }
 
     @Test
-    public void testCastilloAtacaCastilloEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloNoAtacaUnidadDelMismoJugador() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
         Mapa mapa = new Mapa(20,20);
-        Jugador jugador = new Jugador(mapa, 5 ,5, null );
-        Jugador otroJugador = new Jugador(mapa, 13 ,5, null );
+        Jugador unJugador = new Jugador(mapa, 15 ,15, null );
 
-        Castillo unCastillo = new Castillo(jugador);
-        Castillo otroCastillo = new Castillo(otroJugador);
+        Castillo unCastillo = new Castillo(unJugador);
+        Espadachin unEspadachin = new Espadachin(unJugador);
 
+        mapa.colocarUnidadEn(unEspadachin,5,7);
+        mapa.colocarEstructuraEn(unCastillo,0,7, 4);
 
+        unCastillo.atacar(mapa);
 
-        mapa.colocarUnidadEn(unCastillo,1,1);
-        mapa.colocarUnidadEn(otroCastillo,1,2);
-
-        unCastillo.atacar(otroCastillo);
-
-        assertEquals(75, otroCastillo.getVida());
+        assertEquals(100, unEspadachin.getVida());
 
     }
 
-    @Test(expected = ContenibleFueraDeRango.class)
-    public void testCastilloAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
-        Mapa mapa = new Mapa(20,20);
-        Jugador jugador = new Jugador(mapa, 5 ,5, null );
-        Jugador otroJugador = new Jugador(mapa, 13 ,5, null );
 
-        Castillo unCastillo = new Castillo(jugador);
-        Castillo otroCastillo = new Castillo(otroJugador);
-
-
-
-        mapa.colocarUnidadEn(unCastillo,1,1);
-        mapa.colocarUnidadEn(unCastillo,1,9);
-
-        unCastillo.atacar(unCastillo);
-
-        assertEquals(1000 ,unCastillo.getVida());
-
-    }
-
+    /*
     @Test
     public void testCastilloAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
-        Jugador jugador = new Jugador(mapa, 5 ,5, null );
-        Jugador otroJugador = new Jugador(mapa, 13 ,5, null );
+        Jugador unJugador = new Jugador(mapa, 15 ,15, null );
+        Jugador otroJugador = new Jugador(mapa, 10 ,10, null );
 
-        Castillo unCastillo = new Castillo(jugador);
+        Castillo unCastillo = new Castillo(unJugador);
         Espadachin unEspadachin = new Espadachin(otroJugador);
 
+        mapa.colocarUnidadEn(unEspadachin,8,8);
+        mapa.colocarEstructuraEn(unCastillo,0,7, 4);
 
-        mapa.colocarUnidadEn(unCastillo,0,0);
-        mapa.colocarUnidadEn(unEspadachin,1,1);
+        unCastillo.atacar(mapa);
 
-        unCastillo.atacar(unCastillo);
-
-        assertEquals(985 ,unCastillo.getVida());
+        assertEquals(100, unEspadachin.getVida());
 
 
     }
-*/
+
+    */
+
 
 }

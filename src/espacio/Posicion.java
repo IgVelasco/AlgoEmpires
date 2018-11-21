@@ -8,14 +8,15 @@ import static java.lang.Integer.min;
 import static java.lang.Math.abs;
 
 public class Posicion {
-   int posX;
-   int posY;
+    int posX;
+    int posY;
 
     public Posicion (int x, int y) {
         posX = x;
         posY = y;
     }
 
+    //Pasar posicion ?
     public boolean posicionCorrespondiente(int x, int y) {
         return (posX == x && posY == y);
     }

@@ -9,4 +9,6 @@ public interface Contenible {
     int calcularDistancia(int x, int y);
 
     boolean sonDelMismoJugador(Jugador propietario);
+
+    void ataqueDeCastillo();
 }

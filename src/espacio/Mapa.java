@@ -7,6 +7,7 @@ import estructuras.Estructura;
 import unidades.UnidadMovil;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Set;
 
@@ -73,7 +74,6 @@ public class Mapa {
         mapa.get(posicion).liberar();
     }
 
-    // TODO ESTO ME PARECE MAL POR QUE YO LE DIGO AL MAPA QUE ME MUEVA LAS COSAS NO A LA UNIDAD MOVIBLE, MOVETE.
 
     public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido( x, y); // aca hay que lanzar error si es estructura.
@@ -91,6 +91,30 @@ public class Mapa {
         throw new ExcedeLimiteDelMapa();
     }
 
+//Bad Code incoming
+    public LinkedList<Contenible> getConteniblesEnRango(LinkedList<Posicion> posiciones, int alcance, Estructura estructura) throws ExcedeLimiteDelMapa {
+        int x = posiciones.getFirst().getPosX();
+        int y = posiciones.getFirst().getPosY();
+
+        x -= alcance;
+        y -= alcance;
+
+        LinkedList<Contenible> conteniblesEnRango = new LinkedList<Contenible>() ;
+
+        for(int i = 0; i < 4 + (alcance*2); i++){
+            for(int j = 0; j< (4 + (alcance*2)); j++){
+                try{
+                   if(getContenido(x+i,y+j) == null)
+                       continue;
+                } catch (ExcedeLimiteDelMapa excedeLimiteDelMapa) {
+                    continue;
+                }
+                conteniblesEnRango.add(this.getContenido(x+i,y+j));
+            }
+
+        }
+        return conteniblesEnRango;
+    }
 }
 
 
