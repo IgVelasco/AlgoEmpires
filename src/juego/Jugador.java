@@ -1,16 +1,11 @@
 package juego;
 
-import Excepciones.AldeanoOcupado;
-import Excepciones.CasilleroOcupado;
-import Excepciones.EdificioConVidaMaxima;
-import Excepciones.ExcedeLimiteDelMapa;
-import contenibles.Contenible;
+import Excepciones.*;
 import espacio.Mapa;
 import estructuras.*;
 import unidades.Aldeano;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Jugador {
     private Mapa mapa;
@@ -18,13 +13,15 @@ public class Jugador {
     private Castillo castillo;
     private ArrayList<Estructura> estructuras = new ArrayList<Estructura>();
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
-    private int oro;
+    private int oro, poblacionActual, poblacionMaxima;
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal , int posicionCastilloVertical , Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         castillo = new Castillo(this);
         estructuras.add(new PlazaCentral(this));
         this.mapa = mapa;
         this.oro = 100;
+        this.poblacionActual = 3;
+        this.poblacionMaxima = 50;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4);
         mapa.colocarEstructuraEn(estructuras.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
@@ -75,5 +72,17 @@ public class Jugador {
 
     public int getOro() {
         return this.oro;
+    }
+
+    public void disminuirPoblacion() throws PoblacionNula {
+        if ( poblacionActual == 0 )
+            throw new PoblacionNula();
+        this.poblacionActual--;
+    }
+
+    public void aumentarPoblacion() throws PoblacionLimiteAlcanzada {
+        if ( poblacionActual == poblacionMaxima )
+            throw new PoblacionLimiteAlcanzada();
+        this.poblacionActual++;
     }
 }
