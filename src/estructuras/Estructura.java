@@ -12,6 +12,10 @@ import static java.lang.Integer.min;
 
 public abstract class Estructura implements Contenible {
 
+    private static final int
+            DANO_ARQUERO = 10,
+            DANO_ESPADACHIN = 15,
+            DANO_CASTILLO = 20;
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
@@ -37,18 +41,15 @@ public abstract class Estructura implements Contenible {
     }
 
     public void ataqueDeEspadachin() {
-        int golpeDeEspadachin = 15;
-        vida -= golpeDeEspadachin;
+        vida -= DANO_ESPADACHIN;
     }
 
     public void ataqueDeArquero() {
-        int golpeDeArquero = 10;
-        vida -= golpeDeArquero;
+        vida -= DANO_ARQUERO;
     }
 
     public void ataqueDeCastillo() {
-        int golpeDeCastillo = 20;
-        vida -= golpeDeCastillo;
+        vida -= DANO_CASTILLO;
     }
 
 

@@ -8,6 +8,10 @@ import juego.Jugador;
 
 public abstract class UnidadMovil implements Contenible {
 
+    private static final int
+            DANO_ARQUERO = 15,
+            DANO_ESPADACHIN = 25,
+            DANO_CASTILLO = 20;
     public int vida;
     Posicion posicion;
     boolean sePuedeMover;
@@ -32,20 +36,17 @@ public abstract class UnidadMovil implements Contenible {
 
 
     public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa, PoblacionNula {
-        int golpeDeEspadachin = 25;
-        this.vida -= golpeDeEspadachin;
+        this.vida -= DANO_ESPADACHIN;
         if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
     public void ataqueDeArquero() throws ExcedeLimiteDelMapa, PoblacionNula {
-        int golpeDeArquero = 15;
-        this.vida -= golpeDeArquero;
+        this.vida -= DANO_ARQUERO;
         if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
     public void ataqueDeCastillo() throws ExcedeLimiteDelMapa, PoblacionNula {
-        int golpeDeCastillo = 20;
-        vida -= golpeDeCastillo;
+        vida -= DANO_CASTILLO;
         if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 

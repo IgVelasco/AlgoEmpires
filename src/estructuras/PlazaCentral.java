@@ -9,7 +9,7 @@ import unidades.Aldeano;
 import java.util.LinkedList;
 
 public class PlazaCentral extends Estructura {
-    private int precioAldeano = 25;
+    private static final int PRECIO_ALDEANO = 25;
 
     public PlazaCentral(Jugador jugador) {
         vida = 450;
@@ -21,7 +21,7 @@ public class PlazaCentral extends Estructura {
     }
 
     public Aldeano crearAldeano(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
-        if (oroDisponible < precioAldeano) throw new OroInsuficiente();
+        if (oroDisponible < PRECIO_ALDEANO) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Aldeano(this.propietario);
     }

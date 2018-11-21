@@ -11,8 +11,9 @@ import java.util.LinkedList;
 
 public class Cuartel extends Estructura {
 
-    private int precioEspadachin = 50;
-    private int precioArquero = 75;
+    private static final int
+            PRECIO_ESPADACHIN = 50,
+            PRECIO_ARQUERO = 75;
 
     public Cuartel(Jugador unJugador) {
         vida = 250;
@@ -23,13 +24,13 @@ public class Cuartel extends Estructura {
     }
 
     public Espadachin crearEspadachin(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
-        if (oroDisponible < precioEspadachin) throw new OroInsuficiente();
+        if (oroDisponible < PRECIO_ESPADACHIN) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Espadachin(propietario);
     }
 
     public Arquero crearArquero(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
-        if (oroDisponible < precioArquero) throw new OroInsuficiente();
+        if (oroDisponible < PRECIO_ARQUERO) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Arquero(propietario);
     }

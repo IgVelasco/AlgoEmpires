@@ -14,8 +14,9 @@ import java.util.LinkedList;
 
 public class Castillo extends Estructura {
 
-    private int precioArmaDeAsedio = 200;
-    private int alcance = 3;
+    private static final int
+            PRECIO_ARMA_DE_ASEDIO = 200,
+            ALCANCE = 3;
 
     public Castillo(Jugador jugador) {
         propietario = jugador;
@@ -27,7 +28,7 @@ public class Castillo extends Estructura {
     }
 
     public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
-        if (oroDisponible < precioArmaDeAsedio) {
+        if (oroDisponible < PRECIO_ARMA_DE_ASEDIO) {
             throw new OroInsuficiente();
         }
         this.propietario.aumentarPoblacion();
@@ -40,7 +41,7 @@ public class Castillo extends Estructura {
 
 
     public void atacar(Mapa mapa) throws ExcedeLimiteDelMapa, PoblacionNula {
-        LinkedList<Contenible> atacables = mapa.getConteniblesEnRango(posiciones, alcance, this);
+        LinkedList<Contenible> atacables = mapa.getConteniblesEnRango(posiciones, ALCANCE, this);
         for (Contenible atacable : atacables) {
             if (atacable.sonDelMismoJugador(this.propietario))
                 continue;
