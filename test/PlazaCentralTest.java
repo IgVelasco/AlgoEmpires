@@ -18,15 +18,6 @@ public class PlazaCentralTest{
         assertEquals(450, plaza.getVida());
     }
 
-    @Test
-    public void testCrearAldeanoDevuelveUnaUnidadDeClaseAldeano() throws OroInsuficiente {
-        PlazaCentral unaPlaza = new PlazaCentral(null);
-
-        Contenible unaUnidad = unaPlaza.crearAldeano(25);
-
-        assertThat(unaUnidad, instanceOf(Aldeano.class));
-    }
-
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         PlazaCentral unaPlaza = new PlazaCentral(null);

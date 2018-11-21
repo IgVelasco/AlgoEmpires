@@ -20,14 +20,6 @@ public class CastilloTest {
         assertEquals(1000, unCastillo.getVida());
     }
 
-    @Test
-    public void testCrearArmaDeAsedioDevuelveUnaUnidadDelTipoArmaDeAsedio() throws OroInsuficiente {
-        Castillo unCastillo = new Castillo(null);
-        Contenible unaUnidad = unCastillo.crearArmaDeAsedio(200);
-
-        assertThat(unaUnidad, instanceOf(ArmaDeAsedio.class));
-    }
-
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         Castillo unCastillo = new Castillo(null);

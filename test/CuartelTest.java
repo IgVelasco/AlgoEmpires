@@ -19,24 +19,6 @@ public class CuartelTest {
         assertEquals(250, unCuartel.getVida());
     }
 
-    @Test
-    public void testCrearEspadachinCreaUnaUnidadDelTipoEspadachin() throws OroInsuficiente {
-        Cuartel unCuartel = new Cuartel(null);
-
-        Contenible unaUnidad = unCuartel.crearEspadachin(50);
-
-        assertThat(unaUnidad, instanceOf(Espadachin.class));
-    }
-
-    @Test
-    public void testCrearArqueroCreaUnaUnidadDelTipoArquero() throws OroInsuficiente {
-        Cuartel unCuartel = new Cuartel(null);
-
-        Contenible unaUnidad = unCuartel.crearArquero(75);
-
-        assertThat(unaUnidad, instanceOf(Arquero.class));
-    }
-
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearEspadachinSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
         Cuartel unCuartel = new Cuartel(null);
