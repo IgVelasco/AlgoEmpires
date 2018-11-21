@@ -2,8 +2,8 @@
 TP2 - Algo Empires: juego por turnos basado en el clásico juego Age of Empires II.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.org/iPetrignani/solid-octo-broccoli.svg?branch=master)](https://travis-ci.org/iPetrignani/solid-octo-broccoli)
-[![codecov](https://codecov.io/gh/iPetrignani/solid-octo-broccoli/branch/master/graph/badge.svg)](https://codecov.io/gh/iPetrignani/solid-octo-broccoli)
+[![Build Status](https://travis-ci.org/IgVelasco/solid-octo-broccoli.svg?branch=master)](https://travis-ci.org/IgVelasco/solid-octo-broccoli)
+[![codecov](https://codecov.io/gh/IgVelasco/solid-octo-broccoli/branch/master/graph/badge.svg)](https://codecov.io/gh/IgVelasco/solid-octo-broccoli)
 
 ### Informe
 https://www.overleaf.com/read/cyrypgjrkfmx
