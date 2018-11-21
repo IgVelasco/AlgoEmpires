@@ -2,6 +2,7 @@ package juego;
 
 import Excepciones.*;
 import espacio.Mapa;
+import espacio.Posicion;
 import estructuras.*;
 import unidades.Aldeano;
 
@@ -84,5 +85,14 @@ public class Jugador {
         if (poblacionActual == poblacionMaxima)
             throw new PoblacionLimiteAlcanzada();
         this.poblacionActual++;
+    }
+
+    public void borrarUnidad(Posicion posicion) throws PoblacionNula, ExcedeLimiteDelMapa {
+        this.disminuirPoblacion();
+        mapa.liberarUbicacion(posicion.getPosX(), posicion.getPosY());
+    }
+
+    public int getPoblacionActual() {
+        return this.poblacionActual;
     }
 }

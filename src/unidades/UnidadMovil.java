@@ -1,9 +1,6 @@
 package unidades;
 
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
-import Excepciones.MovimientoFueraDeRango;
-import Excepciones.UnidadYaUtilizada;
+import Excepciones.*;
 import contenibles.Contenible;
 import espacio.Mapa;
 import espacio.Posicion;
@@ -34,19 +31,22 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public void ataqueDeEspadachin() {
+    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa, PoblacionNula {
         int golpeDeEspadachin = 25;
         this.vida -= golpeDeEspadachin;
+        if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
-    public void ataqueDeArquero() {
+    public void ataqueDeArquero() throws ExcedeLimiteDelMapa, PoblacionNula {
         int golpeDeArquero = 15;
         this.vida -= golpeDeArquero;
+        if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
-    public void ataqueDeCastillo() {
+    public void ataqueDeCastillo() throws ExcedeLimiteDelMapa, PoblacionNula {
         int golpeDeCastillo = 20;
         vida -= golpeDeCastillo;
+        if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
     public void realizarMovimiento(Mapa mapa, int x, int y) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado {

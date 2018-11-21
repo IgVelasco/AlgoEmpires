@@ -25,7 +25,7 @@ public class CastilloTest {
 
 
     @Test
-    public void testCastilloAtacaAUnidadEnRango() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloAtacaAUnidadEnRango() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
@@ -44,7 +44,7 @@ public class CastilloTest {
 
 
     @Test
-    public void testCastilloNoAtacaUnidadFueraDeRango() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloNoAtacaUnidadFueraDeRango() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
@@ -62,7 +62,7 @@ public class CastilloTest {
     }
 
     @Test
-    public void testCastilloNoAtacaUnidadDelMismoJugador() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloNoAtacaUnidadDelMismoJugador() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
 

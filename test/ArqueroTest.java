@@ -1,7 +1,4 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.ContenibleDelMismoJugador;
-import Excepciones.ContenibleFueraDeRango;
-import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.*;
 import espacio.Mapa;
 import estructuras.Castillo;
 import juego.Jugador;
@@ -20,7 +17,7 @@ public class ArqueroTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArqueroAtacaArqueroFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testArqueroAtacaArqueroFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, PoblacionNula {
         Mapa mapa = new Mapa(10, 10);
 
         Arquero unArquero = new Arquero(null);
@@ -37,7 +34,7 @@ public class ArqueroTest {
 
 
     @Test(expected = ContenibleDelMismoJugador.class)
-    public void testArqueroNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testArqueroNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, PoblacionNula {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -55,7 +52,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroAtacaArqueroEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testArqueroAtacaArqueroEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, PoblacionNula {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -74,7 +71,7 @@ public class ArqueroTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArqueroAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testArqueroAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, PoblacionNula {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -93,7 +90,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testArqueroAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, PoblacionNula {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);

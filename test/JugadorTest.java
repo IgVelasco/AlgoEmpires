@@ -1,8 +1,11 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
+import Excepciones.PoblacionLimiteAlcanzada;
+import Excepciones.PoblacionNula;
 import espacio.Mapa;
 import juego.Jugador;
 import org.junit.Test;
+import unidades.Aldeano;
 
 import static org.junit.Assert.assertEquals;
 
@@ -37,4 +40,34 @@ public class JugadorTest {
 
         assertEquals(160, unJugador.getOro());
     }
+
+    @Test
+    public void testMatarUnidadLiberaUbicacion() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 10, 10);
+
+        unAldeano.ataqueDeEspadachin();
+        unAldeano.ataqueDeEspadachin();
+
+        assertEquals(null, mapa.getContenido(10,10));
+    }
+
+    @Test
+    public void testMatarUnidadDisminuyeLaPoblacion() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionLimiteAlcanzada, PoblacionNula {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        unJugador.aumentarPoblacion();
+        mapa.colocarUnidadEn(unAldeano, 10, 10);
+
+        unAldeano.ataqueDeEspadachin();
+        unAldeano.ataqueDeEspadachin();
+
+        assertEquals(3, unJugador.getPoblacionActual());
+    }
+
 }
