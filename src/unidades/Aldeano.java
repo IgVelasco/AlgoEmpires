@@ -2,6 +2,7 @@ package unidades;
 
 import Excepciones.AldeanoOcupado;
 import Excepciones.EdificioConVidaMaxima;
+import Excepciones.ContenibleNoPropia;
 import estados.Construyendo;
 import estados.Estado;
 import estados.GenerandoOro;
@@ -28,7 +29,9 @@ public class Aldeano extends UnidadMovil {
         this.estado.realizarAccion(this);
     }
 
-    public void comenzarCimientos(Cimiento cimiento) throws AldeanoOcupado {
+    public void comenzarCimientos(Cimiento cimiento, Jugador unJugador) throws AldeanoOcupado, ContenibleNoPropia {
+        if(!this.sonDelMismoJugador(unJugador))
+            throw new ContenibleNoPropia();
         estado.ocupar();
         this.estado = new Construyendo(cimiento);
     }

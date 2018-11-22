@@ -55,9 +55,9 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado, UnidadNoPropia {
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado, ContenibleNoPropia {
         if(!this.sonDelMismoJugador(unJugador))
-            throw new UnidadNoPropia();
+            throw new ContenibleNoPropia();
         if (!sePuedeMover)
             throw new UnidadYaUtilizada();
         if (this.calcularDistancia(this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)

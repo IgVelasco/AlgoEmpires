@@ -53,19 +53,19 @@ public class Jugador {
         this.oro += unidadesDeOro;
     }
 
-    public void construirPlazaCentral(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa { // Podria ser asi o que se le pase un indez de array
+    public void construirPlazaCentral(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral);
-        aldeano.comenzarCimientos(unCimiento);
+        aldeano.comenzarCimientos(unCimiento, this);
         estructuras.add(unaPlazaCentral);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
     }
 
-    public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia {
         Cuartel unCuartel = new Cuartel(this);
         Cimiento elCimiento = new Cimiento(unCuartel);
         //estructuras.add(unCuartel);  Todavia no deberia agregarse
-        aldeano.comenzarCimientos(elCimiento);
+        aldeano.comenzarCimientos(elCimiento,this);
         mapa.colocarEstructuraEn(elCimiento, x, y, 2);
     }
 
@@ -99,7 +99,7 @@ public class Jugador {
         return this.poblacionActual;
     }
 
-    public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, UnidadNoPropia {
+    public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
         unidad.realizarMovimiento(mapa, x, y, this);
     }
 }

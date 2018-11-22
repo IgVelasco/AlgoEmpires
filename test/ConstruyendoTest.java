@@ -1,5 +1,6 @@
 import Excepciones.AldeanoOcupado;
 import Excepciones.CasilleroOcupado;
+import Excepciones.ContenibleNoPropia;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import estados.Construyendo;
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class ConstruyendoTest {
 
     @Test
-    public void testFinalizarConstruccionDesocupaAldeano() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado {
+    public void testFinalizarConstruccionDesocupaAldeano() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado, ContenibleNoPropia {
         Mapa unMapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(unMapa, 10, 0, null);
         Cuartel unCuartel = new Cuartel(null);
@@ -23,7 +24,7 @@ public class ConstruyendoTest {
         Construyendo unEstado = new Construyendo(unCimiento);
         Aldeano unAldeano = new Aldeano(unJugador);
 
-        unAldeano.comenzarCimientos(unCimiento);
+        unAldeano.comenzarCimientos(unCimiento, unJugador);
         unEstado.realizarAccion(unAldeano);
 
         assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
