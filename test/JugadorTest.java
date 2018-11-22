@@ -84,14 +84,16 @@ public class JugadorTest {
         }
     }
 
-    @Test (expected = PoblacionNula.class)
-    public void testDisminuirPoblacionCuandoNoHayTiraError() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
+    @Test
+    public void testDisminuirPoblacionCuandoNoHayTiraError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 4; i++)
             unJugador.disminuirPoblacion();
-        }
+
+
+        assertEquals(0,unJugador.getPoblacionActual());
     }
 
 }

@@ -76,7 +76,7 @@ public class Jugador {
     }
 
     public void disminuirPoblacion() {
-        if (poblacionActual >= 0)
+        if (poblacionActual > 0)
             this.poblacionActual--;
     }
 
