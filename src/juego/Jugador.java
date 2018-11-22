@@ -5,6 +5,7 @@ import espacio.Mapa;
 import espacio.Posicion;
 import estructuras.*;
 import unidades.Aldeano;
+import unidades.UnidadMovil;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public class Jugador {
     private Castillo castillo;
     private ArrayList<Estructura> estructuras = new ArrayList<Estructura>();
     private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
+    private ArrayList<UnidadMovil> movidas = new ArrayList<UnidadMovil>();
     private int oro, poblacionActual, poblacionMaxima;
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
@@ -59,7 +61,7 @@ public class Jugador {
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
     }
 
-    public void comenzarCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa {
         Cuartel unCuartel = new Cuartel(this);
         Cimiento elCimiento = new Cimiento(unCuartel);
         //estructuras.add(unCuartel);  Todavia no deberia agregarse
@@ -84,6 +86,7 @@ public class Jugador {
     public void aumentarPoblacion() throws PoblacionLimiteAlcanzada {
         if (poblacionActual == poblacionMaxima)
             throw new PoblacionLimiteAlcanzada();
+
         this.poblacionActual++;
     }
 
@@ -94,5 +97,9 @@ public class Jugador {
 
     public int getPoblacionActual() {
         return this.poblacionActual;
+    }
+
+    public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, UnidadNoPropia {
+        unidad.realizarMovimiento(mapa, x, y, this);
     }
 }
