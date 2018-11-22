@@ -33,12 +33,13 @@ public class Jugador {
         }
     }
 
-    public void nuevoTurno() {
+    public void nuevoTurno() throws ExcedeLimiteDelMapa {
         //this.turnoNumero++;
 
         for (Aldeano aldeano : aldeanos) {
             aldeano.realizarAccionCorrespondiente();
         }
+        castillo.atacar(mapa);
     }
 
     public void finalizarTurno() {
