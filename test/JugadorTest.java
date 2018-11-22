@@ -71,6 +71,27 @@ public class JugadorTest {
         unAldeano.ataqueDeEspadachin();
 
         assertEquals(3, unJugador.getPoblacionActual());
+
+    }
+
+    @Test (expected = PoblacionLimiteAlcanzada.class)
+    public void testPoblacionMayorACincuentaTiraError() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionLimiteAlcanzada {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 20/2, 0,null);
+
+        for (int i = 0; i < 48; i++) {
+            unJugador.aumentarPoblacion();
+        }
+    }
+
+    @Test (expected = PoblacionNula.class)
+    public void testDisminuirPoblacionCuandoNoHayTiraError() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
+
+        for (int i = 0; i < 4; i++) {
+            unJugador.disminuirPoblacion();
+        }
     }
 
 }
