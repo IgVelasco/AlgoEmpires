@@ -42,7 +42,7 @@ public class Jugador {
         castillo.atacar(mapa);
     }
 
-    public void finalizarTurno() {
+    public void finalizarTurno() throws ExcedeLimiteDelMapa {
         juego.siguienteTurno();
     }
 
