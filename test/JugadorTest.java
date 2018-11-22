@@ -1,13 +1,13 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import Excepciones.PoblacionLimiteAlcanzada;
-import Excepciones.PoblacionNula;
 import espacio.Mapa;
 import juego.Jugador;
 import org.junit.Test;
 import unidades.Aldeano;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class JugadorTest {
@@ -42,7 +42,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void testMatarUnidadLiberaUbicacion() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionNula {
+    public void testMatarUnidadLiberaUbicacion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
         Aldeano unAldeano = new Aldeano(unJugador);
@@ -56,13 +56,16 @@ public class JugadorTest {
     }
 
     @Test
-    public void testMatarUnidadDisminuyeLaPoblacion() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionLimiteAlcanzada, PoblacionNula {
+    public void testMatarUnidadDisminuyeLaPoblacion() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionLimiteAlcanzada {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
         Aldeano unAldeano = new Aldeano(unJugador);
 
         unJugador.aumentarPoblacion();
         mapa.colocarUnidadEn(unAldeano, 10, 10);
+
+        assertEquals(4, unJugador.getPoblacionActual());
+
 
         unAldeano.ataqueDeEspadachin();
         unAldeano.ataqueDeEspadachin();

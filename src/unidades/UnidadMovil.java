@@ -35,20 +35,25 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa, PoblacionNula {
+    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
         this.vida -= DANO_ESPADACHIN;
         if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
-    public void ataqueDeArquero() throws ExcedeLimiteDelMapa, PoblacionNula {
+    public void ataqueDeArquero() throws ExcedeLimiteDelMapa {
         this.vida -= DANO_ARQUERO;
         if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
 
-    public void ataqueDeCastillo() throws ExcedeLimiteDelMapa, PoblacionNula {
+    public void ataqueDeCastillo() throws ExcedeLimiteDelMapa {
         vida -= DANO_CASTILLO;
         if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
     }
+
+    public void ataqueDeAsedio() throws AsedioNoAtacaUnidad {
+        throw new AsedioNoAtacaUnidad();
+    }
+
 
     public void realizarMovimiento(Mapa mapa, int x, int y) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado {
         if (!sePuedeMover) throw new UnidadYaUtilizada();

@@ -3,7 +3,6 @@ package estructuras;
 import Excepciones.ExcedeLimiteDelMapa;
 import Excepciones.OroInsuficiente;
 import Excepciones.PoblacionLimiteAlcanzada;
-import Excepciones.PoblacionNula;
 import contenibles.Contenible;
 import espacio.Mapa;
 import espacio.Posicion;
@@ -40,7 +39,7 @@ public class Castillo extends Estructura {
     }
 
 
-    public void atacar(Mapa mapa) throws ExcedeLimiteDelMapa, PoblacionNula {
+    public void atacar(Mapa mapa) throws ExcedeLimiteDelMapa {
         LinkedList<Contenible> atacables = mapa.getConteniblesEnRango(posiciones, ALCANCE, this);
         for (Contenible atacable : atacables) {
             if (atacable.sonDelMismoJugador(this.propietario))

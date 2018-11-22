@@ -52,6 +52,10 @@ public abstract class Estructura implements Contenible {
         vida -= DANO_CASTILLO;
     }
 
+    public void ataqueDeAsedio() {
+        vida -= 75;
+    }
+
 
     public void ponerAReparar() throws EdificioConVidaMaxima {
         if (vida == vidaMaxima)

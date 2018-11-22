@@ -4,7 +4,6 @@ package unidades;
 import Excepciones.ContenibleDelMismoJugador;
 import Excepciones.ContenibleFueraDeRango;
 import Excepciones.ExcedeLimiteDelMapa;
-import Excepciones.PoblacionNula;
 import contenibles.Contenible;
 import juego.Jugador;
 
@@ -20,7 +19,7 @@ public class Arquero extends UnidadMovil {
     }
 
 
-    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa, PoblacionNula {
+    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa {
         if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
             throw new ContenibleFueraDeRango();
         if (unContenible.sonDelMismoJugador(this.propietario))

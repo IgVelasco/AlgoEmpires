@@ -75,10 +75,9 @@ public class Jugador {
         return this.oro;
     }
 
-    public void disminuirPoblacion() throws PoblacionNula {
-        if (poblacionActual == 0)
-            throw new PoblacionNula();
-        this.poblacionActual--;
+    public void disminuirPoblacion() {
+        if (poblacionActual >= 0)
+            this.poblacionActual--;
     }
 
     public void aumentarPoblacion() throws PoblacionLimiteAlcanzada {
@@ -87,7 +86,7 @@ public class Jugador {
         this.poblacionActual++;
     }
 
-    public void borrarUnidad(Posicion posicion) throws PoblacionNula, ExcedeLimiteDelMapa {
+    public void borrarUnidad(Posicion posicion) throws  ExcedeLimiteDelMapa {
         this.disminuirPoblacion();
         mapa.liberarUbicacion(posicion.getPosX(), posicion.getPosY());
     }
