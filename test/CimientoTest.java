@@ -1,19 +1,14 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.CimientoFinalizado;
-import Excepciones.CimientoNoFinalizado;
-import Excepciones.ExcedeLimiteDelMapa;
-import espacio.Mapa;
-import estadosAldeano.GenerandoOro;
-import estructuras.Cimiento;
-import estructuras.Cuartel;
-import estructuras.Estructura;
-import juego.Jugador;
+import modelo.espacio.Mapa;
+import modelo.estructuras.Cimiento;
+import modelo.estructuras.Cuartel;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.CimientoFinalizado;
+import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import org.junit.Test;
-import unidades.Aldeano;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 
 public class CimientoTest {
 

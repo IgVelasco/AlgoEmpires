@@ -1,8 +1,8 @@
-import Excepciones.CasilleroOcupado;
-import contenibles.Contenible;
-import espacio.Casillero;
+import modelo.espacio.Casillero;
+import modelo.espacio.Contenible;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.unidades.Aldeano;
 import org.junit.Test;
-import unidades.Aldeano;
 
 import static org.junit.Assert.*;
 

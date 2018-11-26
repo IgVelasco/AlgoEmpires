@@ -1,10 +1,10 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
-import espacio.Mapa;
-import estadosAldeano.GenerandoOro;
-import juego.Jugador;
+import modelo.espacio.Mapa;
+import modelo.estados.aldeano.GenerandoOro;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import org.junit.Test;
-import unidades.Aldeano;
 
 import static org.junit.Assert.assertEquals;
 

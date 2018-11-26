@@ -1,9 +1,12 @@
-import Excepciones.*;
-import espacio.Mapa;
-import estructuras.Castillo;
-import juego.Jugador;
+import modelo.espacio.Mapa;
+import modelo.estructuras.Castillo;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.ContenibleDelMismoJugador;
+import modelo.excepciones.ContenibleFueraDeRango;
+import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.juego.Jugador;
+import modelo.unidades.Espadachin;
 import org.junit.Test;
-import unidades.Espadachin;
 
 import static org.junit.Assert.assertEquals;
 

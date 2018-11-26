@@ -1,14 +1,13 @@
-import Excepciones.ArmaYaCargada;
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
-import Excepciones.PoblacionLimiteAlcanzada;
-import espacio.Mapa;
-import juego.Jugador;
+import modelo.espacio.Mapa;
+import modelo.excepciones.ArmaYaCargada;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.excepciones.PoblacionLimiteAlcanzada;
+import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import org.junit.Test;
-import unidades.Aldeano;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 
 public class JugadorTest {

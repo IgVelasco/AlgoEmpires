@@ -1,9 +1,9 @@
-import Excepciones.*;
-import espacio.Mapa;
-import estructuras.Castillo;
-import juego.Jugador;
+import modelo.espacio.Mapa;
+import modelo.estructuras.Castillo;
+import modelo.excepciones.*;
+import modelo.juego.Jugador;
+import modelo.unidades.ArmaDeAsedio;
 import org.junit.Test;
-import unidades.ArmaDeAsedio;
 
 import static org.junit.Assert.assertEquals;
 

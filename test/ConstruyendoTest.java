@@ -1,15 +1,15 @@
-import Excepciones.AldeanoOcupado;
-import Excepciones.CasilleroOcupado;
-import Excepciones.ContenibleNoPropia;
-import Excepciones.ExcedeLimiteDelMapa;
-import espacio.Mapa;
-import estadosAldeano.Construyendo;
-import estadosAldeano.GenerandoOro;
-import estructuras.Cimiento;
-import estructuras.Cuartel;
-import juego.Jugador;
+import modelo.espacio.Mapa;
+import modelo.estados.aldeano.Construyendo;
+import modelo.estados.aldeano.GenerandoOro;
+import modelo.estructuras.Cimiento;
+import modelo.estructuras.Cuartel;
+import modelo.excepciones.AldeanoOcupado;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.ContenibleNoPropia;
+import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import org.junit.Test;
-import unidades.Aldeano;
 
 import static org.junit.Assert.assertEquals;
 

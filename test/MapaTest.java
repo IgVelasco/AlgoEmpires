@@ -1,9 +1,9 @@
-import Excepciones.CasilleroOcupado;
-import Excepciones.ExcedeLimiteDelMapa;
-import espacio.Mapa;
-import estructuras.Castillo;
+import modelo.espacio.Mapa;
+import modelo.estructuras.Castillo;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.unidades.Aldeano;
 import org.junit.Test;
-import unidades.Aldeano;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

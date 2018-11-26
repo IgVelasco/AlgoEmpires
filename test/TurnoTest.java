@@ -1,4 +1,4 @@
-import juego.Turno;
+import modelo.juego.Turno;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

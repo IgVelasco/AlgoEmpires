@@ -1,6 +1,6 @@
-import Excepciones.OroInsuficiente;
-import Excepciones.PoblacionLimiteAlcanzada;
-import estructuras.Cuartel;
+import modelo.estructuras.Cuartel;
+import modelo.excepciones.OroInsuficiente;
+import modelo.excepciones.PoblacionLimiteAlcanzada;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
