@@ -20,7 +20,7 @@ public class ConstruyendoTest {
         Mapa unMapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(unMapa, 10, 0, null);
         Cuartel unCuartel = new Cuartel(null);
-        Cimiento unCimiento = new Cimiento(unCuartel);
+        Cimiento unCimiento = new Cimiento(unCuartel,unMapa,5,5,2 );
         Construyendo unEstado = new Construyendo(unCimiento);
         Aldeano unAldeano = new Aldeano(unJugador);
 

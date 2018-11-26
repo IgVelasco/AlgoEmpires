@@ -3,6 +3,7 @@ package espacio;
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import contenibles.Contenible;
+import estructuras.Castillo;
 import estructuras.Estructura;
 import unidades.UnidadMovil;
 
@@ -71,19 +72,25 @@ public class Mapa {
     }
 
 
-    public void liberarUbicacion(int x, int y) throws ExcedeLimiteDelMapa {
-        Posicion posicion = this.getPosicion(x, y);
+    public void liberarUbicacion(Posicion posicion) throws ExcedeLimiteDelMapa {
         mapa.get(posicion).liberar();
+    }
+
+    public void liberarUbicaciones(LinkedList<Posicion> posiciones){
+        for(Posicion pos: posiciones){
+            mapa.get(pos).liberar();
+        }
     }
 
 
     public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido(x, y); // aca hay que lanzar error si es estructura.
         this.colocarUnidadEn(unidad, x + incX, y + incY);
-        this.liberarUbicacion(x, y);
+        Posicion posicionABorrar = this.getPosicion(x, y);
+        this.liberarUbicacion(posicionABorrar);
     }
 
-    private Posicion getPosicion(int x, int y) throws ExcedeLimiteDelMapa {
+    public Posicion getPosicion(int x, int y) throws ExcedeLimiteDelMapa {
         Set<Posicion> posiciones = this.mapa.keySet();
         for (Posicion pos : posiciones) {
             if (pos.posicionCorrespondiente(x, y)) {
@@ -94,8 +101,32 @@ public class Mapa {
     }
 
     //Bad Code incoming
-    public LinkedList<Contenible> getConteniblesEnRango(LinkedList<Posicion> posiciones, int alcance, Estructura estructura) throws ExcedeLimiteDelMapa {
-        int x = posiciones.getFirst().getPosX();
+    public LinkedList<Contenible> getConteniblesEnRango(LinkedList<Posicion> posiciones, int alcance)
+            throws ExcedeLimiteDelMapa {
+
+        LinkedList<Posicion> posicionesEnAlcance = new LinkedList<>();
+
+        for (Posicion posicion : posiciones) {
+            posicionesEnAlcance.addAll(posicion.getPosicionesEnAlcance(alcance, this));
+
+        }
+
+        LinkedList<Contenible> unidadesEnAlcance = new LinkedList<>() ;
+
+        for (Posicion posicion : posicionesEnAlcance){
+            Contenible contenible = this.getContenido(posicion.getPosX(), posicion.getPosY());
+            if ( contenible != null) {
+                unidadesEnAlcance.add(contenible);
+            }
+        }
+
+        return unidadesEnAlcance;
+
+
+        //-----------------------------------------------
+
+
+        /*int x = posiciones.getFirst().getPosX();
         int y = posiciones.getFirst().getPosY();
 
         x -= alcance;
@@ -115,8 +146,10 @@ public class Mapa {
             }
 
         }
-        return conteniblesEnRango;
+        return conteniblesEnRango;*/
     }
+
+    public Set<Posicion> getAllPosiciones() { return this.mapa.keySet(); }
 }
 
 

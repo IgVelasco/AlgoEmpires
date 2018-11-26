@@ -23,15 +23,12 @@ public class AldeanoTest {
 
     @Test
     public void testAldeanoEstaConstruyendo() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado, ContenibleNoPropia {
-        Mapa mapa = new Mapa(20, 20);
+        Mapa mapa = new Mapa(30, 30);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
 
-        jugador.construirCuartel(unAldeano, 10, 10);
+        jugador.construirCuartel(unAldeano, 20, 20);
         assertEquals(100, jugador.getOro());
-
-        unAldeano.realizarAccionCorrespondiente();
-        assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
 
         unAldeano.realizarAccionCorrespondiente();
         assertEquals(Construyendo.class, unAldeano.getEstado().getClass());
@@ -124,14 +121,14 @@ public class AldeanoTest {
     }
 
     @Test(expected = AldeanoOcupado.class)
-    public void testAldeanoConstruyendoxception() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado, ContenibleNoPropia {
+    public void testAldeanoConstruyendoException() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado, ContenibleNoPropia {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
         Cuartel unCuartel = new Cuartel(null);
         Cuartel otroCuartel = new Cuartel(null);
-        Cimiento unCimiento = new Cimiento(unCuartel);
-        Cimiento otroCimiento = new Cimiento(otroCuartel);
+        Cimiento unCimiento = new Cimiento(unCuartel,mapa,10,10,2);
+        Cimiento otroCimiento = new Cimiento(otroCuartel,mapa,12,12,2);
 
         unAldeano.comenzarCimientos(unCimiento, jugador);
         unAldeano.comenzarCimientos(otroCimiento, jugador);

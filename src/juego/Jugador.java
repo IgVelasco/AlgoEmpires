@@ -43,7 +43,7 @@ public class Jugador {
         castillo.atacar(mapa);
     }
 
-    public void finalizarTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada {
+    public void finalizarTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada, CasilleroOcupado {
         juego.siguienteTurno();
     }
 
@@ -54,7 +54,7 @@ public class Jugador {
 
     public void construirPlazaCentral(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
-        Cimiento unCimiento = new Cimiento(unaPlazaCentral);
+        Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
         aldeano.comenzarCimientos(unCimiento, this);
         estructuras.add(unaPlazaCentral);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
@@ -65,11 +65,11 @@ public class Jugador {
     }
 
     public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia {
+
         Cuartel unCuartel = new Cuartel(this);
-        Cimiento elCimiento = new Cimiento(unCuartel);
+        Cimiento elCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
         //estructuras.add(unCuartel);  Todavia no deberia agregarse
         aldeano.comenzarCimientos(elCimiento,this);
-        mapa.colocarEstructuraEn(elCimiento, x, y, 2);
     }
 
 
@@ -95,7 +95,7 @@ public class Jugador {
 
     public void borrarUnidad(Posicion posicion) throws  ExcedeLimiteDelMapa {
         this.disminuirPoblacion();
-        mapa.liberarUbicacion(posicion.getPosX(), posicion.getPosY());
+        mapa.liberarUbicacion(posicion);
     }
 
     public int getPoblacionActual() {

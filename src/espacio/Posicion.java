@@ -1,5 +1,9 @@
 package espacio;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+
 import static java.lang.Integer.max;
 import static java.lang.Math.abs;
 
@@ -27,5 +31,17 @@ public class Posicion {
 
     public int getPosY() {
         return posY;
+    }
+
+    public Collection<Posicion> getPosicionesEnAlcance(int alcance, Mapa mapa) {
+        Collection<Posicion> posiciones = new ArrayList<>();
+
+        for(Posicion otraPosicion: mapa.getAllPosiciones()){
+            if (this.distancia(otraPosicion.getPosX(), otraPosicion.getPosY()) <= alcance){
+                posiciones.add(otraPosicion);
+            }
+
+        }
+        return posiciones;
     }
 }
