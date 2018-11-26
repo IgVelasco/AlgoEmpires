@@ -1,7 +1,9 @@
 package estados;
 
 import Excepciones.AldeanoOcupado;
+import Excepciones.CasilleroOcupado;
 import Excepciones.CimientoFinalizado;
+import Excepciones.ExcedeLimiteDelMapa;
 import estructuras.Cimiento;
 import unidades.Aldeano;
 
@@ -19,12 +21,8 @@ public class Construyendo implements Estado {
     }
 
     @Override
-    public void realizarAccion(Aldeano unAldeano) {
-        try {
-            cimiento.avanzarConstruccion();
-        } catch (CimientoFinalizado finalizado) {
-            unAldeano.liberarAldeano();
-        }
+    public void realizarAccion(Aldeano unAldeano) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+            cimiento.avanzarConstruccion(unAldeano);
     }
 
 }

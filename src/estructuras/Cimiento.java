@@ -1,8 +1,13 @@
 package estructuras;
 
+import Excepciones.CasilleroOcupado;
 import Excepciones.CimientoFinalizado;
 import Excepciones.CimientoNoFinalizado;
+import Excepciones.ExcedeLimiteDelMapa;
+import espacio.Mapa;
 import espacio.Posicion;
+import estados.Construyendo;
+import unidades.Aldeano;
 
 import java.util.LinkedList;
 
@@ -10,12 +15,21 @@ public class Cimiento extends Estructura {
 
     private Estructura estructuraCorrespondiente;
     private int turnosRestantes = 3;
+    private Mapa mapa;
+    private int posX;
+    private int posY;
+    private int dimensionCimiento;
 
-    public Cimiento(Estructura unaEstructura) {
+    public Cimiento(Estructura unaEstructura, Mapa elMapa, int x, int y, int dimension)
+            throws CasilleroOcupado, ExcedeLimiteDelMapa {
 
         estructuraCorrespondiente = unaEstructura;
         posiciones = new LinkedList<Posicion>();
-
+        mapa = elMapa;
+        posX = x;
+        posY = y;
+        dimensionCimiento = dimension;
+        elMapa.colocarEstructuraEn(this , x, y, dimension );
 
     }
 
@@ -23,14 +37,13 @@ public class Cimiento extends Estructura {
         return turnosRestantes;
     }
 
-    public void avanzarConstruccion() throws CimientoFinalizado {
-        if (turnosRestantes == 0) throw new CimientoFinalizado();
-
+    public void avanzarConstruccion(Aldeano aldeano) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         turnosRestantes--;
-    }
+        if (turnosRestantes == 0){
+            mapa.liberarUbicaciones(posiciones);
+            mapa.colocarEstructuraEn(estructuraCorrespondiente, posX, posY, dimensionCimiento );
+            aldeano.liberarAldeano();
+        }
 
-    public Estructura finalizarConstruccion() throws CimientoNoFinalizado {
-        if (turnosRestantes != 0) throw new CimientoNoFinalizado();
-        return estructuraCorrespondiente;
     }
 }

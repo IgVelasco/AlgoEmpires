@@ -1,63 +1,78 @@
+import Excepciones.CasilleroOcupado;
 import Excepciones.CimientoFinalizado;
 import Excepciones.CimientoNoFinalizado;
+import Excepciones.ExcedeLimiteDelMapa;
+import espacio.Mapa;
+import estados.GenerandoOro;
 import estructuras.Cimiento;
 import estructuras.Cuartel;
 import estructuras.Estructura;
+import juego.Jugador;
 import org.junit.Test;
+import unidades.Aldeano;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class CimientoTest {
 
     @Test
-    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() {
+    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
 
         Cuartel unCuartel = new Cuartel(null);
-        Cimiento cimientoCuartel = new Cimiento(unCuartel);
+        Mapa unMapa = new Mapa(20,20);
+        Cimiento cimientoCuartel = new Cimiento(unCuartel,unMapa,5,5,5);
 
         assertEquals(3, cimientoCuartel.getTurnosRestantes());
     }
 
     @Test
-    public void testCimientoAvanzaLosTurnosCuandoSeLoConstruye() throws CimientoFinalizado {
+    public void testCimientoAvanzaLosTurnosCuandoSeLoConstruye() throws CimientoFinalizado, CasilleroOcupado, ExcedeLimiteDelMapa {
 
-        Cimiento unCimiento = new Cimiento(null);
+        Mapa unMapa = new Mapa(20,20);
+        Cimiento unCimiento = new Cimiento(null,unMapa,5,5,5);
 
-        unCimiento.avanzarConstruccion();
+        unCimiento.avanzarConstruccion(null);
 
         assertEquals(2, unCimiento.getTurnosRestantes());
     }
 
-    @Test(expected = CimientoFinalizado.class)
-    public void testCimientoLanzaErrorCuandoNoQuedanMasTurnosRestantes() throws CimientoFinalizado {
-        Cimiento unCimiento = new Cimiento(null);
+    @Test
+    public void testCimientoColocaLaEstructuraLuegoDeTerminarSuConstruccion()
+            throws CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa unMapa = new Mapa(20,20);
+        Aldeano unAldeano = new Aldeano(null);
+        Cuartel unCuartel = new Cuartel(null);
+        Cimiento unCimiento = new Cimiento(unCuartel,unMapa,5,5,5);
 
-        unCimiento.avanzarConstruccion(); //Turnos restantes: 2
-        unCimiento.avanzarConstruccion(); //Turnos restantes: 1
-        unCimiento.avanzarConstruccion(); //Turnos restantes: 0
+        unCimiento.avanzarConstruccion(unAldeano);
+        assertEquals(unCimiento, unMapa.getContenido(5,5));
 
-        unCimiento.avanzarConstruccion(); // Este lanza excepcion
-    }
+        unCimiento.avanzarConstruccion(unAldeano);
+        unCimiento.avanzarConstruccion(unAldeano);
 
-    @Test(expected = CimientoNoFinalizado.class)
-    public void testCimientoLanzaErrorSiSeIntentaTerminarConstruccionAntes() throws CimientoNoFinalizado {
-        Cimiento unCimiento = new Cimiento(null);
+        assertEquals(unCuartel, unMapa.getContenido(5,5));
 
-        unCimiento.finalizarConstruccion();
     }
 
     @Test
-    public void testCimientoDevuelveLaEstructuraQueLeCorrespondeCuandoFinaliza() throws CimientoFinalizado, CimientoNoFinalizado {
+    public void testCimientoLiberaAlAldeanoDeSuConstruccion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+
+        Mapa unMapa = new Mapa(20,20);
+        Jugador jugador = new Jugador(unMapa , 5 , 5 , null);
+        Aldeano unAldeano = new Aldeano(jugador);
         Cuartel unCuartel = new Cuartel(null);
-        Cimiento unCimiento = new Cimiento(unCuartel);
+        Cimiento unCimiento = new Cimiento(unCuartel,unMapa,10,10,2);
 
-        unCimiento.avanzarConstruccion(); //Turnos restantes: 2
-        unCimiento.avanzarConstruccion(); //Turnos restantes: 1
-        unCimiento.avanzarConstruccion(); //Turnos restantes: 0
+        unCimiento.avanzarConstruccion(unAldeano);
+        unCimiento.avanzarConstruccion(unAldeano);
+        unCimiento.avanzarConstruccion(unAldeano);
 
-        Estructura nuevaEstructura = unCimiento.finalizarConstruccion();
+        unAldeano.realizarAccionCorrespondiente();
 
-        assertEquals(unCuartel, nuevaEstructura);
-
+        assertEquals(jugador.getOro(), 120);
     }
+
+
 }

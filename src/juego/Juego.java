@@ -24,7 +24,7 @@ public class Juego {
     }
 
 
-    public void siguienteTurno() throws ExcedeLimiteDelMapa {
+    public void siguienteTurno() throws ExcedeLimiteDelMapa, CasilleroOcupado {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
 

@@ -41,7 +41,7 @@ public class MapaTest {
         Aldeano aldeano = new Aldeano(null);
 
         mapa.colocarUnidadEn(aldeano, 4, 4);
-        mapa.liberarUbicacion(4, 4);
+        mapa.liberarUbicacion( mapa.getPosicion(4,4));
 
         assertNull(mapa.getContenido(4, 4));
     }
