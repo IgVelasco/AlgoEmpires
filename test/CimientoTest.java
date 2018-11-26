@@ -3,7 +3,7 @@ import Excepciones.CimientoFinalizado;
 import Excepciones.CimientoNoFinalizado;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
-import estados.GenerandoOro;
+import estadosAldeano.GenerandoOro;
 import estructuras.Cimiento;
 import estructuras.Cuartel;
 import estructuras.Estructura;

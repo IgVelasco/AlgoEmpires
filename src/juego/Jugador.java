@@ -36,7 +36,7 @@ public class Jugador {
         }
     }
 
-    public void nuevoTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada {
+    public void nuevoTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada, CasilleroOcupado {
         for (Accionables accionable : accionables) {
             accionable.realizarAccionCorrespondiente();
         }

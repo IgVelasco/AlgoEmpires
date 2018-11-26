@@ -12,7 +12,7 @@ public class Juego {
     private Turno turno;
 
 
-    public Juego(int DimensionHorizontal, int DimensionVertical) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public Juego(int DimensionHorizontal, int DimensionVertical) throws CasilleroOcupado, ExcedeLimiteDelMapa, ArmaYaCargada {
         turno = new Turno();
         jugadores = new Jugador[2];
         mapa = new Mapa(DimensionHorizontal, DimensionVertical);

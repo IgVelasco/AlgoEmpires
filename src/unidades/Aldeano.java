@@ -1,8 +1,6 @@
 package unidades;
 
-import Excepciones.AldeanoOcupado;
-import Excepciones.EdificioConVidaMaxima;
-import Excepciones.ContenibleNoPropia;
+import Excepciones.*;
 import estadosAldeano.Construyendo;
 import estadosAldeano.EstadoAldeano;
 import estadosAldeano.GenerandoOro;
@@ -25,7 +23,7 @@ public class Aldeano extends Accionables {
         return this.vida;
     }
 
-    public void realizarAccionCorrespondiente() {
+    public void realizarAccionCorrespondiente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         this.estado.realizarAccion(this);
     }
 
