@@ -181,6 +181,27 @@ public class ArmaDeAsedioTest {
 
     }
 
+    @Test (expected = ArmaNoCargada.class)
+    public void testErrorAtacarConArmaDeAsedioNoCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+
+        unArmaDeAsedio.realizarAccionCorrespondiente();
+        unArmaDeAsedio.atacar(unCastillo);
+
+
+        assertEquals(1000, unCastillo.getVida());
+
+    }
+
 
 
 

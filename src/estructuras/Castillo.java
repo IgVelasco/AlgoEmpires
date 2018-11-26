@@ -35,11 +35,6 @@ public class Castillo extends Estructura {
         return new ArmaDeAsedio(propietario);
     }
 
-    public void atacar(Castillo otroCastillo) {
-
-    }
-
-
     public void atacar(Mapa mapa) throws ExcedeLimiteDelMapa {
         LinkedList<Contenible> atacables =  mapa.getConteniblesEnRango(posiciones, ALCANCE);
 

@@ -3,6 +3,7 @@ import espacio.Mapa;
 import estructuras.Castillo;
 import juego.Jugador;
 import org.junit.Test;
+import unidades.ArmaDeAsedio;
 import unidades.Espadachin;
 
 import static org.junit.Assert.assertEquals;
@@ -21,6 +22,19 @@ public class CastilloTest {
         Castillo unCastillo = new Castillo(null);
 
         unCastillo.crearArmaDeAsedio(10);
+    }
+
+    @Test
+    public void testArmaDeAsedioCreadaConVidaCorrecta() throws OroInsuficiente, PoblacionLimiteAlcanzada, CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20, 20);
+
+        Jugador unJugador = new Jugador(mapa, 15, 15, null);
+
+        Castillo unCastillo = new Castillo(unJugador);
+
+        ArmaDeAsedio unArmaDeAsedio = unCastillo.crearArmaDeAsedio(1000);
+        assertEquals(150, unArmaDeAsedio.getVida());
+
     }
 
 
