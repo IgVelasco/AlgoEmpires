@@ -1,8 +1,8 @@
 import Excepciones.*;
 import espacio.Mapa;
-import estados.Construyendo;
-import estados.GenerandoOro;
-import estados.Reparando;
+import estadosAldeano.Construyendo;
+import estadosAldeano.GenerandoOro;
+import estadosAldeano.Reparando;
 import estructuras.Castillo;
 import estructuras.Cimiento;
 import estructuras.Cuartel;

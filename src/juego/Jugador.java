@@ -4,7 +4,9 @@ import Excepciones.*;
 import espacio.Mapa;
 import espacio.Posicion;
 import estructuras.*;
+import unidades.Accionables;
 import unidades.Aldeano;
+import unidades.ArmaDeAsedio;
 import unidades.UnidadMovil;
 
 import java.util.ArrayList;
@@ -14,8 +16,7 @@ public class Jugador {
     private Juego juego;
     private Castillo castillo;
     private ArrayList<Estructura> estructuras = new ArrayList<Estructura>();
-    private ArrayList<Aldeano> aldeanos = new ArrayList<Aldeano>();
-    private ArrayList<UnidadMovil> movidas = new ArrayList<UnidadMovil>();
+    private ArrayList<Accionables> accionables = new ArrayList<Accionables>();
     private int oro, poblacionActual, poblacionMaxima;
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
@@ -30,21 +31,19 @@ public class Jugador {
         mapa.colocarEstructuraEn(estructuras.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
 
         for (int i = 0; i < 3; i++) {
-            aldeanos.add(i, new Aldeano(this));
-            mapa.colocarUnidadEn(aldeanos.get(i), posicionCastilloHorizontal - 3, posicionCastilloVertical + i);
+            accionables.add(i, new Aldeano(this));
+            mapa.colocarUnidadEn(accionables.get(i), posicionCastilloHorizontal - 3, posicionCastilloVertical + i);
         }
     }
 
-    public void nuevoTurno() throws ExcedeLimiteDelMapa {
-        //this.turnoNumero++;
-
-        for (Aldeano aldeano : aldeanos) {
-            aldeano.realizarAccionCorrespondiente();
+    public void nuevoTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada {
+        for (Accionables accionable : accionables) {
+            accionable.realizarAccionCorrespondiente();
         }
         castillo.atacar(mapa);
     }
 
-    public void finalizarTurno() throws ExcedeLimiteDelMapa {
+    public void finalizarTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada {
         juego.siguienteTurno();
     }
 
@@ -59,6 +58,10 @@ public class Jugador {
         aldeano.comenzarCimientos(unCimiento, this);
         estructuras.add(unaPlazaCentral);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
+    }
+
+    public void construirAsedio() throws PoblacionLimiteAlcanzada, OroInsuficiente {
+        this.castillo.crearArmaDeAsedio(this.oro);
     }
 
     public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia {

@@ -1,9 +1,9 @@
-package estados;
+package estadosAldeano;
 
 import Excepciones.AldeanoOcupado;
 import unidades.Aldeano;
 
-public interface Estado {
+public interface EstadoAldeano {
 
     void realizarAccion(Aldeano unAldeano);
 

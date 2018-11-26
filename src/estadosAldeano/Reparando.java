@@ -1,10 +1,10 @@
-package estados;
+package estadosAldeano;
 
 import Excepciones.AldeanoOcupado;
 import estructuras.Estructura;
 import unidades.Aldeano;
 
-public class Reparando implements Estado {
+public class Reparando implements EstadoAldeano {
 
     public Estructura estructura;
 

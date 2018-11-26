@@ -1,7 +1,7 @@
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
-import estados.GenerandoOro;
+import estadosAldeano.GenerandoOro;
 import juego.Jugador;
 import org.junit.Test;
 import unidades.Aldeano;

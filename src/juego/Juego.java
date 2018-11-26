@@ -1,5 +1,6 @@
 package juego;
 
+import Excepciones.ArmaYaCargada;
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
@@ -11,7 +12,7 @@ public class Juego {
     private Turno turno;
 
 
-    public Juego(int DimensionHorizontal, int DimensionVertical) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public Juego(int DimensionHorizontal, int DimensionVertical) throws CasilleroOcupado, ExcedeLimiteDelMapa, ArmaYaCargada {
         turno = new Turno();
         jugadores = new Jugador[2];
         mapa = new Mapa(DimensionHorizontal, DimensionVertical);
@@ -24,7 +25,7 @@ public class Juego {
     }
 
 
-    public void siguienteTurno() throws ExcedeLimiteDelMapa {
+    public void siguienteTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
 

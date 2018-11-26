@@ -25,6 +25,7 @@ public class Espadachin extends UnidadMovil {
         posicion = pos;
     }
 
+
     public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa {
         if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 1)
             throw new ContenibleFueraDeRango();

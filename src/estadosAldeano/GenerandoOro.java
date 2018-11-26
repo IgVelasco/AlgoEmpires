@@ -1,8 +1,8 @@
-package estados;
+package estadosAldeano;
 
 import unidades.Aldeano;
 
-public class GenerandoOro implements Estado {
+public class GenerandoOro implements EstadoAldeano {
 
     private static final int ORO_GENERADO = 20;
     @Override
