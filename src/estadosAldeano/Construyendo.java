@@ -1,4 +1,4 @@
-package estados;
+package estadosAldeano;
 
 import Excepciones.AldeanoOcupado;
 import Excepciones.CasilleroOcupado;
@@ -7,7 +7,7 @@ import Excepciones.ExcedeLimiteDelMapa;
 import estructuras.Cimiento;
 import unidades.Aldeano;
 
-public class Construyendo implements Estado {
+public class Construyendo implements EstadoAldeano {
     private Cimiento cimiento;
 
     public Construyendo(Cimiento cimiento) {

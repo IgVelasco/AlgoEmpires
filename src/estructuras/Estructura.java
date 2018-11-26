@@ -42,18 +42,26 @@ public abstract class Estructura implements Contenible {
 
     public void ataqueDeEspadachin() {
         vida -= DANO_ESPADACHIN;
+        //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
+
     }
 
     public void ataqueDeArquero() {
         vida -= DANO_ARQUERO;
+        //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
+
     }
 
     public void ataqueDeCastillo() {
         vida -= DANO_CASTILLO;
+        //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
+
     }
 
     public void ataqueDeAsedio() {
         vida -= 75;
+    //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
+
     }
 
 

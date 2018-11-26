@@ -6,7 +6,7 @@ import Excepciones.CimientoNoFinalizado;
 import Excepciones.ExcedeLimiteDelMapa;
 import espacio.Mapa;
 import espacio.Posicion;
-import estados.Construyendo;
+import estadosAldeano.Construyendo;
 import unidades.Aldeano;
 
 import java.util.LinkedList;

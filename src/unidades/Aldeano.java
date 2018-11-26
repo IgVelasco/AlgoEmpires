@@ -1,17 +1,17 @@
 package unidades;
 
 import Excepciones.*;
-import estados.Construyendo;
-import estados.Estado;
-import estados.GenerandoOro;
-import estados.Reparando;
+import estadosAldeano.Construyendo;
+import estadosAldeano.EstadoAldeano;
+import estadosAldeano.GenerandoOro;
+import estadosAldeano.Reparando;
 import estructuras.Cimiento;
 import estructuras.Estructura;
 import juego.Jugador;
 
-public class Aldeano extends UnidadMovil {
+public class Aldeano extends Accionables {
 
-    private Estado estado = new GenerandoOro();
+    private EstadoAldeano estado = new GenerandoOro();
 
     public Aldeano(Jugador jugador) {
         propietario = jugador;
@@ -49,7 +49,7 @@ public class Aldeano extends UnidadMovil {
         this.propietario.sumarOro(oro);
     }
 
-    public Estado getEstado() {
+    public EstadoAldeano getEstado() {
         return estado;
     }
 

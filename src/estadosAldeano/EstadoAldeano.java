@@ -1,11 +1,11 @@
-package estados;
+package estadosAldeano;
 
 import Excepciones.AldeanoOcupado;
 import Excepciones.CasilleroOcupado;
 import Excepciones.ExcedeLimiteDelMapa;
 import unidades.Aldeano;
 
-public interface Estado {
+public interface EstadoAldeano {
 
     void realizarAccion(Aldeano unAldeano) throws CasilleroOcupado, ExcedeLimiteDelMapa;
 
