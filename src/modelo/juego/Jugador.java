@@ -104,4 +104,8 @@ public class Jugador {
     public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
         unidad.realizarMovimiento(mapa, x, y, this);
     }
+
+    public void accionableMuerto(Accionables unAccionable) {
+        accionables.remove(unAccionable);
+    }
 }

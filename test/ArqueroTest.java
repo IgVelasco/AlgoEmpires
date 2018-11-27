@@ -5,10 +5,12 @@ import modelo.excepciones.ContenibleDelMismoJugador;
 import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import modelo.unidades.Arquero;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class ArqueroTest {
 
@@ -112,5 +114,27 @@ public class ArqueroTest {
 
     }
 
+    @Test
+    public void testArqueroMataUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        Arquero unArquero = new Arquero(jugador);
+        Aldeano unAldeano = new Aldeano(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArquero, 0, 0);
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
+
+        unArquero.atacar(unAldeano);
+        unArquero.atacar(unAldeano);
+        unArquero.atacar(unAldeano);
+        unArquero.atacar(unAldeano);
+
+        assertEquals(-10, unAldeano.getVida());
+        assertNull(mapa.getContenido(1, 1));
+
+    }
 
 }

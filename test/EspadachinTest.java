@@ -5,10 +5,12 @@ import modelo.excepciones.ContenibleDelMismoJugador;
 import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import modelo.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class EspadachinTest {
 
@@ -109,6 +111,27 @@ public class EspadachinTest {
 
         assertEquals(985, unCastillo.getVida());
 
+
+    }
+
+    @Test
+    public void testEspadachinMataUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        Espadachin unEspadachin = new Espadachin(jugador);
+        Aldeano unAldeano = new Aldeano(otroJugador);
+
+
+        mapa.colocarUnidadEn(unEspadachin, 0, 0);
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
+
+        unEspadachin.atacar(unAldeano);
+        unEspadachin.atacar(unAldeano);
+
+        assertEquals(0, unAldeano.getVida());
+        assertNull(mapa.getContenido(1, 1));
 
     }
 

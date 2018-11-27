@@ -8,6 +8,7 @@ import modelo.unidades.Aldeano;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 
 public class JugadorTest {
@@ -52,7 +53,7 @@ public class JugadorTest {
         unAldeano.ataqueDeEspadachin();
         unAldeano.ataqueDeEspadachin();
 
-        assertEquals(null, mapa.getContenido(10,10));
+        assertNull(mapa.getContenido(10, 10));
     }
 
     @Test

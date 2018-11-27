@@ -5,11 +5,13 @@ import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.excepciones.OroInsuficiente;
 import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.juego.Jugador;
+import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
 import modelo.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class CastilloTest {
 
@@ -92,6 +94,27 @@ public class CastilloTest {
         unCastillo.atacar(mapa);
 
         assertEquals(100, unEspadachin.getVida());
+
+    }
+
+    @Test
+    public void testCastilloMataUnidad() throws  CasilleroOcupado, ExcedeLimiteDelMapa {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 15, 15, null);
+        Jugador otroJugador = new Jugador(mapa, 10, 10, null);
+
+        Castillo unCastillo = new Castillo(unJugador);
+        Aldeano unAldeano = new Aldeano(otroJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 4, 7);
+        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4);
+
+        unCastillo.atacar(mapa);
+        unCastillo.atacar(mapa);
+        unCastillo.atacar(mapa);
+
+        assertEquals(-10, unAldeano.getVida());
+        assertNull(mapa.getContenido(4, 7));
 
     }
 
