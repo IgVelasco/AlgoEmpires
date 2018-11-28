@@ -96,5 +96,4 @@ public class JugadorTest {
 
         assertEquals(0,unJugador.getPoblacionActual());
     }
-
 }
