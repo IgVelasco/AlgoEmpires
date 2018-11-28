@@ -8,7 +8,7 @@ import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.juego.Jugador;
 
-public class Espadachin extends UnidadMovil {
+public class Espadachin extends UnidadMovil implements Atacante {
 
 
     public Espadachin(Jugador unJugador) {
@@ -18,11 +18,6 @@ public class Espadachin extends UnidadMovil {
 
     public int getVida() {
         return this.vida;
-    }
-
-    @Override
-    public void setPosicion(Posicion pos) {
-        posicion = pos;
     }
 
 

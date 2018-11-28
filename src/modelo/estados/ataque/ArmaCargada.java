@@ -30,5 +30,10 @@ public class ArmaCargada implements EstadosAtaque{
         cargada = true;
     }
 
+    @Override
+    public boolean movible() {
+        return false;
+    }
+
 
 }

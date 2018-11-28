@@ -136,7 +136,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoSeMueveCorrectamenteHaciaAtras() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoSeMueveCorrectamenteHaciaAtras() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -147,7 +147,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoSeMueveCorrectamenteHaciaAdelante() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoSeMueveCorrectamenteHaciaAdelante() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -158,7 +158,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = MovimientoFueraDeRango.class)
-    public void testAldeanoNoPuedeMoverseMasDeUnCasillero() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoNoPuedeMoverseMasDeUnCasillero() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -168,7 +168,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testAldeanoNoPuedeMoverseFueraDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoNoPuedeMoverseFueraDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -178,7 +178,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = CasilleroOcupado.class)
-    public void testAldeanoNoPuedeMoverseAUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoNoPuedeMoverseAUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
         Aldeano otroAldeano = new Aldeano(null);
@@ -190,7 +190,7 @@ public class AldeanoTest {
     }
 
     @Test(expected = UnidadYaUtilizada.class)
-    public void testAldeanoNoPuedeMoverseDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoNoPuedeMoverseDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -201,7 +201,7 @@ public class AldeanoTest {
     }
 
     @Test
-    public void testAldeanoPuedeMoverseDevueltaAlPasarElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoPuedeMoverseDevueltaAlPasarElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
 
@@ -216,7 +216,7 @@ public class AldeanoTest {
     }
 
     @Test (expected = ContenibleNoPropia.class)
-    public void testAldeanoNoPuedoMoverSiNoEsPropio() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void testAldeanoNoPuedoMoverSiNoEsPropio() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
 
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa,5,5,null);

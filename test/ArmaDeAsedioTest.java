@@ -120,6 +120,109 @@ public class ArmaDeAsedioTest {
     }
 
 
+    @Test(expected = ArmaCargadaNoSePuedeMover.class)
+    public void testArmaDeAsedioNoSePuedeMoverSiCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+
+        unArmaDeAsedio.cargarArma();
+        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
+        unArmaDeAsedio.atacar(unCastillo);
+
+    }
+
+    @Test(expected = ArmaCargadaNoSePuedeMover.class)
+    public void testArmaDeAsedioNoSePuedeMoverSiCargadaEnOtroTurno() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+
+        unArmaDeAsedio.cargarArma();
+        unArmaDeAsedio.realizarAccionCorrespondiente();
+        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
+
+
+    }
+
+    @Test
+    public void testArmaDeAsedioSePuedeMoverDescargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+
+        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
+
+        assertEquals(mapa.getContenido(1,0), unArmaDeAsedio);
+
+
+    }
+
+    @Test(expected = ArmaCargadaNoSePuedeMover.class)
+    public void testArmaDeAsedioNoSePuedeMoverDespuesDeDescargar() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+
+        unArmaDeAsedio.cargarArma();
+        unArmaDeAsedio.realizarAccionCorrespondiente();
+        unArmaDeAsedio.atacar(unCastillo);
+        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
+        assertEquals(mapa.getContenido(1,0), unArmaDeAsedio);
+    }
+
+    @Test
+    public void testArmaDeAsedioSePuedeMoverDespuesDeDescargarYQuePaseElTurno() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Castillo unCastillo = new Castillo(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+
+        unArmaDeAsedio.cargarArma();
+        unArmaDeAsedio.realizarAccionCorrespondiente();
+        unArmaDeAsedio.atacar(unCastillo);
+        unArmaDeAsedio.realizarAccionCorrespondiente();
+        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
+        assertEquals(mapa.getContenido(1,0), unArmaDeAsedio);
+    }
+
+
     @Test (expected = ArmaNoCargada.class)
     public void testArmaDeAsedioNoAtacaSinEstarCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno {
         Mapa mapa = new Mapa(20, 20);

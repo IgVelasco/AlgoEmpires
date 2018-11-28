@@ -7,7 +7,7 @@ import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.juego.Jugador;
 
-public class Arquero extends UnidadMovil {
+public class Arquero extends UnidadMovil implements Atacante{
 
     public Arquero(Jugador unJugador) {
         vida = 75;

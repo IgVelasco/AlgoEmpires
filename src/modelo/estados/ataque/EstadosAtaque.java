@@ -10,4 +10,6 @@ public interface EstadosAtaque {
     void cargarArma() throws ArmaYaCargada, ArmaSeCargaEnSiguienteTurno;
 
     void realizarAccion();
+
+    boolean movible();
 }

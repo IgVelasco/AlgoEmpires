@@ -1,11 +1,13 @@
 package modelo.juego;
 
+import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.*;
 import modelo.excepciones.*;
 import modelo.unidades.Accionables;
 import modelo.unidades.Aldeano;
+import modelo.unidades.Atacante;
 import modelo.unidades.UnidadMovil;
 
 import java.util.ArrayList;
@@ -16,6 +18,8 @@ public class Jugador {
     private Castillo castillo;
     private ArrayList<Estructura> estructuras = new ArrayList<Estructura>();
     private ArrayList<Accionables> accionables = new ArrayList<Accionables>();
+    private ArrayList<UnidadMovil> movidos = new ArrayList<UnidadMovil>();
+    private ArrayList<Atacante> atacaron = new ArrayList<Atacante>();
     private int oro, poblacionActual, poblacionMaxima;
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
@@ -101,8 +105,20 @@ public class Jugador {
         return this.poblacionActual;
     }
 
-    public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia {
+    public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+        if(movidos.contains(unidad))
+            throw new UnidadYaUtilizada();
         unidad.realizarMovimiento(mapa, x, y, this);
+        movidos.add(unidad);
+    }
+
+    public void atacar(Atacante unidad, int x , int y) throws ExcedeLimiteDelMapa, UnidadYaUtilizada, ArmaNoCargada, ContenibleFueraDeRango, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
+        if(atacaron.contains(unidad))
+            throw new UnidadYaUtilizada();
+
+        Contenible objetivoDeAtaque = mapa.getContenido(x, y);
+        unidad.atacar(objetivoDeAtaque);
+        atacaron.add(unidad);
     }
 
     public void accionableMuerto(Accionables unAccionable) {
