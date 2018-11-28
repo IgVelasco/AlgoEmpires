@@ -14,12 +14,7 @@ public abstract class UnidadMovil implements Contenible {
             DANO_CASTILLO = 20;
     public int vida;
     Posicion posicion;
-    boolean sePuedeMover;
     Jugador propietario;
-
-    public UnidadMovil() {
-        sePuedeMover = true;
-    }
 
 
     /* int posicionHorizontal;
@@ -55,15 +50,12 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
-        if (!sePuedeMover)
-            throw new UnidadYaUtilizada();
         if (this.calcularDistancia(this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)
             throw new MovimientoFueraDeRango();
         mapa.mover(this.posicion.getPosX(), this.posicion.getPosY(), x, y);
-        sePuedeMover = false;
     }
 
     public int calcularDistancia(int x, int y) {
@@ -72,10 +64,6 @@ public abstract class UnidadMovil implements Contenible {
 
     public void setPosicion(Posicion pos) {
         posicion = pos;
-    }
-
-    public void permitirMovimiento() {
-        sePuedeMover = true;
     }
 
 }

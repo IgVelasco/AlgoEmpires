@@ -15,7 +15,6 @@ public class Aldeano extends Accionables {
 
     public Aldeano(Jugador jugador) {
         propietario = jugador;
-        sePuedeMover = true;
         vida = 50;
     }
 

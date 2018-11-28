@@ -25,7 +25,7 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
     }
 
 
-    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, UnidadYaUtilizada, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         if(!estado.movible())
             throw new ArmaCargadaNoSePuedeMover();
         super.realizarMovimiento(mapa, x, y, unJugador);

@@ -189,7 +189,7 @@ public class AldeanoTest {
         unAldeano.realizarMovimiento(mapa, 1, 1, null);
     }
 
-    @Test(expected = UnidadYaUtilizada.class)
+    /*@Test(expected = UnidadYaUtilizada.class)
     public void testAldeanoNoPuedeMoverseDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
@@ -198,9 +198,9 @@ public class AldeanoTest {
 
         unAldeano.realizarMovimiento(mapa, 1, 1, null);
         unAldeano.realizarMovimiento(mapa, 1, 1, null);
-    }
+    }*/
 
-    @Test
+    /*@Test
     public void testAldeanoPuedeMoverseDevueltaAlPasarElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
         Aldeano unAldeano = new Aldeano(null);
@@ -213,7 +213,7 @@ public class AldeanoTest {
         unAldeano.permitirMovimiento();
         unAldeano.realizarMovimiento(mapa, 1, 1, null);
         assertEquals(unAldeano, mapa.getContenido(3, 3));
-    }
+    }*/
 
     @Test (expected = ContenibleNoPropia.class)
     public void testAldeanoNoPuedoMoverSiNoEsPropio() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
