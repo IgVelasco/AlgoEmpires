@@ -1,7 +1,10 @@
+import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -171,6 +174,70 @@ public class JugadorTest {
 
         unJugador.construirAsedio();
     }
+
+    @Test (expected = ContenibleFueraDeRango.class)
+    public void testUnidadNoPuedeAtacarFueraDeSuRango() throws CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleFueraDeRango, ArmaNoCargada, UnidadYaUtilizada, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Jugador otroJugadpr = new Jugador(mapa, 10, 10, null);
+        Espadachin unEspadachin = new Espadachin(unJugador);
+        Aldeano unAldeano =  new Aldeano(otroJugadpr);
+
+        mapa.colocarUnidadEn(unEspadachin, 1, 1);
+        mapa.colocarUnidadEn(unAldeano, 5, 5);
+
+        unJugador.atacar(unEspadachin, 5, 5);
+    }
+
+    @Test (expected = ContenibleDelMismoJugador.class)
+    public void testUnidadNoPuedeAtacarAUnAldeanoAliado() throws CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleFueraDeRango, ArmaNoCargada, UnidadYaUtilizada, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Espadachin unEspadachin = new Espadachin(unJugador);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unEspadachin, 1, 1);
+        mapa.colocarUnidadEn(unAldeano, 2, 2);
+
+        unJugador.atacar(unEspadachin, 2, 2);
+    }
+
+    @Test (expected = UnidadYaUtilizada.class)
+    public void testUnidadNoPuedeAtacarDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleFueraDeRango, ArmaNoCargada, UnidadYaUtilizada, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Jugador otroJugadpr = new Jugador(mapa, 10, 10, null);
+        Espadachin unEspadachin = new Espadachin(unJugador);
+        Aldeano unAldeano =  new Aldeano(otroJugadpr);
+
+        mapa.colocarUnidadEn(unEspadachin, 1, 1);
+        mapa.colocarUnidadEn(unAldeano, 2, 2);
+
+        unJugador.atacar(unEspadachin, 2, 2);
+        unJugador.atacar(unEspadachin, 2, 2);
+    }
+
+    @Test
+    public void testUnidadAtacaCorrectamenteDosVecesSiPasaElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleFueraDeRango, ArmaNoCargada, UnidadYaUtilizada, AsedioNoAtacaUnidad, ContenibleDelMismoJugador, ArmaYaCargada {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Jugador otroJugadpr = new Jugador(mapa, 10, 10, null);
+        Arquero unArquero = new Arquero(unJugador);
+        Aldeano unAldeano =  new Aldeano(otroJugadpr);
+
+        mapa.colocarUnidadEn(unArquero, 1, 1);
+        mapa.colocarUnidadEn(unAldeano, 2, 2);
+
+        unJugador.atacar(unArquero, 2, 2);
+
+        assertEquals(35, unAldeano.getVida());
+
+        unJugador.nuevoTurno();
+        unJugador.atacar(unArquero, 2, 2);
+
+        assertEquals(20, unAldeano.getVida());
+    }
+
 
 
 }

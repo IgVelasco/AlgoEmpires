@@ -46,6 +46,16 @@ public class AldeanoTest {
 
     }
 
+    @Test (expected = AldeanoOcupado.class)
+    public void testAldeanoNoPuedeConstruirDosCosasALaVez() throws CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia, AldeanoOcupado {
+        Mapa mapa = new Mapa(30, 30);
+        Jugador unJugador = new Jugador(mapa, 5, 5, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        unJugador.construirCuartel(unAldeano, 20, 20);
+        unJugador.construirPlazaCentral(unAldeano, 10, 10);
+    }
+
     @Test
     public void testAldeanoEstaReparandoNoDaOro() throws CasilleroOcupado, ExcedeLimiteDelMapa, EdificioConVidaMaxima, AldeanoOcupado {
         Mapa mapa = new Mapa(20, 20);
@@ -55,7 +65,7 @@ public class AldeanoTest {
 
         unCastillo.ataqueDeEspadachin();
 
-        unAldeano.comenzarReparacion(unCastillo);
+        jugador.repararEstructura(unAldeano, unCastillo);
         assertEquals(100, jugador.getOro());
 
         unAldeano.realizarAccionCorrespondiente();
