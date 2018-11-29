@@ -45,6 +45,7 @@ public class Jugador {
         }
         castillo.atacar(mapa);
         movidos.clear();
+        atacaron.clear();
     }
 
     public void finalizarTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada, CasilleroOcupado {
