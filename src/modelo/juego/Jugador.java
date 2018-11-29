@@ -78,8 +78,8 @@ public class Jugador {
     }
 
 
-    public void repararEstructura(Aldeano unAldeano, Cuartel unCuartel) throws EdificioConVidaMaxima, AldeanoOcupado {
-        unAldeano.comenzarReparacion(unCuartel);
+    public void repararEstructura(Aldeano unAldeano, Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
+        unAldeano.comenzarReparacion(unaEstructura);
     }
 
     public int getOro() {

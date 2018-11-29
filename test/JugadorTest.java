@@ -1,8 +1,5 @@
 import modelo.espacio.Mapa;
-import modelo.excepciones.ArmaYaCargada;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ExcedeLimiteDelMapa;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
+import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import org.junit.Test;
@@ -96,4 +93,84 @@ public class JugadorTest {
 
         assertEquals(0,unJugador.getPoblacionActual());
     }
+
+    @Test
+    public void testUnidadSeMueveCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano,1, 1);
+        unJugador.mover(unAldeano, 1, 1);
+
+        assertEquals(unAldeano, mapa.getContenido(2, 2));
+    }
+
+    @Test (expected = MovimientoFueraDeRango.class)
+    public void testMoverDosCasillerosNoSePuede() throws CasilleroOcupado, ExcedeLimiteDelMapa, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
+        unJugador.mover(unAldeano, 2, 2);
+    }
+
+    @Test
+    public void testPuedoMoverDosAldeanosDistintosEnElMismoTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+        Aldeano otroAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 2, 2);
+        mapa.colocarUnidadEn(otroAldeano, 5, 5);
+
+        unJugador.mover(unAldeano,1, 1);
+        unJugador.mover(otroAldeano, 1, 1);
+
+        assertEquals(unAldeano, mapa.getContenido(3, 3));
+        assertEquals(otroAldeano, mapa.getContenido(6, 6));
+    }
+
+    @Test (expected = UnidadYaUtilizada.class)
+    public void testUnidadSoloPuedeMoverseUnaVezPorTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
+        unJugador.mover(unAldeano, 1, 1);
+
+        assertEquals(unAldeano, mapa.getContenido(2, 2));
+
+        unJugador.mover(unAldeano, 1, 1);
+    }
+
+    @Test
+    public void testPuedoMoverDosVecesAUnaUnidadSiPasaElTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada, ArmaYaCargada {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 1, 1);
+        unJugador.mover(unAldeano, 1, 1);
+
+        assertEquals(unAldeano, mapa.getContenido(2, 2));
+
+        unJugador.nuevoTurno();
+        unJugador.mover(unAldeano, 1, 1);
+
+        assertEquals(unAldeano, mapa.getContenido(3, 3));
+    }
+
+    @Test (expected = OroInsuficiente.class)
+    public void testNoPuedoConstruirAsedioConOroInicial() throws CasilleroOcupado, ExcedeLimiteDelMapa, PoblacionLimiteAlcanzada, OroInsuficiente {
+        Mapa mapa = new Mapa (20, 20);
+        Jugador unJugador = new Jugador(mapa, 10, 0, null);
+
+        unJugador.construirAsedio();
+    }
+
+
 }
