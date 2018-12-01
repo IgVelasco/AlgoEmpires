@@ -16,7 +16,7 @@ import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 
-public class Main extends Application {
+public class AlgoEmpires extends Application {
 
     private static final String TITULO_VENTANA = "Algo Empires";
     private static final String TITULO_ESCENA = "file:src/vista/imagenes/titulo.png";
