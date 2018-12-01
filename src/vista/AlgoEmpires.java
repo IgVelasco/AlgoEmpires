@@ -55,7 +55,7 @@ public class AlgoEmpires extends Application {
 
         Button botonAcercaDe = new Button("Acerca de...");
         botonAcercaDe.setId("botonAcercaDe");
-        botonAcercaDe.setOnAction(new BotonEventHandler(escenario, botonAcercaDe));
+        botonAcercaDe.setOnAction(new BotonEventHandler());
 
         Button botonSalir = new Button("Salir");
         botonSalir.setId("botonSalir");
