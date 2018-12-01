@@ -7,19 +7,26 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 
 
 public class AlgoEmpires extends Application {
 
+    private Stage escenario;
+    private Scene escenaInicial;
     private static final String TITULO_VENTANA = "Algo Empires";
+    private static final String ICONO_VENTANA = "imagenes/icono.png";
     private static final String TITULO_ESCENA = "file:src/vista/imagenes/titulo.png";
+    private static final String SONIDO_INICIO = "sonidos/sonido_inicio.mp3";
     private static final int ANCHO = 715;
     private static final int ALTO = 488;
     private static final String ARCHIVO_ESTILOS = "file:src/vista/style.css";
@@ -29,21 +36,18 @@ public class AlgoEmpires extends Application {
     }
 
     public void start(Stage escenario) {
-        AudioClip sonidoInicio = new AudioClip(
-                getClass().getResource("sonidos/sonido_inicio.mp3").toExternalForm()
-        );
-        sonidoInicio.play();
+        this.escenario = escenario;
 
-        BorderPane raiz = new BorderPane();
-
+        Image icono = new Image(getClass().getResourceAsStream(ICONO_VENTANA));
+        AudioClip sonidoInicio = new AudioClip(getClass().getResource(SONIDO_INICIO).toExternalForm());
         Image imagenTitulo = new Image(TITULO_ESCENA, true);
         ImageView titulo = new ImageView(imagenTitulo);
+
+        BorderPane raiz = new BorderPane();
         BorderPane.setAlignment(titulo, Pos.CENTER);
         BorderPane.setMargin(titulo, new Insets(32, 0, 0, 0));
 
         raiz.setTop(titulo);
-
-        GridPane botonera = new GridPane();
 
         Button botonJugar = new Button("¡Jugar!");
         botonJugar.setId("botonJugar");
@@ -57,26 +61,22 @@ public class AlgoEmpires extends Application {
         botonSalir.setId("botonSalir");
         botonSalir.setOnAction(actionEvent -> Platform.exit());
 
-        ColumnConstraints columnas = new ColumnConstraints();
-        columnas.setHalignment(HPos.CENTER);
-
-        botonera.getColumnConstraints().add(columnas);
+        VBox botonera = new VBox(botonJugar, botonAcercaDe, botonSalir);
         botonera.setAlignment(Pos.CENTER);
-        botonera.setVgap(16);
-
-        botonera.add(botonJugar, 0, 0);
-        botonera.add(botonAcercaDe, 0, 1);
-        botonera.add(botonSalir, 0, 2);
+        botonera.setSpacing(16);
 
         raiz.setCenter(botonera);
 
-        Scene escena = new Scene(raiz, ANCHO, ALTO);
-        escena.getStylesheets().add(ARCHIVO_ESTILOS);
+        Scene escenaInicial = new Scene(raiz, ANCHO, ALTO);
+        escenaInicial.getStylesheets().add(ARCHIVO_ESTILOS);
+        this.escenaInicial = escenaInicial;
 
+        escenario.getIcons().add(icono);
         escenario.setTitle(TITULO_VENTANA);
         escenario.resizableProperty().setValue(false);
-        escenario.setScene(escena);
+        escenario.setScene(escenaInicial);
 
+        sonidoInicio.play();
         escenario.show();
     }
 }
