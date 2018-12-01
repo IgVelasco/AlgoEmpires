@@ -2,12 +2,14 @@
     -fx-background-image: url("imagenes/fondo.png");
 }
 
-.button {
-    -fx-background-color: saddlebrown;
-    -fx-background-radius: 4;
+.button, #campoJugador, #nombreJugador {
     -fx-text-fill: white;
     -fx-font-size: 16;
-    -fx-font-weight: bold;
+}
+
+.button, #campoJugador {
+    -fx-background-color: saddlebrown;
+    -fx-background-radius: 4;
 }
 
 .button:focused {
@@ -25,3 +27,8 @@
     -fx-scale-z: 0.9;
 }
 
+#botonWololo {
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+    -fx-padding: 16;
+}
