@@ -42,6 +42,16 @@ public class JugadorTest {
         assertEquals(160, unJugador.getOro());
     }
 
+
+    @Test
+    public void testJugadorTurnoDaOroCorrectoAlAgregarAldeano() throws CasilleroOcupado, ExcedeLimiteDelMapa, ArmaYaCargada {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador unJugador = new Jugador(mapa, 20 / 2, 0, null);
+        unJugador.nuevoTurno();
+
+        assertEquals(160, unJugador.getOro());
+    }
+
     @Test
     public void testMatarUnidadLiberaUbicacion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20, 20);

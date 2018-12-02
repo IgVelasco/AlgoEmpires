@@ -29,6 +29,9 @@ public class Juego {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
 
+    public void perdedor(Jugador jugador) {
+        //ganador(jugadores[turno.siguienteTurno()])
+    }
 }
 
 

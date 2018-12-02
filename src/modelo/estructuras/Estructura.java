@@ -3,6 +3,7 @@ package modelo.estructuras;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.excepciones.EdificioConVidaMaxima;
+import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 
@@ -40,29 +41,35 @@ public abstract class Estructura implements Contenible {
         return vida;
     }
 
-    public void ataqueDeEspadachin() {
+    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
         vida -= DANO_ESPADACHIN;
-        //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
-
+        if ( this.vida <= 0 )
+            propietario.borrarEstructura(posiciones);
     }
 
-    public void ataqueDeArquero() {
+    public void ataqueDeArquero() throws ExcedeLimiteDelMapa {
         vida -= DANO_ARQUERO;
-        //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
+        if ( this.vida <= 0 )
+            propietario.borrarEstructura(posiciones);
 
     }
 
-    public void ataqueDeCastillo() {
+    public void ataqueDeCastillo() throws ExcedeLimiteDelMapa {
         vida -= DANO_CASTILLO;
-        //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
-
+        if ( this.vida <= 0 )
+            propietario.borrarEstructura(posiciones);
     }
 
-    public void ataqueDeAsedio() {
+    public void ataqueDeAsedio() throws ExcedeLimiteDelMapa {
         vida -= 75;
-    //    if ( this.vida <= 0 ) propietario.borrarUnidad(posiciones);
-
+        if ( this.vida <= 0 )
+            this.borrarEstructura();
     }
+
+    public void borrarEstructura() throws ExcedeLimiteDelMapa {
+        propietario.borrarEstructura(posiciones);
+    }
+
 
 
     public void ponerAReparar() throws EdificioConVidaMaxima {

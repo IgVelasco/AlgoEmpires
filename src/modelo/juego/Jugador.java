@@ -11,12 +11,12 @@ import modelo.unidades.Atacante;
 import modelo.unidades.UnidadMovil;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Jugador {
     private Mapa mapa;
     private Juego juego;
     private Castillo castillo;
-    private ArrayList<Estructura> estructuras = new ArrayList<Estructura>();
     private ArrayList<Accionables> accionables = new ArrayList<Accionables>();
     private ArrayList<UnidadMovil> movidos = new ArrayList<UnidadMovil>();
     private ArrayList<Atacante> atacaron = new ArrayList<Atacante>();
@@ -24,14 +24,14 @@ public class Jugador {
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         castillo = new Castillo(this);
-        estructuras.add(new PlazaCentral(this));
+        PlazaCentral plazaInicial = new PlazaCentral(this);
         this.mapa = mapa;
         this.oro = 100;
         this.poblacionActual = 3;
         this.poblacionMaxima = 50;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4);
-        mapa.colocarEstructuraEn(estructuras.get(0), posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
+        mapa.colocarEstructuraEn(plazaInicial, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
 
         for (int i = 0; i < 3; i++) {
             accionables.add(i, new Aldeano(this));
@@ -61,7 +61,6 @@ public class Jugador {
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
         aldeano.comenzarCimientos(unCimiento, this);
-        estructuras.add(unaPlazaCentral);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
     }
 
@@ -73,7 +72,6 @@ public class Jugador {
 
         Cuartel unCuartel = new Cuartel(this);
         Cimiento elCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
-        //estructuras.add(unCuartel);  Todavia no deberia agregarse
         aldeano.comenzarCimientos(elCimiento,this);
     }
 
@@ -103,6 +101,12 @@ public class Jugador {
         mapa.liberarUbicacion(posicion);
     }
 
+    public void borrarEstructura(LinkedList<Posicion> posiciones) throws  ExcedeLimiteDelMapa {
+        this.disminuirPoblacion();
+        mapa.liberarUbicaciones(posiciones);
+    }
+
+
     public int getPoblacionActual() {
         return this.poblacionActual;
     }
@@ -126,4 +130,20 @@ public class Jugador {
     public void accionableMuerto(Accionables unAccionable) {
         accionables.remove(unAccionable);
     }
+
+
+    public void agregarAccionable(Accionables unAccionable){
+        accionables.add(unAccionable);
+    }
+
+
+    public void agregarAtacante(Atacante unAtacante){
+        atacaron.add(unAtacante);
+    }
+
+    public void perdedor() {
+        juego.perdedor(this);
+    }
 }
+
+

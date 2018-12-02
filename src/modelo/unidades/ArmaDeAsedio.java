@@ -41,7 +41,7 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         estado = new ArmaCargada();
     }
 
-    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada {
+    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ExcedeLimiteDelMapa {
         estado.ataqueListo();
         if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
             throw new ContenibleFueraDeRango();

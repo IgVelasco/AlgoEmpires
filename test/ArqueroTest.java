@@ -1,5 +1,6 @@
 import modelo.espacio.Mapa;
 import modelo.estructuras.Castillo;
+import modelo.estructuras.Cuartel;
 import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.ContenibleDelMismoJugador;
 import modelo.excepciones.ContenibleFueraDeRango;
@@ -136,5 +137,31 @@ public class ArqueroTest {
         assertNull(mapa.getContenido(1, 1));
 
     }
+
+    @Test
+    public void testArqueroMataEstructura() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        Arquero unArquero = new Arquero(jugador);
+        Cuartel unCuartel = new Cuartel(otroJugador);
+
+
+        mapa.colocarUnidadEn(unArquero, 0, 0);
+        mapa.colocarEstructuraEn(unCuartel, 1, 1, 2);
+
+
+        for (int x = 0; x<25 ;x++) {
+            unArquero.atacar(unCuartel);
+        }
+        assertEquals(0, unCuartel.getVida());
+        assertNull(mapa.getContenido(1, 1));
+        assertNull(mapa.getContenido(1, 2));
+        assertNull(mapa.getContenido(2, 1));
+        assertNull(mapa.getContenido(2, 2));
+
+    }
+
 
 }

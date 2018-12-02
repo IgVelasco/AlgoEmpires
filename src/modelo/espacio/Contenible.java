@@ -15,5 +15,5 @@ public interface Contenible {
 
     void ataqueDeCastillo() throws ExcedeLimiteDelMapa;
 
-    void ataqueDeAsedio() throws AsedioNoAtacaUnidad;
+    void ataqueDeAsedio() throws AsedioNoAtacaUnidad, ExcedeLimiteDelMapa;
 }

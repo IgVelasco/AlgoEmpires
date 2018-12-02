@@ -27,6 +27,8 @@ public class Castillo extends Estructura {
 
     }
 
+
+
     public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
         if (oroDisponible < PRECIO_ARMA_DE_ASEDIO) {
             throw new OroInsuficiente();
@@ -51,5 +53,10 @@ public class Castillo extends Estructura {
             yaAtacados.add(atacable);
 
         }
+    }
+
+    public void borrarEstructura() throws ExcedeLimiteDelMapa {
+        propietario.borrarEstructura(posiciones);
+        propietario.perdedor();
     }
 }
