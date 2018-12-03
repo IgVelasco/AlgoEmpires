@@ -12,22 +12,22 @@ public abstract class Accionables extends UnidadMovil {
             DANO_CASTILLO = 20;
 
 
-    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
-        this.vida -= DANO_ESPADACHIN;
-        if ( this.vida <= 0 )
+    public void recibirAtaque(int dano) throws ExcedeLimiteDelMapa {
+        this.vida -= dano;
+        if (this.vida <= 0)
             matar();
+    }
+
+    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
+        recibirAtaque(DANO_ESPADACHIN);
     }
 
     public void ataqueDeArquero() throws ExcedeLimiteDelMapa {
-        this.vida -= DANO_ARQUERO;
-        if ( this.vida <= 0 )
-            matar();
+        recibirAtaque(DANO_ARQUERO);
     }
 
     public void ataqueDeCastillo() throws ExcedeLimiteDelMapa {
-        vida -= DANO_CASTILLO;
-        if ( this.vida <= 0 )
-            matar();
+        recibirAtaque(DANO_CASTILLO);
     }
 
     private void matar() throws ExcedeLimiteDelMapa {
