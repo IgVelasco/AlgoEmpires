@@ -16,7 +16,8 @@ public abstract class Estructura implements Contenible {
     private static final int
             DANO_ARQUERO = 10,
             DANO_ESPADACHIN = 15,
-            DANO_CASTILLO = 20;
+            DANO_CASTILLO = 20,
+            DANO_ASEDIO = 75;
     int vida;
     int vidaMaxima;
     int velocidadDeReparacion;
@@ -41,29 +42,26 @@ public abstract class Estructura implements Contenible {
         return vida;
     }
 
-    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
-        vida -= DANO_ESPADACHIN;
-        if ( this.vida <= 0 )
+    public void recibirAtaque(int dano) throws ExcedeLimiteDelMapa {
+        this.vida -= dano;
+        if (this.vida <= 0)
             propietario.borrarEstructura(posiciones);
+    }
+    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
+        recibirAtaque(DANO_ESPADACHIN);
     }
 
     public void ataqueDeArquero() throws ExcedeLimiteDelMapa {
-        vida -= DANO_ARQUERO;
-        if ( this.vida <= 0 )
-            propietario.borrarEstructura(posiciones);
+        recibirAtaque(DANO_ARQUERO);
 
     }
 
     public void ataqueDeCastillo() throws ExcedeLimiteDelMapa {
-        vida -= DANO_CASTILLO;
-        if ( this.vida <= 0 )
-            propietario.borrarEstructura(posiciones);
+        recibirAtaque(DANO_CASTILLO);
     }
 
     public void ataqueDeAsedio() throws ExcedeLimiteDelMapa {
-        vida -= 75;
-        if ( this.vida <= 0 )
-            this.borrarEstructura();
+        recibirAtaque(DANO_ASEDIO);
     }
 
     public void borrarEstructura() throws ExcedeLimiteDelMapa {

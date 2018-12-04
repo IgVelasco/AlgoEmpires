@@ -5,6 +5,7 @@ import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
+import org.omg.DynamicAny.DynAnyOperations;
 
 public abstract class UnidadMovil implements Contenible {
 
@@ -30,19 +31,22 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
+    public void recibirAtaque(int dano) throws ExcedeLimiteDelMapa {
+        this.vida -= dano;
+        if (this.vida <= 0)
+            propietario.borrarUnidad(posicion);
+    }
+
     public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
-        this.vida -= DANO_ESPADACHIN;
-        if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
+        recibirAtaque(DANO_ESPADACHIN);
     }
 
     public void ataqueDeArquero() throws ExcedeLimiteDelMapa {
-        this.vida -= DANO_ARQUERO;
-        if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
+        recibirAtaque(DANO_ARQUERO);
     }
 
     public void ataqueDeCastillo() throws ExcedeLimiteDelMapa {
-        vida -= DANO_CASTILLO;
-        if ( this.vida <= 0 ) propietario.borrarUnidad(posicion);
+        recibirAtaque(DANO_CASTILLO);
     }
 
     public void ataqueDeAsedio() throws AsedioNoAtacaUnidad {
