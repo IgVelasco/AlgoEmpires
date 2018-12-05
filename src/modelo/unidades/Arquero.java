@@ -2,12 +2,10 @@ package modelo.unidades;
 
 
 import modelo.espacio.Contenible;
-import modelo.excepciones.ContenibleDelMismoJugador;
-import modelo.excepciones.ContenibleFueraDeRango;
-import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.excepciones.*;
 import modelo.juego.Jugador;
 
-public class Arquero extends UnidadMovil implements Atacante{
+public class Arquero extends Infanteria implements Atacante{
 
     public Arquero(Jugador unJugador) {
         vida = 75;
@@ -19,13 +17,9 @@ public class Arquero extends UnidadMovil implements Atacante{
     }
 
 
-    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa {
-        if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
-            throw new ContenibleFueraDeRango();
-        if (unContenible.sonDelMismoJugador(this.propietario))
-            throw new ContenibleDelMismoJugador();
+    public void atacar(Contenible unContenible, Jugador unJugador) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa, ContenibleNoPropia, UnidadYaAtaco {
+        super.atacar(unContenible, unJugador);
         unContenible.ataqueDeArquero();
     }
-
 
 }

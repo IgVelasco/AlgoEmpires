@@ -18,13 +18,7 @@ public abstract class UnidadMovil implements Contenible {
     Jugador propietario;
 
 
-    /* int posicionHorizontal;
-    int posicionVertical;
 
-    public void mover(){
-
-    }
-     */
 
     public boolean sonDelMismoJugador(Jugador unPropietario) {
         return (unPropietario == this.propietario);
@@ -54,9 +48,11 @@ public abstract class UnidadMovil implements Contenible {
     }
 
 
-    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover, UnidadYaUtilizada {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
+        if(propietario.movioUnidad(this))
+            throw new UnidadYaUtilizada();
         if (this.calcularDistancia(this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)
             throw new MovimientoFueraDeRango();
         mapa.mover(this.posicion.getPosX(), this.posicion.getPosY(), x, y);

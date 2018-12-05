@@ -5,10 +5,7 @@ import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.*;
 import modelo.excepciones.*;
-import modelo.unidades.Accionables;
-import modelo.unidades.Aldeano;
-import modelo.unidades.Atacante;
-import modelo.unidades.UnidadMovil;
+import modelo.unidades.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -111,7 +108,7 @@ public class Jugador {
         return this.poblacionActual;
     }
 
-    public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+    /*public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         if(movidos.contains(unidad))
             throw new UnidadYaUtilizada();
         unidad.realizarMovimiento(mapa, x, y, this);
@@ -125,7 +122,7 @@ public class Jugador {
         Contenible objetivoDeAtaque = mapa.getContenido(x, y);
         unidad.atacar(objetivoDeAtaque);
         atacaron.add(unidad);
-    }
+    }*/
 
     public void accionableMuerto(Accionables unAccionable) {
         accionables.remove(unAccionable);
@@ -143,6 +140,14 @@ public class Jugador {
 
     public void perdedor() {
         juego.perdedor(this);
+    }
+
+    public boolean movioUnidad(UnidadMovil unaUnidadMovil) {
+        return movidos.contains((unaUnidadMovil));
+    }
+
+    public boolean ataco(Atacante unAtacante) {
+        return atacaron.contains(unAtacante);
     }
 }
 

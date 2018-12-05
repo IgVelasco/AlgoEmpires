@@ -148,55 +148,62 @@ public class AldeanoTest {
     @Test
     public void testAldeanoSeMueveCorrectamenteHaciaAtras() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
-        Aldeano unAldeano = new Aldeano(null);
+        Jugador unJugador = new Jugador(mapa, 5, 5,null);
+        Aldeano unAldeano = new Aldeano(unJugador);
 
         mapa.colocarUnidadEn(unAldeano, 2, 2);
 
-        unAldeano.realizarMovimiento(mapa, -1, -1,null);
+        unAldeano.realizarMovimiento(mapa, -1, -1,unJugador);
         assertEquals(unAldeano, mapa.getContenido(1, 1));
     }
 
     @Test
     public void testAldeanoSeMueveCorrectamenteHaciaAdelante() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
-        Aldeano unAldeano = new Aldeano(null);
+        Jugador unJugador = new Jugador(mapa, 5, 5,null);
+        Aldeano unAldeano = new Aldeano(unJugador);
 
         mapa.colocarUnidadEn(unAldeano, 2, 2);
 
-        unAldeano.realizarMovimiento(mapa, 1, 1, null);
+        unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
         assertEquals(unAldeano, mapa.getContenido(3, 3));
     }
 
     @Test(expected = MovimientoFueraDeRango.class)
     public void testAldeanoNoPuedeMoverseMasDeUnCasillero() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
-        Aldeano unAldeano = new Aldeano(null);
+        Jugador unJugador = new Jugador(mapa, 5, 5,null);
+        Aldeano unAldeano = new Aldeano(unJugador);
 
         mapa.colocarUnidadEn(unAldeano, 2, 2);
 
-        unAldeano.realizarMovimiento(mapa, 2, 2, null);
+        unAldeano.realizarMovimiento(mapa, 2, 2, unJugador);
     }
 
     @Test(expected = ExcedeLimiteDelMapa.class)
     public void testAldeanoNoPuedeMoverseFueraDelMapa() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
-        Aldeano unAldeano = new Aldeano(null);
+        Jugador unJugador = new Jugador(mapa, 5, 5,null);
+
+        Aldeano unAldeano = new Aldeano(unJugador);
 
         mapa.colocarUnidadEn(unAldeano, 0, 0);
 
-        unAldeano.realizarMovimiento(mapa, -1, -1, null);
+        unAldeano.realizarMovimiento(mapa, -1, -1, unJugador);
     }
 
     @Test(expected = CasilleroOcupado.class)
     public void testAldeanoNoPuedeMoverseAUnCasilleroOcupado() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         Mapa mapa = new Mapa(10, 10);
-        Aldeano unAldeano = new Aldeano(null);
-        Aldeano otroAldeano = new Aldeano(null);
+        Jugador unJugador = new Jugador(mapa, 5, 5,null);
+
+        Aldeano unAldeano = new Aldeano(unJugador);
+        Aldeano otroAldeano = new Aldeano(unJugador);
 
         mapa.colocarUnidadEn(unAldeano, 0, 0);
         mapa.colocarUnidadEn(otroAldeano, 1, 1);
 
-        unAldeano.realizarMovimiento(mapa, 1, 1, null);
+        unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
     }
 
     /*@Test(expected = UnidadYaUtilizada.class)

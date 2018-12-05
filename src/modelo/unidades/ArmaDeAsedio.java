@@ -25,7 +25,7 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
     }
 
 
-    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover, UnidadYaUtilizada {
         if(!estado.movible())
             throw new ArmaCargadaNoSePuedeMover();
         super.realizarMovimiento(mapa, x, y, unJugador);
@@ -41,12 +41,15 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         estado = new ArmaCargada();
     }
 
-    public void atacar(Contenible unContenible) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ExcedeLimiteDelMapa {
+    public void atacar(Contenible unContenible, Jugador unJugador) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ExcedeLimiteDelMapa, ContenibleNoPropia {
         estado.ataqueListo();
+        if(!this.sonDelMismoJugador(unJugador))
+            throw new ContenibleNoPropia();
         if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
             throw new ContenibleFueraDeRango();
         if (unContenible.sonDelMismoJugador(this.propietario))
             throw new ContenibleDelMismoJugador();
+        unJugador.agregarAtacante(this);
         unContenible.ataqueDeAsedio();
         this.estado = new ArmaDescargada(false);
     }

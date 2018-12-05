@@ -1,9 +1,6 @@
 import modelo.espacio.Mapa;
 import modelo.estructuras.Castillo;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ContenibleDelMismoJugador;
-import modelo.excepciones.ContenibleFueraDeRango;
-import modelo.excepciones.ExcedeLimiteDelMapa;
+import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.Espadachin;
@@ -22,24 +19,23 @@ public class EspadachinTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testEspadachinAtacaEspadachinFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testEspadachinAtacaEspadachinFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
         Mapa mapa = new Mapa(10, 10);
+        Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(null);
+        Espadachin unEspadachin = new Espadachin(jugador);
         Espadachin otroEspadachin = new Espadachin(null);
 
 
         mapa.colocarUnidadEn(unEspadachin, 1, 1);
         mapa.colocarUnidadEn(otroEspadachin, 1, 9);
 
-        unEspadachin.atacar(otroEspadachin);
-
-
+        unEspadachin.atacar(otroEspadachin, jugador);
     }
 
 
     @Test(expected = ContenibleDelMismoJugador.class)
-    public void testEspadachinNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testEspadachinNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -50,14 +46,14 @@ public class EspadachinTest {
         mapa.colocarUnidadEn(unEspadachin, 1, 1);
         mapa.colocarUnidadEn(otroEspadachin, 1, 2);
 
-        unEspadachin.atacar(otroEspadachin);
+        unEspadachin.atacar(otroEspadachin, jugador);
 
         assertEquals(100, otroEspadachin.getVida());
 
     }
 
     @Test
-    public void testEspadachinAtacaEspadachinEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testEspadachinAtacaEspadachinEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -69,14 +65,14 @@ public class EspadachinTest {
         mapa.colocarUnidadEn(unEspadachin, 1, 1);
         mapa.colocarUnidadEn(otroEspadachin, 1, 2);
 
-        unEspadachin.atacar(otroEspadachin);
+        unEspadachin.atacar(otroEspadachin, jugador);
 
         assertEquals(75, otroEspadachin.getVida());
 
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testEspadachinAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testEspadachinAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -88,14 +84,14 @@ public class EspadachinTest {
         mapa.colocarUnidadEn(unEspadachin, 1, 1);
         mapa.colocarEstructuraEn(unCastillo, 1, 9, 4);
 
-        unEspadachin.atacar(unCastillo);
+        unEspadachin.atacar(unCastillo, jugador);
 
         assertEquals(1000, unCastillo.getVida());
 
     }
 
     @Test
-    public void testEspadachinAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testEspadachinAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -107,7 +103,7 @@ public class EspadachinTest {
         mapa.colocarUnidadEn(unEspadachin, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
 
-        unEspadachin.atacar(unCastillo);
+        unEspadachin.atacar(unCastillo, jugador);
 
         assertEquals(985, unCastillo.getVida());
 
@@ -115,24 +111,43 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMataUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador {
+    public void testEspadachinMataUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ArmaYaCargada, ContenibleNoPropia, UnidadYaAtaco {
         Mapa mapa = new Mapa(20, 20);
-        Jugador jugador = new Jugador(mapa, 5, 5, null);
+        Jugador jugador = new Jugador(mapa, 6, 6, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
         Espadachin unEspadachin = new Espadachin(jugador);
         Aldeano unAldeano = new Aldeano(otroJugador);
 
 
-        mapa.colocarUnidadEn(unEspadachin, 0, 0);
-        mapa.colocarUnidadEn(unAldeano, 1, 1);
+        mapa.colocarUnidadEn(unEspadachin, 1, 1);
+        mapa.colocarUnidadEn(unAldeano, 0, 0);
 
-        unEspadachin.atacar(unAldeano);
-        unEspadachin.atacar(unAldeano);
+        unEspadachin.atacar(unAldeano, jugador);
+        jugador.nuevoTurno();
+        unEspadachin.atacar(unAldeano, jugador);
 
         assertEquals(0, unAldeano.getVida());
-        assertNull(mapa.getContenido(1, 1));
+        assertNull(mapa.getContenido(0, 0));
 
+    }
+
+
+    @Test (expected = UnidadYaAtaco.class)
+    public void testEspadachinNoPuedeAtacarDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaAtaco, ContenibleNoPropia, ContenibleFueraDeRango, ContenibleDelMismoJugador {
+        Mapa mapa = new Mapa(20, 20);
+        Jugador jugador = new Jugador(mapa, 6, 6, null);
+        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+
+        Espadachin unEspadachin = new Espadachin(jugador);
+        Aldeano unAldeano = new Aldeano(otroJugador);
+
+
+        mapa.colocarUnidadEn(unEspadachin, 1, 1);
+        mapa.colocarUnidadEn(unAldeano, 0, 0);
+
+        unEspadachin.atacar(unAldeano, jugador);
+        unEspadachin.atacar(unAldeano, jugador);
     }
 
 

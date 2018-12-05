@@ -107,6 +107,9 @@ public class JugadorTest {
         assertEquals(0,unJugador.getPoblacionActual());
     }
 
+
+
+    /*
     @Test
     public void testUnidadSeMueveCorrectamente() throws CasilleroOcupado, ExcedeLimiteDelMapa, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
         Mapa mapa = new Mapa(20, 20);
@@ -247,7 +250,5 @@ public class JugadorTest {
 
         assertEquals(20, unAldeano.getVida());
     }
-
-
-
+*/
 }
