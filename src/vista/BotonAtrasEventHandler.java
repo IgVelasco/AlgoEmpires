@@ -6,17 +6,18 @@ import javafx.stage.Stage;
 
 public class BotonAtrasEventHandler extends BotonEventHandler {
 
-    private Stage escenario;
+    private final Stage escenario;
     private Scene escenaInicial;
 
-    BotonAtrasEventHandler(Stage escenario, Scene escenaInicial) {
+    BotonAtrasEventHandler(Stage escenario) {
+        super();
         this.escenario = escenario;
-        this.escenaInicial = escenaInicial;
+        this.escenaInicial = this.escenario.getScene();
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         super.handle(actionEvent);
-        this.escenario.setScene(this.escenaInicial);
+        this.escenario.setScene(escenaInicial);
     }
 }
