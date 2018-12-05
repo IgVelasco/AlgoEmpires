@@ -19,7 +19,7 @@ public class Espadachin extends Infanteria implements Atacante {
     }
 
 
-    public void atacar(Contenible unContenible, Jugador unJugador) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa, ContenibleNoPropia, UnidadYaAtaco {
+    public void atacar(Contenible unContenible, Jugador unJugador) {
         super.atacar(unContenible, unJugador);
         unContenible.ataqueDeEspadachin();
     }

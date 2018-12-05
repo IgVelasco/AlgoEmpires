@@ -13,13 +13,13 @@ public class ArmaCargada implements EstadosAtaque{
 
 
     @Override
-    public void ataqueListo() throws ArmaNoCargada {
+    public void ataqueListo() {
         if(!cargada)
             throw new ArmaNoCargada();
     }
 
     @Override
-    public void cargarArma() throws ArmaYaCargada, ArmaSeCargaEnSiguienteTurno {
+    public void cargarArma() {
         if(cargada)
             throw new ArmaYaCargada();
         throw new ArmaSeCargaEnSiguienteTurno();

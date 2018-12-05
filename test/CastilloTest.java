@@ -23,14 +23,14 @@ public class CastilloTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public void testNoCrearAldeanoSinOroSuficiente() {
         Castillo unCastillo = new Castillo(null);
 
         unCastillo.crearArmaDeAsedio(10);
     }
 
     @Test
-    public void testArmaDeAsedioCreadaConVidaCorrecta() throws OroInsuficiente, PoblacionLimiteAlcanzada, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testArmaDeAsedioCreadaConVidaCorrecta() {
         Mapa mapa = new Mapa(20, 20);
 
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
@@ -44,7 +44,7 @@ public class CastilloTest {
 
 
     @Test
-    public void testCastilloAtacaAUnidadEnRango() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloAtacaAUnidadEnRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
@@ -63,7 +63,7 @@ public class CastilloTest {
 
 
     @Test
-    public void testCastilloNoAtacaUnidadFueraDeRango() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloNoAtacaUnidadFueraDeRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
@@ -81,7 +81,7 @@ public class CastilloTest {
     }
 
     @Test
-    public void testCastilloNoAtacaUnidadDelMismoJugador() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloNoAtacaUnidadDelMismoJugador() {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
 
@@ -98,7 +98,7 @@ public class CastilloTest {
     }
 
     @Test
-    public void testCastilloMataUnidad() throws  CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloMataUnidad()  {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
@@ -121,7 +121,7 @@ public class CastilloTest {
 
     /*
     @Test
-    public void testCastilloAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCastilloAtacaEstructuraEnRango() do, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, CasilleroOcupado, ExcedeLimiteDelMapa {
         Mapa mapa = new Mapa(20,20);
         Jugador unJugador = new Jugador(mapa, 15 ,15, null );
         Jugador otroJugador = new Jugador(mapa, 10 ,10, null );

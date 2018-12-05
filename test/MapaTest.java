@@ -19,14 +19,14 @@ public class MapaTest {
     }
 
     @Test
-    public void testPreguntarContenidoEnUbicacionVaciaDevuelveNada() throws ExcedeLimiteDelMapa {
+    public void testPreguntarContenidoEnUbicacionVaciaDevuelveNada() {
         Mapa mapa = new Mapa(5, 5);
 
         assertNull(mapa.getContenido(4, 4));
     }
 
     @Test
-    public void testSePuedeColocarUnidadEnPosicionEspecifica() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testSePuedeColocarUnidadEnPosicionEspecifica() {
         Mapa mapa = new Mapa(5, 5);
         Aldeano aldeano = new Aldeano(null);
 
@@ -36,7 +36,7 @@ public class MapaTest {
     }
 
     @Test
-    public void testAlEliminarContenidoDeUnaPosicionSeLibera() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testAlEliminarContenidoDeUnaPosicionSeLibera() {
         Mapa mapa = new Mapa(5, 5);
         Aldeano aldeano = new Aldeano(null);
 
@@ -48,7 +48,7 @@ public class MapaTest {
 
 
     @Test
-    public void testSePuedeColocarEstructuraEnPosicionEspecifica() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testSePuedeColocarEstructuraEnPosicionEspecifica() {
         Mapa mapa = new Mapa(20, 20);
         Castillo castillo = new Castillo(null);
 
@@ -64,7 +64,7 @@ public class MapaTest {
 
 
     @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testConstruirAfueraDelMapaError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testConstruirAfueraDelMapaError() {
         Mapa mapa = new Mapa(5, 5);
         Castillo unCastillo = new Castillo(null);
 
@@ -73,7 +73,7 @@ public class MapaTest {
 
 
     @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testConstruirParteAfueraDelMapaError() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testConstruirParteAfueraDelMapaError() {
         Mapa mapa = new Mapa(5, 5);
         Castillo unCastillo = new Castillo(null);
 
@@ -83,7 +83,7 @@ public class MapaTest {
     }
 
     @Test(expected = CasilleroOcupado.class)
-    public void testConstruirDosCastillosEnMismoLugar() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testConstruirDosCastillosEnMismoLugar() {
         Mapa mapa = new Mapa(20, 20);
         Castillo unCastillo = new Castillo(null);
         Castillo otroCastillo = new Castillo(null);
@@ -98,14 +98,14 @@ public class MapaTest {
     }
 
     @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testPedirContenidoAfueraDelMapaError() throws ExcedeLimiteDelMapa {
+    public void testPedirContenidoAfueraDelMapaError() {
         Mapa mapa = new Mapa(5, 5);
 
         mapa.getContenido(-1, -1);
     }
 
     @Test(expected = ExcedeLimiteDelMapa.class)
-    public void testMoverUnidadAfueraDelMapaError() throws ExcedeLimiteDelMapa, CasilleroOcupado {
+    public void testMoverUnidadAfueraDelMapaError() {
         Mapa mapa = new Mapa(5, 5);
         Aldeano aldeano = new Aldeano(null);
 

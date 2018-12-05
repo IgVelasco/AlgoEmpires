@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class AsedioNoAtacaUnidad extends Exception {
+public class AsedioNoAtacaUnidad extends RuntimeException {
 }

@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class CimientoFinalizado extends Exception {
+public class CimientoFinalizado extends RuntimeException {
 }

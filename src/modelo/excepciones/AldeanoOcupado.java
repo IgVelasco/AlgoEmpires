@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class AldeanoOcupado extends Exception {
+public class AldeanoOcupado extends RuntimeException {
 }

@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class GenerandoOroTest {
 
     @Test
-    public void testSeSuma20DeOro() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testSeSuma20DeOro() {
         GenerandoOro unEstado = new GenerandoOro();
         Mapa unMapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(unMapa, 20 / 2, 0, null);

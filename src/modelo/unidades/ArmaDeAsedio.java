@@ -25,14 +25,14 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
     }
 
 
-    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) throws ExcedeLimiteDelMapa, MovimientoFueraDeRango, CasilleroOcupado, ContenibleNoPropia, ArmaCargadaNoSePuedeMover, UnidadYaUtilizada {
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) {
         if(!estado.movible())
             throw new ArmaCargadaNoSePuedeMover();
         super.realizarMovimiento(mapa, x, y, unJugador);
     }
 
 
-        public void realizarAccionCorrespondiente()  {
+        public void realizarAccionCorrespondiente() {
         this.estado.realizarAccion();
     }
 
@@ -41,7 +41,7 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         estado = new ArmaCargada();
     }
 
-    public void atacar(Contenible unContenible, Jugador unJugador) throws ContenibleFueraDeRango, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ExcedeLimiteDelMapa, ContenibleNoPropia {
+    public void atacar(Contenible unContenible, Jugador unJugador) {
         estado.ataqueListo();
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();

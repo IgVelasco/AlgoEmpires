@@ -13,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class CimientoTest {
 
     @Test
-    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() {
 
         Cuartel unCuartel = new Cuartel(null);
         Mapa unMapa = new Mapa(20,20);
@@ -23,7 +23,7 @@ public class CimientoTest {
     }
 
     @Test
-    public void testCimientoAvanzaLosTurnosCuandoSeLoConstruye() throws CimientoFinalizado, CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCimientoAvanzaLosTurnosCuandoSeLoConstruye() {
 
         Mapa unMapa = new Mapa(20,20);
         Cimiento unCimiento = new Cimiento(null,unMapa,5,5,5);
@@ -34,8 +34,7 @@ public class CimientoTest {
     }
 
     @Test
-    public void testCimientoColocaLaEstructuraLuegoDeTerminarSuConstruccion()
-            throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCimientoColocaLaEstructuraLuegoDeTerminarSuConstruccion() {
         Mapa unMapa = new Mapa(20,20);
         Aldeano unAldeano = new Aldeano(null);
         Cuartel unCuartel = new Cuartel(null);
@@ -52,7 +51,7 @@ public class CimientoTest {
     }
 
     @Test
-    public void testCimientoLiberaAlAldeanoDeSuConstruccion() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void testCimientoLiberaAlAldeanoDeSuConstruccion() {
 
         Mapa unMapa = new Mapa(20,20);
         Jugador jugador = new Jugador(unMapa , 5 , 5 , null);

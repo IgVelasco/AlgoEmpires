@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
 public class ConstruyendoTest {
 
     @Test
-    public void testFinalizarConstruccionDesocupaAldeano() throws CasilleroOcupado, ExcedeLimiteDelMapa, AldeanoOcupado, ContenibleNoPropia {
+    public void testFinalizarConstruccionDesocupaAldeano() {
         Mapa unMapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(unMapa, 10, 0, null);
         Cuartel unCuartel = new Cuartel(null);

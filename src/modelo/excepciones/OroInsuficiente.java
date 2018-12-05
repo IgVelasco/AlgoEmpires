@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class OroInsuficiente extends Exception {
+public class OroInsuficiente extends RuntimeException {
 }

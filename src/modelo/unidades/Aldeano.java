@@ -22,11 +22,11 @@ public class Aldeano extends Accionables {
         return this.vida;
     }
 
-    public void realizarAccionCorrespondiente() throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void realizarAccionCorrespondiente() {
         this.estado.realizarAccion(this);
     }
 
-    public void comenzarCimientos(Cimiento cimiento, Jugador unJugador) throws AldeanoOcupado, ContenibleNoPropia {
+    public void comenzarCimientos(Cimiento cimiento, Jugador unJugador) {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
         estado.ocupar();
@@ -34,7 +34,7 @@ public class Aldeano extends Accionables {
     }
 
 
-    public void comenzarReparacion(Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
+    public void comenzarReparacion(Estructura unaEstructura) {
         estado.ocupar();
         unaEstructura.ponerAReparar();
         estado = new Reparando(unaEstructura);

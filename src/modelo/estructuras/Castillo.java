@@ -29,7 +29,7 @@ public class Castillo extends Estructura {
 
 
 
-    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) {
         if (oroDisponible < PRECIO_ARMA_DE_ASEDIO) {
             throw new OroInsuficiente();
         }
@@ -37,7 +37,7 @@ public class Castillo extends Estructura {
         return new ArmaDeAsedio(propietario);
     }
 
-    public void atacar(Mapa mapa) throws ExcedeLimiteDelMapa {
+    public void atacar(Mapa mapa) {
         LinkedList<Contenible> atacables =  mapa.getConteniblesEnRango(posiciones, ALCANCE);
 
         while (atacables.contains(this)){ //Saco al castillo de los atacables
@@ -55,7 +55,7 @@ public class Castillo extends Estructura {
         }
     }
 
-    public void borrarEstructura() throws ExcedeLimiteDelMapa {
+    public void borrarEstructura() {
         propietario.borrarEstructura(posiciones);
         propietario.perdedor();
     }

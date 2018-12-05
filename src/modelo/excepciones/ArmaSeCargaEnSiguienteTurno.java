@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class ArmaSeCargaEnSiguienteTurno extends Exception {
+public class ArmaSeCargaEnSiguienteTurno extends RuntimeException {
 }

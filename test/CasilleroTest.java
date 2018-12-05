@@ -18,7 +18,7 @@ public class CasilleroTest {
     }
 
     @Test
-    public void testCasilleroPuedeContenerUnaUnidadContenible() throws CasilleroOcupado {
+    public void testCasilleroPuedeContenerUnaUnidadContenible() {
         Contenible unAldeano = new Aldeano(null);
         Casillero unCasillero = new Casillero();
 
@@ -31,7 +31,7 @@ public class CasilleroTest {
     }
 
     @Test
-    public void testCasilleroQuedaLibreLuegoDeLiberarlo() throws CasilleroOcupado {
+    public void testCasilleroQuedaLibreLuegoDeLiberarlo() {
         Contenible unAldeano = new Aldeano(null);
         Casillero unCasillero = new Casillero();
 
@@ -44,7 +44,7 @@ public class CasilleroTest {
     }
 
     @Test(expected = CasilleroOcupado.class)
-    public void testCasilleroLanzaExcepcionSiSeIntentaContenerMientrasEstaOcupado() throws CasilleroOcupado {
+    public void testCasilleroLanzaExcepcionSiSeIntentaContenerMientrasEstaOcupado() {
         Contenible unAldeano = new Aldeano(null);
         Casillero unCasillero = new Casillero();
         unCasillero.contener(unAldeano);

@@ -17,8 +17,7 @@ public class Cimiento extends Estructura {
     private int posY;
     private int dimensionCimiento;
 
-    public Cimiento(Estructura unaEstructura, Mapa elMapa, int x, int y, int dimension)
-            throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public Cimiento(Estructura unaEstructura, Mapa elMapa, int x, int y, int dimension) {
 
         estructuraCorrespondiente = unaEstructura;
         posiciones = new LinkedList<Posicion>();
@@ -34,7 +33,7 @@ public class Cimiento extends Estructura {
         return turnosRestantes;
     }
 
-    public void avanzarConstruccion(Aldeano aldeano) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void avanzarConstruccion(Aldeano aldeano){
         turnosRestantes--;
         if (turnosRestantes == 0){
             mapa.liberarUbicaciones(posiciones);

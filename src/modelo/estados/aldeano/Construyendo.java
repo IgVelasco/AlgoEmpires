@@ -15,12 +15,12 @@ public class Construyendo implements EstadoAldeano {
 
     }
 
-    public void ocupar() throws AldeanoOcupado {
+    public void ocupar() {
         throw new AldeanoOcupado();
     }
 
     @Override
-    public void realizarAccion(Aldeano unAldeano) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void realizarAccion(Aldeano unAldeano) {
             cimiento.avanzarConstruccion(unAldeano);
     }
 

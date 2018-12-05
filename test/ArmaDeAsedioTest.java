@@ -18,7 +18,7 @@ public class ArmaDeAsedioTest {
 
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArmaDeAsedioNoAtacaArmaDeAsedioFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaDeAsedioNoAtacaArmaDeAsedioFueraDeRango() {
         Mapa mapa = new Mapa(10, 10);
 
         ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null);
@@ -37,7 +37,7 @@ public class ArmaDeAsedioTest {
 
 
     @Test(expected = ContenibleDelMismoJugador.class)
-    public void testArmaDeAsedioNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaDeAsedioNoAtacaAUnidadCompaniera() {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -57,7 +57,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test (expected = AsedioNoAtacaUnidad.class)
-    public void testArmaDeAsedioNoAtacaUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaDeAsedioNoAtacaUnidad() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -78,7 +78,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArmaDeAsedioNoAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, CasilleroOcupado, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaDeAsedioNoAtacaEstructuraFueraDeRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -99,7 +99,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaDeAsedioAtacaEstructuraEnRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -121,7 +121,7 @@ public class ArmaDeAsedioTest {
 
 
     @Test(expected = ArmaCargadaNoSePuedeMover.class)
-    public void testArmaDeAsedioNoSePuedeMoverSiCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+    public void testArmaDeAsedioNoSePuedeMoverSiCargada() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -140,7 +140,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test(expected = ArmaCargadaNoSePuedeMover.class)
-    public void testArmaDeAsedioNoSePuedeMoverSiCargadaEnOtroTurno() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+    public void testArmaDeAsedioNoSePuedeMoverSiCargadaEnOtroTurno() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -160,7 +160,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioSePuedeMoverDescargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+    public void testArmaDeAsedioSePuedeMoverDescargada() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -180,7 +180,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test(expected = ArmaCargadaNoSePuedeMover.class)
-    public void testArmaDeAsedioNoSePuedeMoverDespuesDeDescargar() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+    public void testArmaDeAsedioNoSePuedeMoverDespuesDeDescargar() {
 
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
@@ -201,7 +201,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test
-    public void testArmaDeAsedioSePuedeMoverDespuesDeDescargarYQuePaseElTurno() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, MovimientoFueraDeRango, ArmaCargadaNoSePuedeMover, ContenibleNoPropia, UnidadYaUtilizada {
+    public void testArmaDeAsedioSePuedeMoverDespuesDeDescargarYQuePaseElTurno() {
 
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
@@ -224,7 +224,7 @@ public class ArmaDeAsedioTest {
 
 
     @Test (expected = ArmaNoCargada.class)
-    public void testArmaDeAsedioNoAtacaSinEstarCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaDeAsedioNoAtacaSinEstarCargada() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -242,7 +242,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test (expected = ArmaYaCargada.class)
-    public void testArmaYaCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaYaCargada() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -264,7 +264,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test (expected = ArmaSeCargaEnSiguienteTurno.class)
-    public void testArmaSeCargaEnSiguienteTurno() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testArmaSeCargaEnSiguienteTurno() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -285,7 +285,7 @@ public class ArmaDeAsedioTest {
     }
 
     @Test (expected = ArmaNoCargada.class)
-    public void testErrorAtacarConArmaDeAsedioNoCargada() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, AsedioNoAtacaUnidad, ArmaNoCargada, ArmaYaCargada, ArmaSeCargaEnSiguienteTurno, ContenibleNoPropia {
+    public void testErrorAtacarConArmaDeAsedioNoCargada() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);

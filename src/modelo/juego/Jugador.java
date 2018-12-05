@@ -19,7 +19,7 @@ public class Jugador {
     private ArrayList<Atacante> atacaron = new ArrayList<Atacante>();
     private int oro, poblacionActual, poblacionMaxima;
 
-    public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) {
         castillo = new Castillo(this);
         PlazaCentral plazaInicial = new PlazaCentral(this);
         this.mapa = mapa;
@@ -36,7 +36,7 @@ public class Jugador {
         }
     }
 
-    public void nuevoTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada, CasilleroOcupado {
+    public void nuevoTurno() {
         for (Accionables accionable : accionables) {
             accionable.realizarAccionCorrespondiente();
         }
@@ -45,7 +45,7 @@ public class Jugador {
         atacaron.clear();
     }
 
-    public void finalizarTurno() throws ExcedeLimiteDelMapa, ArmaYaCargada, CasilleroOcupado {
+    public void finalizarTurno() {
         juego.siguienteTurno();
     }
 
@@ -54,18 +54,18 @@ public class Jugador {
         this.oro += unidadesDeOro;
     }
 
-    public void construirPlazaCentral(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia { // Podria ser asi o que se le pase un indez de array
+    public void construirPlazaCentral(Aldeano aldeano, int x, int y) { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
         aldeano.comenzarCimientos(unCimiento, this);
         mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
     }
 
-    public void construirAsedio() throws PoblacionLimiteAlcanzada, OroInsuficiente {
+    public void construirAsedio() {
         this.castillo.crearArmaDeAsedio(this.oro);
     }
 
-    public void construirCuartel(Aldeano aldeano, int x, int y) throws AldeanoOcupado, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleNoPropia {
+    public void construirCuartel(Aldeano aldeano, int x, int y) {
 
         Cuartel unCuartel = new Cuartel(this);
         Cimiento elCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
@@ -73,7 +73,7 @@ public class Jugador {
     }
 
 
-    public void repararEstructura(Aldeano unAldeano, Estructura unaEstructura) throws EdificioConVidaMaxima, AldeanoOcupado {
+    public void repararEstructura(Aldeano unAldeano, Estructura unaEstructura) {
         unAldeano.comenzarReparacion(unaEstructura);
     }
 
@@ -86,19 +86,19 @@ public class Jugador {
             this.poblacionActual--;
     }
 
-    public void aumentarPoblacion() throws PoblacionLimiteAlcanzada {
+    public void aumentarPoblacion() {
         if (poblacionActual == poblacionMaxima)
             throw new PoblacionLimiteAlcanzada();
 
         this.poblacionActual++;
     }
 
-    public void borrarUnidad(Posicion posicion) throws  ExcedeLimiteDelMapa {
+    public void borrarUnidad(Posicion posicion) {
         this.disminuirPoblacion();
         mapa.liberarUbicacion(posicion);
     }
 
-    public void borrarEstructura(LinkedList<Posicion> posiciones) throws  ExcedeLimiteDelMapa {
+    public void borrarEstructura(LinkedList<Posicion> posiciones) {
         this.disminuirPoblacion();
         mapa.liberarUbicaciones(posiciones);
     }
@@ -108,14 +108,14 @@ public class Jugador {
         return this.poblacionActual;
     }
 
-    /*public void mover(UnidadMovil unidad, int x , int y) throws ExcedeLimiteDelMapa, CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
+    /*public void mover(UnidadMovil unidad, int x , int y) CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
         if(movidos.contains(unidad))
             throw new UnidadYaUtilizada();
         unidad.realizarMovimiento(mapa, x, y, this);
         movidos.add(unidad);
     }
 
-    public void atacar(Atacante unidad, int x , int y) throws ExcedeLimiteDelMapa, UnidadYaUtilizada, ArmaNoCargada, ContenibleFueraDeRango, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
+    public void atacar(Atacante unidad, int x , int y) UnidadYaUtilizada, ArmaNoCargada, ContenibleFueraDeRango, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
         if(atacaron.contains(unidad))
             throw new UnidadYaUtilizada();
 

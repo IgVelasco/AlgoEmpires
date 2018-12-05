@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class CasilleroOcupado extends Exception {
+public class CasilleroOcupado extends RuntimeException {
 }

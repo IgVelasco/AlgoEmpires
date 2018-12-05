@@ -7,7 +7,7 @@ import modelo.unidades.Aldeano;
 
 public interface EstadoAldeano {
 
-    void realizarAccion(Aldeano unAldeano) throws CasilleroOcupado, ExcedeLimiteDelMapa;
+    void realizarAccion(Aldeano unAldeano);
 
     void ocupar() throws AldeanoOcupado;
 }

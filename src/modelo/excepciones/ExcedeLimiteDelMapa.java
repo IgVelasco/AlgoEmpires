@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class ExcedeLimiteDelMapa extends Exception {
+public class ExcedeLimiteDelMapa extends RuntimeException {
 }

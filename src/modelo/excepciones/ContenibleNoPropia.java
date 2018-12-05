@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class ContenibleNoPropia extends Exception {
+public class ContenibleNoPropia extends RuntimeException {
 }

@@ -1,6 +1,5 @@
 package modelo.excepciones;
 
-public class UnidadYaUtilizada extends Exception {
-
+public class UnidadYaUtilizada extends RuntimeException {
 }
 

@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class MovimientoFueraDeRango extends Exception {
+public class MovimientoFueraDeRango extends RuntimeException {
 }

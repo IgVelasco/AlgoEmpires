@@ -13,7 +13,7 @@ public class Reparando implements EstadoAldeano {
     }
 
     @Override
-    public void ocupar() throws AldeanoOcupado {
+    public void ocupar() {
         throw new AldeanoOcupado();
     }
 

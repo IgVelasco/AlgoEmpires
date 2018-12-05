@@ -6,7 +6,7 @@ import modelo.juego.Jugador;
 
 public class Infanteria extends UnidadMovil implements Atacante {
 
-    public void atacar(Contenible unContenible, Jugador unJugador) throws ContenibleNoPropia, UnidadYaAtaco, ContenibleFueraDeRango, ContenibleDelMismoJugador, ExcedeLimiteDelMapa {
+    public void atacar(Contenible unContenible, Jugador unJugador) {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
         if(unJugador.ataco( this))

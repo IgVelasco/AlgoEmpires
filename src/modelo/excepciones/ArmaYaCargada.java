@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class ArmaYaCargada extends Exception {
+public class ArmaYaCargada extends RuntimeException {
 }

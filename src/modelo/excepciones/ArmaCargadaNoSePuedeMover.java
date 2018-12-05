@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class ArmaCargadaNoSePuedeMover extends Exception {
+public class ArmaCargadaNoSePuedeMover extends RuntimeException {
 }

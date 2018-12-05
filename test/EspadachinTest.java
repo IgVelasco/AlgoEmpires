@@ -19,7 +19,7 @@ public class EspadachinTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testEspadachinAtacaEspadachinFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testEspadachinAtacaEspadachinFueraDeRango() {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -35,7 +35,7 @@ public class EspadachinTest {
 
 
     @Test(expected = ContenibleDelMismoJugador.class)
-    public void testEspadachinNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testEspadachinNoAtacaAUnidadCompaniera() {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -53,7 +53,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinAtacaEspadachinEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testEspadachinAtacaEspadachinEnRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -72,7 +72,7 @@ public class EspadachinTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testEspadachinAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testEspadachinAtacaEstructuraFueraDeRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -91,7 +91,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testEspadachinAtacaEstructuraEnRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -111,7 +111,7 @@ public class EspadachinTest {
     }
 
     @Test
-    public void testEspadachinMataUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ArmaYaCargada, ContenibleNoPropia, UnidadYaAtaco {
+    public void testEspadachinMataUnidad() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 6, 6, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -134,7 +134,7 @@ public class EspadachinTest {
 
 
     @Test (expected = UnidadYaAtaco.class)
-    public void testEspadachinNoPuedeAtacarDosVecesEnUnTurno() throws CasilleroOcupado, ExcedeLimiteDelMapa, UnidadYaAtaco, ContenibleNoPropia, ContenibleFueraDeRango, ContenibleDelMismoJugador {
+    public void testEspadachinNoPuedeAtacarDosVecesEnUnTurno() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 6, 6, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);

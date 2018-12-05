@@ -20,7 +20,7 @@ public class ArqueroTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArqueroAtacaArqueroFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testArqueroAtacaArqueroFueraDeRango() {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -38,7 +38,7 @@ public class ArqueroTest {
 
 
     @Test(expected = ContenibleDelMismoJugador.class)
-    public void testArqueroNoAtacaAUnidadCompaniera() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testArqueroNoAtacaAUnidadCompaniera() {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
@@ -56,7 +56,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroAtacaArqueroEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testArqueroAtacaArqueroEnRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -75,7 +75,7 @@ public class ArqueroTest {
     }
 
     @Test(expected = ContenibleFueraDeRango.class)
-    public void testArqueroAtacaEstructuraFueraDeRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testArqueroAtacaEstructuraFueraDeRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -94,7 +94,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroAtacaEstructuraEnRango() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco {
+    public void testArqueroAtacaEstructuraEnRango() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -114,7 +114,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMataUnidad() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco, ArmaYaCargada {
+    public void testArqueroMataUnidad() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
@@ -140,7 +140,7 @@ public class ArqueroTest {
     }
 
     @Test
-    public void testArqueroMataEstructura() throws ContenibleFueraDeRango, CasilleroOcupado, ExcedeLimiteDelMapa, ContenibleDelMismoJugador, ContenibleNoPropia, UnidadYaAtaco, ArmaYaCargada {
+    public void testArqueroMataEstructura() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 14, 14, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);

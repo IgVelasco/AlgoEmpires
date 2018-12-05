@@ -15,7 +15,7 @@ public class CuartelTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearEspadachinSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public void testNoCrearEspadachinSinOroSuficiente() {
         Cuartel unCuartel = new Cuartel(null);
 
         unCuartel.crearEspadachin(25);
@@ -23,7 +23,7 @@ public class CuartelTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearArqueroSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public void testNoCrearArqueroSinOroSuficiente() {
         Cuartel unCuartel = new Cuartel(null);
 
         unCuartel.crearArquero(25);

@@ -10,7 +10,7 @@ public class ArmaDescargada implements EstadosAtaque {
     }
 
     @Override
-    public void ataqueListo() throws ArmaNoCargada {
+    public void ataqueListo() {
         throw new ArmaNoCargada();
     }
 

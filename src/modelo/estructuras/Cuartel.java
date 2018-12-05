@@ -23,13 +23,13 @@ public class Cuartel extends Estructura {
         posiciones = new LinkedList<Posicion>();
     }
 
-    public Espadachin crearEspadachin(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public Espadachin crearEspadachin(int oroDisponible) {
         if (oroDisponible < PRECIO_ESPADACHIN) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Espadachin(propietario);
     }
 
-    public Arquero crearArquero(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public Arquero crearArquero(int oroDisponible) {
         if (oroDisponible < PRECIO_ARQUERO) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Arquero(propietario);

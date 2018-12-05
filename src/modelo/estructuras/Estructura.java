@@ -42,35 +42,35 @@ public abstract class Estructura implements Contenible {
         return vida;
     }
 
-    public void recibirAtaque(int dano) throws ExcedeLimiteDelMapa {
+    public void recibirAtaque(int dano) {
         this.vida -= dano;
         if (this.vida <= 0)
             propietario.borrarEstructura(posiciones);
     }
-    public void ataqueDeEspadachin() throws ExcedeLimiteDelMapa {
+    public void ataqueDeEspadachin() {
         recibirAtaque(DANO_ESPADACHIN);
     }
 
-    public void ataqueDeArquero() throws ExcedeLimiteDelMapa {
+    public void ataqueDeArquero() {
         recibirAtaque(DANO_ARQUERO);
 
     }
 
-    public void ataqueDeCastillo() throws ExcedeLimiteDelMapa {
+    public void ataqueDeCastillo() {
         recibirAtaque(DANO_CASTILLO);
     }
 
-    public void ataqueDeAsedio() throws ExcedeLimiteDelMapa {
+    public void ataqueDeAsedio() {
         recibirAtaque(DANO_ASEDIO);
     }
 
-    public void borrarEstructura() throws ExcedeLimiteDelMapa {
+    public void borrarEstructura() {
         propietario.borrarEstructura(posiciones);
     }
 
 
 
-    public void ponerAReparar() throws EdificioConVidaMaxima {
+    public void ponerAReparar() {
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
     }

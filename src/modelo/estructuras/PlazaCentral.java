@@ -20,7 +20,7 @@ public class PlazaCentral extends Estructura {
 
     }
 
-    public Aldeano crearAldeano(int oroDisponible) throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public Aldeano crearAldeano(int oroDisponible) {
         if (oroDisponible < PRECIO_ALDEANO) throw new OroInsuficiente();
         this.propietario.aumentarPoblacion();
         return new Aldeano(this.propietario);

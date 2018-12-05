@@ -15,7 +15,7 @@ public class PlazaCentralTest {
     }
 
     @Test(expected = OroInsuficiente.class)
-    public void testNoCrearAldeanoSinOroSuficiente() throws OroInsuficiente, PoblacionLimiteAlcanzada {
+    public void testNoCrearAldeanoSinOroSuficiente() {
         PlazaCentral unaPlaza = new PlazaCentral(null);
 
         unaPlaza.crearAldeano(10);

@@ -1,4 +1,4 @@
 package modelo.excepciones;
 
-public class PoblacionLimiteAlcanzada extends Throwable {
+public class PoblacionLimiteAlcanzada extends RuntimeException {
 }
