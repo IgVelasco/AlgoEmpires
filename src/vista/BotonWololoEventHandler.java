@@ -3,6 +3,7 @@ package vista;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,7 +35,9 @@ public class BotonWololoEventHandler extends BotonEventHandler {
             for (int y = 0; y < ALTO; y++) {
                 Image imagenSuelo = new Image(getClass().getResourceAsStream("imagenes/suelo.png"));
                 ImageView suelo = new ImageView(imagenSuelo);
-                mapa.add(suelo, x, y);
+                Button unBoton = new Button();
+                unBoton.setGraphic(suelo);
+                mapa.add(unBoton, x, y);
             }
         }
 
