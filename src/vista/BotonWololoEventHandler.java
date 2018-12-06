@@ -10,6 +10,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import javafx.geometry.Insets;
+
+import java.awt.*;
+
+import static java.awt.Color.GREEN;
 
 public class BotonWololoEventHandler extends BotonEventHandler {
     private static final int ANCHO = 20;
@@ -36,11 +41,11 @@ public class BotonWololoEventHandler extends BotonEventHandler {
                 Image imagenSuelo = new Image(getClass().getResourceAsStream("imagenes/suelo.png"));
                 ImageView suelo = new ImageView(imagenSuelo);
                 Button unBoton = new Button();
+                unBoton.setPadding(Insets.EMPTY);
                 unBoton.setGraphic(suelo);
                 mapa.add(unBoton, x, y);
             }
         }
-
         raiz.setCenter(mapa);
         Scene escenaJuego = new Scene(raiz);
 

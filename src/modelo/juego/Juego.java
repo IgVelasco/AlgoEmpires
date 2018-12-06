@@ -29,7 +29,7 @@ public class Juego {
         jugadores[turno.siguienteTurno()].nuevoTurno();
     }
 
-    public void perdedor(Jugador jugador) {
+    public void perdedor() {
         //ganador(jugadores[turno.siguienteTurno()])
     }
 }

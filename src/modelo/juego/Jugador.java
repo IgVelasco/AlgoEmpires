@@ -139,7 +139,7 @@ public class Jugador {
     }
 
     public void perdedor() {
-        juego.perdedor(this);
+        juego.perdedor();
     }
 
     public boolean movioUnidad(UnidadMovil unaUnidadMovil) {
