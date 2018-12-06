@@ -32,6 +32,9 @@ public class Juego {
     public void perdedor() {
         //ganador(jugadores[turno.siguienteTurno()])
     }
+
+    public Mapa getMapa() { return this.mapa;
+    }
 }
 
 

@@ -11,6 +11,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
+import modelo.espacio.Casillero;
+import modelo.espacio.Contenible;
+import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
+import modelo.estructuras.Castillo;
+import modelo.estructuras.PlazaCentral;
+import modelo.juego.Juego;
+import modelo.unidades.Aldeano;
 
 import java.awt.*;
 
@@ -33,23 +41,39 @@ public class BotonWololoEventHandler extends BotonEventHandler {
     public void handle(ActionEvent actionEvent) {
         super.handle(actionEvent);
         BorderPane raiz = new BorderPane();
-        GridPane mapa = new GridPane();
-        mapa.setAlignment(Pos.CENTER);
+        GridPane vistaMapa = new GridPane();
+        vistaMapa.setAlignment(Pos.CENTER);
+
+        Juego nuevoJuego = new Juego(ANCHO, ALTO);
+        Mapa mapa = nuevoJuego.getMapa();
 
         for (int x = 0; x < ANCHO; x++) {
             for (int y = 0; y < ALTO; y++) {
                 Image imagenSuelo = new Image(getClass().getResourceAsStream("imagenes/suelo.png"));
                 ImageView suelo = new ImageView(imagenSuelo);
                 Button unBoton = new Button();
-                unBoton.setPadding(Insets.EMPTY);
+                Casillero unCasillero = mapa.getCasillero(new Posicion(x, y));
+                Contenible elContenido = unCasillero.getContenido();
                 unBoton.setGraphic(suelo);
-                mapa.add(unBoton, x, y);
-            }
-        }
-        raiz.setCenter(mapa);
-        Scene escenaJuego = new Scene(raiz);
+                if(elContenido instanceof Castillo){
+                    unBoton.setOnAction(new BotonCastilloHandler(unBoton, unCasillero));
+                }
+                if (elContenido instanceof Aldeano) {
+                    unBoton.setOnAction(new BotonAldeanoHandler(unBoton, unCasillero));
+                }
+                unBoton.setPadding(Insets.EMPTY);
 
-        this.escenario.setScene(escenaJuego);
-        this.escenario.setMaximized(true);
+                if(elContenido instanceof PlazaCentral) {
+                    unBoton.setOnAction(new BotonPlazaCentralHandler(unBoton, unCasillero));
+                }
+
+                vistaMapa.add(unBoton, x, y);
+                }
+            }
+            raiz.setCenter(vistaMapa);
+            Scene escenaJuego = new Scene(raiz);
+
+            this.escenario.setScene(escenaJuego);
+            this.escenario.setMaximized(true);
+        }
     }
-}

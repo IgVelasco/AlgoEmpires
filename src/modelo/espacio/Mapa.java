@@ -122,6 +122,8 @@ public class Mapa {
     }
 
     public Set<Posicion> getAllPosiciones() { return this.mapa.keySet(); }
+
+    public Casillero getCasillero(Posicion posicion) { return this.mapa.get(posicion);   }
 }
 
 
