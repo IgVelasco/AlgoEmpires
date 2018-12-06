@@ -1,5 +1,6 @@
 package modelo.espacio;
 
+import javafx.geometry.Pos;
 import modelo.estructuras.Estructura;
 import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.ExcedeLimiteDelMapa;
@@ -34,13 +35,19 @@ public class Mapa {
     }
 
     public Contenible getContenido(int x, int y) throws ExcedeLimiteDelMapa {
-        Posicion posicion = this.getPosicion(x, y);
-        return mapa.get(posicion).getContenido();
+        if (mapa.get(new Posicion(x,y)) == null){
+            throw new ExcedeLimiteDelMapa();
+        }
+        return mapa.get(new Posicion(x,y)).getContenido();
     }
 
     public void colocarUnidadEn(UnidadMovil unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        Posicion posicion = this.getPosicion(x, y);
-        mapa.get(posicion).contener(unidad);
+        Posicion posicion = new Posicion(x,y);
+        Casillero destino = mapa.get(posicion);
+        if (destino == null){
+            throw new ExcedeLimiteDelMapa();
+        }
+        destino.contener(unidad);
         unidad.setPosicion(posicion);
     }
 
@@ -50,7 +57,7 @@ public class Mapa {
             throw new CasilleroOcupado();
         for (int i = 0; i < dimension; i++) {
             for (int j = 0; j < dimension; j++) {
-                Posicion posicion = this.getPosicion(x + i, y + j);
+                Posicion posicion = new Posicion(x+i,y+j);
                 mapa.get(posicion).contener(unaEstructura);
                 unaEstructura.agregarPosicion(posicion);
             }
@@ -60,7 +67,10 @@ public class Mapa {
     public boolean casillerosEstanOcupados(int x, int y, int dimensiones) throws ExcedeLimiteDelMapa {
         for (int i = 0; i < dimensiones; i++) {
             for (int j = 0; j < dimensiones; j++) {
-                Posicion posicion = this.getPosicion(x + i, y + j);
+                Posicion posicion = new Posicion(x+i,y+i);
+                if (mapa.get(posicion) == null){
+                    throw new ExcedeLimiteDelMapa();
+                }
                 if (mapa.get(posicion).casilleroEstaOcupado()) {
                     return true;
                 }
@@ -84,21 +94,10 @@ public class Mapa {
     public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido(x, y); // aca hay que lanzar error si es estructura.
         this.colocarUnidadEn(unidad, x + incX, y + incY);
-        Posicion posicionABorrar = this.getPosicion(x, y);
+        Posicion posicionABorrar = new Posicion(x,y);
         this.liberarUbicacion(posicionABorrar);
     }
 
-    public Posicion getPosicion(int x, int y) throws ExcedeLimiteDelMapa {
-        Set<Posicion> posiciones = this.mapa.keySet();
-        for (Posicion pos : posiciones) {
-            if (pos.posicionCorrespondiente(x, y)) {
-                return pos;
-            }
-        }
-        throw new ExcedeLimiteDelMapa();
-    }
-
-    //Bad Code incoming
     public LinkedList<Contenible> getConteniblesEnRango(LinkedList<Posicion> posiciones, int alcance)
             throws ExcedeLimiteDelMapa {
 
@@ -120,31 +119,6 @@ public class Mapa {
 
         return unidadesEnAlcance;
 
-
-        //-----------------------------------------------
-
-
-        /*int x = posiciones.getFirst().getPosX();
-        int y = posiciones.getFirst().getPosY();
-
-        x -= alcance;
-        y -= alcance;
-
-        LinkedList<Contenible> conteniblesEnRango = new LinkedList<Contenible>();
-
-        for (int i = 0; i < 4 + (alcance * 2); i++) {
-            for (int j = 0; j < (4 + (alcance * 2)); j++) {
-                try {
-                    if (getContenido(x + i, y + j) == null)
-                        continue;
-                } catch (ExcedeLimiteDelMapa excedeLimiteDelMapa) {
-                    continue;
-                }
-                conteniblesEnRango.add(this.getContenido(x + i, y + j));
-            }
-
-        }
-        return conteniblesEnRango;*/
     }
 
     public Set<Posicion> getAllPosiciones() { return this.mapa.keySet(); }

@@ -1,4 +1,5 @@
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.ExcedeLimiteDelMapa;
@@ -41,7 +42,7 @@ public class MapaTest {
         Aldeano aldeano = new Aldeano(null);
 
         mapa.colocarUnidadEn(aldeano, 4, 4);
-        mapa.liberarUbicacion( mapa.getPosicion(4,4));
+        mapa.liberarUbicacion( new Posicion(4,4));
 
         assertNull(mapa.getContenido(4, 4));
     }

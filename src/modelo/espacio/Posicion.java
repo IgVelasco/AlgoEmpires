@@ -43,4 +43,16 @@ public class Posicion {
         }
         return posiciones;
     }
+
+    public boolean equals(Object obj){
+        if (obj == null){
+            return false;
+        }
+        Posicion otraPosicion = (Posicion) obj;
+        return ((otraPosicion.getPosX() == this.posX) && (otraPosicion.getPosY() == this.posY));
+    }
+
+    public int hashCode(){
+        return posX * posY;
+    }
 }
