@@ -14,9 +14,11 @@ import javafx.stage.Stage;
 
 public class BotonJugarEventHandler extends BotonEventHandler {
     private final Stage escenario;
+    private final AlgoEmpires aplicacion;
 
-    BotonJugarEventHandler(Stage escenario) {
+    BotonJugarEventHandler(AlgoEmpires aplicacion, Stage escenario) {
         super();
+        this.aplicacion = aplicacion;
         this.escenario = escenario;
     }
 
@@ -26,7 +28,7 @@ public class BotonJugarEventHandler extends BotonEventHandler {
         BorderPane raiz = new BorderPane();
 
         Button botonAtras = new Button("\uD83E\uDC44 Atrás");
-        botonAtras.setOnAction(new BotonAtrasEventHandler(this.escenario));
+        botonAtras.setOnAction(new BotonAtrasEventHandler(this.aplicacion, this.escenario));
         botonAtras.setAlignment(Pos.CENTER_LEFT);
 
         raiz.setBottom(botonAtras);

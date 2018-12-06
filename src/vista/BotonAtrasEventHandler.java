@@ -6,18 +6,18 @@ import javafx.stage.Stage;
 
 public class BotonAtrasEventHandler extends BotonEventHandler {
 
+    private final AlgoEmpires aplicacion;
     private final Stage escenario;
-    private Scene escenaInicial;
 
-    BotonAtrasEventHandler(Stage escenario) {
+    BotonAtrasEventHandler(AlgoEmpires aplicacion, Stage escenario) {
         super();
+        this.aplicacion = aplicacion;
         this.escenario = escenario;
-        this.escenaInicial = this.escenario.getScene();
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         super.handle(actionEvent);
-        this.escenario.setScene(escenaInicial);
+        this.aplicacion.start(this.escenario);
     }
 }
