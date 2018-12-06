@@ -5,7 +5,7 @@ import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
-import org.omg.DynamicAny.DynAnyOperations;
+
 
 public abstract class UnidadMovil implements Contenible {
 
