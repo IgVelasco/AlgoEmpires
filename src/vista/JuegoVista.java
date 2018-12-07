@@ -24,7 +24,6 @@ public class JuegoVista {
 
     private static final int ANCHO = 20;
     private static final int ALTO = 15;
-    private final String IMAGEN_SUELO = "/vista/imagenes/suelo.png";
     private final Stage escenario;
 
     public JuegoVista(Stage escenario) {
@@ -42,25 +41,25 @@ public class JuegoVista {
 
         for (int x = 0; x < ANCHO; x++) {
             for (int y = 0; y < ALTO; y++) {
-                Image imagenSuelo = new Image(getClass().getResourceAsStream(IMAGEN_SUELO));
-                ImageView suelo = new ImageView(imagenSuelo);
-                Button unBoton = new Button();
+                Button botonMapa = new Button();
+
                 Casillero unCasillero = mapa.getCasillero(new Posicion(x, y));
                 Contenible elContenido = unCasillero.getContenido();
+                
                 if (elContenido instanceof Aldeano) {
-                    unBoton.setId("botonAldeano");
-                    unBoton.setOnAction(new BotonAldeanoEventHandler(unCasillero));
+                    botonMapa.setId("botonAldeano");
+                    botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero));
                 } else if (elContenido instanceof Castillo) {
-                    unBoton.setId("botonCastillo");
-                    unBoton.setOnAction(new BotonCastilloEventHandler(unCasillero));
+                    botonMapa.setId("botonCastillo");
+                    botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero));
                 } else if (elContenido instanceof PlazaCentral) {
-                    unBoton.setId("botonPlazaCentral");
-                    unBoton.setOnAction(new BotonPlazaCentralEventHandler(unCasillero));
+                    botonMapa.setId("botonPlazaCentral");
+                    botonMapa.setOnAction(new BotonPlazaCentralEventHandler(unCasillero));
                 } else {
-                    unBoton.setId("botonSuelo");
+                    botonMapa.setId("botonSuelo");
                 }
 
-                vistaMapa.add(unBoton, x, y);
+                vistaMapa.add(botonMapa, x, y);
             }
         }
         raiz.setCenter(vistaMapa);
