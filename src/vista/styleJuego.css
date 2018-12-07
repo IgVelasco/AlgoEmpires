@@ -1,0 +1,19 @@
+.button {
+    -fx-padding: 0;
+}
+
+#botonAldeano {
+    -fx-graphic: url("/vista/imagenes/aldeano_16_azul.png");
+}
+
+#botonCastillo {
+    -fx-graphic: url("/vista/imagenes/castillo.png");
+}
+
+#botonPlazaCentral {
+    -fx-graphic: url("/vista/imagenes/plaza_central.png");
+}
+
+#botonSuelo {
+    -fx-graphic: url("/vista/imagenes/suelo.png");
+}

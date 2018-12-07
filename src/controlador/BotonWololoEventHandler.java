@@ -1,7 +1,6 @@
 package controlador;
 
 import javafx.event.ActionEvent;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,17 +51,22 @@ public class BotonWololoEventHandler extends BotonEventHandler {
                 Button unBoton = new Button();
                 Casillero unCasillero = mapa.getCasillero(new Posicion(x, y));
                 Contenible elContenido = unCasillero.getContenido();
-                unBoton.setGraphic(suelo);
-                if (elContenido instanceof Castillo) {
-                    unBoton.setOnAction(new BotonCastilloHandler(unBoton, unCasillero));
-                }
                 if (elContenido instanceof Aldeano) {
-                    unBoton.setOnAction(new BotonAldeanoHandler(unBoton, unCasillero));
+                    unBoton.setId("botonAldeano");
+                    unBoton.setOnAction(new BotonAldeanoEventHandler(unCasillero));
                 }
-                unBoton.setPadding(Insets.EMPTY);
+                else if (elContenido instanceof Castillo) {
+                    unBoton.setId("botonCastillo");
+                    unBoton.setOnAction(new BotonCastilloEventHandler(unCasillero));
+                }
 
-                if (elContenido instanceof PlazaCentral) {
-                    unBoton.setOnAction(new BotonPlazaCentralHandler(unBoton, unCasillero));
+                else if (elContenido instanceof PlazaCentral) {
+                    unBoton.setId("botonPlazaCentral");
+                    unBoton.setOnAction(new BotonPlazaCentralEventHandler(unCasillero));
+                }
+
+                else {
+                    unBoton.setId("botonSuelo");
                 }
 
                 vistaMapa.add(unBoton, x, y);
@@ -70,6 +74,7 @@ public class BotonWololoEventHandler extends BotonEventHandler {
         }
         raiz.setCenter(vistaMapa);
         Scene escenaJuego = new Scene(raiz);
+        escenaJuego.getStylesheets().add("/vista/styleJuego.css");
 
         this.escenario.setScene(escenaJuego);
         this.escenario.setMaximized(true);

@@ -4,13 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Casillero;
 
-import java.awt.*;
+public class BotonAldeanoEventHandler implements EventHandler<ActionEvent> {
 
-public class BotonCasilleroHandler implements EventHandler<ActionEvent> {
-
-
-    public BotonCasilleroHandler(Casillero unCasillero, Button boton) {
-
+    BotonAldeanoEventHandler(Casillero unCasillero) {
     }
 
     @Override
