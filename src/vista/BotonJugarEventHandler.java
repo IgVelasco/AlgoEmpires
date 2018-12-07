@@ -69,7 +69,7 @@ public class BotonJugarEventHandler extends BotonEventHandler {
         raiz.setCenter(formularios);
 
         raiz.setPadding(new Insets(16));
-        nombre_jugador1.requestFocus();
         this.escenario.getScene().setRoot(raiz);
+        nombre_jugador1.requestFocus();
     }
 }
