@@ -1,8 +1,8 @@
-package vista;
+package controlador;
 
 import javafx.event.ActionEvent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
+import vista.AlgoEmpires;
 
 public class BotonAtrasEventHandler extends BotonEventHandler {
 

@@ -1,4 +1,4 @@
-package vista;
+package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,8 +9,10 @@ import modelo.espacio.Casillero;
 
 public class BotonCastilloHandler implements EventHandler<ActionEvent> {
 
-    public BotonCastilloHandler(Button unBoton, Casillero unCasillero) {
-        Image imagenCastillo = new Image(getClass().getResourceAsStream("imagenes/castillo.png"));
+    private final String IMAGEN_CASTILLO = "/vista/imagenes/castillo.png";
+
+    BotonCastilloHandler(Button unBoton, Casillero unCasillero) {
+        Image imagenCastillo = new Image(getClass().getResourceAsStream(IMAGEN_CASTILLO));
         ImageView castillo = new ImageView(imagenCastillo);
         unBoton.setGraphic(castillo);
     }

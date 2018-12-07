@@ -1,5 +1,7 @@
 package vista;
 
+import controlador.BotonEventHandler;
+import controlador.BotonJugarEventHandler;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Insets;

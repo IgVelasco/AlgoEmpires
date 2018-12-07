@@ -1,10 +1,8 @@
-package vista;
+package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Casillero;
-import modelo.espacio.Contenible;
-import modelo.estructuras.Castillo;
 
 import java.awt.*;
 

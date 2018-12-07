@@ -1,4 +1,4 @@
-package vista;
+package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.geometry.HPos;
@@ -11,12 +11,13 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import vista.AlgoEmpires;
 
 public class BotonJugarEventHandler extends BotonEventHandler {
     private final Stage escenario;
     private final AlgoEmpires aplicacion;
 
-    BotonJugarEventHandler(AlgoEmpires aplicacion, Stage escenario) {
+    public BotonJugarEventHandler(AlgoEmpires aplicacion, Stage escenario) {
         super();
         this.aplicacion = aplicacion;
         this.escenario = escenario;
