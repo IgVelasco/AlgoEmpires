@@ -6,7 +6,7 @@ import modelo.espacio.Casillero;
 
 public class BotonPlazaCentralEventHandler implements EventHandler<ActionEvent> {
 
-    BotonPlazaCentralEventHandler(Casillero unCasillero) {
+    public BotonPlazaCentralEventHandler(Casillero unCasillero) {
     }
 
     @Override

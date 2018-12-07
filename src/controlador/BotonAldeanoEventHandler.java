@@ -6,7 +6,7 @@ import modelo.espacio.Casillero;
 
 public class BotonAldeanoEventHandler implements EventHandler<ActionEvent> {
 
-    BotonAldeanoEventHandler(Casillero unCasillero) {
+    public BotonAldeanoEventHandler(Casillero unCasillero) {
     }
 
     @Override
