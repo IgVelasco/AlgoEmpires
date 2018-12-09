@@ -8,7 +8,6 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
 import modelo.estructuras.Cuartel;
-import modelo.unidades.Arquero;
 
 public class BotonCuartelEventHandler implements EventHandler<ActionEvent> {
     Button boton;

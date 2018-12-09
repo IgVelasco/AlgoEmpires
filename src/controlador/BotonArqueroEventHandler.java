@@ -6,7 +6,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
-import modelo.unidades.ArmaDeAsedio;
 import modelo.unidades.Arquero;
 
 public class BotonArqueroEventHandler extends BotonEventHandler {

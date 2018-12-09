@@ -1,6 +1,5 @@
 package controlador;
 
-import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import modelo.espacio.Casillero;
 
