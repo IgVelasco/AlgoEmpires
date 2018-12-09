@@ -1,13 +1,15 @@
 package vista;
 
-import controlador.BotonAldeanoEventHandler;
-import controlador.BotonCastilloEventHandler;
-import controlador.BotonPlazaCentralEventHandler;
+import controlador.*;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -16,9 +18,14 @@ import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
+import modelo.estructuras.Cimiento;
+import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
+import modelo.unidades.ArmaDeAsedio;
+import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 
 public class JuegoVista {
 
@@ -48,14 +55,31 @@ public class JuegoVista {
                 
                 if (elContenido instanceof Aldeano) {
                     botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero));
+                    botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero, botonMapa));
                 } else if (elContenido instanceof Castillo) {
                     botonMapa.setId("botonCastillo");
-                    botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero));
+                    botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero, botonMapa));
                 } else if (elContenido instanceof PlazaCentral) {
                     botonMapa.setId("botonPlazaCentral");
-                    botonMapa.setOnAction(new BotonPlazaCentralEventHandler(unCasillero));
-                } else {
+                    botonMapa.setOnAction(new BotonPlazaCentralEventHandler(unCasillero, botonMapa));
+                } else if (elContenido instanceof ArmaDeAsedio){
+                    botonMapa.setId("botonAldeano");
+                    botonMapa.setOnAction(new BotonArmaDeAsedioEventHandler(unCasillero, botonMapa));
+
+                }else if (elContenido instanceof Espadachin){
+                    botonMapa.setId("botonAldeano");
+                    botonMapa.setOnAction(new BotonEspadachinEventHandler(unCasillero, botonMapa));
+
+                } else if(elContenido instanceof Arquero){
+                    botonMapa.setId("botonAldeano");
+                    botonMapa.setOnAction(new BotonArqueroEventHandler(unCasillero, botonMapa));
+                } else if(elContenido instanceof Cimiento){
+                    botonMapa.setId("botonAldeano");
+                    botonMapa.setOnAction(new BotonCimientoEventHandler(unCasillero, botonMapa));
+                } else if(elContenido instanceof Cuartel){
+                    botonMapa.setId("botonAldeano");
+                    botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa));
+                } else{
                     botonMapa.setId("botonSuelo");
                 }
 

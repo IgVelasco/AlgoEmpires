@@ -1,27 +1,29 @@
 package controlador;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
-import modelo.estructuras.Castillo;
 import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 
-public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
-    Castillo castillo;
+public class BotonEspadachinEventHandler extends BotonEventHandler {
+    Espadachin espadachin;
     Button boton;
 
-    public BotonCastilloEventHandler(Casillero unCasillero, Button unBoton) {
-        castillo = (Castillo) unCasillero.getContenido();
+
+    public BotonEspadachinEventHandler(Casillero unCasillero, Button unBoton) {
+        espadachin = (Espadachin) unCasillero.getContenido();
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
-        MenuItem crearArmaDeAsedio = new MenuItem("Crear arma de asedio ");
+
+        MenuItem mover = new MenuItem("Mover");
+        MenuItem atacar = new MenuItem("Atacar");
 
 
-        contextMenu.getItems().addAll( crearArmaDeAsedio);
+        contextMenu.getItems().addAll(mover, atacar);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override
@@ -29,10 +31,5 @@ public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
                 contextMenu.show(boton, event.getScreenX(), event.getScreenY());
             }
         });
-    }
-
-    @Override
-    public void handle(ActionEvent event) {
-
     }
 }

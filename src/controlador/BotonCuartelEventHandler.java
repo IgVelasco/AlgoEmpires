@@ -7,21 +7,22 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
-import modelo.estructuras.Castillo;
+import modelo.estructuras.Cuartel;
 import modelo.unidades.Arquero;
 
-public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
-    Castillo castillo;
+public class BotonCuartelEventHandler implements EventHandler<ActionEvent> {
     Button boton;
+    Cuartel cuartel;
 
-    public BotonCastilloEventHandler(Casillero unCasillero, Button unBoton) {
-        castillo = (Castillo) unCasillero.getContenido();
+    public BotonCuartelEventHandler(Casillero unCasillero, Button unBoton) {
+        cuartel = (Cuartel) unCasillero.getContenido();
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
-        MenuItem crearArmaDeAsedio = new MenuItem("Crear arma de asedio ");
 
+        MenuItem mover = new MenuItem("Mover");
+        MenuItem atacar = new MenuItem("Atacar");
 
-        contextMenu.getItems().addAll( crearArmaDeAsedio);
+        contextMenu.getItems().addAll(mover, atacar);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override
