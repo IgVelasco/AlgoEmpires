@@ -6,7 +6,7 @@ import modelo.estados.aldeano.GenerandoOro;
 import modelo.estados.aldeano.Reparando;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Estructura;
-import modelo.excepciones.*;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.juego.Jugador;
 
 public class Aldeano extends Accionables {

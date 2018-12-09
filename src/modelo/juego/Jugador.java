@@ -1,11 +1,13 @@
 package modelo.juego;
 
-import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.*;
-import modelo.excepciones.*;
-import modelo.unidades.*;
+import modelo.excepciones.PoblacionLimiteAlcanzada;
+import modelo.unidades.Accionables;
+import modelo.unidades.Aldeano;
+import modelo.unidades.Atacante;
+import modelo.unidades.UnidadMovil;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

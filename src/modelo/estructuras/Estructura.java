@@ -3,7 +3,6 @@ package modelo.estructuras;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.excepciones.EdificioConVidaMaxima;
-import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 

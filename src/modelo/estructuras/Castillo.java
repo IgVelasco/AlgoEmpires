@@ -3,9 +3,7 @@ package modelo.estructuras;
 import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
-import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.excepciones.OroInsuficiente;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.juego.Jugador;
 import modelo.unidades.ArmaDeAsedio;
 

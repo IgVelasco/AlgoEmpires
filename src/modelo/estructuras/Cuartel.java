@@ -2,7 +2,6 @@ package modelo.estructuras;
 
 import modelo.espacio.Posicion;
 import modelo.excepciones.OroInsuficiente;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.juego.Jugador;
 import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;

@@ -2,8 +2,6 @@ package modelo.estados.aldeano;
 
 import modelo.estructuras.Cimiento;
 import modelo.excepciones.AldeanoOcupado;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.unidades.Aldeano;
 
 public class Construyendo implements EstadoAldeano {

@@ -1,6 +1,5 @@
 package modelo.espacio;
 
-import javafx.geometry.Pos;
 import modelo.estructuras.Estructura;
 import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.ExcedeLimiteDelMapa;

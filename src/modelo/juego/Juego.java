@@ -1,9 +1,6 @@
 package modelo.juego;
 
 import modelo.espacio.Mapa;
-import modelo.excepciones.ArmaYaCargada;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ExcedeLimiteDelMapa;
 
 
 public class Juego {

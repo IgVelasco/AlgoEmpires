@@ -2,8 +2,6 @@ package modelo.estructuras;
 
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.unidades.Aldeano;
 
 import java.util.LinkedList;

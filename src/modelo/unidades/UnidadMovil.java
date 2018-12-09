@@ -3,7 +3,10 @@ package modelo.unidades;
 import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
-import modelo.excepciones.*;
+import modelo.excepciones.AsedioNoAtacaUnidad;
+import modelo.excepciones.ContenibleNoPropia;
+import modelo.excepciones.MovimientoFueraDeRango;
+import modelo.excepciones.UnidadYaUtilizada;
 import modelo.juego.Jugador;
 
 

@@ -1,7 +1,10 @@
 package modelo.unidades;
 
 import modelo.espacio.Contenible;
-import modelo.excepciones.*;
+import modelo.excepciones.ContenibleDelMismoJugador;
+import modelo.excepciones.ContenibleFueraDeRango;
+import modelo.excepciones.ContenibleNoPropia;
+import modelo.excepciones.UnidadYaAtaco;
 import modelo.juego.Jugador;
 
 public class Infanteria extends UnidadMovil implements Atacante {

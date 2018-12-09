@@ -2,8 +2,6 @@ package modelo.unidades;
 
 
 import modelo.espacio.Contenible;
-import modelo.espacio.Posicion;
-import modelo.excepciones.*;
 import modelo.juego.Jugador;
 
 public class Espadachin extends Infanteria implements Atacante {
