@@ -21,7 +21,7 @@ public class BotonAldeanoEventHandler extends BotonEventHandler {
 
         MenuItem construirPlazaCentral = new MenuItem("Construir plaza central");
 
-        contextMenu.getItems().addAll(mover);
+        //contextMenu.getItems().addAll(mover);
         MenuItem construirCuartel = new MenuItem("Construir cuartel");
 
 
