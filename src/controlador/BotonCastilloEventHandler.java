@@ -18,6 +18,7 @@ public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
         MenuItem crearArmaDeAsedio = new MenuItem("Crear arma de asedio ");
+        crearArmaDeAsedio.setOnAction(new CrearArmaDeAsedioHandler(this.castillo));
 
 
         contextMenu.getItems().addAll( crearArmaDeAsedio);

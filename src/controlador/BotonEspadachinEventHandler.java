@@ -21,6 +21,8 @@ public class BotonEspadachinEventHandler extends BotonEventHandler {
         MenuItem mover = new MenuItem("Mover");
         MenuItem atacar = new MenuItem("Atacar");
 
+        mover.setOnAction(new MoverHandler(this.espadachin));
+
 
         contextMenu.getItems().addAll(mover, atacar);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {

@@ -18,6 +18,7 @@ public class BotonPlazaCentralEventHandler implements EventHandler<ActionEvent> 
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
         MenuItem crearAldeano = new MenuItem("Crear aldeano ");
+        crearAldeano.setOnAction(new CrearAldeanoHandler(this.plazaCentral));
 
 
         contextMenu.getItems().addAll( crearAldeano);

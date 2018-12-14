@@ -6,15 +6,16 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
 import modelo.unidades.Aldeano;
+import modelo.unidades.UnidadMovil;
 import vista.JuegoVista;
 import vista.MapaView;
 import javafx.scene.input.MouseEvent;
 
 public class MoverHandler implements EventHandler<ActionEvent> {
-    Aldeano aldeano;
+    UnidadMovil unidad;
 
-    public MoverHandler(Aldeano unAldeano) {
-        aldeano = unAldeano;
+    public MoverHandler(UnidadMovil unaUnidad) {
+        unidad = unaUnidad;
     }
 
     @Override
@@ -34,7 +35,7 @@ public class MoverHandler implements EventHandler<ActionEvent> {
     public void mover(MapaView mapaView){
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
-        aldeano.realizarMovimiento(mapaView.getMapa(),destino.getPosX(),destino.getPosY(),aldeano.propietario);
+        unidad.realizarMovimiento(mapaView.getMapa(),destino.getPosX(),destino.getPosY(),unidad.propietario);
         mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView);

@@ -21,6 +21,8 @@ public class BotonArmaDeAsedioEventHandler extends BotonEventHandler {
         MenuItem cargarArma = new MenuItem("Cargar arma");
         MenuItem atacar = new MenuItem("Atacar");
 
+        mover.setOnAction(new MoverHandler(this.armaDeAsedio));
+
 
         contextMenu.getItems().addAll(mover,cargarArma, atacar);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {

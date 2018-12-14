@@ -20,6 +20,8 @@ public class BotonArqueroEventHandler extends BotonEventHandler {
         MenuItem mover = new MenuItem("Mover");
         MenuItem atacar = new MenuItem("Atacar");
 
+        mover.setOnAction(new MoverHandler(this.arquero));
+
         contextMenu.getItems().addAll(mover, atacar);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
