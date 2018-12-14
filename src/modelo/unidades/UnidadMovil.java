@@ -21,7 +21,9 @@ public abstract class UnidadMovil implements Contenible {
     public Jugador propietario;
 
 
-
+    public Jugador getPropietario() {
+        return propietario;
+    }
 
     public boolean sonDelMismoJugador(Jugador unPropietario) {
         return (unPropietario == this.propietario);
