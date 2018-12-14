@@ -21,6 +21,6 @@ public class BotonWololoEventHandler extends BotonEventHandler {
     public void handle(ActionEvent actionEvent) {
         super.handle(actionEvent);
         JuegoVista juegoVista = new JuegoVista(this.escenario);
-        juegoVista.actualizar();
+        juegoVista.iniciar();
     }
 }

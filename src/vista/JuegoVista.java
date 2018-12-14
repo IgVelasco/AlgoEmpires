@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import modelo.espacio.Casillero;
 import modelo.espacio.Contenible;
@@ -22,7 +23,7 @@ import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
 
 public class JuegoVista {
-
+    private static JuegoVista INSTANCIA;
     private static final int ANCHO = 20;
     private static final int ALTO = 15;
     private final Stage escenario;
@@ -31,60 +32,42 @@ public class JuegoVista {
         this.escenario = escenario;
     }
 
-    public void actualizar() {
+    public static JuegoVista getInstancia() {
+        return INSTANCIA;
+    }
+
+    public void iniciar() {
 
         BorderPane raiz = new BorderPane();
-        GridPane vistaMapa = new GridPane();
-        vistaMapa.setAlignment(Pos.CENTER);
-
         Juego nuevoJuego = new Juego(ANCHO, ALTO);
         Mapa mapa = nuevoJuego.getMapa();
 
-        for (int x = 0; x < ANCHO; x++) {
-            for (int y = 0; y < ALTO; y++) {
-                Button botonMapa = new Button();
+        MapaView vistaMapa = new MapaView(mapa);
 
-                Casillero unCasillero = mapa.getCasillero(new Posicion(x, y));
-                Contenible elContenido = unCasillero.getContenido();
-                
-                if (elContenido instanceof Aldeano) {
-                    botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero, botonMapa));
-                } else if (elContenido instanceof Castillo) {
-                    botonMapa.setId("botonCastillo");
-                    botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero, botonMapa));
-                } else if (elContenido instanceof PlazaCentral) {
-                    botonMapa.setId("botonPlazaCentral");
-                    botonMapa.setOnAction(new BotonPlazaCentralEventHandler(unCasillero, botonMapa));
-                } else if (elContenido instanceof ArmaDeAsedio){
-                    botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonArmaDeAsedioEventHandler(unCasillero, botonMapa));
 
-                }else if (elContenido instanceof Espadachin){
-                    botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonEspadachinEventHandler(unCasillero, botonMapa));
-
-                } else if(elContenido instanceof Arquero){
-                    botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonArqueroEventHandler(unCasillero, botonMapa));
-                } else if(elContenido instanceof Cimiento){
-                    botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonCimientoEventHandler(unCasillero, botonMapa));
-                } else if(elContenido instanceof Cuartel){
-                    botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa));
-                } else{
-                    botonMapa.setId("botonSuelo");
-                }
-
-                vistaMapa.add(botonMapa, x, y);
-            }
-        }
         raiz.setCenter(vistaMapa);
         Scene escenaJuego = new Scene(raiz);
         escenaJuego.getStylesheets().add("/vista/styleJuego.css");
 
         this.escenario.setScene(escenaJuego);
         this.escenario.setMaximized(true);
+        INSTANCIA = this;
     }
+
+    public void actualizar(MapaView vistaMapa){
+        BorderPane raiz = new BorderPane();
+        Juego nuevoJuego = new Juego(ANCHO, ALTO);
+
+        raiz.setCenter(vistaMapa);
+        Scene escenaJuego = new Scene(raiz);
+        escenaJuego.getStylesheets().add("/vista/styleJuego.css");
+
+        this.escenario.setScene(escenaJuego);
+        this.escenario.setMaximized(true);
+        INSTANCIA = this;
+
+    }
+
+
+
 }

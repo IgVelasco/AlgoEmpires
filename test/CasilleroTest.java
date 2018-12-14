@@ -11,7 +11,7 @@ public class CasilleroTest {
 
     @Test
     public void testCasilleroSeCreaSinContenido() {
-        Casillero unCasillero = new Casillero();
+        Casillero unCasillero = new Casillero(null);
         assertFalse(unCasillero.casilleroEstaOcupado());
 
 
@@ -20,20 +20,18 @@ public class CasilleroTest {
     @Test
     public void testCasilleroPuedeContenerUnaUnidadContenible() {
         Contenible unAldeano = new Aldeano(null);
-        Casillero unCasillero = new Casillero();
+        Casillero unCasillero = new Casillero(null);
 
         unCasillero.contener(unAldeano);
 
         assertTrue(unCasillero.casilleroEstaOcupado());
         assertEquals(unAldeano, unCasillero.getContenido());
-
-
     }
 
     @Test
     public void testCasilleroQuedaLibreLuegoDeLiberarlo() {
         Contenible unAldeano = new Aldeano(null);
-        Casillero unCasillero = new Casillero();
+        Casillero unCasillero = new Casillero(null);
 
         unCasillero.contener(unAldeano);
 
@@ -46,7 +44,7 @@ public class CasilleroTest {
     @Test(expected = CasilleroOcupado.class)
     public void testCasilleroLanzaExcepcionSiSeIntentaContenerMientrasEstaOcupado() {
         Contenible unAldeano = new Aldeano(null);
-        Casillero unCasillero = new Casillero();
+        Casillero unCasillero = new Casillero(null);
         unCasillero.contener(unAldeano);
 
         Contenible otroAldeano = new Aldeano(null);

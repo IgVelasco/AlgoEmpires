@@ -6,10 +6,15 @@ public class Casillero {
 
     private boolean estaOcupado = false;
     private Contenible contenido;
+    private Posicion posicion;
 
 
     public boolean casilleroEstaOcupado() {
         return this.estaOcupado;
+    }
+
+    public Casillero(Posicion unaPosicion){
+        this.posicion = unaPosicion;
     }
 
 
@@ -29,4 +34,7 @@ public class Casillero {
         estaOcupado = false;
     }
 
+    public Posicion getPosicion() {
+        return posicion;
+    }
 }

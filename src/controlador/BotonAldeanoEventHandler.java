@@ -18,6 +18,7 @@ public class BotonAldeanoEventHandler extends BotonEventHandler {
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
         MenuItem mover = new MenuItem("Mover a");
+        mover.setOnAction(new MoverHandler(this.aldeano));
 
         MenuItem construirPlazaCentral = new MenuItem("Construir plaza central");
 

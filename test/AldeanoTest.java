@@ -153,7 +153,7 @@ public class AldeanoTest {
 
         mapa.colocarUnidadEn(unAldeano, 2, 2);
 
-        unAldeano.realizarMovimiento(mapa, -1, -1,unJugador);
+        unAldeano.realizarMovimiento(mapa, 1, 1,unJugador);
         assertEquals(unAldeano, mapa.getContenido(1, 1));
     }
 
@@ -165,7 +165,7 @@ public class AldeanoTest {
 
         mapa.colocarUnidadEn(unAldeano, 2, 2);
 
-        unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
+        unAldeano.realizarMovimiento(mapa, 3, 3, unJugador);
         assertEquals(unAldeano, mapa.getContenido(3, 3));
     }
 

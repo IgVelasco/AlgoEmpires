@@ -23,7 +23,7 @@ public class Mapa {
         for (int i = 0; i < x; i++) {
             for (int j = 0; j < y; j++) {
                 Posicion posicion = new Posicion(i, j);
-                Casillero casillero = new Casillero();
+                Casillero casillero = new Casillero(posicion);
                 mapa.put(posicion, casillero);
             }
         }
@@ -90,9 +90,9 @@ public class Mapa {
     }
 
 
-    public void mover(int x, int y, int incX, int incY) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void mover(int x, int y, int xNew, int yNew) throws CasilleroOcupado, ExcedeLimiteDelMapa {
         UnidadMovil unidad = (UnidadMovil) this.getContenido(x, y); // aca hay que lanzar error si es estructura.
-        this.colocarUnidadEn(unidad, x + incX, y + incY);
+        this.colocarUnidadEn(unidad, xNew, yNew);
         Posicion posicionABorrar = new Posicion(x,y);
         this.liberarUbicacion(posicionABorrar);
     }

@@ -18,7 +18,7 @@ public abstract class UnidadMovil implements Contenible {
             DANO_CASTILLO = 20;
     public int vida;
     Posicion posicion;
-    Jugador propietario;
+    public Jugador propietario;
 
 
 
@@ -56,9 +56,10 @@ public abstract class UnidadMovil implements Contenible {
             throw new ContenibleNoPropia();
         if(propietario.movioUnidad(this))
             throw new UnidadYaUtilizada();
-        if (this.calcularDistancia(this.posicion.getPosX() + x, this.posicion.getPosY() + y) != 1)
+        if (this.calcularDistancia( x, y) != 1)
             throw new MovimientoFueraDeRango();
         mapa.mover(this.posicion.getPosX(), this.posicion.getPosY(), x, y);
+        propietario.movio(this);
     }
 
     public int calcularDistancia(int x, int y) {

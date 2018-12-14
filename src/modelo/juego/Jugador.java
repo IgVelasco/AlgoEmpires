@@ -110,21 +110,13 @@ public class Jugador {
         return this.poblacionActual;
     }
 
-    /*public void mover(UnidadMovil unidad, int x , int y) CasilleroOcupado, UnidadYaUtilizada, MovimientoFueraDeRango, ContenibleNoPropia, ArmaCargadaNoSePuedeMover {
-        if(movidos.contains(unidad))
-            throw new UnidadYaUtilizada();
-        unidad.realizarMovimiento(mapa, x, y, this);
+    public void movio(UnidadMovil unidad) {
         movidos.add(unidad);
     }
 
-    public void atacar(Atacante unidad, int x , int y) UnidadYaUtilizada, ArmaNoCargada, ContenibleFueraDeRango, AsedioNoAtacaUnidad, ContenibleDelMismoJugador {
-        if(atacaron.contains(unidad))
-            throw new UnidadYaUtilizada();
-
-        Contenible objetivoDeAtaque = mapa.getContenido(x, y);
-        unidad.atacar(objetivoDeAtaque);
+    public void atacar(Atacante unidad) {
         atacaron.add(unidad);
-    }*/
+    }
 
     public void accionableMuerto(Accionables unAccionable) {
         accionables.remove(unAccionable);
