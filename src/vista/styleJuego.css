@@ -21,3 +21,15 @@
 #botonArmaDeAsedio {
     -fx-graphic: url("/vista/imagenes/armaDeAsedio.png");
 }
+
+#botonArquero {
+    -fx-graphic: url("/vista/imagenes/arquero_16_azul.png");
+}
+
+#botonCimiento {
+    -fx-graphic: url("/vista/imagenes/cimiento.PNG");
+}
+
+#botonCuartel {
+    -fx-graphic: url("/vista/imagenes/cuartel.png");
+}

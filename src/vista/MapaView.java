@@ -61,13 +61,15 @@ public class MapaView extends GridPane {
                     botonMapa.setOnAction(new BotonEspadachinEventHandler(unCasillero, botonMapa));
 
                 } else if(elContenido instanceof Arquero){
-                    botonMapa.setId("botonAldeano");
+                    botonMapa.setId("botonArquero");
                     botonMapa.setOnAction(new BotonArqueroEventHandler(unCasillero, botonMapa));
+
                 } else if(elContenido instanceof Cimiento){
-                    botonMapa.setId("botonAldeano");
+                    botonMapa.setId("botonCimiento");
                     botonMapa.setOnAction(new BotonCimientoEventHandler(unCasillero, botonMapa));
+
                 } else if(elContenido instanceof Cuartel){
-                    botonMapa.setId("botonAldeano");
+                    botonMapa.setId("botonCuartel");
                     botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa));
                 } else{
                     botonMapa.setId("botonSuelo");
