@@ -17,3 +17,7 @@
 #botonSuelo {
     -fx-graphic: url("/vista/imagenes/suelo.png");
 }
+
+#botonArmaDeAsedio {
+    -fx-graphic: url("/vista/imagenes/armaDeAsedio.png");
+}
