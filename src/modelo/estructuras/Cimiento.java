@@ -23,8 +23,6 @@ public class Cimiento extends Estructura {
         posX = x;
         posY = y;
         dimensionCimiento = dimension;
-        elMapa.colocarEstructuraEn(this , x, y, dimension );
-
     }
 
     public int getTurnosRestantes() {

@@ -3,13 +3,12 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
-import modelo.unidades.Aldeano;
 import modelo.unidades.UnidadMovil;
 import vista.JuegoVista;
 import vista.MapaView;
 import javafx.scene.input.MouseEvent;
 
-public class MoverHandler implements EventHandler<ActionEvent> {
+public class MoverHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
     UnidadMovil unidad;
 
     public MoverHandler(UnidadMovil unaUnidad) {
@@ -19,18 +18,11 @@ public class MoverHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event){
         MapaView mapaView = MapaView.getInstancia();
-
-
-        mapaView.setOnMouseClicked(new EventHandler<MouseEvent>(){
-            @Override
-            public void handle(MouseEvent event){
-                mover(mapaView);
-                mapaView.setOnMouseClicked(null);
-            }
-        });
+        mapaView.setAccionSobreCasilla(this);
     }
 
-    public void mover(MapaView mapaView){
+    @Override
+    public void realizarAccion(MapaView mapaView){
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
         unidad.realizarMovimiento(mapaView.getMapa(),destino.getPosX(),destino.getPosY(),unidad.propietario);

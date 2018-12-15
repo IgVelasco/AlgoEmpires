@@ -9,7 +9,7 @@ import modelo.unidades.ArmaDeAsedio;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class CrearArmaDeAsedioHandler implements EventHandler<ActionEvent> {
+public class CrearArmaDeAsedioHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
     Castillo castillo;
 
     public CrearArmaDeAsedioHandler(Castillo unCastillo) {
@@ -19,17 +19,10 @@ public class CrearArmaDeAsedioHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
-
-        mapaView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                crearArma(mapaView);
-                mapaView.setOnMouseClicked(null);
-            }
-        });
+        mapaView.setAccionSobreCasilla(this);
     }
 
-    public void crearArma(MapaView mapaView) {
+    public void realizarAccion(MapaView mapaView) {
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
         ArmaDeAsedio unArma = castillo.crearArmaDeAsedio(1000);

@@ -23,6 +23,7 @@ public class MapaView extends GridPane {
     private static final int ANCHO = 20;
     private static final int ALTO = 15;
     private Mapa mapa;
+    private AccionSobreCasilla accionSobreCasilla;
 
 
     public MapaView(Mapa mapa){
@@ -73,7 +74,7 @@ public class MapaView extends GridPane {
                     botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa));
                 } else{
                     botonMapa.setId("botonSuelo");
-                    botonMapa.setOnMousePressed(new BotonCasilleroEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonCasilleroEventHandler(unCasillero, botonMapa));
                 }
 
                 this.add(botonMapa, x, y);
@@ -97,9 +98,16 @@ public class MapaView extends GridPane {
 
     public void seleccionarCasillero(Posicion posicion) {
         casilleroSeleccionada = posicion;
+        if (accionSobreCasilla != null) {
+            accionSobreCasilla.realizarAccion(this);
+        }
     }
 
     public Mapa getMapa() {
         return mapa;
+    }
+
+    public void setAccionSobreCasilla(AccionSobreCasilla accion) {
+        this.accionSobreCasilla = accion;
     }
 }

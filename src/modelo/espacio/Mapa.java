@@ -66,7 +66,7 @@ public class Mapa {
     public boolean casillerosEstanOcupados(int x, int y, int dimensiones) throws ExcedeLimiteDelMapa {
         for (int i = 0; i < dimensiones; i++) {
             for (int j = 0; j < dimensiones; j++) {
-                Posicion posicion = new Posicion(x+i,y+i);
+                Posicion posicion = new Posicion(x+i,y+j);
                 if (mapa.get(posicion) == null){
                     throw new ExcedeLimiteDelMapa();
                 }

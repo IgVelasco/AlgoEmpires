@@ -9,7 +9,7 @@ import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class ConstruirCuartelHandler implements EventHandler<ActionEvent> {
+public class ConstruirCuartelHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
     Aldeano aldeano;
     Jugador aldeanoPropietario;
 
@@ -21,17 +21,10 @@ public class ConstruirCuartelHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
-
-        mapaView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                crearCuartel(mapaView);
-                mapaView.setOnMouseClicked(null);
-            }
-        });
+        mapaView.setAccionSobreCasilla(this);
     }
 
-    public void crearCuartel(MapaView mapaView) {
+    public void realizarAccion(MapaView mapaView) {
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
         aldeanoPropietario.construirCuartel(aldeano, destino.getPosX(), destino.getPosY());

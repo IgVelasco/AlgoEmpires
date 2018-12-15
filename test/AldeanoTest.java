@@ -11,6 +11,7 @@ import modelo.unidades.Aldeano;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class AldeanoTest {
 
@@ -243,6 +244,26 @@ public class AldeanoTest {
 
         unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
         assertEquals(unAldeano, mapa.getContenido(2, 2));
+
+    }
+
+
+    @Test
+    public void testConstruc() {
+        Mapa mapa = new Mapa(10, 10);
+        Jugador unJugador = new Jugador(mapa, 5, 0,null);
+
+        Aldeano unAldeano = new Aldeano(unJugador);
+
+        mapa.colocarUnidadEn(unAldeano, 6, 5);
+        try {
+            unJugador.construirCuartel(unAldeano,5,5);
+        }catch (CasilleroOcupado ignore){
+        }
+        unAldeano.realizarMovimiento(mapa,7,5,unJugador);
+
+        assertNull(mapa.getContenido(5,5));
+        assertNull(mapa.getContenido(5,6));
 
     }
 

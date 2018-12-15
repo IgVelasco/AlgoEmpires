@@ -60,7 +60,7 @@ public class Jugador {
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
         aldeano.comenzarCimientos(unCimiento, this);
-        mapa.colocarEstructuraEn(unaPlazaCentral, x, y, 2);
+        mapa.colocarEstructuraEn(unCimiento , x, y, 2 );
     }
 
     public void construirAsedio() {
@@ -70,8 +70,9 @@ public class Jugador {
     public void construirCuartel(Aldeano aldeano, int x, int y) {
 
         Cuartel unCuartel = new Cuartel(this);
-        Cimiento elCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
-        aldeano.comenzarCimientos(elCimiento,this);
+        Cimiento unCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
+        aldeano.comenzarCimientos(unCimiento,this);
+        mapa.colocarEstructuraEn(unCimiento , x, y, 2 );
     }
 
 
@@ -111,7 +112,7 @@ public class Jugador {
     }
 
     public void movio(UnidadMovil unidad) {
-        movidos.add(unidad);
+        //movidos.add(unidad);
     }
 
     public void atacar(Atacante unidad) {

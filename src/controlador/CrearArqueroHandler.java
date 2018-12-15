@@ -9,7 +9,7 @@ import modelo.unidades.Arquero;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class CrearArqueroHandler implements EventHandler<ActionEvent> {
+public class CrearArqueroHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
     Cuartel cuartel;
 
     public CrearArqueroHandler(Cuartel unCuartel) {
@@ -19,17 +19,10 @@ public class CrearArqueroHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
-
-        mapaView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                crearArquero(mapaView);
-                mapaView.setOnMouseClicked(null);
-            }
-        });
+        mapaView.setAccionSobreCasilla(this);
     }
 
-    public void crearArquero(MapaView mapaView) {
+    public void realizarAccion(MapaView mapaView) {
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
         Arquero unArquero = cuartel.crearArquero(1000);

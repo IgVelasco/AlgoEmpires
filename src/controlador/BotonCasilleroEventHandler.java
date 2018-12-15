@@ -9,7 +9,7 @@ import vista.MapaView;
 
 import javafx.scene.control.Button;
 
-public class BotonCasilleroEventHandler implements EventHandler<MouseEvent> {
+public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
     Posicion posicion;
 
     public BotonCasilleroEventHandler(Casillero unCasillero, Button boton) {
@@ -19,7 +19,7 @@ public class BotonCasilleroEventHandler implements EventHandler<MouseEvent> {
 
 
     @Override
-    public void handle(MouseEvent event) {
+    public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
         mapaView.seleccionarCasillero(posicion);
 
