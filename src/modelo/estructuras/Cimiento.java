@@ -23,6 +23,7 @@ public class Cimiento extends Estructura {
         posX = x;
         posY = y;
         dimensionCimiento = dimension;
+        posiciones.add(new Posicion(x,y));
     }
 
     public int getTurnosRestantes() {

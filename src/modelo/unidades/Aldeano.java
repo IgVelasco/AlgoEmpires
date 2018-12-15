@@ -31,7 +31,7 @@ public class Aldeano extends Accionables {
     public void comenzarCimientos(Cimiento cimiento, Jugador unJugador) {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
-        if(cimiento.calcularDistancia(posicion.getPosX(),posicion.getPosY()) != 1)
+        if(cimiento.calcularDistancia(posicion.getPosX(),posicion.getPosY()) > 1)
             throw new ContenibleFueraDeRango();
         estado.ocupar();
         this.estado = new Construyendo(cimiento);

@@ -92,7 +92,6 @@ public class Jugador {
     public void aumentarPoblacion() {
         if (poblacionActual == poblacionMaxima)
             throw new PoblacionLimiteAlcanzada();
-
         this.poblacionActual++;
     }
 
