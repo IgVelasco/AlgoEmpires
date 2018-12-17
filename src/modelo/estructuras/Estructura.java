@@ -88,5 +88,6 @@ public abstract class Estructura implements Contenible {
     }
 
 
+    public Jugador getPropietario(){ return propietario;};
 }
 

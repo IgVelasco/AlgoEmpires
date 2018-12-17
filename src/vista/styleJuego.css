@@ -10,12 +10,20 @@
     -fx-graphic: url("/vista/imagenes/aldeano_16_rojo.png");
 }
 
-#botonCastillo {
-    -fx-graphic: url("/vista/imagenes/castillo.png");
+#botonCastilloAzul {
+    -fx-graphic: url("/vista/imagenes/castillo_azul.png");
 }
 
-#botonPlazaCentral {
-    -fx-graphic: url("/vista/imagenes/plaza_central.png");
+#botonCastilloRojo {
+    -fx-graphic: url("/vista/imagenes/castillo_rojo.png");
+}
+
+#botonPlazaCentralAzul {
+    -fx-graphic: url("/vista/imagenes/plaza_central_azul.png");
+}
+
+#botonPlazaCentralRoja {
+    -fx-graphic: url("/vista/imagenes/plaza_central_roja.png");
 }
 
 #botonSuelo {

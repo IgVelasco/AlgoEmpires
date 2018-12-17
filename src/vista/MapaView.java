@@ -53,10 +53,17 @@ public class MapaView extends GridPane {
                     botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero, botonMapa));
 
                 } else if (elContenido instanceof Castillo) {
-                    botonMapa.setId("botonCastillo");
+                    if (((Castillo) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonCastilloAzul");
+                    }
+                    else{botonMapa.setId("botonCastilloRojo");}
                     botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero, botonMapa));
+
                 } else if (elContenido instanceof PlazaCentral) {
-                    botonMapa.setId("botonPlazaCentral");
+                    if (((PlazaCentral) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonPlazaCentralAzul");
+                    }
+                    else{botonMapa.setId("botonPlazaCentralRoja");}
                     botonMapa.setOnAction(new BotonPlazaCentralEventHandler(unCasillero, botonMapa));
 
                 } else if (elContenido instanceof ArmaDeAsedio){
