@@ -12,6 +12,7 @@ import modelo.estructuras.Castillo;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;
+import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
 import modelo.unidades.Arquero;
@@ -23,13 +24,15 @@ public class MapaView extends GridPane {
     private static final int ANCHO = 20;
     private static final int ALTO = 15;
     private Mapa mapa;
+    private Jugador[] listaJugadores;
     private AccionSobreCasilla accionSobreCasilla;
 
 
-    public MapaView(Mapa mapa){
+    public MapaView(Mapa mapa, Jugador[] jugadores){
         this.setAlignment(Pos.CENTER);
         INSTANCIA = this;
         this.casilleroSeleccionada = null;
+        this.listaJugadores = jugadores;
         this.iniciar(mapa);
     }
 
@@ -43,7 +46,10 @@ public class MapaView extends GridPane {
                 Contenible elContenido = unCasillero.getContenido();
 
                 if (elContenido instanceof Aldeano) {
-                    botonMapa.setId("botonAldeano");
+                    if (((Aldeano) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonAldeanoAzul");
+                    }
+                    else{botonMapa.setId("botonAldeanoRojo");}
                     botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero, botonMapa));
 
                 } else if (elContenido instanceof Castillo) {

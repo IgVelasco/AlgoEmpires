@@ -6,7 +6,6 @@ import modelo.espacio.Posicion;
 import modelo.unidades.UnidadMovil;
 import vista.JuegoVista;
 import vista.MapaView;
-import javafx.scene.input.MouseEvent;
 
 public class MoverHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
     UnidadMovil unidad;

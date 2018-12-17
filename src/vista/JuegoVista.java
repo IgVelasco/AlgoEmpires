@@ -17,6 +17,7 @@ import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;
 import modelo.juego.Juego;
+import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
 import modelo.unidades.Arquero;
@@ -41,8 +42,9 @@ public class JuegoVista {
         BorderPane raiz = new BorderPane();
         Juego nuevoJuego = new Juego(ANCHO, ALTO);
         Mapa mapa = nuevoJuego.getMapa();
+        Jugador[] jugadores = nuevoJuego.getJugadores();
 
-        MapaView vistaMapa = new MapaView(mapa);
+        MapaView vistaMapa = new MapaView(mapa, jugadores);
 
 
         raiz.setCenter(vistaMapa);

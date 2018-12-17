@@ -2,7 +2,6 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cuartel;
 import modelo.unidades.Espadachin;

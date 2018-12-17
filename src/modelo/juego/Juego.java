@@ -32,6 +32,9 @@ public class Juego {
 
     public Mapa getMapa() { return this.mapa;
     }
+
+    public Jugador[] getJugadores() { return jugadores;
+    }
 }
 
 

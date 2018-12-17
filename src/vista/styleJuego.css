@@ -2,8 +2,12 @@
     -fx-padding: 0;
 }
 
-#botonAldeano {
+#botonAldeanoAzul {
     -fx-graphic: url("/vista/imagenes/aldeano_16_azul.png");
+}
+
+#botonAldeanoRojo {
+    -fx-graphic: url("/vista/imagenes/aldeano_16_rojo.png");
 }
 
 #botonCastillo {
