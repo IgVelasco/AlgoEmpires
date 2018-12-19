@@ -2,6 +2,7 @@ package modelo.estructuras;
 
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
+import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 
 import java.util.LinkedList;
@@ -25,6 +26,7 @@ public class Cimiento extends Estructura {
         posY = y;
         dimensionCimiento = dimension;
         posiciones.add(new Posicion(x,y));
+        propietario = unaEstructura.getPropietario();
     }
 
     public int getTurnosRestantes() {
