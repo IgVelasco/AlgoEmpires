@@ -18,6 +18,7 @@ public class UtilidadView extends BorderPane {
     private static UtilidadView INSTANCIA;
     private Button botonTurnos = new Button("Finalizar Turno");
     private Text informacionUsuario = new Text("Aca va la informacion del usuario");
+    private Text informacionOro = new Text();
 
     public UtilidadView(Juego unJuego, JuegoVista vistaJuego){
         juego = unJuego;
@@ -47,12 +48,18 @@ public class UtilidadView extends BorderPane {
 
 
         String output = String.format("Turno del jugador: %s" ,nombreUsuario);
+        String output_oro = String.format("Oro disponible: %s" , oro);
 
         informacionUsuario.setText(output);
         informacionUsuario.setFont(Font.font ("Verdana", 20));
         informacionUsuario.setFill(Color.WHITE);
-        //this.setStyle("-fx-background-color: rgba(162,56,22,0.87)");
+
+        informacionOro.setText(output_oro);
+        informacionOro.setFont(Font.font ("Verdana", 20));
+        informacionOro.setFill(Color.WHITE);
+
         this.setCenter(this.botonTurnos);
         this.setBottom(this.informacionUsuario);
+        this.setTop(this.informacionOro);
     }
 }
