@@ -18,7 +18,6 @@ public class BotonTurnosEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent event) {
         elJuego.siguienteTurno();
-        System.out.print(elJuego.getJugadorActual()); //Solo para confirmar que cambia el usuario
 
         vistaJuego.actualizar(elJuego);
     }
