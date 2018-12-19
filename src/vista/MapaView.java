@@ -35,8 +35,8 @@ public class MapaView extends GridPane {
         INSTANCIA = this;
         this.casilleroSeleccionada = null;
         this.listaJugadores = jugadores;
-        this.iniciar(mapa);
         juego = unJuego;
+        this.iniciar(mapa);
     }
 
     public MapaView iniciar(Mapa unMapa) {
