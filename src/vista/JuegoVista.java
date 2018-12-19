@@ -45,14 +45,17 @@ public class JuegoVista {
         Jugador[] jugadores = nuevoJuego.getJugadores();
 
         MapaView vistaMapa = new MapaView(mapa, jugadores, nuevoJuego);
+        UtilidadView utilidad = new UtilidadView(nuevoJuego);
+
 
 
         raiz.setCenter(vistaMapa);
+        raiz.setRight(utilidad);
         Scene escenaJuego = new Scene(raiz);
         escenaJuego.getStylesheets().add("/vista/styleJuego.css");
 
         this.escenario.setScene(escenaJuego);
-        this.escenario.setMaximized(true);
+        //this.escenario.setMaximized(true);
         INSTANCIA = this;
     }
 
@@ -64,7 +67,7 @@ public class JuegoVista {
         escenaJuego.getStylesheets().add("/vista/styleJuego.css");
 
         this.escenario.setScene(escenaJuego);
-        this.escenario.setMaximized(true);
+        //this.escenario.setMaximized(true);
         INSTANCIA = this;
 
     }
