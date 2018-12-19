@@ -156,6 +156,10 @@ public class Jugador {
     public String getNombre() {
         return nombreJugador;
     }
+
+    public Castillo getCastillo() {
+        return castillo;
+    }
 }
 
 
