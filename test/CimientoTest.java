@@ -15,6 +15,12 @@ public class CimientoTest {
   //Al usar la posicion del aldeano y otras cosas del jugador necesito tener todas las clases por eso falla
     @Test
     public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() {
+        Mapa mapa = new Mapa(20,20);
+        Cuartel cuartel = new Cuartel(null);
+        Cimiento cimiento = new Cimiento(cuartel,mapa,10,10,4);
+
+        assertEquals(3,cimiento.getTurnosRestantes());
+        assertEquals(cuartel, cimiento.getFuturaEstructura());
     }
 
    /*
