@@ -1,6 +1,7 @@
 package modelo.estructuras;
 
 import modelo.espacio.Posicion;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
@@ -19,7 +20,10 @@ public class PlazaCentral extends Estructura {
 
     }
 
-    public Aldeano crearAldeano(int oroDisponible) {
+    public Aldeano crearAldeano(int oroDisponible, Jugador unJugador) {
+        if (! sonDelMismoJugador(unJugador)) {
+            throw new ContenibleNoPropia();
+        }
         if (oroDisponible < PRECIO_ALDEANO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ALDEANO);
         this.propietario.aumentarPoblacion();

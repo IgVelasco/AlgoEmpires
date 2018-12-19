@@ -18,6 +18,6 @@ public class PlazaCentralTest {
     public void testNoCrearAldeanoSinOroSuficiente() {
         PlazaCentral unaPlaza = new PlazaCentral(null);
 
-        unaPlaza.crearAldeano(10);
+        unaPlaza.crearAldeano(10, null);
     }
 }

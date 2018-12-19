@@ -8,17 +8,18 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
 import modelo.estructuras.PlazaCentral;
+import modelo.juego.Juego;
 
 public class BotonPlazaCentralEventHandler implements EventHandler<ActionEvent> {
     PlazaCentral plazaCentral;
     Button boton;
 
-    public BotonPlazaCentralEventHandler(Casillero unCasillero, Button unBoton) {
+    public BotonPlazaCentralEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         plazaCentral = (PlazaCentral) unCasillero.getContenido();
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
         MenuItem crearAldeano = new MenuItem("Crear aldeano ");
-        crearAldeano.setOnAction(new CrearAldeanoHandler(this.plazaCentral));
+        crearAldeano.setOnAction(new CrearAldeanoHandler(this.plazaCentral, unJuego));
 
 
         contextMenu.getItems().addAll( crearAldeano);
