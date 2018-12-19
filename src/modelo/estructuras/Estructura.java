@@ -89,5 +89,9 @@ public abstract class Estructura implements Contenible {
 
 
     public Jugador getPropietario(){ return propietario;};
+
+    public LinkedList<Posicion> getPosiciones(){
+        return posiciones;
+    };
 }
 

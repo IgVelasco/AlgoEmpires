@@ -51,4 +51,9 @@ public class Cimiento extends Estructura {
     public Estructura getFuturaEstructura(){
         return estructuraCorrespondiente;
     }
+
+    @Override
+    public void recibirAtaque(int dano) {
+        this.propietario.borrarEstructura(posiciones);
+    }
 }
