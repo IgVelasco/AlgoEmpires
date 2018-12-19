@@ -251,24 +251,4 @@ public class AldeanoTest {
 
     }
 
-
-    @Test
-    public void testConstruc() {
-        Mapa mapa = new Mapa(10, 10);
-        Jugador unJugador = new Jugador(mapa, 5, 0,null);
-
-        Aldeano unAldeano = new Aldeano(unJugador);
-
-        mapa.colocarUnidadEn(unAldeano, 6, 5);
-        try {
-            unJugador.construirCuartel(unAldeano,5,5);
-        }catch (CasilleroOcupado ignore){
-        }
-        unAldeano.realizarMovimiento(mapa,7,5,unJugador);
-
-        assertNull(mapa.getContenido(5,5));
-        assertNull(mapa.getContenido(5,6));
-
-    }
-
 }

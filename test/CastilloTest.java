@@ -53,7 +53,7 @@ public class CastilloTest {
         Espadachin unEspadachin = new Espadachin(otroJugador);
 
         mapa.colocarUnidadEn(unEspadachin, 4, 7);
-        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4);
+        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
 
         unCastillo.atacar(mapa);
 
@@ -72,7 +72,7 @@ public class CastilloTest {
         Espadachin unEspadachin = new Espadachin(otroJugador);
 
         mapa.colocarUnidadEn(unEspadachin, 8, 8);
-        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4);
+        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
 
         unCastillo.atacar(mapa);
 
@@ -89,7 +89,7 @@ public class CastilloTest {
         Espadachin unEspadachin = new Espadachin(unJugador);
 
         mapa.colocarUnidadEn(unEspadachin, 5, 7);
-        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4);
+        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
 
         unCastillo.atacar(mapa);
 
@@ -107,7 +107,7 @@ public class CastilloTest {
         Aldeano unAldeano = new Aldeano(otroJugador);
 
         mapa.colocarUnidadEn(unAldeano, 4, 7);
-        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4);
+        mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
 
         unCastillo.atacar(mapa);
         unCastillo.atacar(mapa);

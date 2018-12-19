@@ -28,13 +28,14 @@ public class Aldeano extends Accionables {
         this.estado.realizarAccion(this);
     }
 
-    public void comenzarCimientos(Cimiento cimiento, Jugador unJugador) {
+    public int comenzarCimientos(Cimiento cimiento, Jugador unJugador) {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
         if(cimiento.calcularDistancia(posicion.getPosX(),posicion.getPosY()) > 1)
             throw new ContenibleFueraDeRango();
         estado.ocupar();
         this.estado = new Construyendo(cimiento);
+        return (cimiento.distanciaMenores(this.posicion.getPosX(),this.posicion.getPosY()));
     }
 
 

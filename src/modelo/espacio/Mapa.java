@@ -33,14 +33,14 @@ public class Mapa {
         return this.cantCeldas;
     }
 
-    public Contenible getContenido(int x, int y) throws ExcedeLimiteDelMapa {
+    public Contenible getContenido(int x, int y) {
         if (mapa.get(new Posicion(x,y)) == null){
             throw new ExcedeLimiteDelMapa();
         }
         return mapa.get(new Posicion(x,y)).getContenido();
     }
 
-    public void colocarUnidadEn(UnidadMovil unidad, int x, int y) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void colocarUnidadEn(UnidadMovil unidad, int x, int y) {
         Posicion posicion = new Posicion(x,y);
         Casillero destino = mapa.get(posicion);
         if (destino == null){
@@ -51,22 +51,22 @@ public class Mapa {
     }
 
 
-    public void colocarEstructuraEn(Estructura unaEstructura, int x, int y, int dimension) throws CasilleroOcupado, ExcedeLimiteDelMapa {
-        if (casillerosEstanOcupados(x, y, dimension))
+    public void colocarEstructuraEn(Estructura unaEstructura, int x, int y, int dimension, int signo)  {
+        if (casillerosEstanOcupados(x, y, dimension,signo))
             throw new CasilleroOcupado();
         for (int i = 0; i < dimension; i++) {
             for (int j = 0; j < dimension; j++) {
-                Posicion posicion = new Posicion(x+i,y+j);
+                Posicion posicion = new Posicion(x+i*signo,y+j*signo);
                 mapa.get(posicion).contener(unaEstructura);
                 unaEstructura.agregarPosicion(posicion);
             }
         }
     }
 
-    public boolean casillerosEstanOcupados(int x, int y, int dimensiones) throws ExcedeLimiteDelMapa {
+    public boolean casillerosEstanOcupados(int x, int y, int dimensiones,int signo)  {
         for (int i = 0; i < dimensiones; i++) {
             for (int j = 0; j < dimensiones; j++) {
-                Posicion posicion = new Posicion(x+i,y+j);
+                Posicion posicion = new Posicion(x+i*signo,y+j*signo);
                 if (mapa.get(posicion) == null){
                     throw new ExcedeLimiteDelMapa();
                 }
@@ -90,7 +90,7 @@ public class Mapa {
     }
 
 
-    public void mover(int x, int y, int xNew, int yNew) throws CasilleroOcupado, ExcedeLimiteDelMapa {
+    public void mover(int x, int y, int xNew, int yNew) {
         UnidadMovil unidad = (UnidadMovil) this.getContenido(x, y); // aca hay que lanzar error si es estructura.
         this.colocarUnidadEn(unidad, xNew, yNew);
         Posicion posicionABorrar = new Posicion(x,y);

@@ -31,8 +31,8 @@ public class Jugador {
         this.poblacionActual = 3;
         this.poblacionMaxima = 50;
 
-        mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4);
-        mapa.colocarEstructuraEn(plazaInicial, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2);
+        mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4,1);
+        mapa.colocarEstructuraEn(plazaInicial, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2, 1);
 
         for (int i = 0; i < 3; i++) {
             accionables.add(i, new Aldeano(this));
@@ -61,8 +61,8 @@ public class Jugador {
     public void construirPlazaCentral(Aldeano aldeano, int x, int y) { // Podria ser asi o que se le pase un indez de array
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
-        aldeano.comenzarCimientos(unCimiento, this);
-        mapa.colocarEstructuraEn(unCimiento , x, y, 2 );
+        int signo = aldeano.comenzarCimientos(unCimiento, this);
+        mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
     }
 
     public void construirAsedio() {
@@ -73,8 +73,8 @@ public class Jugador {
 
         Cuartel unCuartel = new Cuartel(this);
         Cimiento unCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
-        aldeano.comenzarCimientos(unCimiento,this);
-        mapa.colocarEstructuraEn(unCimiento , x, y, 2 );
+        int signo = aldeano.comenzarCimientos(unCimiento,this);
+        mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
     }
 
 

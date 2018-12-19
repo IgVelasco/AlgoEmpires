@@ -53,8 +53,7 @@ public class MapaTest {
         Mapa mapa = new Mapa(20, 20);
         Castillo castillo = new Castillo(null);
 
-        mapa.colocarEstructuraEn(castillo, 5, 5, 4);
-
+        mapa.colocarEstructuraEn(castillo, 5, 5, 4,1);
         assertEquals(castillo, mapa.getContenido(8, 8));
         assertEquals(castillo, mapa.getContenido(7, 7));
         assertEquals(castillo, mapa.getContenido(6, 6));
@@ -69,7 +68,7 @@ public class MapaTest {
         Mapa mapa = new Mapa(5, 5);
         Castillo unCastillo = new Castillo(null);
 
-        mapa.colocarEstructuraEn(unCastillo, -1, -1, 4);
+        mapa.colocarEstructuraEn(unCastillo, -1, -1, 4,1);
     }
 
 
@@ -78,7 +77,7 @@ public class MapaTest {
         Mapa mapa = new Mapa(5, 5);
         Castillo unCastillo = new Castillo(null);
 
-        mapa.colocarEstructuraEn(unCastillo, 3, 3, 4);
+        mapa.colocarEstructuraEn(unCastillo, 3, 3, 4,1);
         assertNull(mapa.getContenido(3, 3));
         assertNull(mapa.getContenido(4, 3));
     }
@@ -89,8 +88,8 @@ public class MapaTest {
         Castillo unCastillo = new Castillo(null);
         Castillo otroCastillo = new Castillo(null);
 
-        mapa.colocarEstructuraEn(unCastillo, 5, 5, 4);
-        mapa.colocarEstructuraEn(otroCastillo, 5, 5, 4);
+        mapa.colocarEstructuraEn(unCastillo, 5, 5, 4,1);
+        mapa.colocarEstructuraEn(otroCastillo, 5, 5, 4,1);
 
         assertEquals(unCastillo, mapa.getContenido(8, 8));
         assertEquals(unCastillo, mapa.getContenido(7, 7));

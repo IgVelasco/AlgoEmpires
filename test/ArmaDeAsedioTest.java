@@ -88,7 +88,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 1, 1);
-        mapa.colocarEstructuraEn(unCastillo, 1, 9, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 9, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -109,7 +109,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -131,7 +131,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
@@ -150,7 +150,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -170,7 +170,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
 
@@ -191,7 +191,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -212,7 +212,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -234,7 +234,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.atacar(unCastillo, jugador);
@@ -252,7 +252,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -274,7 +274,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma();
         unArmaDeAsedio.cargarArma();
@@ -295,7 +295,7 @@ public class ArmaDeAsedioTest {
 
 
         mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.realizarAccionCorrespondiente();
         unArmaDeAsedio.atacar(unCastillo, jugador);

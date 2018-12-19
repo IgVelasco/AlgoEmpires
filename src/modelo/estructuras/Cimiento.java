@@ -14,6 +14,7 @@ public class Cimiento extends Estructura {
     private int posX;
     private int posY;
     private int dimensionCimiento;
+    private int signo;
 
     public Cimiento(Estructura unaEstructura, Mapa elMapa, int x, int y, int dimension) {
 
@@ -34,9 +35,14 @@ public class Cimiento extends Estructura {
         turnosRestantes--;
         if (turnosRestantes == 0){
             mapa.liberarUbicaciones(posiciones);
-            mapa.colocarEstructuraEn(estructuraCorrespondiente, posX, posY, dimensionCimiento );
+            mapa.colocarEstructuraEn(estructuraCorrespondiente, posX, posY, dimensionCimiento, signo);
             aldeano.liberarAldeano();
         }
 
+    }
+
+    public int distanciaMenores(int posX, int posY) {
+        signo = posiciones.getFirst().posicionesMayores(posX,posY);
+        return signo;
     }
 }

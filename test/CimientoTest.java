@@ -33,7 +33,7 @@ public class CimientoTest {
         assertEquals(2, unCimiento.getTurnosRestantes());
     }
 
-    @Test
+  /*  @Test
     public void testCimientoLiberaAlAldeanoDeSuConstruccion() {
 
         Mapa unMapa = new Mapa(20,20);
@@ -49,7 +49,7 @@ public class CimientoTest {
         unAldeano.realizarAccionCorrespondiente();
 
         assertEquals(jugador.getOro(), 120);
-    }
+    }*/
 
 
 }

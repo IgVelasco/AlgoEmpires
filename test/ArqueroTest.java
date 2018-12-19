@@ -85,7 +85,7 @@ public class ArqueroTest {
 
 
         mapa.colocarUnidadEn(unArquero, 1, 1);
-        mapa.colocarEstructuraEn(unCastillo, 1, 9, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 9, 4,1);
 
         unArquero.atacar(unCastillo, jugador);
 
@@ -104,7 +104,7 @@ public class ArqueroTest {
 
 
         mapa.colocarUnidadEn(unArquero, 0, 0);
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4);
+        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArquero.atacar(unCastillo, jugador);
 
@@ -150,7 +150,7 @@ public class ArqueroTest {
 
 
         mapa.colocarUnidadEn(unArquero, 0, 0);
-        mapa.colocarEstructuraEn(unCuartel, 1, 1, 2);
+        mapa.colocarEstructuraEn(unCuartel, 1, 1, 2,1);
 
 
         for (int x = 0; x<25 ;x++) {

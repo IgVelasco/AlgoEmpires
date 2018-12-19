@@ -55,4 +55,8 @@ public class Posicion {
     public int hashCode(){
         return posX * posY;
     }
+
+    public int posicionesMayores(int x, int y) {
+        return (x>this.posX || y>this.getPosY()) ? -1:1;
+    }
 }

@@ -76,7 +76,6 @@ public class JuegoVista {
         raiz.setRight(utilidad);
         Scene escenaJuego = new Scene(raiz);
         escenaJuego.getStylesheets().add("/vista/styleJuego.css");
-
         this.escenario.setScene(escenaJuego);
         //this.escenario.setMaximized(true);
         INSTANCIA = this;
