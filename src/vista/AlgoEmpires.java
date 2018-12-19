@@ -71,6 +71,7 @@ public class AlgoEmpires extends Application {
         escenario.resizableProperty().setValue(false);
         escenario.setScene(escenaInicial);
 
+        sonidoInicio.setVolume(0.05);
         sonidoInicio.play();
         escenario.show();
     }
