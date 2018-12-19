@@ -7,16 +7,20 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
+import modelo.espacio.Posicion;
 import modelo.estructuras.PlazaCentral;
 import modelo.juego.Juego;
+import vista.MapaView;
 
 public class BotonPlazaCentralEventHandler implements EventHandler<ActionEvent> {
     PlazaCentral plazaCentral;
     Button boton;
+    Posicion posicion;
 
     public BotonPlazaCentralEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         plazaCentral = (PlazaCentral) unCasillero.getContenido();
         boton = unBoton;
+        posicion = unCasillero.getPosicion();
         ContextMenu contextMenu = new ContextMenu();
         MenuItem crearAldeano = new MenuItem("Crear aldeano ");
         MenuItem informacion = new MenuItem("Informacion");
@@ -37,6 +41,7 @@ public class BotonPlazaCentralEventHandler implements EventHandler<ActionEvent> 
 
     @Override
     public void handle(ActionEvent event) {
-
+        MapaView mapaView = MapaView.getInstancia();
+        mapaView.seleccionarCasillero(posicion);
     }
 }

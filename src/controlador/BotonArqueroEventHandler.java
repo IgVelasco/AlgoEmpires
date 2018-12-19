@@ -1,23 +1,28 @@
 package controlador;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
+import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.unidades.Arquero;
+import vista.MapaView;
 
 public class BotonArqueroEventHandler extends BotonEventHandler {
     Button boton;
     Arquero arquero;
+    Posicion posicion;
 
     public BotonArqueroEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         arquero = (Arquero) unCasillero.getContenido();
         boton = unBoton;
-        ContextMenu contextMenu = new ContextMenu();
+        posicion = unCasillero.getPosicion();
 
+        ContextMenu contextMenu = new ContextMenu();
         MenuItem mover = new MenuItem("Mover");
         MenuItem atacar = new MenuItem("Atacar");
         MenuItem informacion = new MenuItem("Informacion");
@@ -35,5 +40,11 @@ public class BotonArqueroEventHandler extends BotonEventHandler {
                 contextMenu.show(boton, event.getScreenX(), event.getScreenY());
             }
         });
+    }
+
+    @Override
+    public void handle(ActionEvent event) {
+        MapaView mapaView = MapaView.getInstancia();
+        mapaView.seleccionarCasillero(posicion);
     }
 }

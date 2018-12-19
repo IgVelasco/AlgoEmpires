@@ -15,7 +15,7 @@ public class Castillo extends Estructura {
 
     private static final int
             PRECIO_ARMA_DE_ASEDIO = 200,
-            ALCANCE = 3;
+            ALCANCE = 5;
 
     public Castillo(Jugador jugador) {
         propietario = jugador;
@@ -37,7 +37,9 @@ public class Castillo extends Estructura {
         }
         propietario.restarOro(PRECIO_ARMA_DE_ASEDIO);
         this.propietario.aumentarPoblacion();
-        return new ArmaDeAsedio(propietario);
+        ArmaDeAsedio  armaDeAsedio = new ArmaDeAsedio(propietario);
+        propietario.agregarAccionable(armaDeAsedio);
+        return armaDeAsedio;
     }
 
     public void atacar(Mapa mapa) {

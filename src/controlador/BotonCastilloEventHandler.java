@@ -10,6 +10,7 @@ import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.juego.Juego;
+import vista.MapaView;
 
 public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
     Castillo castillo;
@@ -40,6 +41,7 @@ public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-
+        MapaView mapaView = MapaView.getInstancia();
+        mapaView.seleccionarCasillero(posicion);
     }
 }

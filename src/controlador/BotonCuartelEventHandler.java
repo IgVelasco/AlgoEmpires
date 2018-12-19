@@ -45,6 +45,5 @@ public class BotonCuartelEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
         mapaView.seleccionarCasillero(posicion);
-        System.out.println(cuartel.getVida());
     }
 }
