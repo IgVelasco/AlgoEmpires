@@ -1,5 +1,6 @@
 package vista;
 
+import controlador.BotonTurnosEventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
@@ -14,6 +15,8 @@ public class UtilidadView extends BorderPane {
 
     public UtilidadView(Juego unJuego){
         juego = unJuego;
+
+        this.botonTurnos.setOnAction(new BotonTurnosEventHandler(this.juego));
 
         this.setCenter(this.botonTurnos);
         this.setBottom(this.informacionUsuario);
