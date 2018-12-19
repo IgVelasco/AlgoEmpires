@@ -36,7 +36,8 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         this.estado.realizarAccion();
     }
 
-    public void cargarArma() throws ArmaYaCargada, ArmaSeCargaEnSiguienteTurno {
+    public void cargarArma(Jugador unJugador) throws ArmaYaCargada, ArmaSeCargaEnSiguienteTurno {
+        this.sonDelMismoJugador(unJugador);
         estado.cargarArma();
         estado = new ArmaCargada();
     }

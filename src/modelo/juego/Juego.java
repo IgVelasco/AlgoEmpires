@@ -42,6 +42,7 @@ public class Juego {
     public Jugador getJugadorActual() {
         return jugadorActual;
     }
+
 }
 
 
