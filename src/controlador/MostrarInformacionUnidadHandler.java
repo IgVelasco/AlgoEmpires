@@ -28,16 +28,16 @@ public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent
         this.unidad = unidadMovil;
 
         tipo_unidad.setFont(Font.font ("Verdana", 15));
-        tipo_unidad.setFill(Color.BLACK);
+        tipo_unidad.setFill(Color.WHITE);
 
         vida_actual.setFont(Font.font ("Verdana", 15));
-        vida_actual.setFill(Color.BLACK);
+        vida_actual.setFill(Color.WHITE);
 
         estado_actual.setFont(Font.font ("Verdana", 15));
-        estado_actual.setFill(Color.BLACK);
+        estado_actual.setFill(Color.WHITE);
 
         propietario.setFont(Font.font ("Verdana", 15));
-        propietario.setFill(Color.BLACK);
+        propietario.setFill(Color.WHITE);
     }
 
     @Override
@@ -76,7 +76,10 @@ public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent
 
         borderPane.setCenter(lista);
 
+        borderPane.setId("informacion");
         Scene scene = new Scene(borderPane);
+
+        scene.getStylesheets().addAll("file:src/vista/styleInformacion.css");
 
         Stage newWindow = new Stage();
         newWindow.setTitle("Infomacion de unidad");
