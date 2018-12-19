@@ -3,6 +3,7 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
+import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import vista.JuegoVista;
@@ -10,11 +11,11 @@ import vista.MapaView;
 
 public class ConstruirPlazaCentralHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
     Aldeano aldeano;
-    Jugador aldeanoPropietario;
+    Juego juego;
 
-    public ConstruirPlazaCentralHandler(Aldeano unAldeano) {
+    public ConstruirPlazaCentralHandler(Aldeano unAldeano, Juego unJuego) {
         aldeano = unAldeano;
-        aldeanoPropietario = unAldeano.getPropietario();
+        juego = unJuego;
     }
 
     @Override
@@ -26,7 +27,7 @@ public class ConstruirPlazaCentralHandler implements EventHandler<ActionEvent>, 
     public void realizarAccion(MapaView mapaView) {
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
-        aldeanoPropietario.construirPlazaCentral(aldeano, destino.getPosX(), destino.getPosY());
+        juego.getJugadorActual().construirPlazaCentral(aldeano, destino.getPosX(), destino.getPosY());
         mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView);
