@@ -24,7 +24,7 @@ public class CrearArmaDeAsedioHandler implements EventHandler<ActionEvent>, Acci
     public void realizarAccion(MapaView mapaView) {
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
-        ArmaDeAsedio unArma = castillo.crearArmaDeAsedio(1000);
+        ArmaDeAsedio unArma = castillo.crearArmaDeAsedio(castillo.getPropietario().getOro());
         mapaView.getMapa().colocarUnidadEn(unArma, destino.getPosX(), destino.getPosY());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
