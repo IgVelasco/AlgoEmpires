@@ -107,6 +107,10 @@ public class Jugador {
         mapa.liberarUbicaciones(posiciones);
     }
 
+    public void restarOro(int cantOro) {
+        oro -= cantOro;
+    }
+
 
     public int getPoblacionActual() {
         return this.poblacionActual;

@@ -24,12 +24,14 @@ public class Cuartel extends Estructura {
 
     public Espadachin crearEspadachin(int oroDisponible) {
         if (oroDisponible < PRECIO_ESPADACHIN) throw new OroInsuficiente();
+        propietario.restarOro(PRECIO_ESPADACHIN);
         this.propietario.aumentarPoblacion();
         return new Espadachin(propietario);
     }
 
     public Arquero crearArquero(int oroDisponible) {
         if (oroDisponible < PRECIO_ARQUERO) throw new OroInsuficiente();
+        propietario.restarOro(PRECIO_ARQUERO);
         this.propietario.aumentarPoblacion();
         return new Arquero(propietario);
     }

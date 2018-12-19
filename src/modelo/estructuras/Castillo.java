@@ -31,6 +31,7 @@ public class Castillo extends Estructura {
         if (oroDisponible < PRECIO_ARMA_DE_ASEDIO) {
             throw new OroInsuficiente();
         }
+        propietario.restarOro(PRECIO_ARMA_DE_ASEDIO);
         this.propietario.aumentarPoblacion();
         return new ArmaDeAsedio(propietario);
     }
