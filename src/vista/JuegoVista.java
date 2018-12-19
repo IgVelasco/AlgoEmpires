@@ -4,6 +4,7 @@ import controlador.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -37,15 +38,18 @@ public class JuegoVista {
         return INSTANCIA;
     }
 
-    public void iniciar() {
+    public void iniciar(TextField nombre_jug_1, TextField nombre_jug_2) {
 
         BorderPane raiz = new BorderPane();
         Juego nuevoJuego = new Juego(ANCHO, ALTO);
         Mapa mapa = nuevoJuego.getMapa();
         Jugador[] jugadores = nuevoJuego.getJugadores();
+        jugadores[0].setNombreJugador(nombre_jug_1.getText());
+        jugadores[1].setNombreJugador(nombre_jug_2.getText());
+
 
         MapaView vistaMapa = new MapaView(mapa, jugadores, nuevoJuego);
-        UtilidadView utilidad = new UtilidadView(nuevoJuego);
+        UtilidadView utilidad = new UtilidadView(nuevoJuego, this);
 
 
 
@@ -66,7 +70,7 @@ public class JuegoVista {
         Jugador[] jugadores = unJuego.getJugadores();
 
         MapaView vistaMapa = new MapaView(mapa, jugadores, unJuego);
-        UtilidadView utilidad = new UtilidadView(unJuego);
+        UtilidadView utilidad = new UtilidadView(unJuego, this);
 
         raiz.setCenter(vistaMapa);
         raiz.setRight(utilidad);

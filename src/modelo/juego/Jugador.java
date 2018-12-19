@@ -20,6 +20,8 @@ public class Jugador {
     private ArrayList<UnidadMovil> movidos = new ArrayList<UnidadMovil>();
     private ArrayList<Atacante> atacaron = new ArrayList<Atacante>();
     private int oro, poblacionActual, poblacionMaxima;
+    private String nombreJugador;
+
 
     public Jugador(Mapa mapa, int posicionCastilloHorizontal, int posicionCastilloVertical, Juego juego) {
         castillo = new Castillo(this);
@@ -142,6 +144,13 @@ public class Jugador {
 
     public boolean ataco(Atacante unAtacante) {
         return atacaron.contains(unAtacante);
+    }
+
+    public void setNombreJugador(String suNombre){
+        this.nombreJugador = suNombre;
+    }
+    public String getNombre() {
+        return nombreJugador;
     }
 }
 
