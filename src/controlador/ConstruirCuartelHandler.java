@@ -28,7 +28,6 @@ public class ConstruirCuartelHandler implements EventHandler<ActionEvent>, Accio
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
         juego.getJugadorActual().construirCuartel(aldeano, destino.getPosX(), destino.getPosY());
-        mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }

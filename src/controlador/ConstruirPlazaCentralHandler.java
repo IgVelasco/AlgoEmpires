@@ -28,7 +28,6 @@ public class ConstruirPlazaCentralHandler implements EventHandler<ActionEvent>, 
         Posicion destino = mapaView.getDestino();
         System.out.println(destino.getPosX());
         juego.getJugadorActual().construirPlazaCentral(aldeano, destino.getPosX(), destino.getPosY());
-        mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }

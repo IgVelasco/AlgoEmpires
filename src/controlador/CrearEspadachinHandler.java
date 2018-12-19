@@ -26,7 +26,6 @@ public class CrearEspadachinHandler implements EventHandler<ActionEvent>, Accion
         System.out.println(destino.getPosX());
         Espadachin unEspadachin = cuartel.crearEspadachin(1000);
         mapaView.getMapa().colocarUnidadEn(unEspadachin, destino.getPosX(), destino.getPosY());
-        mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }
