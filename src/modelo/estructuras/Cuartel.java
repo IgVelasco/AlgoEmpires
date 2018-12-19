@@ -1,6 +1,7 @@
 package modelo.estructuras;
 
 import modelo.espacio.Posicion;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
 import modelo.juego.Jugador;
 import modelo.unidades.Arquero;
@@ -22,14 +23,20 @@ public class Cuartel extends Estructura {
         posiciones = new LinkedList<Posicion>();
     }
 
-    public Espadachin crearEspadachin(int oroDisponible) {
+    public Espadachin crearEspadachin(int oroDisponible, Jugador unJugador) {
+        if (! sonDelMismoJugador(unJugador)) {
+            throw new ContenibleNoPropia();
+        }
         if (oroDisponible < PRECIO_ESPADACHIN) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ESPADACHIN);
         this.propietario.aumentarPoblacion();
         return new Espadachin(propietario);
     }
 
-    public Arquero crearArquero(int oroDisponible) {
+    public Arquero crearArquero(int oroDisponible, Jugador unJugador) {
+        if (! sonDelMismoJugador(unJugador)) {
+            throw new ContenibleNoPropia();
+        }
         if (oroDisponible < PRECIO_ARQUERO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ARQUERO);
         this.propietario.aumentarPoblacion();

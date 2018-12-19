@@ -99,7 +99,7 @@ public class MapaView extends GridPane {
                         botonMapa.setId("botonCuartelAzul");
                     }
                     else{botonMapa.setId("botonCuartelRojo");}
-                    botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa, juego));
                 } else{
                     botonMapa.setId("botonSuelo");
                     botonMapa.setOnAction(new BotonCasilleroEventHandler(unCasillero, botonMapa));

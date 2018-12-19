@@ -18,7 +18,7 @@ public class CuartelTest {
     public void testNoCrearEspadachinSinOroSuficiente() {
         Cuartel unCuartel = new Cuartel(null);
 
-        unCuartel.crearEspadachin(25);
+        unCuartel.crearEspadachin(25, null);
 
     }
 
@@ -26,6 +26,6 @@ public class CuartelTest {
     public void testNoCrearArqueroSinOroSuficiente() {
         Cuartel unCuartel = new Cuartel(null);
 
-        unCuartel.crearArquero(25);
+        unCuartel.crearArquero(25, null);
     }
 }
