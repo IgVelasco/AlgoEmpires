@@ -24,7 +24,7 @@ public class UtilidadView extends BorderPane {
         juego = unJuego;
         Jugador jugadores[] = unJuego.getJugadores();
 
-        Image fondo = new Image("/vista/imagenes/fondo_madera.JPG");
+        Image fondo = new Image("/vista/imagenes/fondo_madera.jpg");
         BackgroundSize bSize = new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, false, false, true, false);
 
         this.setBackground(new Background(new BackgroundImage(fondo,
@@ -35,12 +35,11 @@ public class UtilidadView extends BorderPane {
 
         this.botonTurnos.setOnAction(new BotonTurnosEventHandler(this.juego, vistaJuego));
         if(jugadores[0] == unJuego.getJugadorActual())
-            botonTurnos.setStyle("-fx-background-color: #ff0b0c");
+            botonTurnos.setStyle("-fx-background-color: rgb(255,19,37)");
         else
             botonTurnos.setStyle("-fx-background-color: rgb(14,71,255)");
         botonTurnos.setFont(Font.font ("Verdana", 15));
         botonTurnos.setTextFill(Color.WHITE);
-
 
         String oro = Integer.toString(unJuego.getJugadorActual().getOro());
         String nombreUsuario = unJuego.getJugadorActual().getNombre();
