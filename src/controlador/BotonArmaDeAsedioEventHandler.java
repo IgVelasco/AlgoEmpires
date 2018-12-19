@@ -26,15 +26,16 @@ public class BotonArmaDeAsedioEventHandler extends BotonEventHandler {
         MenuItem mover = new MenuItem("Mover a");
         MenuItem cargarArma = new MenuItem("Cargar arma");
         MenuItem atacar = new MenuItem("Atacar");
+        MenuItem descargarArma = new MenuItem("Descargar Arma");
         MenuItem informacion = new MenuItem("Informacion");
 
         informacion.setOnAction(new MostrarInformacionUnidadHandler(this.armaDeAsedio));
-
         mover.setOnAction(new MoverHandler(this.armaDeAsedio, unJuego));
         atacar.setOnAction(new AtacarHandler(this.armaDeAsedio, unJuego));
         cargarArma.setOnAction(new CargarArmaHandler(this.armaDeAsedio, unJuego));
+        descargarArma.setOnAction(new DescargarArmaHandler(this.armaDeAsedio, unJuego));
 
-        contextMenu.getItems().addAll(mover,cargarArma, atacar, informacion);
+        contextMenu.getItems().addAll(mover,cargarArma, descargarArma, atacar, informacion);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override

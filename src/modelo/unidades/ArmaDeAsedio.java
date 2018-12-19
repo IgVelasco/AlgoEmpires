@@ -25,6 +25,10 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
 
     }
 
+    public void descargarArmaDeAsedio(Jugador unJugador){
+        this.sonDelMismoJugador(unJugador);
+        estado = new ArmaDescargada(false);
+    }
 
     public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador) {
         if(!estado.movible())
