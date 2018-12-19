@@ -36,8 +36,9 @@ public class UtilidadView extends BorderPane {
         if(jugadores[0] == unJuego.getJugadorActual())
             botonTurnos.setStyle("-fx-background-color: #ff0b0c");
         else
-            botonTurnos.setStyle("-fx-background-color: rgba(12,33,255,0.67)");
+            botonTurnos.setStyle("-fx-background-color: rgb(14,71,255)");
         botonTurnos.setFont(Font.font ("Verdana", 15));
+        botonTurnos.setTextFill(Color.WHITE);
 
 
         String oro = Integer.toString(unJuego.getJugadorActual().getOro());
