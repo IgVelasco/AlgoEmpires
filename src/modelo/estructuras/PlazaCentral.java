@@ -27,7 +27,9 @@ public class PlazaCentral extends Estructura {
         if (oroDisponible < PRECIO_ALDEANO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ALDEANO);
         this.propietario.aumentarPoblacion();
-        return new Aldeano(this.propietario);
+        Aldeano aldeano = new Aldeano(this.propietario);
+        this.propietario.agregarAccionable(aldeano);
+        return aldeano;
     }
 
 }
