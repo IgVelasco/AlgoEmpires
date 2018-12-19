@@ -64,14 +64,14 @@ public class CastilloTest {
 
     @Test
     public void testCastilloNoAtacaUnidadFueraDeRango() {
-        Mapa mapa = new Mapa(20, 20);
+        Mapa mapa = new Mapa(30, 30);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
-        Jugador otroJugador = new Jugador(mapa, 10, 10, null);
+        Jugador otroJugador = new Jugador(mapa, 20, 20, null);
 
         Castillo unCastillo = new Castillo(unJugador);
         Espadachin unEspadachin = new Espadachin(otroJugador);
 
-        mapa.colocarUnidadEn(unEspadachin, 8, 8);
+        mapa.colocarUnidadEn(unEspadachin, 10, 10);
         mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
 
         unCastillo.atacar(mapa);

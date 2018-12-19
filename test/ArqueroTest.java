@@ -116,8 +116,8 @@ public class ArqueroTest {
     @Test
     public void testArqueroMataUnidad() {
         Mapa mapa = new Mapa(20, 20);
-        Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+        Jugador jugador = new Jugador(mapa, 7, 7, null);
+        Jugador otroJugador = new Jugador(mapa, 14, 5, null);
 
         Arquero unArquero = new Arquero(jugador);
         Aldeano unAldeano = new Aldeano(otroJugador);
