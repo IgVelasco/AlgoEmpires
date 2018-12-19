@@ -74,11 +74,17 @@ public class MapaView extends GridPane {
                     botonMapa.setOnAction(new BotonArmaDeAsedioEventHandler(unCasillero, botonMapa, juego));
 
                 }else if (elContenido instanceof Espadachin){
-                    botonMapa.setId("botonAldeano");
+                    if (((Espadachin) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonEspadachinAzul");
+                    }
+                    else{botonMapa.setId("botonEspadachinRojo");}
                     botonMapa.setOnAction(new BotonEspadachinEventHandler(unCasillero, botonMapa, juego));
 
                 } else if(elContenido instanceof Arquero){
-                    botonMapa.setId("botonArquero");
+                    if (((Arquero) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonArqueroAzul");
+                    }
+                    else{botonMapa.setId("botonArqueroRojo");}
                     botonMapa.setOnAction(new BotonArqueroEventHandler(unCasillero, botonMapa, juego));
 
                 } else if(elContenido instanceof Cimiento){
@@ -86,7 +92,10 @@ public class MapaView extends GridPane {
                     botonMapa.setOnAction(new BotonCimientoEventHandler(unCasillero, botonMapa));
 
                 } else if(elContenido instanceof Cuartel){
-                    botonMapa.setId("botonCuartel");
+                    if (((Cuartel) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonCuartelAzul");
+                    }
+                    else{botonMapa.setId("botonCuartelRojo");}
                     botonMapa.setOnAction(new BotonCuartelEventHandler(unCasillero, botonMapa));
                 } else{
                     botonMapa.setId("botonSuelo");

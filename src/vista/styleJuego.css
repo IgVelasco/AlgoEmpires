@@ -34,14 +34,29 @@
     -fx-graphic: url("/vista/imagenes/armaDeAsedio.png");
 }
 
-#botonArquero {
+#botonArqueroAzul {
     -fx-graphic: url("/vista/imagenes/arquero_16_azul.png");
+}
+
+#botonArqueroRojo {
+    -fx-graphic: url("/vista/imagenes/arquero_16_rojo.png");
 }
 
 #botonCimiento {
     -fx-graphic: url("/vista/imagenes/cimiento.PNG");
 }
 
-#botonCuartel {
-    -fx-graphic: url("/vista/imagenes/cuartel.png");
+#botonCuartelRojo {
+    -fx-graphic: url("/vista/imagenes/cuartel_rojo.PNG");
+}
+#botonCuartelAzul {
+    -fx-graphic: url("/vista/imagenes/cuartel_azul.PNG");
+}
+
+#botonEspadachinAzul {
+    -fx-graphic: url("/vista/imagenes/espadachin_16_azul.png");
+}
+
+#botonEspadachinRojo {
+    -fx-graphic: url("/vista/imagenes/espadachin_16_rojo.png");
 }
