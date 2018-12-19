@@ -27,9 +27,26 @@
     -fx-scale-z: 0.9;
 }
 
+.botunturno, #botonJugador0, #botonJugador1{
+    -fx-font-style: italic;
+    -fx-font-weight: bold;
+}
+
+
+
 #botonWololo {
     -fx-font-style: italic;
     -fx-font-weight: bold;
     -fx-padding: 16;
+}
+
+
+#botonJugador0{
+    -fx-background-color: red;
+
+}
+
+#botonJugador1{
+    -fx-background-color: blue;
 }
 
