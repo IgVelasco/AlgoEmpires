@@ -6,13 +6,14 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
+import modelo.juego.Juego;
 import modelo.unidades.ArmaDeAsedio;
 
 public class BotonArmaDeAsedioEventHandler extends BotonEventHandler {
     Button boton;
     ArmaDeAsedio armaDeAsedio;
 
-    public BotonArmaDeAsedioEventHandler(Casillero unCasillero, Button unBoton) {
+    public BotonArmaDeAsedioEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         armaDeAsedio = (ArmaDeAsedio) unCasillero.getContenido();
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
@@ -21,7 +22,7 @@ public class BotonArmaDeAsedioEventHandler extends BotonEventHandler {
         MenuItem cargarArma = new MenuItem("Cargar arma");
         MenuItem atacar = new MenuItem("Atacar");
 
-        mover.setOnAction(new MoverHandler(this.armaDeAsedio));
+        mover.setOnAction(new MoverHandler(this.armaDeAsedio, unJuego));
 
 
         contextMenu.getItems().addAll(mover,cargarArma, atacar);

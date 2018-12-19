@@ -6,13 +6,14 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
+import modelo.juego.Juego;
 import modelo.unidades.Arquero;
 
 public class BotonArqueroEventHandler extends BotonEventHandler {
     Button boton;
     Arquero arquero;
 
-    public BotonArqueroEventHandler(Casillero unCasillero, Button unBoton) {
+    public BotonArqueroEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         arquero = (Arquero) unCasillero.getContenido();
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
@@ -20,7 +21,7 @@ public class BotonArqueroEventHandler extends BotonEventHandler {
         MenuItem mover = new MenuItem("Mover");
         MenuItem atacar = new MenuItem("Atacar");
 
-        mover.setOnAction(new MoverHandler(this.arquero));
+        mover.setOnAction(new MoverHandler(this.arquero, unJuego));
 
         contextMenu.getItems().addAll(mover, atacar);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {

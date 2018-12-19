@@ -44,7 +44,7 @@ public class JuegoVista {
         Mapa mapa = nuevoJuego.getMapa();
         Jugador[] jugadores = nuevoJuego.getJugadores();
 
-        MapaView vistaMapa = new MapaView(mapa, jugadores);
+        MapaView vistaMapa = new MapaView(mapa, jugadores, nuevoJuego);
 
 
         raiz.setCenter(vistaMapa);
@@ -58,7 +58,6 @@ public class JuegoVista {
 
     public void actualizar(MapaView vistaMapa){
         BorderPane raiz = new BorderPane();
-        Juego nuevoJuego = new Juego(ANCHO, ALTO);
 
         raiz.setCenter(vistaMapa);
         Scene escenaJuego = new Scene(raiz);

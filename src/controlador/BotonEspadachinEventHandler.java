@@ -6,6 +6,7 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
+import modelo.juego.Juego;
 import modelo.unidades.Espadachin;
 
 public class BotonEspadachinEventHandler extends BotonEventHandler {
@@ -13,7 +14,7 @@ public class BotonEspadachinEventHandler extends BotonEventHandler {
     Button boton;
 
 
-    public BotonEspadachinEventHandler(Casillero unCasillero, Button unBoton) {
+    public BotonEspadachinEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         espadachin = (Espadachin) unCasillero.getContenido();
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
@@ -21,7 +22,7 @@ public class BotonEspadachinEventHandler extends BotonEventHandler {
         MenuItem mover = new MenuItem("Mover");
         MenuItem atacar = new MenuItem("Atacar");
 
-        mover.setOnAction(new MoverHandler(this.espadachin));
+        mover.setOnAction(new MoverHandler(this.espadachin, unJuego));
 
 
         contextMenu.getItems().addAll(mover, atacar);

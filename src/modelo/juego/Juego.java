@@ -7,6 +7,7 @@ public class Juego {
     private Jugador[] jugadores;
     private Mapa mapa;
     private Turno turno;
+    public Jugador jugadorActual;
 
 
     public Juego(int DimensionHorizontal, int DimensionVertical) {
@@ -17,13 +18,15 @@ public class Juego {
         jugadores[1] = new Jugador(mapa, DimensionHorizontal / 2, 0, this);
         jugadores[0] = new Jugador(mapa, DimensionHorizontal / 2, DimensionVertical - 4, this);
 
-        jugadores[turno.primerTurno()].nuevoTurno();
+        jugadorActual = jugadores[turno.primerTurno()];
+        jugadorActual.nuevoTurno();
 
     }
 
 
     public void siguienteTurno()  {
-        jugadores[turno.siguienteTurno()].nuevoTurno();
+        jugadorActual = jugadores[turno.siguienteTurno()];
+        jugadorActual.nuevoTurno();
     }
 
     public void perdedor() {
@@ -34,6 +37,10 @@ public class Juego {
     }
 
     public Jugador[] getJugadores() { return jugadores;
+    }
+
+    public Jugador getJugadorActual() {
+        return jugadorActual;
     }
 }
 

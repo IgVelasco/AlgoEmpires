@@ -12,6 +12,7 @@ import modelo.estructuras.Castillo;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;
+import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
@@ -26,14 +27,16 @@ public class MapaView extends GridPane {
     private Mapa mapa;
     private Jugador[] listaJugadores;
     private AccionSobreCasilla accionSobreCasilla;
+    public Juego juego;
 
 
-    public MapaView(Mapa mapa, Jugador[] jugadores){
+    public MapaView(Mapa mapa, Jugador[] jugadores, Juego unJuego){
         this.setAlignment(Pos.CENTER);
         INSTANCIA = this;
         this.casilleroSeleccionada = null;
         this.listaJugadores = jugadores;
         this.iniciar(mapa);
+        juego = unJuego;
     }
 
     public MapaView iniciar(Mapa unMapa) {
@@ -50,7 +53,7 @@ public class MapaView extends GridPane {
                         botonMapa.setId("botonAldeanoAzul");
                     }
                     else{botonMapa.setId("botonAldeanoRojo");}
-                    botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonAldeanoEventHandler(unCasillero, botonMapa, juego));
 
                 } else if (elContenido instanceof Castillo) {
                     if (((Castillo) elContenido).getPropietario() == this.listaJugadores[1]){
@@ -68,15 +71,15 @@ public class MapaView extends GridPane {
 
                 } else if (elContenido instanceof ArmaDeAsedio){
                     botonMapa.setId("botonArmaDeAsedio");
-                    botonMapa.setOnAction(new BotonArmaDeAsedioEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonArmaDeAsedioEventHandler(unCasillero, botonMapa, juego));
 
                 }else if (elContenido instanceof Espadachin){
                     botonMapa.setId("botonAldeano");
-                    botonMapa.setOnAction(new BotonEspadachinEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonEspadachinEventHandler(unCasillero, botonMapa, juego));
 
                 } else if(elContenido instanceof Arquero){
                     botonMapa.setId("botonArquero");
-                    botonMapa.setOnAction(new BotonArqueroEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonArqueroEventHandler(unCasillero, botonMapa, juego));
 
                 } else if(elContenido instanceof Cimiento){
                     botonMapa.setId("botonCimiento");
