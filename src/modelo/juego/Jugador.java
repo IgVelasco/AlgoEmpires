@@ -3,6 +3,7 @@ package modelo.juego;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.*;
+import modelo.excepciones.OroInsuficiente;
 import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.unidades.Accionables;
 import modelo.unidades.Aldeano;
@@ -13,6 +14,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class Jugador {
+
+    private static final int
+            PRECIO_PLAZA = 100,
+            PRECIO_CUARTEL = 50;
+
     private Mapa mapa;
     private Juego juego;
     private Castillo castillo;
@@ -59,10 +65,14 @@ public class Jugador {
     }
 
     public void construirPlazaCentral(Aldeano aldeano, int x, int y) { // Podria ser asi o que se le pase un indez de array
+        if (this.oro < PRECIO_PLAZA) {
+            throw new OroInsuficiente();
+        }
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
         int signo = aldeano.comenzarCimientos(unCimiento, this);
         mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
+        this.restarOro(PRECIO_PLAZA);
     }
 
     /*public void construirAsedio() {
@@ -70,11 +80,14 @@ public class Jugador {
     }*/
 
     public void construirCuartel(Aldeano aldeano, int x, int y) {
-
+        if (this.oro < PRECIO_CUARTEL) {
+            throw new OroInsuficiente();
+        }
         Cuartel unCuartel = new Cuartel(this);
         Cimiento unCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
         int signo = aldeano.comenzarCimientos(unCimiento,this);
         mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
+        this.restarOro(PRECIO_CUARTEL);
     }
 
 
