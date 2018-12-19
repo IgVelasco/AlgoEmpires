@@ -70,7 +70,10 @@ public class MapaView extends GridPane {
                     botonMapa.setOnAction(new BotonPlazaCentralEventHandler(unCasillero, botonMapa));
 
                 } else if (elContenido instanceof ArmaDeAsedio){
-                    botonMapa.setId("botonArmaDeAsedio");
+                    if (((ArmaDeAsedio) elContenido).getPropietario() == this.listaJugadores[1]){
+                        botonMapa.setId("botonArmaDeAsedioAzul");
+                    }
+                    else{botonMapa.setId("botonArmaDeAsedioRoja");}
                     botonMapa.setOnAction(new BotonArmaDeAsedioEventHandler(unCasillero, botonMapa, juego));
 
                 }else if (elContenido instanceof Espadachin){

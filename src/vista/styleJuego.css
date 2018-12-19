@@ -30,8 +30,11 @@
     -fx-graphic: url("/vista/imagenes/suelo.png");
 }
 
-#botonArmaDeAsedio {
-    -fx-graphic: url("/vista/imagenes/armaDeAsedio.png");
+#botonArmaDeAsedioAzul {
+    -fx-graphic: url("/vista/imagenes/catapulta_azul.png");
+}
+#botonArmaDeAsedioRoja {
+    -fx-graphic: url("/vista/imagenes/catapulta_roja.png");
 }
 
 #botonArqueroAzul {
