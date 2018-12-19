@@ -47,4 +47,8 @@ public class Cimiento extends Estructura {
         signo = posiciones.getFirst().posicionesMayores(posX,posY);
         return signo;
     }
+
+    public Estructura getFuturaEstructura(){
+        return estructuraCorrespondiente;
+    }
 }

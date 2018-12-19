@@ -21,11 +21,13 @@ public class BotonCuartelEventHandler implements EventHandler<ActionEvent> {
 
         MenuItem crearArquero = new MenuItem("Crear arquero");
         MenuItem crearEspadachin = new MenuItem("Crear espadachin");
+        MenuItem informacion = new MenuItem("Informacion");
 
+        informacion.setOnAction(new MostrarInformacionEstructuraHandler(cuartel));
         crearArquero.setOnAction(new CrearArqueroHandler(this.cuartel, unJuego));
         crearEspadachin.setOnAction(new CrearEspadachinHandler(this.cuartel, unJuego));
 
-        contextMenu.getItems().addAll(crearArquero, crearEspadachin);
+        contextMenu.getItems().addAll(crearArquero, crearEspadachin, informacion);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override

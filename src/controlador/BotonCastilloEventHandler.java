@@ -19,10 +19,13 @@ public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
         MenuItem crearArmaDeAsedio = new MenuItem("Crear arma de asedio ");
+        MenuItem informacion = new MenuItem("Informacion");
+
+        informacion.setOnAction(new MostrarInformacionEstructuraHandler(this.castillo));
         crearArmaDeAsedio.setOnAction(new CrearArmaDeAsedioHandler(this.castillo, unJuego));
 
 
-        contextMenu.getItems().addAll( crearArmaDeAsedio);
+        contextMenu.getItems().addAll( crearArmaDeAsedio, informacion);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override

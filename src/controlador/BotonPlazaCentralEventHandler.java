@@ -19,10 +19,13 @@ public class BotonPlazaCentralEventHandler implements EventHandler<ActionEvent> 
         boton = unBoton;
         ContextMenu contextMenu = new ContextMenu();
         MenuItem crearAldeano = new MenuItem("Crear aldeano ");
+        MenuItem informacion = new MenuItem("Informacion");
+
+        informacion.setOnAction(new MostrarInformacionEstructuraHandler(plazaCentral));
         crearAldeano.setOnAction(new CrearAldeanoHandler(this.plazaCentral, unJuego));
 
 
-        contextMenu.getItems().addAll( crearAldeano);
+        contextMenu.getItems().addAll( crearAldeano, informacion);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override
