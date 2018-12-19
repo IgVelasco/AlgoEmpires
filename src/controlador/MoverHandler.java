@@ -31,7 +31,7 @@ public class MoverHandler implements EventHandler<ActionEvent>, AccionSobreCasil
         unidad.realizarMovimiento(mapaView.getMapa(),destino.getPosX(),destino.getPosY(),juego.getJugadorActual());
         mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
-        juegoVista.actualizar(mapaView);
+        juegoVista.actualizar(mapaView.getJuego());
 
     }
 

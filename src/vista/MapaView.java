@@ -126,4 +126,8 @@ public class MapaView extends GridPane {
     public void setAccionSobreCasilla(AccionSobreCasilla accion) {
         this.accionSobreCasilla = accion;
     }
+
+    public Juego getJuego() {
+        return this.juego;
+    }
 }

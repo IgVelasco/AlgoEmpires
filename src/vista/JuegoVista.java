@@ -59,10 +59,17 @@ public class JuegoVista {
         INSTANCIA = this;
     }
 
-    public void actualizar(MapaView vistaMapa){
+    public void actualizar(Juego unJuego){
         BorderPane raiz = new BorderPane();
 
+        Mapa mapa = unJuego.getMapa();
+        Jugador[] jugadores = unJuego.getJugadores();
+
+        MapaView vistaMapa = new MapaView(mapa, jugadores, unJuego);
+        UtilidadView utilidad = new UtilidadView(unJuego);
+
         raiz.setCenter(vistaMapa);
+        raiz.setRight(utilidad);
         Scene escenaJuego = new Scene(raiz);
         escenaJuego.getStylesheets().add("/vista/styleJuego.css");
 

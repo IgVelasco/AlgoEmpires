@@ -28,6 +28,6 @@ public class CrearArqueroHandler implements EventHandler<ActionEvent>, AccionSob
         mapaView.getMapa().colocarUnidadEn(unArquero, destino.getPosX(), destino.getPosY());
         mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
-        juegoVista.actualizar(mapaView);
+        juegoVista.actualizar(mapaView.getJuego());
     }
 }

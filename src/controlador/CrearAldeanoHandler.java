@@ -28,7 +28,7 @@ public class CrearAldeanoHandler implements EventHandler<ActionEvent>, AccionSob
         mapaView.getMapa().colocarUnidadEn(unAldeano, destino.getPosX(), destino.getPosY());
         mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
-        juegoVista.actualizar(mapaView);
+        juegoVista.actualizar(mapaView.getJuego());
     }
 
 }

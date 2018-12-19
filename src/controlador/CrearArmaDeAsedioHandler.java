@@ -28,6 +28,6 @@ public class CrearArmaDeAsedioHandler implements EventHandler<ActionEvent>, Acci
         mapaView.getMapa().colocarUnidadEn(unArma, destino.getPosX(), destino.getPosY());
         mapaView = mapaView.iniciar(mapaView.getMapa());
         JuegoVista juegoVista = JuegoVista.getInstancia();
-        juegoVista.actualizar(mapaView);
+        juegoVista.actualizar(mapaView.getJuego());
     }
 }
