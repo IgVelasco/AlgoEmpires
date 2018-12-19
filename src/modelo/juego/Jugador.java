@@ -130,7 +130,7 @@ public class Jugador {
     }
 
     public void movio(UnidadMovil unidad) {
-        movidos.add(unidad);
+        //movidos.add(unidad);
     }
 
     public void atacar(Atacante unidad) {
