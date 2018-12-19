@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 public class ConstruyendoTest {
 
-    @Test
+    /*@Test
     public void testFinalizarConstruccionDesocupaAldeano() {
         Mapa unMapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(unMapa, 10, 0, null);
@@ -35,5 +35,5 @@ public class ConstruyendoTest {
 
 
         assertEquals(GenerandoOro.class, unAldeano.getEstado().getClass());
-    }
+    }*/
 }

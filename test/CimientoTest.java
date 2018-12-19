@@ -34,23 +34,6 @@ public class CimientoTest {
     }
 
     @Test
-    public void testCimientoColocaLaEstructuraLuegoDeTerminarSuConstruccion() {
-        Mapa unMapa = new Mapa(20,20);
-        Aldeano unAldeano = new Aldeano(null);
-        Cuartel unCuartel = new Cuartel(null);
-        Cimiento unCimiento = new Cimiento(unCuartel,unMapa,5,5,5);
-
-        unCimiento.avanzarConstruccion(unAldeano);
-        assertEquals(unCimiento, unMapa.getContenido(5,5));
-
-        unCimiento.avanzarConstruccion(unAldeano);
-        unCimiento.avanzarConstruccion(unAldeano);
-
-        assertEquals(unCuartel, unMapa.getContenido(5,5));
-
-    }
-
-    @Test
     public void testCimientoLiberaAlAldeanoDeSuConstruccion() {
 
         Mapa unMapa = new Mapa(20,20);

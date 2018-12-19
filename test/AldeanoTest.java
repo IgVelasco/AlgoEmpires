@@ -27,6 +27,7 @@ public class AldeanoTest {
         Mapa mapa = new Mapa(30, 30);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
+        mapa.colocarUnidadEn(unAldeano, 19, 19);
 
         jugador.construirCuartel(unAldeano, 20, 20);
         assertEquals(100, jugador.getOro());
@@ -52,9 +53,10 @@ public class AldeanoTest {
         Mapa mapa = new Mapa(30, 30);
         Jugador unJugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(unJugador);
+        mapa.colocarUnidadEn(unAldeano, 19, 19);
 
         unJugador.construirCuartel(unAldeano, 20, 20);
-        unJugador.construirPlazaCentral(unAldeano, 10, 10);
+        unJugador.construirPlazaCentral(unAldeano, 18, 19);
     }
 
     @Test
@@ -136,6 +138,8 @@ public class AldeanoTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Aldeano unAldeano = new Aldeano(jugador);
+        mapa.colocarUnidadEn(unAldeano, 11, 11);
+
         Cuartel unCuartel = new Cuartel(null);
         Cuartel otroCuartel = new Cuartel(null);
         Cimiento unCimiento = new Cimiento(unCuartel,mapa,10,10,2);
