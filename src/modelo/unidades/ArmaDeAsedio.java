@@ -11,6 +11,7 @@ import modelo.juego.Jugador;
 
 public class ArmaDeAsedio extends Accionables implements Atacante{
     private EstadosAtaque estado;
+    private final static int rango = 5;
 
 
     public int getVida() {
@@ -32,7 +33,7 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
     }
 
 
-        public void realizarAccionCorrespondiente() {
+    public void realizarAccionCorrespondiente() {
         this.estado.realizarAccion();
     }
 
@@ -46,7 +47,7 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         estado.ataqueListo();
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
-        if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > 3)
+        if (unContenible.calcularDistancia(this.posicion.getPosX(), this.posicion.getPosY()) > rango)
             throw new ContenibleFueraDeRango();
         if (unContenible.sonDelMismoJugador(this.propietario))
             throw new ContenibleDelMismoJugador();

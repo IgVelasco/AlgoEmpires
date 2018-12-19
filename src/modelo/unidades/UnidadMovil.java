@@ -72,4 +72,7 @@ public abstract class UnidadMovil implements Contenible {
         posicion = pos;
     }
 
+    public  Posicion getPosicion(){
+        return posicion;
+    }
 }

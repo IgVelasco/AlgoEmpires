@@ -7,16 +7,20 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Cuartel;
 import modelo.juego.Juego;
+import vista.MapaView;
 
 public class BotonCuartelEventHandler implements EventHandler<ActionEvent> {
     Button boton;
     Cuartel cuartel;
+    Posicion posicion;
 
     public BotonCuartelEventHandler(Casillero unCasillero, Button unBoton, Juego unJuego) {
         cuartel = (Cuartel) unCasillero.getContenido();
         boton = unBoton;
+        posicion =  unCasillero.getPosicion();
         ContextMenu contextMenu = new ContextMenu();
 
         MenuItem crearArquero = new MenuItem("Crear arquero");
@@ -37,6 +41,8 @@ public class BotonCuartelEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
-
+        MapaView mapaView = MapaView.getInstancia();
+        mapaView.seleccionarCasillero(posicion);
+        System.out.println(cuartel.getVida());
     }
 }

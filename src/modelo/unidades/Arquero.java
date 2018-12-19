@@ -9,6 +9,7 @@ public class Arquero extends Infanteria implements Atacante{
     public Arquero(Jugador unJugador) {
         vida = 75;
         propietario = unJugador;
+        rango = 3;
     }
 
     public int getVida() {
