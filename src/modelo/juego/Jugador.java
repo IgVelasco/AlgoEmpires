@@ -65,9 +65,9 @@ public class Jugador {
         mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
     }
 
-    public void construirAsedio() {
+    /*public void construirAsedio() {
         this.castillo.crearArmaDeAsedio(this.oro);
-    }
+    }*/
 
     public void construirCuartel(Aldeano aldeano, int x, int y) {
 

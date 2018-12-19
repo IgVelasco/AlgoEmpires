@@ -3,6 +3,7 @@ package modelo.estructuras;
 import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
 import modelo.juego.Jugador;
 import modelo.unidades.ArmaDeAsedio;
@@ -27,7 +28,10 @@ public class Castillo extends Estructura {
 
 
 
-    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible) {
+    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible, Jugador unJugador) {
+        if (! sonDelMismoJugador(unJugador)) {
+            throw new ContenibleNoPropia();
+        }
         if (oroDisponible < PRECIO_ARMA_DE_ASEDIO) {
             throw new OroInsuficiente();
         }

@@ -60,7 +60,7 @@ public class MapaView extends GridPane {
                         botonMapa.setId("botonCastilloAzul");
                     }
                     else{botonMapa.setId("botonCastilloRojo");}
-                    botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero, botonMapa));
+                    botonMapa.setOnAction(new BotonCastilloEventHandler(unCasillero, botonMapa, juego));
 
                 } else if (elContenido instanceof PlazaCentral) {
                     if (((PlazaCentral) elContenido).getPropietario() == this.listaJugadores[1]){

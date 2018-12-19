@@ -26,7 +26,7 @@ public class CastilloTest {
     public void testNoCrearAldeanoSinOroSuficiente() {
         Castillo unCastillo = new Castillo(null);
 
-        unCastillo.crearArmaDeAsedio(10);
+        unCastillo.crearArmaDeAsedio(10, null);
     }
 
     @Test
@@ -37,7 +37,7 @@ public class CastilloTest {
 
         Castillo unCastillo = new Castillo(unJugador);
 
-        ArmaDeAsedio unArmaDeAsedio = unCastillo.crearArmaDeAsedio(1000);
+        ArmaDeAsedio unArmaDeAsedio = unCastillo.crearArmaDeAsedio(1000, unJugador);
         assertEquals(150, unArmaDeAsedio.getVida());
 
     }
