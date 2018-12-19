@@ -12,8 +12,14 @@ import static org.junit.Assert.assertEquals;
 
 public class CimientoTest {
 
-/*  //Al usar la posicion del aldeano y otras cosas del jugador necesito tener todas las clases por eso falla
+  //Al usar la posicion del aldeano y otras cosas del jugador necesito tener todas las clases por eso falla
     @Test
+    public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() {
+    }
+
+   /*
+
+     @Test
     public void testCimientoGuardaElTipoDeEstructuraConLaCantidadDeTurnosCorrespondiente() {
 
         Cuartel unCuartel = new Cuartel(null);
@@ -23,7 +29,7 @@ public class CimientoTest {
         assertEquals(3, cimientoCuartel.getTurnosRestantes());
     }
 
-    @Test
+   @Test
     public void testCimientoAvanzaLosTurnosCuandoSeLoConstruye() {
 
         Mapa unMapa = new Mapa(20,20);
