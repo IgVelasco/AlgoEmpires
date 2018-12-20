@@ -1,14 +1,15 @@
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
-import modelo.excepciones.*;
+import modelo.excepciones.ContenibleDelMismoJugador;
+import modelo.excepciones.ContenibleFueraDeRango;
+import modelo.excepciones.UnidadYaAtaco;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 public class EspadachinTest {
 

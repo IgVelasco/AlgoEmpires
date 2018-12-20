@@ -6,14 +6,12 @@ import modelo.estados.aldeano.Reparando;
 import modelo.estructuras.Castillo;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
-import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 public class AldeanoTest {
 

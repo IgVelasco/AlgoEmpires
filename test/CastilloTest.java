@@ -1,13 +1,7 @@
-import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
-import modelo.estructuras.Cuartel;
-import modelo.estructuras.PlazaCentral;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.excepciones.OroInsuficiente;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;

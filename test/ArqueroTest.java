@@ -2,11 +2,11 @@ import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.estructuras.Cuartel;
-import modelo.excepciones.*;
+import modelo.excepciones.ContenibleDelMismoJugador;
+import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.Arquero;
-import modelo.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

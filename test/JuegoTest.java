@@ -1,7 +1,7 @@
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertNotEquals;
 
 

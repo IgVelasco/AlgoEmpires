@@ -1,8 +1,6 @@
-import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cuartel;
 import modelo.excepciones.OroInsuficiente;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

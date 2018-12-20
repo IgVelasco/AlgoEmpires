@@ -1,7 +1,6 @@
 import modelo.espacio.Posicion;
 import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.OroInsuficiente;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
