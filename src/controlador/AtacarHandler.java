@@ -39,7 +39,9 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
         } catch (ContenibleDelMismoJugador e) {
             alertar("¡Unidad propia!");
         } catch (AsedioNoAtacaUnidad e){
-            alertar("El arma de asedio no ataca unidades!");
+            alertar("¡El arma de asedio no ataca unidades!");
+        } catch (ArmaNoCargada e) {
+            alertar("¡El arma no está cargada!");
         }
 
         JuegoVista juegoVista = JuegoVista.getInstancia();
