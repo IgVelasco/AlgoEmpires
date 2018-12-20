@@ -1,17 +1,14 @@
 package controlador;
 
-import javafx.event.EventHandler;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
-import modelo.estructuras.Castillo;
-import modelo.estructuras.Cimiento;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cimiento;
-import modelo.estructuras.Cuartel;
 import vista.MapaView;
 
 public class BotonCimientoEventHandler extends BotonEventHandler {

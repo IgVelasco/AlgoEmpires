@@ -9,13 +9,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import modelo.estados.aldeano.Construyendo;
-import modelo.estados.aldeano.GenerandoOro;
 import modelo.estructuras.Castillo;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.Estructura;
 import modelo.estructuras.PlazaCentral;
-import modelo.unidades.*;
 
 public class MostrarInformacionEstructuraHandler implements EventHandler<ActionEvent> {
     private Estructura estructura;

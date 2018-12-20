@@ -2,7 +2,6 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.unidades.ArmaDeAsedio;

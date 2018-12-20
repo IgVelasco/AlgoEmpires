@@ -2,12 +2,10 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
 import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import vista.MapaView;
-
-import javafx.scene.control.Button;
 
 public class BotonCasilleroEventHandler implements EventHandler<ActionEvent> {
     Posicion posicion;

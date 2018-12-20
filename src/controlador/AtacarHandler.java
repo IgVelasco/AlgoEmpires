@@ -2,7 +2,6 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.excepciones.ContenibleDelMismoJugador;
@@ -10,9 +9,7 @@ import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.UnidadYaAtaco;
 import modelo.juego.Juego;
-import modelo.unidades.Arquero;
 import modelo.unidades.Atacante;
-import modelo.unidades.Infanteria;
 import vista.JuegoVista;
 import vista.MapaView;
 
@@ -45,7 +42,7 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
         } catch (ContenibleDelMismoJugador e) {
             alertar("¡Unidad propia!");
         }
-        
+
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
     }

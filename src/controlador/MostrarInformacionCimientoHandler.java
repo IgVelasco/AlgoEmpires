@@ -9,7 +9,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import modelo.estructuras.Castillo;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;

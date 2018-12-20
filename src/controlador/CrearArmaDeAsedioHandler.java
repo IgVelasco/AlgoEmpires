@@ -5,7 +5,6 @@ import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.juego.Juego;
-import modelo.unidades.ArmaDeAsedio;
 import vista.JuegoVista;
 import vista.MapaView;
 

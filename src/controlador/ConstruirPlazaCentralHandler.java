@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
-import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
