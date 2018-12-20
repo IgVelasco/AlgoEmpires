@@ -1,6 +1,5 @@
 package modelo.estructuras;
 
-import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;

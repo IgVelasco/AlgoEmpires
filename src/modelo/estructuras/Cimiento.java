@@ -2,7 +2,6 @@ package modelo.estructuras;
 
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
-import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 
 import java.util.LinkedList;

@@ -1,6 +1,5 @@
 package modelo.unidades;
 
-import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.EstadoAldeano;
