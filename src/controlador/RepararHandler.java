@@ -6,6 +6,7 @@ import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Estructura;
 import modelo.excepciones.AldeanoOcupado;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.EdificioConVidaMaxima;
 import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
@@ -35,6 +36,8 @@ public class RepararHandler extends AccionSobreCasilla implements EventHandler<A
             alertar("¡Aldeano ocupado!");
         } catch (EdificioConVidaMaxima e) {
             alertar("¡Vida máxima alcanzada!");
+        } catch (ContenibleNoPropia e){
+            alertar("No te pertenece!");
         }
 
         JuegoVista juegoVista = JuegoVista.getInstancia();

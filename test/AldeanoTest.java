@@ -108,7 +108,7 @@ public class AldeanoTest {
         unCastillo.ataqueDeEspadachin();
         unCastillo.ataqueDeEspadachin();
 
-        unAldeano.comenzarReparacion(unCastillo);
+        unAldeano.comenzarReparacion(unCastillo,jugador);
         assertEquals(970, unCastillo.getVida());
 
         unAldeano.realizarAccionCorrespondiente();
@@ -129,7 +129,7 @@ public class AldeanoTest {
         Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
         Castillo unCastillo = new Castillo(jugador);
 
-        unAldeano.comenzarReparacion(unCastillo);
+        unAldeano.comenzarReparacion(unCastillo,jugador);
         assertEquals(GenerandoOro.class, unAldeano.getEstado().getClass());
     }
 
@@ -146,8 +146,8 @@ public class AldeanoTest {
         unCastillo.ataqueDeEspadachin();
         otroCastillo.ataqueDeArquero();
 
-        unAldeano.comenzarReparacion(unCastillo);
-        unAldeano.comenzarReparacion(otroCastillo);
+        unAldeano.comenzarReparacion(unCastillo,jugador);
+        unAldeano.comenzarReparacion(otroCastillo,jugador);
 
     }
 

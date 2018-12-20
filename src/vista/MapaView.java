@@ -22,8 +22,8 @@ import modelo.unidades.Espadachin;
 public class MapaView extends GridPane {
     private static MapaView INSTANCIA;
     private Posicion casilleroSeleccionada;
-    private static final int ANCHO = 30;
-    private static final int ALTO = 30;
+    private static final int ANCHO = 20;
+    private static final int ALTO = 15;
     private Mapa mapa;
     private Jugador[] listaJugadores;
     private AccionSobreCasilla accionSobreCasilla;

@@ -107,7 +107,7 @@ public class Jugador {
 
 
     public void repararEstructura(Aldeano unAldeano, Estructura unaEstructura) {
-        unAldeano.comenzarReparacion(unaEstructura);
+        unAldeano.comenzarReparacion(unaEstructura, this);
     }
 
     public int getOro() {

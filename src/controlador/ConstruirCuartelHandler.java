@@ -3,6 +3,7 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.PosicionFueraDeRango;
 import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
@@ -29,6 +30,8 @@ public class ConstruirCuartelHandler extends AccionSobreCasilla implements Event
             juego.getJugadorActual().construirCuartel(aldeano, posicion.getPosX(), posicion.getPosY());
         } catch (PosicionFueraDeRango e){
             alertar("Posición fuera de rango de construcción!");
+        } catch (ContenibleNoPropia e){
+            alertar("No te pertenece!");
         }
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
