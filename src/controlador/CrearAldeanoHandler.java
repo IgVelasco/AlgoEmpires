@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
 import modelo.estructuras.PlazaCentral;
-import modelo.excepciones.CasilleroOcupado;
-import modelo.excepciones.ContenibleNoPropia;
-import modelo.excepciones.OroInsuficiente;
-import modelo.excepciones.PoblacionLimiteAlcanzada;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import vista.JuegoVista;
 import vista.MapaView;
@@ -38,6 +35,8 @@ public class CrearAldeanoHandler extends AccionSobreCasilla implements EventHand
             alertar("Oro insuficiente!");
         } catch (PoblacionLimiteAlcanzada e){
             alertar("La población es maxima!");
+        } catch (PosicionFueraDeRango e){
+            alertar("Posición fuera de rango de creación!");
         }
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
