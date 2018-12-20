@@ -1,5 +1,8 @@
 package controlador;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Contenible;
@@ -33,6 +36,13 @@ public class RepararHandler extends AccionSobreCasilla implements EventHandler<A
         Contenible unContenible = mapaView.getMapa().getContenido(posicion.getPosX(), posicion.getPosY());
         try {
             juego.getJugadorActual().repararEstructura(aldeano, (Estructura) unContenible);
+
+            String musicFile = "src/vista/sonidos/reparar.mp3";
+
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+
         } catch (AldeanoOcupado e) {
             alertar("¡Aldeano ocupado!");
         } catch (EdificioConVidaMaxima e) {

@@ -2,6 +2,8 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cimiento;
@@ -9,6 +11,8 @@ import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
+
+import java.io.File;
 
 public class ReanudarConstruccionCimientoHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
 
@@ -31,6 +35,12 @@ public class ReanudarConstruccionCimientoHandler extends AccionSobreCasilla impl
         Contenible unContenible = mapaView.getMapa().getContenido(posicion.getPosX(), posicion.getPosY());
 
         unJuego.getJugadorActual().reanudarCimiento(this.cimiento, (Aldeano) unContenible);
+
+        String musicFile = "src/vista/sonidos/reparar.mp3";
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
 
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
