@@ -4,6 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cuartel;
+import modelo.excepciones.CasilleroOcupado;
+import modelo.excepciones.ContenibleNoPropia;
+import modelo.excepciones.OroInsuficiente;
+import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.juego.Juego;
 import vista.JuegoVista;
 import vista.MapaView;
@@ -24,7 +28,17 @@ public class CrearArqueroHandler extends AccionSobreCasilla implements EventHand
     }
 
     public void realizarAccion(MapaView mapaView, Posicion posicion) {
-        juego.getJugadorActual().crearArquero(cuartel, posicion );
+        try {
+            juego.getJugadorActual().crearArquero(cuartel, posicion );
+        }catch (CasilleroOcupado e){
+            alertar("Casillero Ocupado!");
+        } catch (ContenibleNoPropia e){
+            alertar("No te pertence!");
+        } catch (OroInsuficiente e){
+            alertar("Oro insuficiente!");
+        } catch (PoblacionLimiteAlcanzada e){
+            alertar("La población es maxima!");
+        }
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }

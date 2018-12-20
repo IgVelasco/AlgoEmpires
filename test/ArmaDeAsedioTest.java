@@ -27,13 +27,13 @@ public class ArmaDeAsedioTest {
         Posicion posicionOtraArma = new Posicion(1,9);
 
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null, posicionUnaArma);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(null, posicionOtraArma);
 
 
         unArmaDeAsedio.cargarArma(jugador);
         unArmaDeAsedio.realizarAccionCorrespondiente();
-        unArmaDeAsedio.atacar(otroArmaDeAsedio, null);
+        unArmaDeAsedio.atacar(otroArmaDeAsedio, jugador);
 
     }
 
@@ -169,7 +169,7 @@ public class ArmaDeAsedioTest {
         jugador.sumarOro(100);
 
         Posicion posicionUnaArma = new Posicion(4, 4);
-        jugador.construirAsedio(posicionUnaArma);
+        jugador.crearArmaDeAsedio(posicionUnaArma, jugador.getCastillo());
 
 
         ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(4,4);
@@ -213,7 +213,7 @@ public class ArmaDeAsedioTest {
         jugador.sumarOro(1000);
 
         Posicion posicionUnaArma = new Posicion(10, 10);
-        jugador.construirAsedio(posicionUnaArma);
+        jugador.crearArmaDeAsedio(posicionUnaArma, jugador.getCastillo());
 
 
         Castillo unCastillo = (Castillo) mapa.getContenido(5,5);

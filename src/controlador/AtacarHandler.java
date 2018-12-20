@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
-import modelo.excepciones.ContenibleDelMismoJugador;
-import modelo.excepciones.ContenibleFueraDeRango;
-import modelo.excepciones.ContenibleNoPropia;
-import modelo.excepciones.UnidadYaAtaco;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Atacante;
 import vista.JuegoVista;
@@ -41,6 +38,8 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
             alertar("¡Fuera de rango!");
         } catch (ContenibleDelMismoJugador e) {
             alertar("¡Unidad propia!");
+        } catch (AsedioNoAtacaUnidad e){
+            alertar("El arma de asedio no ataca unidades!");
         }
 
         JuegoVista juegoVista = JuegoVista.getInstancia();

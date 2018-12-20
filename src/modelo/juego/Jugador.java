@@ -88,8 +88,8 @@ public class Jugador {
     }
 
 
-    public void construirAsedio( Posicion posicion) {
-        ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio(this.oro, this, posicion);
+    public void crearArmaDeAsedio(Posicion posicion, Castillo unCastillo) {
+        ArmaDeAsedio armaDeAsedio = unCastillo.crearArmaDeAsedio(this.oro, this, posicion);
         mapa.colocarUnidadEn(armaDeAsedio, posicion);
 
     }

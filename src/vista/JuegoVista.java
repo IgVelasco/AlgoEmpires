@@ -10,8 +10,8 @@ import modelo.juego.Jugador;
 
 public class JuegoVista {
     private static JuegoVista INSTANCIA;
-    private static final int ANCHO = 20;
-    private static final int ALTO = 15;
+    private static final int ANCHO = 30;
+    private static final int ALTO = 30;
     private final Stage escenario;
 
     public JuegoVista(Stage escenario) {

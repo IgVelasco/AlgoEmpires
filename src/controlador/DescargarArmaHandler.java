@@ -3,6 +3,7 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.juego.Juego;
 import modelo.unidades.ArmaDeAsedio;
 import vista.JuegoVista;
@@ -26,7 +27,11 @@ public class DescargarArmaHandler extends AccionSobreCasilla implements EventHan
 
     @Override
     public void realizarAccion(MapaView mapaView, Posicion posicion){
-        armaDeAsedio.descargarArmaDeAsedio(juego.getJugadorActual());
+        try {
+            armaDeAsedio.descargarArmaDeAsedio(juego.getJugadorActual());
+        } catch (ContenibleNoPropia e){
+            alertar("¡No te pertence!");
+        }
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
     }
