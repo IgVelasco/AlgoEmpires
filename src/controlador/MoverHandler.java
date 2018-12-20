@@ -2,12 +2,16 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.espacio.Posicion;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.UnidadMovil;
 import vista.JuegoVista;
 import vista.MapaView;
+
+import java.io.File;
 
 public class MoverHandler extends AccionSobreCasilla  implements EventHandler<ActionEvent> {
     UnidadMovil unidad;
@@ -28,6 +32,13 @@ public class MoverHandler extends AccionSobreCasilla  implements EventHandler<Ac
     public void realizarAccion(MapaView mapaView, Posicion posicion){
         try {
             unidad.realizarMovimiento(mapaView.getMapa(), posicion.getPosX(), posicion.getPosY(), juego.getJugadorActual());
+
+            String musicFile = "src/vista/sonidos/movimiento.wav";
+
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+
         } catch (CasilleroOcupado e) {
             alertar("¡Casillero ocupado!");
         } catch (ContenibleNoPropia e) {

@@ -6,11 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cimiento;
 import modelo.juego.Juego;
 import vista.MapaView;
+
+import java.io.File;
 
 public class BotonCimientoEventHandler extends BotonEventHandler {
     Button boton;
@@ -36,6 +40,13 @@ public class BotonCimientoEventHandler extends BotonEventHandler {
             @Override
             public void handle(ContextMenuEvent event) {
                 contextMenu.show(botonMapa, event.getScreenX(), event.getScreenY());
+
+                String musicFile = "src/vista/sonidos/cimiento.wav";
+
+                Media sound = new Media(new File(musicFile).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
+
             }
         });
         cimiento = (Cimiento) unCasillero.getContenido();

@@ -6,11 +6,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
 import vista.MapaView;
+
+import java.io.File;
 
 public class BotonAldeanoEventHandler extends BotonEventHandler {
     Aldeano aldeano;
@@ -41,6 +45,12 @@ public class BotonAldeanoEventHandler extends BotonEventHandler {
             @Override
           public void handle(ContextMenuEvent event) {
                 contextMenu.show(boton, event.getScreenX(), event.getScreenY());
+
+                String musicFile = "src/vista/sonidos/aldeano.mp3";
+
+                Media sound = new Media(new File(musicFile).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
             }
         });
     }
