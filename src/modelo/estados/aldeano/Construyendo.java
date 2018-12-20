@@ -19,7 +19,7 @@ public class Construyendo implements EstadoAldeano {
 
     @Override
     public void realizarAccion(Aldeano unAldeano) {
-            cimiento.avanzarConstruccion(unAldeano);
+            cimiento.avanzarConstruccion();
     }
 
 }

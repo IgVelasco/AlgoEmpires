@@ -2,6 +2,8 @@ package modelo.estructuras;
 
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
+import modelo.excepciones.ContenibleNoPropia;
+import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 
 import java.util.LinkedList;
@@ -16,6 +18,7 @@ public class Cimiento extends Estructura {
     private int dimensionCimiento;
     private int signo;
     private Aldeano constructor;
+    private boolean construccionDetenida = false;
 
     public Cimiento(Estructura unaEstructura, Mapa elMapa, int x, int y, int dimension) {
 
@@ -33,12 +36,15 @@ public class Cimiento extends Estructura {
         return turnosRestantes;
     }
 
-    public void avanzarConstruccion(Aldeano aldeano){
+    public void avanzarConstruccion(){
+        if(construccionDetenida){
+            return;
+        }
         turnosRestantes--;
         if (turnosRestantes == 0){
             mapa.liberarUbicaciones(posiciones);
             mapa.colocarEstructuraEn(estructuraCorrespondiente, posX, posY, dimensionCimiento, signo);
-            aldeano.liberarAldeano();
+            constructor.liberarAldeano();
         }
 
     }
@@ -60,5 +66,19 @@ public class Cimiento extends Estructura {
 
     public void setConstructor(Aldeano aldeano){
         constructor = aldeano;
+    }
+
+    public void detenerConstruccion(){
+        this.construccionDetenida = true;
+        constructor.liberarAldeano();
+
+    }
+
+    public void reanudarConstruccion(Aldeano unAldeano, Jugador jugadorActual) {
+        if(jugadorActual != this.propietario){
+            throw new ContenibleNoPropia();
+        }
+        unAldeano.comenzarCimientos(this, this.propietario);
+        construccionDetenida = false;
     }
 }
