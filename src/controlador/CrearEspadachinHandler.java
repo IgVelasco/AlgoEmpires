@@ -9,7 +9,7 @@ import modelo.unidades.Espadachin;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class CrearEspadachinHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class CrearEspadachinHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     Cuartel cuartel;
     Juego juego;
 

@@ -9,7 +9,7 @@ import modelo.unidades.ArmaDeAsedio;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class CrearArmaDeAsedioHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class CrearArmaDeAsedioHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     Castillo castillo;
     Juego juego;
 

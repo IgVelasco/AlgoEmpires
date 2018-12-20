@@ -9,7 +9,7 @@ import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class CrearAldeanoHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class CrearAldeanoHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     PlazaCentral plazaCentral;
     Juego juego;
 

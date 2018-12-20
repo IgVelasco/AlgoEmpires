@@ -12,7 +12,7 @@ import modelo.unidades.Infanteria;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class AtacarHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class AtacarHandler extends AccionSobreCasilla implements EventHandler<ActionEvent>{
     Atacante atacante;
     Juego juego;
 

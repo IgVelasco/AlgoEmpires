@@ -10,7 +10,7 @@ import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class RepararHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class RepararHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     private Aldeano aldeano;
     Juego juego;
 

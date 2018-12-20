@@ -10,7 +10,7 @@ import modelo.unidades.UnidadMovil;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class MoverHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class MoverHandler extends AccionSobreCasilla  implements EventHandler<ActionEvent> {
     UnidadMovil unidad;
     Juego juego;
 

@@ -9,7 +9,7 @@ import modelo.unidades.Arquero;
 import vista.JuegoVista;
 import vista.MapaView;
 
-public class CrearArqueroHandler implements EventHandler<ActionEvent>, AccionSobreCasilla {
+public class CrearArqueroHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     Cuartel cuartel;
     Juego juego;
 
