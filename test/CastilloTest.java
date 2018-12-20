@@ -120,9 +120,9 @@ public class CastilloTest {
 
 
         Posicion posicionAldeano = new Posicion(4,7);
-        otroJugador.crearAldeano(new PlazaCentral(otroJugador), posicionAldeano);
 
         Castillo unCastillo = new Castillo(unJugador);
+        mapa.colocarUnidadEn(new Aldeano(otroJugador, posicionAldeano), posicionAldeano);
         mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
 
         Aldeano unAldeano = (Aldeano) mapa.getContenido(4,7);
@@ -133,7 +133,6 @@ public class CastilloTest {
 
         assertEquals(-10, unAldeano.getVida());
         assertNull(mapa.getContenido(4, 7));
-
     }
 
 

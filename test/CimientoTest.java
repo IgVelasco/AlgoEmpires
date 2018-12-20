@@ -48,12 +48,15 @@ public class CimientoTest {
         Jugador jugador = unJuego.getJugadorActual();
         Posicion posicionAldeano = new Posicion(34, 34);
 
-        jugador.crearAldeano(new PlazaCentral(jugador), posicionAldeano);
 
         Mapa mapa = unJuego.getMapa();
+        mapa.colocarUnidadEn(new Aldeano(jugador, posicionAldeano), posicionAldeano);
+
 
 
         Aldeano unAldeano = (Aldeano) mapa.getContenido(34, 34);
+        jugador.agregarAccionable(unAldeano);
+
         jugador.construirCuartel(unAldeano,35,35);
 
         unJuego.siguienteTurno(); //Jug ok
@@ -69,7 +72,7 @@ public class CimientoTest {
         unJuego.siguienteTurno();
         unJuego.siguienteTurno();
 
-        assertEquals(365, jugador.getOro());
+        assertEquals(390, jugador.getOro());
     }
 
     @Test
@@ -78,11 +81,14 @@ public class CimientoTest {
         Jugador jugador = unJuego.getJugadorActual();
         jugador.nuevoTurno();
         Posicion posicionAldeano = new Posicion(34, 34);
-        jugador.crearAldeano(new PlazaCentral(jugador), posicionAldeano);
+
         Mapa mapa = unJuego.getMapa();
+        mapa.colocarUnidadEn(new Aldeano(jugador, posicionAldeano), posicionAldeano);
+
 
 
         Aldeano unAldeano = (Aldeano) mapa.getContenido(34, 34);
+        jugador.agregarAccionable(unAldeano);
         jugador.construirCuartel(unAldeano,35,35);
 
         Cimiento elCimiento = (Cimiento) mapa.getContenido(35,35);
@@ -106,8 +112,9 @@ public class CimientoTest {
 
         Jugador jugador = unJuego.getJugadorActual();
         Posicion posicionAldeano = new Posicion(4, 4);
-        jugador.crearAldeano(new PlazaCentral(jugador), posicionAldeano);
         Mapa mapa = unJuego.getMapa();
+        mapa.colocarUnidadEn(new Aldeano(jugador, posicionAldeano), posicionAldeano);
+
 
         Aldeano unAldeano = (Aldeano) mapa.getContenido(4, 4);
         jugador.construirCuartel(unAldeano,5,5);

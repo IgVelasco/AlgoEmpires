@@ -3,6 +3,7 @@ package modelo.estructuras;
 import modelo.espacio.Posicion;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
+import modelo.excepciones.PosicionFueraDeRango;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 
@@ -24,6 +25,8 @@ public class PlazaCentral extends Estructura {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
+        if (calcularDistancia(posicion.getPosX(),posicion.getPosY())>1)
+            throw new PosicionFueraDeRango();
         if (oroDisponible < PRECIO_ALDEANO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ALDEANO);
         this.propietario.aumentarPoblacion();

@@ -53,10 +53,13 @@ public class JugadorTest {
         unJugador.nuevoTurno();
         Posicion posicion = new Posicion(0,0);
 
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicion);
+        mapa.colocarUnidadEn(new Aldeano(unJugador,posicion),posicion);
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(0,0);
+        unJugador.agregarAccionable(unAldeano);
+
         unJugador.nuevoTurno();
 
-        assertEquals(155, unJugador.getOro());
+        assertEquals(180, unJugador.getOro());
     }
 
     @Test
@@ -65,9 +68,10 @@ public class JugadorTest {
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
 
         Posicion posicionAldeano = new Posicion(10,10);
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionAldeano);
 
-        Aldeano unAldeano = new Aldeano(unJugador, posicionAldeano);
+        mapa.colocarUnidadEn(new Aldeano(unJugador,posicionAldeano),posicionAldeano);
+
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(10,10);
 
 
         unAldeano.ataqueDeEspadachin();
@@ -82,7 +86,11 @@ public class JugadorTest {
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
 
         Posicion posicionAldeano = new Posicion(10,10);
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionAldeano);
+        PlazaCentral plazaCentral = new PlazaCentral(unJugador);
+        Posicion posicionPlaza = new Posicion(11,11);
+        plazaCentral.agregarPosicion(posicionPlaza);
+
+        unJugador.crearAldeano(plazaCentral, posicionAldeano);
 
         Aldeano unAldeano = new Aldeano(unJugador, posicionAldeano);
 

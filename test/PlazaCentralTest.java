@@ -1,3 +1,4 @@
+import modelo.espacio.Posicion;
 import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.OroInsuficiente;
 import modelo.excepciones.PoblacionLimiteAlcanzada;
@@ -16,8 +17,12 @@ public class PlazaCentralTest {
 
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearAldeanoSinOroSuficiente() {
-        PlazaCentral unaPlaza = new PlazaCentral(null);
+        Posicion posicionPlaza = new Posicion(3,3);
+        Posicion posicionAldano = new Posicion(3,3);
 
-        unaPlaza.crearAldeano(10, null, null);
+        PlazaCentral unaPlaza = new PlazaCentral(null);
+        unaPlaza.agregarPosicion(posicionPlaza);
+
+        unaPlaza.crearAldeano(10, null, posicionAldano);
     }
 }

@@ -177,8 +177,7 @@ public class AldeanoTest {
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
 
         Posicion posicionUnAldeano = new Posicion(2, 2);
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionUnAldeano);
-
+        mapa.colocarUnidadEn(new Aldeano(unJugador,posicionUnAldeano), posicionUnAldeano);
         Aldeano unAldeano = (Aldeano) mapa.getContenido(2, 2);
 
         unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
@@ -191,7 +190,7 @@ public class AldeanoTest {
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
 
         Posicion posicionUnAldeano = new Posicion(2, 2);
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionUnAldeano);
+        mapa.colocarUnidadEn(new Aldeano(unJugador,posicionUnAldeano), posicionUnAldeano);
 
         Aldeano unAldeano = (Aldeano) mapa.getContenido(2, 2);
 
@@ -232,9 +231,8 @@ public class AldeanoTest {
 
         unJugador.sumarOro(1000);
 
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionUnAldeano);
-        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionOtroAldeano);
-
+        mapa.colocarUnidadEn(new Aldeano(unJugador,posicionOtroAldeano),posicionUnAldeano);
+        mapa.colocarUnidadEn(new Aldeano(unJugador,posicionOtroAldeano),posicionUnAldeano);
         Aldeano unAldeano = (Aldeano) mapa.getContenido(0,0);
 
         unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
