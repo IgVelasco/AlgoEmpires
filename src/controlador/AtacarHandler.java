@@ -1,5 +1,8 @@
 package controlador;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
@@ -31,6 +34,13 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
         Contenible unContenible = mapaView.getMapa().getContenido(posicion.getPosX(), posicion.getPosY());
         try {
             atacante.atacar(unContenible, juego.getJugadorActual());
+
+            String musicFile = "src/vista/sonidos/sonido_ataque.mp3";
+
+            Media sound = new Media(new File(musicFile).toURI().toString());
+            MediaPlayer mediaPlayer = new MediaPlayer(sound);
+            mediaPlayer.play();
+
         } catch (ContenibleNoPropia e) {
             alertar("¡No te pertence!");
         } catch (UnidadYaAtaco e) {
@@ -44,6 +54,7 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
         } catch (ArmaNoCargada e) {
             alertar("¡El arma no está cargada!");
         }
+
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
     }
