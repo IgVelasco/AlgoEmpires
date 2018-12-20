@@ -63,4 +63,8 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         unContenible.ataqueDeAsedio();
         this.estado = new ArmaDescargada(false);
     }
+
+    public EstadosAtaque getEstado(){
+        return estado;
+    }
 }

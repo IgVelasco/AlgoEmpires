@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.GenerandoOro;
+import modelo.estados.ataque.ArmaCargada;
 import modelo.unidades.*;
 
 
@@ -65,6 +66,12 @@ public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent
         else if(unidad instanceof ArmaDeAsedio){
             tipo_unidad.setText("Tipo de unidad: Arma de Asedio\n");
             vida_actual.setText(String.format("Vida actual: %d\n",((ArmaDeAsedio) unidad).getVida()));
+            if(((ArmaDeAsedio) unidad).getEstado() instanceof ArmaCargada){
+                estado_actual.setText("Estado: Cargada, lista para atacar");
+            }
+            else{
+                estado_actual.setText("Estado: Descargada, lista para moverse");
+            }
         }
 
         propietario.setText(String.format("Pertenece a: %s\n",unidad.getPropietario().getNombre()));
