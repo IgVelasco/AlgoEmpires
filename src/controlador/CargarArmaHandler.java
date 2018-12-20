@@ -3,6 +3,10 @@ package controlador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import modelo.espacio.Posicion;
+import modelo.estados.ataque.ArmaCargada;
+import modelo.excepciones.ArmaSeCargaEnSiguienteTurno;
+import modelo.excepciones.ArmaYaCargada;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.juego.Juego;
 import modelo.unidades.ArmaDeAsedio;
 import vista.JuegoVista;
@@ -26,7 +30,15 @@ public class CargarArmaHandler extends AccionSobreCasilla implements EventHandle
 
     @Override
     public void realizarAccion(MapaView mapaView, Posicion posicion){
-        armaDeAsedio.cargarArma(juego.getJugadorActual());
+        try {
+            armaDeAsedio.cargarArma(juego.getJugadorActual());
+        } catch (ArmaYaCargada e){
+            alertar("El arma ya esta cargada!");
+        } catch (ArmaSeCargaEnSiguienteTurno e){
+            alertar("El arma podra atacar en el siguiente turno!");
+        } catch (ContenibleNoPropia e){
+          alertar("No te pertence!");
+        }
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
     }

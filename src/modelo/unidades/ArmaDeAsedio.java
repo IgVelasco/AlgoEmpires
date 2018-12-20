@@ -28,7 +28,8 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
     }
 
     public void descargarArmaDeAsedio(Jugador unJugador){
-        this.sonDelMismoJugador(unJugador);
+        if(!this.sonDelMismoJugador(unJugador))
+            throw  new ContenibleNoPropia();
         estado = new ArmaDescargada(false);
     }
 
@@ -43,8 +44,9 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         this.estado.realizarAccion();
     }
 
-    public void cargarArma(Jugador unJugador) throws ArmaYaCargada, ArmaSeCargaEnSiguienteTurno {
-        this.sonDelMismoJugador(unJugador);
+    public void cargarArma(Jugador unJugador){
+        if(!this.sonDelMismoJugador(unJugador))
+            throw  new ContenibleNoPropia();
         estado.cargarArma();
         estado = new ArmaCargada();
     }

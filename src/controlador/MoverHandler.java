@@ -38,6 +38,8 @@ public class MoverHandler extends AccionSobreCasilla  implements EventHandler<Ac
             alertar("¡Fuera de rango!");
         } catch (UnidadYaUtilizada e) {
             alertar("¡Unidad ya utilizada!");
+        } catch (ArmaCargadaNoSePuedeMover e){
+            alertar("El arma esta cargada y no se puede mover!");
         }
 
         JuegoVista juegoVista = JuegoVista.getInstancia();

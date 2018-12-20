@@ -9,6 +9,7 @@ import modelo.estructuras.Cimiento;
 import modelo.estructuras.Estructura;
 import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ContenibleNoPropia;
+import modelo.excepciones.PosicionFueraDeRango;
 import modelo.juego.Jugador;
 
 public class Aldeano extends Accionables {
@@ -33,7 +34,7 @@ public class Aldeano extends Accionables {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
         if(cimiento.calcularDistancia(posicion.getPosX(),posicion.getPosY()) > 1)
-            throw new ContenibleFueraDeRango();
+            throw new PosicionFueraDeRango();
         estado.ocupar();
         this.estado = new Construyendo(cimiento);
         cimiento.setConstructor(this);
