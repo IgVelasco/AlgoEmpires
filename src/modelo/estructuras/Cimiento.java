@@ -65,6 +65,9 @@ public class Cimiento extends Estructura {
     }
 
     public void setConstructor(Aldeano aldeano){
+        if((constructor != aldeano) && (constructor != null)){
+            constructor.liberarAldeano();
+        }
         constructor = aldeano;
     }
 
