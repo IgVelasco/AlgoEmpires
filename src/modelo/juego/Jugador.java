@@ -192,6 +192,14 @@ public class Jugador {
     public Castillo getCastillo() {
         return castillo;
     }
+
+    public void reanudarCimiento(Cimiento unCimiento, Aldeano unAldeano){
+        unCimiento.reanudarConstruccion(unAldeano, this);
+    }
+
+    public void detenerCimiento(Cimiento unCimiento){
+        unCimiento.detenerConstruccion();
+    }
 }
 
 

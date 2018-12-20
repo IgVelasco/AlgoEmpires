@@ -9,6 +9,7 @@ import javafx.scene.input.ContextMenuEvent;
 import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cimiento;
+import modelo.juego.Juego;
 import vista.MapaView;
 
 public class BotonCimientoEventHandler extends BotonEventHandler {
@@ -16,15 +17,20 @@ public class BotonCimientoEventHandler extends BotonEventHandler {
     Cimiento cimiento;
     Posicion posicion;
 
-    public BotonCimientoEventHandler(Casillero unCasillero, Button botonMapa) {
+    public BotonCimientoEventHandler(Casillero unCasillero, Button botonMapa, Juego unJuego) {
         Cimiento cimiento = (Cimiento) unCasillero.getContenido();
         ContextMenu contextMenu = new ContextMenu();
+
+        MenuItem reanudar = new MenuItem("Reanudar Construccion");
+        MenuItem detener = new MenuItem("Detener Construccion");
         MenuItem informacion = new MenuItem("Informacion");
 
+        reanudar.setOnAction(new ReanudarConstruccionCimientoHandler(cimiento,unJuego));
+        detener.setOnAction(new DetenerConstruccionCimientoHandler(cimiento,unJuego));
         informacion.setOnAction(new MostrarInformacionCimientoHandler(cimiento));
 
 
-        contextMenu.getItems().addAll(informacion);
+        contextMenu.getItems().addAll(detener,reanudar,informacion);
         botonMapa.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override
