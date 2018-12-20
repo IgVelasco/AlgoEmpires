@@ -35,6 +35,7 @@ public class Aldeano extends Accionables {
             throw new ContenibleFueraDeRango();
         estado.ocupar();
         this.estado = new Construyendo(cimiento);
+        cimiento.setConstructor(this);
         return (cimiento.distanciaMenores(this.posicion.getPosX(),this.posicion.getPosY()));
     }
 

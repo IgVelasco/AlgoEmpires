@@ -16,6 +16,7 @@ public class Cimiento extends Estructura {
     private int posY;
     private int dimensionCimiento;
     private int signo;
+    private Aldeano constructor;
 
     public Cimiento(Estructura unaEstructura, Mapa elMapa, int x, int y, int dimension) {
 
@@ -54,6 +55,11 @@ public class Cimiento extends Estructura {
 
     @Override
     public void recibirAtaque(int dano) {
+        constructor.liberarAldeano();
         this.propietario.borrarEstructura(posiciones);
+    }
+
+    public void setConstructor(Aldeano aldeano){
+        constructor = aldeano;
     }
 }
