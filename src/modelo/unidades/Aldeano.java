@@ -1,5 +1,6 @@
 package modelo.unidades;
 
+import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.EstadoAldeano;
@@ -24,6 +25,11 @@ public class Aldeano extends Accionables {
 
     public int getVida() {
         return this.vida;
+    }
+
+    public void realizarMovimiento(Mapa mapa, int x, int y, Jugador unJugador){
+        estado.ocupar();
+        super.realizarMovimiento(mapa, x, y, unJugador);
     }
 
     public void realizarAccionCorrespondiente() {
