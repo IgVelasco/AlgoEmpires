@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.unidades.UnidadMovil;
@@ -27,13 +28,23 @@ public class MoverHandler extends AccionSobreCasilla  implements EventHandler<Ac
 
     @Override
     public void realizarAccion(MapaView mapaView, Posicion posicion){
-        unidad.realizarMovimiento(mapaView.getMapa(),posicion.getPosX(),posicion.getPosY(),juego.getJugadorActual());
+        try {
+            unidad.realizarMovimiento(mapaView.getMapa(), posicion.getPosX(), posicion.getPosY(), juego.getJugadorActual());
+        } catch (CasilleroOcupado e) {
+            alertar("¡Casillero ocupado!");
+        } catch (ContenibleNoPropia e) {
+            alertar("¡No te pertence!");
+        } catch (ExcedeLimiteDelMapa e) {
+            alertar("¡Límite del mapa alcanzado!");
+        } catch (MovimientoFueraDeRango e) {
+            alertar("¡Fuera de rango!");
+        } catch (UnidadYaUtilizada e) {
+            alertar("¡Unidad ya utilizada!");
+        }
+
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
 
     }
-
-
-
 
 }
