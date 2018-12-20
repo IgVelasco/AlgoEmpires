@@ -5,9 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import modelo.espacio.Posicion;
-import modelo.excepciones.AldeanoOcupado;
-import modelo.excepciones.ContenibleNoPropia;
-import modelo.excepciones.PosicionFueraDeRango;
+import modelo.excepciones.*;
 import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
 import vista.JuegoVista;
@@ -46,6 +44,10 @@ public class ConstruirCuartelHandler extends AccionSobreCasilla implements Event
             alertar("No te pertenece!");
         } catch (AldeanoOcupado e){
             alertar("Aldeano ocupado!");
+        } catch (OroInsuficiente e){
+            alertar("Oro no suficiente!");
+        } catch (CasilleroOcupado e){
+            alertar("Espacio no suficiente para construcción!");
         }
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());

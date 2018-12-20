@@ -1,8 +1,10 @@
 package modelo.juego;
 
+import modelo.espacio.Casillero;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.*;
+import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.OroInsuficiente;
 import modelo.excepciones.PoblacionLimiteAlcanzada;
 import modelo.unidades.*;
@@ -72,8 +74,7 @@ public class Jugador {
         }
         PlazaCentral unaPlazaCentral = new PlazaCentral(this);
         Cimiento unCimiento = new Cimiento(unaPlazaCentral, this.mapa, x, y, 2);
-        int signo = aldeano.comenzarCimientos(unCimiento, this);
-        mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
+        colocarEstructura(unCimiento, aldeano, x, y);
         this.restarOro(PRECIO_PLAZA);
     }
 
@@ -105,9 +106,19 @@ public class Jugador {
         }
         Cuartel unCuartel = new Cuartel(this);
         Cimiento unCimiento = new Cimiento(unCuartel, this.mapa, x, y, 2);
-        int signo = aldeano.comenzarCimientos(unCimiento,this);
-        mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
+        colocarEstructura(unCimiento, aldeano, x, y);
         this.restarOro(PRECIO_CUARTEL);
+    }
+
+    private void colocarEstructura(Cimiento unCimiento, Aldeano aldeano, int x , int y){
+
+        int signo = aldeano.comenzarCimientos(unCimiento,this);
+        try {
+            mapa.colocarEstructuraEn(unCimiento , x, y, 2 , signo);
+        } catch (CasilleroOcupado e){
+            aldeano.liberarAldeano();
+            throw new CasilleroOcupado();
+        }
     }
 
 
