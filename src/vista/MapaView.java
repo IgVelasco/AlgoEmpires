@@ -2,8 +2,10 @@ package vista;
 
 import controlador.*;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 import modelo.espacio.Casillero;
 import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
@@ -12,6 +14,7 @@ import modelo.estructuras.Castillo;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;
+import modelo.excepciones.PartidaTerminada;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
@@ -28,9 +31,11 @@ public class MapaView extends GridPane {
     private Jugador[] listaJugadores;
     private AccionSobreCasilla accionSobreCasilla;
     public Juego juego;
+    private AlgoEmpires aplicacion;
 
 
-    public MapaView(Mapa mapa, Jugador[] jugadores, Juego unJuego){
+    public MapaView(Mapa mapa, Jugador[] jugadores, Juego unJuego, AlgoEmpires aplicacion){
+        this.aplicacion = aplicacion;
         this.setAlignment(Pos.CENTER);
         INSTANCIA = this;
         this.casilleroSeleccionada = null;
@@ -117,17 +122,19 @@ public class MapaView extends GridPane {
         return INSTANCIA;
     }
 
-    public Posicion getDestino() {
-     //   if( casilleroSeleccionada == null)
-       //     throw new CasilleroNoSeleccionadoException();
-        System.out.println(casilleroSeleccionada);
-        return casilleroSeleccionada;
-    }
-
     public void seleccionarCasillero(Posicion posicion) {
         casilleroSeleccionada = posicion;
         if (accionSobreCasilla != null) {
-            accionSobreCasilla.realizarAccion(this, casilleroSeleccionada );
+            try {
+                accionSobreCasilla.realizarAccion(this, casilleroSeleccionada );
+            } catch (PartidaTerminada e){
+                JuegoVista juegoVista = JuegoVista.getInstancia();
+                juegoVista.actualizar(juego);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText("El jugador "+ e.getJugador().getNombre() + " gano la partida!");
+                alert.showAndWait();
+                this.aplicacion.restart();
+            }
         }
     }
 
@@ -142,7 +149,5 @@ public class MapaView extends GridPane {
     public Juego getJuego() {
         return this.juego;
     }
-
-    public void getCasilleroActual() {
-    }
+    
 }

@@ -2,6 +2,7 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Alert;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.excepciones.*;
@@ -43,7 +44,6 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
         } catch (ArmaNoCargada e) {
             alertar("¡El arma no está cargada!");
         }
-
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
     }

@@ -76,4 +76,7 @@ public class AlgoEmpires extends Application {
         escenario.show();
     }
 
+    public void restart() {
+        start(escenario);
+    }
 }

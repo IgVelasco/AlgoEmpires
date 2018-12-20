@@ -1,6 +1,7 @@
 package modelo.juego;
 
 import modelo.espacio.Mapa;
+import modelo.excepciones.PartidaTerminada;
 
 
 public class Juego {
@@ -30,7 +31,7 @@ public class Juego {
     }
 
     public void perdedor() {
-        //ganador(jugadores[turno.siguienteTurno()])
+        throw new PartidaTerminada(jugadores[turno.siguienteTurno()]);
     }
 
     public Mapa getMapa() { return this.mapa;

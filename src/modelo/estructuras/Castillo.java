@@ -59,7 +59,6 @@ public class Castillo extends Estructura {
                 continue;
             atacable.ataqueDeCastillo();
             yaAtacados.add(atacable);
-
         }
     }
 

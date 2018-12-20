@@ -32,14 +32,6 @@ public class BotonTurnosEventHandler extends BotonEventHandler {
         elJuego.siguienteTurno();
 
         vistaJuego.actualizar(elJuego);
-
-        for (Jugador jugador : elJuego.getJugadores()) {
-            if (jugador.getCastillo().getVida() <= 0) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText("Has ganado!");
-                alert.showAndWait();
-                this.aplicacion.start(escenario);
-            }
-        }
     }
 }
+

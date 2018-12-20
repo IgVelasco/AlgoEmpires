@@ -36,6 +36,7 @@ public class Jugador {
         this.oro = Integer.MAX_VALUE;
         this.poblacionActual = 0;
         this.poblacionMaxima = POBLACION_MAXIMA;
+        this.juego = juego;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4,1);
         mapa.colocarEstructuraEn(plazaInicial, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2, 1);
@@ -135,7 +136,6 @@ public class Jugador {
     }
 
     public void borrarEstructura(LinkedList<Posicion> posiciones) {
-        this.disminuirPoblacion();
         mapa.liberarUbicaciones(posiciones);
     }
 

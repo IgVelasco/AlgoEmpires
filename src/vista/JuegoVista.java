@@ -34,7 +34,7 @@ public class JuegoVista {
         jugadores[1].setNombreJugador(nombre_jug_2.getText());
 
 
-        MapaView vistaMapa = new MapaView(mapa, jugadores, nuevoJuego);
+        MapaView vistaMapa = new MapaView(mapa, jugadores, nuevoJuego, aplicacion);
         UtilidadView utilidad = new UtilidadView(nuevoJuego, this, this.aplicacion, this.escenario);
 
 
@@ -55,7 +55,7 @@ public class JuegoVista {
         Mapa mapa = unJuego.getMapa();
         Jugador[] jugadores = unJuego.getJugadores();
 
-        MapaView vistaMapa = new MapaView(mapa, jugadores, unJuego);
+        MapaView vistaMapa = new MapaView(mapa, jugadores, unJuego, aplicacion);
         UtilidadView utilidad = new UtilidadView(unJuego, this, this.aplicacion, this.escenario);
 
         raiz.setCenter(vistaMapa);

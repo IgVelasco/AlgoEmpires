@@ -46,8 +46,9 @@ public abstract class Estructura implements Contenible {
     public void recibirAtaque(int dano) {
         this.vida -= dano;
         if (this.vida <= 0)
-            propietario.borrarEstructura(posiciones);
+            this.borrarEstructura();
     }
+
     public void ataqueDeEspadachin() {
         recibirAtaque(DANO_ESPADACHIN);
     }
