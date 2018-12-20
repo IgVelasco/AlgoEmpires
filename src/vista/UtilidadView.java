@@ -7,6 +7,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
 
@@ -22,7 +23,7 @@ public class UtilidadView extends BorderPane {
     private Text informacionPoblacion = new Text();
     private Text informacionCastillo = new Text();
 
-    public UtilidadView(Juego unJuego, JuegoVista vistaJuego){
+    public UtilidadView(Juego unJuego, JuegoVista vistaJuego, AlgoEmpires aplicacion, Stage escenario){
         juego = unJuego;
         Jugador jugadores[] = unJuego.getJugadores();
         this.getStylesheets().add("/vista/style.css");
@@ -36,7 +37,7 @@ public class UtilidadView extends BorderPane {
                 BackgroundPosition.DEFAULT,
                 bSize)));
 
-        this.botonTurnos.setOnAction(new BotonTurnosEventHandler(this.juego, vistaJuego));
+        this.botonTurnos.setOnAction(new BotonTurnosEventHandler(this.juego, vistaJuego, aplicacion, escenario));
         if(jugadores[0] == unJuego.getJugadorActual())
             botonTurnos.setId("botonJugador0");
         else

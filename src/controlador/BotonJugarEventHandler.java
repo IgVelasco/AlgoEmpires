@@ -57,7 +57,7 @@ public class BotonJugarEventHandler extends BotonEventHandler {
 
         Button botonWololo = new Button("Wololo ⚔");
         botonWololo.setId("botonWololo");
-        botonWololo.setOnAction(new BotonWololoEventHandler(this.escenario, nombre_jugador1, nombre_jugador2));
+        botonWololo.setOnAction(new BotonWololoEventHandler(this.aplicacion, this.escenario, nombre_jugador1, nombre_jugador2));
 
         nombre_jugador1.setOnAction(event -> nombre_jugador2.requestFocus());
 

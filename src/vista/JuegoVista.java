@@ -13,8 +13,10 @@ public class JuegoVista {
     private static final int ANCHO = 20;
     private static final int ALTO = 15;
     private final Stage escenario;
+    private AlgoEmpires aplicacion;
 
-    public JuegoVista(Stage escenario) {
+    public JuegoVista(AlgoEmpires aplicacion, Stage escenario) {
+        this.aplicacion = aplicacion;
         this.escenario = escenario;
     }
 
@@ -33,7 +35,7 @@ public class JuegoVista {
 
 
         MapaView vistaMapa = new MapaView(mapa, jugadores, nuevoJuego);
-        UtilidadView utilidad = new UtilidadView(nuevoJuego, this);
+        UtilidadView utilidad = new UtilidadView(nuevoJuego, this, this.aplicacion, this.escenario);
 
 
 
@@ -54,7 +56,7 @@ public class JuegoVista {
         Jugador[] jugadores = unJuego.getJugadores();
 
         MapaView vistaMapa = new MapaView(mapa, jugadores, unJuego);
-        UtilidadView utilidad = new UtilidadView(unJuego, this);
+        UtilidadView utilidad = new UtilidadView(unJuego, this, this.aplicacion, this.escenario);
 
         raiz.setCenter(vistaMapa);
         raiz.setRight(utilidad);
