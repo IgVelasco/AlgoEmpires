@@ -14,10 +14,13 @@ public class Jugador {
 
     private static final int
             PRECIO_PLAZA = 100,
-            PRECIO_CUARTEL = 50;
-
-    private Mapa mapa;
+            PRECIO_CUARTEL = 50,
+            POBLACION_MAXIMA = 50,
+            ALDEANOS_INICIALES = 3,
+            ORO_INICIAL = 100,
+            ORO_POR_ALDEANO = 20;
     private Juego juego;
+    private Mapa mapa;
     private Castillo castillo;
     private ArrayList<Accionables> accionables = new ArrayList<Accionables>();
     private ArrayList<UnidadMovil> movidos = new ArrayList<UnidadMovil>();
@@ -30,17 +33,18 @@ public class Jugador {
         castillo = new Castillo(this);
         PlazaCentral plazaInicial = new PlazaCentral(this);
         this.mapa = mapa;
-        this.oro = 115;
+        this.oro = Integer.MAX_VALUE;
         this.poblacionActual = 0;
-        this.poblacionMaxima = 50;
+        this.poblacionMaxima = POBLACION_MAXIMA;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4,1);
         mapa.colocarEstructuraEn(plazaInicial, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2, 1);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < ALDEANOS_INICIALES; i++) {
             Posicion posicion = new Posicion(posicionCastilloHorizontal - 3,posicionCastilloVertical + i);
             this.crearAldeano(plazaInicial, posicion);
         }
+        this.oro = ORO_INICIAL - ALDEANOS_INICIALES * ORO_POR_ALDEANO ;
     }
 
     public void nuevoTurno() {
