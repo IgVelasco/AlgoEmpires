@@ -1,28 +1,12 @@
 package vista;
 
-import controlador.*;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import modelo.espacio.Casillero;
-import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
-import modelo.espacio.Posicion;
-import modelo.estructuras.Castillo;
-import modelo.estructuras.Cimiento;
-import modelo.estructuras.Cuartel;
-import modelo.estructuras.PlazaCentral;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
-import modelo.unidades.Aldeano;
-import modelo.unidades.ArmaDeAsedio;
-import modelo.unidades.Arquero;
-import modelo.unidades.Espadachin;
 
 public class JuegoVista {
     private static JuegoVista INSTANCIA;
