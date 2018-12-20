@@ -52,7 +52,7 @@ public class Aldeano extends Accionables {
         if(!this.sonDelMismoJugador(unJugador))
             throw new ContenibleNoPropia();
         estado.ocupar();
-        unaEstructura.ponerAReparar();
+        unaEstructura.ponerAReparar(this);
         estado = new Reparando(unaEstructura);
     }
 

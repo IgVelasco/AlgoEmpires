@@ -3,6 +3,7 @@ package modelo.estructuras;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.excepciones.EdificioConVidaMaxima;
+import modelo.excepciones.EstructuraYaEnReparacion;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 
@@ -22,6 +23,7 @@ public abstract class Estructura implements Contenible {
     int velocidadDeReparacion;
     Jugador propietario;
     LinkedList<Posicion> posiciones;
+    private Aldeano obrero;
 
 
     public void reparar(Aldeano unAldeano) {
@@ -69,7 +71,12 @@ public abstract class Estructura implements Contenible {
 
 
 
-    public void ponerAReparar() {
+    public void ponerAReparar(Aldeano unAldeano) {
+        if ((obrero != unAldeano) && (obrero != null)) {
+            unAldeano.liberarAldeano();
+            throw new EstructuraYaEnReparacion();
+        }
+        obrero = unAldeano;
         if (vida == vidaMaxima)
             throw new EdificioConVidaMaxima();
     }
