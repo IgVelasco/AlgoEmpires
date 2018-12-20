@@ -25,15 +25,17 @@ public class BotonAldeanoEventHandler extends BotonEventHandler {
         MenuItem mover = new MenuItem("Mover a");
         MenuItem construirPlazaCentral = new MenuItem("Construir plaza central");
         MenuItem construirCuartel = new MenuItem("Construir cuartel");
+        MenuItem reparar = new MenuItem("Reparar");
         MenuItem estadoUnidad = new MenuItem("Informacion");
 
         mover.setOnAction(new MoverHandler(this.aldeano, unJuego));
         construirPlazaCentral.setOnAction(new ConstruirPlazaCentralHandler(this.aldeano, unJuego));
         construirCuartel.setOnAction(new ConstruirCuartelHandler(this.aldeano, unJuego));
+        reparar.setOnAction(new RepararHandler(this.aldeano, unJuego));
         estadoUnidad.setOnAction(new MostrarInformacionUnidadHandler(this.aldeano));
 
 
-        contextMenu.getItems().addAll(mover,construirPlazaCentral, construirCuartel, estadoUnidad);
+        contextMenu.getItems().addAll(mover,construirPlazaCentral, construirCuartel, reparar, estadoUnidad);
         boton.setOnContextMenuRequested(new EventHandler<ContextMenuEvent>() {
 
             @Override
