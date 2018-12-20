@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
+import modelo.excepciones.PosicionFueraDeRango;
 import modelo.juego.Jugador;
 import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
@@ -28,6 +29,8 @@ public class Cuartel extends Estructura {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
+        if (calcularDistancia(posicion.getPosX(),posicion.getPosY())>1)
+            throw new PosicionFueraDeRango();
         if (oroDisponible < PRECIO_ESPADACHIN) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ESPADACHIN);
         this.propietario.aumentarPoblacion();
@@ -38,6 +41,8 @@ public class Cuartel extends Estructura {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
+        if (calcularDistancia(posicion.getPosX(),posicion.getPosY())>1)
+            throw new PosicionFueraDeRango();
         if (oroDisponible < PRECIO_ARQUERO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ARQUERO);
         this.propietario.aumentarPoblacion();

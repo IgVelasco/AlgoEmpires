@@ -59,7 +59,8 @@ public class CastilloTest {
         Posicion posicionEspadachin = new Posicion(4,7);
 
         Castillo unCastillo = new Castillo(unJugador);
-        otroJugador.crearEspadachin(new Cuartel(otroJugador), posicionEspadachin);
+
+        mapa.colocarUnidadEn(new Espadachin(otroJugador,posicionEspadachin),posicionEspadachin);
 
         Espadachin unEspadachin = (Espadachin) mapa.getContenido(4,7);
 
@@ -81,7 +82,7 @@ public class CastilloTest {
         Posicion posicionEspadachin = new Posicion(10,10);
 
         Castillo unCastillo = new Castillo(unJugador);
-        otroJugador.crearEspadachin(new Cuartel(otroJugador), posicionEspadachin);
+        mapa.colocarUnidadEn(new Espadachin(otroJugador,posicionEspadachin),posicionEspadachin);
 
         Espadachin unEspadachin = (Espadachin) mapa.getContenido(10,10);
 
@@ -101,7 +102,7 @@ public class CastilloTest {
         Posicion posicionEspadachin = new Posicion(4,7);
 
         Castillo unCastillo = new Castillo(unJugador);
-        unJugador.crearEspadachin(new Cuartel(unJugador), posicionEspadachin);
+        mapa.colocarUnidadEn(new Espadachin(unJugador,posicionEspadachin),posicionEspadachin);
 
         Espadachin unEspadachin = (Espadachin) mapa.getContenido(4,7);
 

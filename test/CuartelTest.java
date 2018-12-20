@@ -1,3 +1,5 @@
+import javafx.geometry.Pos;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Cuartel;
 import modelo.excepciones.OroInsuficiente;
 import modelo.excepciones.PoblacionLimiteAlcanzada;
@@ -16,16 +18,24 @@ public class CuartelTest {
 
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearEspadachinSinOroSuficiente() {
-        Cuartel unCuartel = new Cuartel(null);
+        Posicion posicionCuartel = new Posicion(10,10);
+        Posicion posicionEspadachin = new Posicion(11,11);
 
-        unCuartel.crearEspadachin(25, null, null);
+        Cuartel unCuartel = new Cuartel(null);
+        unCuartel.agregarPosicion(posicionCuartel);
+
+        unCuartel.crearEspadachin(25, null, posicionEspadachin);
 
     }
 
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearArqueroSinOroSuficiente() {
-        Cuartel unCuartel = new Cuartel(null);
+        Posicion posicionCuartel = new Posicion(10,10);
+        Posicion posicionArquero = new Posicion(11,11);
 
-        unCuartel.crearArquero(25, null, null);
+        Cuartel unCuartel = new Cuartel(null);
+        unCuartel.agregarPosicion(posicionCuartel);
+
+        unCuartel.crearArquero(25, null, posicionArquero);
     }
 }
