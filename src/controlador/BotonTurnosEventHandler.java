@@ -9,7 +9,10 @@ import modelo.juego.Jugador;
 import vista.AlgoEmpires;
 import vista.JuegoVista;
 
-public class BotonTurnosEventHandler implements EventHandler<ActionEvent> {
+import java.applet.AudioClip;
+
+public class BotonTurnosEventHandler extends BotonEventHandler {
+
     private final AlgoEmpires aplicacion;
     private final Stage escenario;
     private Juego elJuego;
@@ -25,6 +28,7 @@ public class BotonTurnosEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent event) {
+        super.handle(event);
         elJuego.siguienteTurno();
 
         vistaJuego.actualizar(elJuego);
