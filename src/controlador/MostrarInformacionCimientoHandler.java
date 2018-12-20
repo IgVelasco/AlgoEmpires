@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -12,6 +14,8 @@ import javafx.stage.Stage;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.PlazaCentral;
+
+import java.io.File;
 
 public class MostrarInformacionCimientoHandler implements EventHandler<ActionEvent> {
     private Cimiento unCimiento;
@@ -62,6 +66,12 @@ public class MostrarInformacionCimientoHandler implements EventHandler<ActionEve
         Stage newWindow = new Stage();
         newWindow.setTitle("Infomacion de Cimiento");
         newWindow.setScene(scene);
+
+        String musicFile = "src/vista/sonidos/sonido_info.mp3";
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
 
         newWindow.show();
 

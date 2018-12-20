@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -13,6 +15,8 @@ import modelo.estructuras.Castillo;
 import modelo.estructuras.Cuartel;
 import modelo.estructuras.Estructura;
 import modelo.estructuras.PlazaCentral;
+
+import java.io.File;
 
 public class MostrarInformacionEstructuraHandler implements EventHandler<ActionEvent> {
     private Estructura estructura;
@@ -72,6 +76,12 @@ public class MostrarInformacionEstructuraHandler implements EventHandler<ActionE
         Stage newWindow = new Stage();
         newWindow.setTitle("Infomacion de Estructura");
         newWindow.setScene(scene);
+
+        String musicFile = "src/vista/sonidos/sonido_info.mp3";
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
 
         newWindow.show();
     }

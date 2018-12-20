@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -13,6 +15,8 @@ import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.GenerandoOro;
 import modelo.estados.ataque.ArmaCargada;
 import modelo.unidades.*;
+
+import java.io.File;
 
 
 public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent> {
@@ -92,6 +96,12 @@ public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent
         newWindow.setScene(scene);
 
         newWindow.show();
+
+        String musicFile = "src/vista/sonidos/sonido_info.mp3";
+
+        Media sound = new Media(new File(musicFile).toURI().toString());
+        MediaPlayer mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
 
     }
 }
