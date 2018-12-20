@@ -3,6 +3,7 @@ package modelo.unidades;
 
 import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estados.ataque.ArmaCargada;
 import modelo.estados.ataque.ArmaDescargada;
 import modelo.estados.ataque.EstadosAtaque;
@@ -18,10 +19,11 @@ public class ArmaDeAsedio extends Accionables implements Atacante{
         return this.vida;
     }
 
-    public ArmaDeAsedio(Jugador unJugador) {
+    public ArmaDeAsedio(Jugador unJugador, Posicion unaPosicion) {
         vida = 150;
         propietario = unJugador;
         estado = new ArmaDescargada(true);
+        posicion = unaPosicion;
 
     }
 

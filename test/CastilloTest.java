@@ -1,5 +1,9 @@
+import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
+import modelo.estructuras.Cuartel;
+import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.ExcedeLimiteDelMapa;
 import modelo.excepciones.OroInsuficiente;
@@ -24,9 +28,9 @@ public class CastilloTest {
 
     @Test(expected = OroInsuficiente.class)
     public void testNoCrearAldeanoSinOroSuficiente() {
-        Castillo unCastillo = new Castillo(null);
 
-        unCastillo.crearArmaDeAsedio(10, null);
+        Castillo unCastillo = new Castillo(null);
+        unCastillo.crearArmaDeAsedio(10, null, null);
     }
 
     @Test
@@ -37,7 +41,9 @@ public class CastilloTest {
 
         Castillo unCastillo = new Castillo(unJugador);
 
-        ArmaDeAsedio unArmaDeAsedio = unCastillo.crearArmaDeAsedio(1000, unJugador);
+        Posicion posicionArmaDeAsedio = new Posicion(1, 1);
+
+        ArmaDeAsedio unArmaDeAsedio = unCastillo.crearArmaDeAsedio(1000, unJugador, posicionArmaDeAsedio );
         assertEquals(150, unArmaDeAsedio.getVida());
 
     }
@@ -49,15 +55,17 @@ public class CastilloTest {
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
 
+        Posicion posicionEspadachin = new Posicion(4,7);
+
         Castillo unCastillo = new Castillo(unJugador);
-        Espadachin unEspadachin = new Espadachin(otroJugador);
+        otroJugador.crearEspadachin(new Cuartel(otroJugador), posicionEspadachin);
 
-        mapa.colocarUnidadEn(unEspadachin, 4, 7);
+        Espadachin unEspadachin = (Espadachin) mapa.getContenido(4,7);
+
         mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
-
         unCastillo.atacar(mapa);
 
-        assertEquals(80, unEspadachin.getVida());
+        assertEquals(80,  unEspadachin.getVida());
 
     }
 
@@ -68,12 +76,14 @@ public class CastilloTest {
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 20, 20, null);
 
+        Posicion posicionEspadachin = new Posicion(10,10);
+
         Castillo unCastillo = new Castillo(unJugador);
-        Espadachin unEspadachin = new Espadachin(otroJugador);
+        otroJugador.crearEspadachin(new Cuartel(otroJugador), posicionEspadachin);
 
-        mapa.colocarUnidadEn(unEspadachin, 10, 10);
+        Espadachin unEspadachin = (Espadachin) mapa.getContenido(10,10);
+
         mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
-
         unCastillo.atacar(mapa);
 
         assertEquals(100, unEspadachin.getVida());
@@ -85,12 +95,14 @@ public class CastilloTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
 
+        Posicion posicionEspadachin = new Posicion(4,7);
+
         Castillo unCastillo = new Castillo(unJugador);
-        Espadachin unEspadachin = new Espadachin(unJugador);
+        unJugador.crearEspadachin(new Cuartel(unJugador), posicionEspadachin);
 
-        mapa.colocarUnidadEn(unEspadachin, 5, 7);
+        Espadachin unEspadachin = (Espadachin) mapa.getContenido(4,7);
+
         mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
-
         unCastillo.atacar(mapa);
 
         assertEquals(100, unEspadachin.getVida());
@@ -103,11 +115,14 @@ public class CastilloTest {
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
 
-        Castillo unCastillo = new Castillo(unJugador);
-        Aldeano unAldeano = new Aldeano(otroJugador);
 
-        mapa.colocarUnidadEn(unAldeano, 4, 7);
+        Posicion posicionAldeano = new Posicion(4,7);
+        otroJugador.crearAldeano(new PlazaCentral(otroJugador), posicionAldeano);
+
+        Castillo unCastillo = new Castillo(unJugador);
         mapa.colocarEstructuraEn(unCastillo, 0, 7, 4,1);
+
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(4,7);
 
         unCastillo.atacar(mapa);
         unCastillo.atacar(mapa);

@@ -1,5 +1,6 @@
 package modelo.espacio;
 
+import javafx.geometry.Pos;
 import modelo.estructuras.Estructura;
 import modelo.excepciones.CasilleroOcupado;
 import modelo.excepciones.ExcedeLimiteDelMapa;
@@ -40,8 +41,7 @@ public class Mapa {
         return mapa.get(new Posicion(x,y)).getContenido();
     }
 
-    public void colocarUnidadEn(UnidadMovil unidad, int x, int y) {
-        Posicion posicion = new Posicion(x,y);
+    public void colocarUnidadEn(UnidadMovil unidad, Posicion posicion) {
         Casillero destino = mapa.get(posicion);
         if (destino == null){
             throw new ExcedeLimiteDelMapa();
@@ -90,9 +90,9 @@ public class Mapa {
     }
 
 
-    public void mover(int x, int y, int xNew, int yNew) {
+    public void mover(int x, int y, Posicion posicionAMover) {
         UnidadMovil unidad = (UnidadMovil) this.getContenido(x, y); // aca hay que lanzar error si es estructura.
-        this.colocarUnidadEn(unidad, xNew, yNew);
+        this.colocarUnidadEn(unidad, posicionAMover);
         Posicion posicionABorrar = new Posicion(x,y);
         this.liberarUbicacion(posicionABorrar);
     }

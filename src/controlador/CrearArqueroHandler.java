@@ -24,11 +24,8 @@ public class CrearArqueroHandler implements EventHandler<ActionEvent>, AccionSob
         mapaView.setAccionSobreCasilla(this);
     }
 
-    public void realizarAccion(MapaView mapaView) {
-        Posicion destino = mapaView.getDestino();
-        System.out.println(destino.getPosX());
-        Arquero unArquero = cuartel.crearArquero(cuartel.getPropietario().getOro(), juego.getJugadorActual());
-        mapaView.getMapa().colocarUnidadEn(unArquero, destino.getPosX(), destino.getPosY());
+    public void realizarAccion(MapaView mapaView, Posicion posicion) {
+        juego.getJugadorActual().crearArquero(cuartel, posicion );
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }

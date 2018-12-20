@@ -2,6 +2,7 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.unidades.ArmaDeAsedio;
@@ -21,11 +22,11 @@ public class CargarArmaHandler implements EventHandler<ActionEvent>, AccionSobre
     @Override
     public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
-        realizarAccion(mapaView);
+        realizarAccion(mapaView, null);
     }
 
     @Override
-    public void realizarAccion(MapaView mapaView){
+    public void realizarAccion(MapaView mapaView, Posicion posicion){
         armaDeAsedio.cargarArma(juego.getJugadorActual());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);

@@ -2,6 +2,7 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
@@ -27,9 +28,8 @@ public class AtacarHandler implements EventHandler<ActionEvent>, AccionSobreCasi
     }
 
     @Override
-    public void realizarAccion(MapaView mapaView) {
-        Posicion destino = mapaView.getDestino();
-        Contenible unContenible = mapaView.getMapa().getContenido(destino.getPosX(), destino.getPosY());
+    public void realizarAccion(MapaView mapaView, Posicion posicion) {
+        Contenible unContenible = mapaView.getMapa().getContenido(posicion.getPosX(), posicion.getPosY());
         atacante.atacar(unContenible, juego.getJugadorActual());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);

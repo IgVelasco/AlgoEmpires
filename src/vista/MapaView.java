@@ -127,7 +127,7 @@ public class MapaView extends GridPane {
     public void seleccionarCasillero(Posicion posicion) {
         casilleroSeleccionada = posicion;
         if (accionSobreCasilla != null) {
-            accionSobreCasilla.realizarAccion(this);
+            accionSobreCasilla.realizarAccion(this, casilleroSeleccionada );
         }
     }
 
@@ -141,5 +141,8 @@ public class MapaView extends GridPane {
 
     public Juego getJuego() {
         return this.juego;
+    }
+
+    public void getCasilleroActual() {
     }
 }

@@ -1,5 +1,7 @@
 import modelo.espacio.Contenible;
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
+import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
@@ -56,9 +58,12 @@ public class JugadorTest {
     public void testMatarUnidadLiberaUbicacion() {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
-        Aldeano unAldeano = new Aldeano(unJugador);
 
-        mapa.colocarUnidadEn(unAldeano, 10, 10);
+        Posicion posicionAldeano = new Posicion(10,10);
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionAldeano);
+
+        Aldeano unAldeano = new Aldeano(unJugador, posicionAldeano);
+
 
         unAldeano.ataqueDeEspadachin();
         unAldeano.ataqueDeEspadachin();
@@ -70,16 +75,16 @@ public class JugadorTest {
     public void testMatarUnidadDisminuyeLaPoblacion() {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20/2, 0, null);
-        Aldeano unAldeano = new Aldeano(unJugador);
 
-        unJugador.aumentarPoblacion();
-        mapa.colocarUnidadEn(unAldeano, 10, 10);
+        Posicion posicionAldeano = new Posicion(10,10);
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionAldeano);
 
-        assertEquals(4, unJugador.getPoblacionActual());
+        Aldeano unAldeano = new Aldeano(unJugador, posicionAldeano);
 
 
         unAldeano.ataqueDeEspadachin();
         unAldeano.ataqueDeEspadachin();
+
 
         assertEquals(3, unJugador.getPoblacionActual());
 

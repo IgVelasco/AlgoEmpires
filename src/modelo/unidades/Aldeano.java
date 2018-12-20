@@ -1,6 +1,7 @@
 package modelo.unidades;
 
 import modelo.espacio.Contenible;
+import modelo.espacio.Posicion;
 import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.EstadoAldeano;
 import modelo.estados.aldeano.GenerandoOro;
@@ -15,9 +16,10 @@ public class Aldeano extends Accionables {
 
     private EstadoAldeano estado = new GenerandoOro();
 
-    public Aldeano(Jugador jugador) {
+    public Aldeano(Jugador jugador, Posicion unaPosicion) {
         propietario = jugador;
         vida = 50;
+        posicion = unaPosicion;
     }
 
     public int getVida() {

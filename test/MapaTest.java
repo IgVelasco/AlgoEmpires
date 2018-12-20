@@ -29,19 +29,24 @@ public class MapaTest {
     @Test
     public void testSePuedeColocarUnidadEnPosicionEspecifica() {
         Mapa mapa = new Mapa(5, 5);
-        Aldeano aldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(aldeano, 3, 3);
+        Posicion posicionUnAldeano = new Posicion(0, 0);
+        Aldeano aldeano = new Aldeano(null, posicionUnAldeano);
 
-        assertEquals(aldeano, mapa.getContenido(3, 3));
+
+        mapa.colocarUnidadEn(aldeano, posicionUnAldeano);
+
+        assertEquals(aldeano, mapa.getContenido(0, 0));
     }
 
     @Test
     public void testAlEliminarContenidoDeUnaPosicionSeLibera() {
         Mapa mapa = new Mapa(5, 5);
-        Aldeano aldeano = new Aldeano(null);
+        Posicion posicionUnAldeano = new Posicion(4, 4);
+        Aldeano aldeano = new Aldeano(null, posicionUnAldeano);
 
-        mapa.colocarUnidadEn(aldeano, 4, 4);
+
+        mapa.colocarUnidadEn(aldeano, posicionUnAldeano);
         mapa.liberarUbicacion( new Posicion(4,4));
 
         assertNull(mapa.getContenido(4, 4));
@@ -107,9 +112,12 @@ public class MapaTest {
     @Test(expected = ExcedeLimiteDelMapa.class)
     public void testMoverUnidadAfueraDelMapaError() {
         Mapa mapa = new Mapa(5, 5);
-        Aldeano aldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(aldeano, 0, 0);
-        mapa.mover(0, 0, -1, -1);
+        Posicion posicionUnAldeano = new Posicion(0, 0);
+        Posicion posicionAMover = new Posicion(-1, -1);
+        Aldeano aldeano = new Aldeano(null, posicionUnAldeano);
+
+        mapa.colocarUnidadEn(aldeano, posicionUnAldeano);
+        mapa.mover(0, 0, posicionAMover);
     }
 }

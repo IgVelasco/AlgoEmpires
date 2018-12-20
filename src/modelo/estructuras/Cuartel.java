@@ -1,5 +1,6 @@
 package modelo.estructuras;
 
+import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
@@ -23,24 +24,24 @@ public class Cuartel extends Estructura {
         posiciones = new LinkedList<Posicion>();
     }
 
-    public Espadachin crearEspadachin(int oroDisponible, Jugador unJugador) {
+    public Espadachin crearEspadachin(int oroDisponible, Jugador unJugador, Posicion posicion) {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
         if (oroDisponible < PRECIO_ESPADACHIN) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ESPADACHIN);
         this.propietario.aumentarPoblacion();
-        return new Espadachin(propietario);
+        return new Espadachin(propietario, posicion);
     }
 
-    public Arquero crearArquero(int oroDisponible, Jugador unJugador) {
+    public Arquero crearArquero(int oroDisponible, Jugador unJugador, Posicion posicion) {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
         if (oroDisponible < PRECIO_ARQUERO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ARQUERO);
         this.propietario.aumentarPoblacion();
-        return new Arquero(propietario);
+        return new Arquero(propietario, posicion);
     }
 
 }

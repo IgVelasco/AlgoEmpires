@@ -24,11 +24,8 @@ public class CrearAldeanoHandler implements EventHandler<ActionEvent>, AccionSob
         mapaView.setAccionSobreCasilla(this);
     }
 
-    public void realizarAccion(MapaView mapaView) {
-        Posicion destino = mapaView.getDestino();
-        System.out.println(destino.getPosX());
-        Aldeano unAldeano = plazaCentral.crearAldeano(plazaCentral.getPropietario().getOro(), juego.getJugadorActual());
-        mapaView.getMapa().colocarUnidadEn(unAldeano, destino.getPosX(), destino.getPosY());
+    public void realizarAccion(MapaView mapaView, Posicion posicion) {
+        juego.getJugadorActual().crearAldeano(plazaCentral, posicion);
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }

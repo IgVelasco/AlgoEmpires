@@ -20,14 +20,14 @@ public class PlazaCentral extends Estructura {
 
     }
 
-    public Aldeano crearAldeano(int oroDisponible, Jugador unJugador) {
+    public Aldeano crearAldeano(int oroDisponible, Jugador unJugador, Posicion posicion) {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
         if (oroDisponible < PRECIO_ALDEANO) throw new OroInsuficiente();
         propietario.restarOro(PRECIO_ALDEANO);
         this.propietario.aumentarPoblacion();
-        Aldeano aldeano = new Aldeano(this.propietario);
+        Aldeano aldeano = new Aldeano(this.propietario, posicion);
         this.propietario.agregarAccionable(aldeano);
         return aldeano;
     }

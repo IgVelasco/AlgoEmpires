@@ -2,6 +2,7 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
@@ -25,10 +26,8 @@ public class MoverHandler implements EventHandler<ActionEvent>, AccionSobreCasil
     }
 
     @Override
-    public void realizarAccion(MapaView mapaView){
-        Posicion destino = mapaView.getDestino();
-        System.out.println(destino.getPosX());
-        unidad.realizarMovimiento(mapaView.getMapa(),destino.getPosX(),destino.getPosY(),juego.getJugadorActual());
+    public void realizarAccion(MapaView mapaView, Posicion posicion){
+        unidad.realizarMovimiento(mapaView.getMapa(),posicion.getPosX(),posicion.getPosY(),juego.getJugadorActual());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);
 

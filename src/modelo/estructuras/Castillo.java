@@ -28,7 +28,7 @@ public class Castillo extends Estructura {
 
 
 
-    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible, Jugador unJugador) {
+    public ArmaDeAsedio crearArmaDeAsedio(int oroDisponible, Jugador unJugador, Posicion unaPosicion) {
         if (! sonDelMismoJugador(unJugador)) {
             throw new ContenibleNoPropia();
         }
@@ -37,7 +37,7 @@ public class Castillo extends Estructura {
         }
         propietario.restarOro(PRECIO_ARMA_DE_ASEDIO);
         this.propietario.aumentarPoblacion();
-        ArmaDeAsedio  armaDeAsedio = new ArmaDeAsedio(propietario);
+        ArmaDeAsedio  armaDeAsedio = new ArmaDeAsedio(propietario, unaPosicion);
         propietario.agregarAccionable(armaDeAsedio);
         return armaDeAsedio;
     }

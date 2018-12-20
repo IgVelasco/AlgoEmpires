@@ -5,10 +5,7 @@ import modelo.espacio.Posicion;
 import modelo.estructuras.*;
 import modelo.excepciones.OroInsuficiente;
 import modelo.excepciones.PoblacionLimiteAlcanzada;
-import modelo.unidades.Accionables;
-import modelo.unidades.Aldeano;
-import modelo.unidades.Atacante;
-import modelo.unidades.UnidadMovil;
+import modelo.unidades.*;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,16 +30,16 @@ public class Jugador {
         castillo = new Castillo(this);
         PlazaCentral plazaInicial = new PlazaCentral(this);
         this.mapa = mapa;
-        this.oro = 100;
-        this.poblacionActual = 3;
+        this.oro = 175;
+        this.poblacionActual = 0;
         this.poblacionMaxima = 50;
 
         mapa.colocarEstructuraEn(castillo, posicionCastilloHorizontal, posicionCastilloVertical, 4,1);
         mapa.colocarEstructuraEn(plazaInicial, posicionCastilloHorizontal - 2, posicionCastilloVertical, 2, 1);
 
         for (int i = 0; i < 3; i++) {
-            accionables.add(i, new Aldeano(this));
-            mapa.colocarUnidadEn(accionables.get(i), posicionCastilloHorizontal - 3, posicionCastilloVertical + i);
+            Posicion posicion = new Posicion(posicionCastilloHorizontal - 3,posicionCastilloVertical + i);
+            this.crearAldeano(plazaInicial, posicion);
         }
     }
 
@@ -75,9 +72,27 @@ public class Jugador {
         this.restarOro(PRECIO_PLAZA);
     }
 
-    /*public void construirAsedio() {
-        this.castillo.crearArmaDeAsedio(this.oro);
-    }*/
+    public void crearAldeano(PlazaCentral unaPlazaCentral, Posicion posicion){
+        Aldeano unAldeano = unaPlazaCentral.crearAldeano(oro, this, posicion);
+        mapa.colocarUnidadEn(unAldeano, posicion);
+    }
+
+    public void crearEspadachin(Cuartel unCuartel, Posicion posicion){
+        Espadachin espadachin = unCuartel.crearEspadachin(oro, this, posicion);
+        mapa.colocarUnidadEn(espadachin, posicion);
+    }
+
+    public void crearArquero(Cuartel unCuartel, Posicion posicion){
+        Arquero arquero = unCuartel.crearArquero(oro, this, posicion);
+        mapa.colocarUnidadEn(arquero, posicion);
+    }
+
+
+    public void construirAsedio( Posicion posicion) {
+        ArmaDeAsedio armaDeAsedio = castillo.crearArmaDeAsedio(this.oro, this, posicion);
+        mapa.colocarUnidadEn(armaDeAsedio, posicion);
+
+    }
 
     public void construirCuartel(Aldeano aldeano, int x, int y) {
         if (this.oro < PRECIO_CUARTEL) {

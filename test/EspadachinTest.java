@@ -1,4 +1,5 @@
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
@@ -13,7 +14,7 @@ public class EspadachinTest {
 
     @Test
     public void testEspadachinSeCreaCon100DeVida() {
-        Espadachin unEspadachin = new Espadachin(null);
+        Espadachin unEspadachin = new Espadachin(null, null);
 
         assertEquals(100, unEspadachin.getVida());
     }
@@ -23,12 +24,11 @@ public class EspadachinTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
-        Espadachin otroEspadachin = new Espadachin(null);
+        Posicion posicionEspadachin = new Posicion(1, 1);
+        Posicion posicionOtroEspadachin = new Posicion(1, 9);
 
-
-        mapa.colocarUnidadEn(unEspadachin, 1, 1);
-        mapa.colocarUnidadEn(otroEspadachin, 1, 9);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
+        Espadachin otroEspadachin = new Espadachin(null, posicionOtroEspadachin);
 
         unEspadachin.atacar(otroEspadachin, jugador);
     }
@@ -39,12 +39,11 @@ public class EspadachinTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
-        Espadachin otroEspadachin = new Espadachin(jugador);
+        Posicion posicionEspadachin = new Posicion(1, 1);
+        Posicion posicionOtroEspadachin = new Posicion(1, 2);
 
-
-        mapa.colocarUnidadEn(unEspadachin, 1, 1);
-        mapa.colocarUnidadEn(otroEspadachin, 1, 2);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
+        Espadachin otroEspadachin = new Espadachin(jugador, posicionOtroEspadachin);
 
         unEspadachin.atacar(otroEspadachin, jugador);
 
@@ -58,12 +57,11 @@ public class EspadachinTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
-        Espadachin otroEspadachin = new Espadachin(otroJugador);
+        Posicion posicionEspadachin = new Posicion(1, 1);
+        Posicion posicionOtroEspadachin = new Posicion(1, 2);
 
-
-        mapa.colocarUnidadEn(unEspadachin, 1, 1);
-        mapa.colocarUnidadEn(otroEspadachin, 1, 2);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
+        Espadachin otroEspadachin = new Espadachin(otroJugador, posicionOtroEspadachin);
 
         unEspadachin.atacar(otroEspadachin, jugador);
 
@@ -77,11 +75,11 @@ public class EspadachinTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
+
+        Posicion posicionEspadachin = new Posicion(1, 1);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unEspadachin, 1, 1);
         mapa.colocarEstructuraEn(unCastillo, 1, 9, 4,1);
 
         unEspadachin.atacar(unCastillo, jugador);
@@ -96,11 +94,10 @@ public class EspadachinTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
+        Posicion posicionEspadachin = new Posicion(0, 0);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unEspadachin, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unEspadachin.atacar(unCastillo, jugador);
@@ -116,20 +113,18 @@ public class EspadachinTest {
         Jugador jugador = new Jugador(mapa, 6, 6, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
-        Aldeano unAldeano = new Aldeano(otroJugador);
 
+        Posicion posicionEspadachin = new Posicion(1, 1);
+        Posicion posicionAldeano = new Posicion(0,0);
 
-        mapa.colocarUnidadEn(unEspadachin, 1, 1);
-        mapa.colocarUnidadEn(unAldeano, 0, 0);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
+        Aldeano unAldeano = new Aldeano(otroJugador, posicionAldeano);
 
         unEspadachin.atacar(unAldeano, jugador);
         jugador.nuevoTurno();
         unEspadachin.atacar(unAldeano, jugador);
 
         assertEquals(0, unAldeano.getVida());
-        assertNull(mapa.getContenido(0, 0));
-
     }
 
 
@@ -139,12 +134,11 @@ public class EspadachinTest {
         Jugador jugador = new Jugador(mapa, 6, 6, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Espadachin unEspadachin = new Espadachin(jugador);
-        Aldeano unAldeano = new Aldeano(otroJugador);
+        Posicion posicionEspadachin = new Posicion(1, 1);
+        Posicion posicionAldeano = new Posicion(0,0);
 
-
-        mapa.colocarUnidadEn(unEspadachin, 1, 1);
-        mapa.colocarUnidadEn(unAldeano, 0, 0);
+        Espadachin unEspadachin = new Espadachin(jugador, posicionEspadachin);
+        Aldeano unAldeano = new Aldeano(otroJugador, posicionAldeano);
 
         unEspadachin.atacar(unAldeano, jugador);
         unEspadachin.atacar(unAldeano, jugador);

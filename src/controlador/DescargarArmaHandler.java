@@ -21,11 +21,11 @@ public class DescargarArmaHandler implements EventHandler<ActionEvent>, AccionSo
     @Override
     public void handle(ActionEvent event) {
         MapaView mapaView = MapaView.getInstancia();
-        realizarAccion(mapaView);
+        realizarAccion(mapaView, null);
     }
 
     @Override
-    public void realizarAccion(MapaView mapaView){
+    public void realizarAccion(MapaView mapaView, Posicion posicion){
         armaDeAsedio.descargarArmaDeAsedio(juego.getJugadorActual());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(juego);

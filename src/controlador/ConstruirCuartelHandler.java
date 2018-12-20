@@ -2,6 +2,7 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.juego.Jugador;
@@ -24,10 +25,8 @@ public class ConstruirCuartelHandler implements EventHandler<ActionEvent>, Accio
         mapaView.setAccionSobreCasilla(this);
     }
 
-    public void realizarAccion(MapaView mapaView) {
-        Posicion destino = mapaView.getDestino();
-        System.out.println(destino.getPosX());
-        juego.getJugadorActual().construirCuartel(aldeano, destino.getPosX(), destino.getPosY());
+    public void realizarAccion(MapaView mapaView, Posicion posicion) {
+        juego.getJugadorActual().construirCuartel(aldeano, posicion.getPosX(), posicion.getPosY());
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());
     }

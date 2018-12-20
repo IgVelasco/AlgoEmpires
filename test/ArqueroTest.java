@@ -1,10 +1,12 @@
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.estructuras.Cuartel;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
 import modelo.unidades.Arquero;
+import modelo.unidades.Espadachin;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -14,7 +16,7 @@ public class ArqueroTest {
 
     @Test
     public void testArqueroSeCreaCon75DeVida() {
-        Arquero unArquero = new Arquero(null);
+        Arquero unArquero = new Arquero(null, null);
 
         assertEquals(75, unArquero.getVida());
     }
@@ -24,12 +26,11 @@ public class ArqueroTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
-        Arquero otroArquero = new Arquero(null);
+        Posicion posicionArquero = new Posicion(1, 1);
+        Posicion posicionOtroArquero = new Posicion(1, 9);
 
-
-        mapa.colocarUnidadEn(unArquero, 1, 1);
-        mapa.colocarUnidadEn(otroArquero, 1, 9);
+        Arquero unArquero  = new Arquero(jugador, posicionArquero);
+        Arquero otroArquero = new Arquero(null, posicionOtroArquero);
 
         unArquero.atacar(otroArquero, jugador);
 
@@ -42,12 +43,11 @@ public class ArqueroTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
-        Arquero otroArquero = new Arquero(jugador);
+        Posicion posicionArquero = new Posicion(1, 1);
+        Posicion posicionOtroArquero = new Posicion(1, 3);
 
-
-        mapa.colocarUnidadEn(unArquero, 1, 1);
-        mapa.colocarUnidadEn(otroArquero, 1, 2);
+        Arquero unArquero  = new Arquero(jugador, posicionArquero);
+        Arquero otroArquero = new Arquero(jugador, posicionOtroArquero);
 
         unArquero.atacar(otroArquero, jugador);
 
@@ -61,12 +61,11 @@ public class ArqueroTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
-        Arquero otroArquero = new Arquero(otroJugador);
+        Posicion posicionArquero = new Posicion(1, 1);
+        Posicion posicionOtroArquero = new Posicion(1, 2);
 
-
-        mapa.colocarUnidadEn(unArquero, 1, 1);
-        mapa.colocarUnidadEn(otroArquero, 1, 2);
+        Arquero unArquero  = new Arquero(jugador, posicionArquero);
+        Arquero otroArquero = new Arquero(null, posicionOtroArquero);
 
         unArquero.atacar(otroArquero, jugador);
 
@@ -80,11 +79,12 @@ public class ArqueroTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
+        Posicion posicionArquero = new Posicion(1, 1);
+
+
+        Arquero unArquero  = new Arquero(jugador, posicionArquero);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unArquero, 1, 1);
         mapa.colocarEstructuraEn(unCastillo, 1, 9, 4,1);
 
         unArquero.atacar(unCastillo, jugador);
@@ -99,11 +99,12 @@ public class ArqueroTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
+        Posicion posicionArquero = new Posicion(0, 0);
+
+
+        Arquero unArquero  = new Arquero(jugador, posicionArquero);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unArquero, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArquero.atacar(unCastillo, jugador);
@@ -119,12 +120,11 @@ public class ArqueroTest {
         Jugador jugador = new Jugador(mapa, 7, 7, null);
         Jugador otroJugador = new Jugador(mapa, 14, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
-        Aldeano unAldeano = new Aldeano(otroJugador);
+        Posicion posicionArquero = new Posicion(0, 0);
+        Posicion posicionAldeano = new Posicion(0, 0);
 
-
-        mapa.colocarUnidadEn(unArquero, 0, 0);
-        mapa.colocarUnidadEn(unAldeano, 1, 1);
+        Arquero unArquero  = new Arquero(jugador, posicionArquero);
+        Aldeano unAldeano = new Aldeano(otroJugador, posicionAldeano);
 
         unArquero.atacar(unAldeano, jugador);
         jugador.nuevoTurno();
@@ -145,11 +145,11 @@ public class ArqueroTest {
         Jugador jugador = new Jugador(mapa, 14, 14, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        Arquero unArquero = new Arquero(jugador);
+        Posicion posicionArquero = new Posicion(0, 0);
+
+        Arquero unArquero = new Arquero(jugador, posicionArquero);
         Cuartel unCuartel = new Cuartel(otroJugador);
 
-
-        mapa.colocarUnidadEn(unArquero, 0, 0);
         mapa.colocarEstructuraEn(unCuartel, 1, 1, 2,1);
 
 

@@ -1,4 +1,5 @@
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
@@ -11,7 +12,7 @@ public class ArmaDeAsedioTest {
 
     @Test
     public void testArmaDeAsedioSeCreaCon150DeVida() {
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null, null);
 
         assertEquals(150, unArmaDeAsedio.getVida());
     }
@@ -22,12 +23,12 @@ public class ArmaDeAsedioTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null);
-        ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(null);
+        Posicion posicionUnaArma = new Posicion(1,1);
+        Posicion posicionOtraArma = new Posicion(1,9);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 1, 1);
-        mapa.colocarUnidadEn(otroArmaDeAsedio, 1, 9);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(null, posicionUnaArma);
+        ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(null, posicionOtraArma);
 
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -42,12 +43,11 @@ public class ArmaDeAsedioTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
-        ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(1,1);
+        Posicion posicionOtraArma = new Posicion(1,2);
 
-
-        mapa.colocarUnidadEn(unArmaDeAsedio, 1, 1);
-        mapa.colocarUnidadEn(otroArmaDeAsedio, 1, 2);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador,posicionUnaArma );
+        ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(jugador, posicionOtraArma);
 
         unArmaDeAsedio.cargarArma(jugador);
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -63,13 +63,11 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
-        ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(otroJugador);
+        Posicion posicionUnaArma = new Posicion(1,1);
+        Posicion posicionOtraArma = new Posicion(1,2);
 
-
-        mapa.colocarUnidadEn(unArmaDeAsedio, 1, 1);
-        mapa.colocarUnidadEn(otroArmaDeAsedio, 1, 2);
-
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
+        ArmaDeAsedio otroArmaDeAsedio = new ArmaDeAsedio(otroJugador, posicionOtraArma);
 
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -84,11 +82,12 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(1,1);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 1, 1);
         mapa.colocarEstructuraEn(unCastillo, 1, 9, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -105,11 +104,12 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -127,11 +127,11 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -146,11 +146,11 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -165,13 +165,15 @@ public class ArmaDeAsedioTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+        jugador.sumarOro(100);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        jugador.construirAsedio(posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
+
+        ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(0,0);
 
         unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
 
@@ -187,11 +189,12 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -208,12 +211,15 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        jugador.sumarOro(1000);
+
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        jugador.construirAsedio(posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
+        ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(0,0);
 
         unArmaDeAsedio.cargarArma(jugador);
         unArmaDeAsedio.realizarAccionCorrespondiente();
@@ -230,11 +236,11 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -248,11 +254,12 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
+
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -270,11 +277,10 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
-
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.cargarArma(jugador);
@@ -291,11 +297,11 @@ public class ArmaDeAsedioTest {
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
 
-        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador);
+        Posicion posicionUnaArma = new Posicion(0, 0);
+        ArmaDeAsedio unArmaDeAsedio = new ArmaDeAsedio(jugador, posicionUnaArma);
         Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarUnidadEn(unArmaDeAsedio, 0, 0);
         mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
         unArmaDeAsedio.realizarAccionCorrespondiente();

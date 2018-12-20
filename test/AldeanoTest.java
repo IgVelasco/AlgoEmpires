@@ -1,10 +1,12 @@
 import modelo.espacio.Mapa;
+import modelo.espacio.Posicion;
 import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.GenerandoOro;
 import modelo.estados.aldeano.Reparando;
 import modelo.estructuras.Castillo;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Cuartel;
+import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.*;
 import modelo.juego.Jugador;
 import modelo.unidades.Aldeano;
@@ -17,7 +19,7 @@ public class AldeanoTest {
 
     @Test
     public void testAldeanoSeCreaCon50DeVida() {
-        Aldeano unAldeano = new Aldeano(null);
+        Aldeano unAldeano = new Aldeano(null, null);
 
         assertEquals(50, unAldeano.getVida());
     }
@@ -26,8 +28,9 @@ public class AldeanoTest {
     public void testAldeanoEstaConstruyendo() {
         Mapa mapa = new Mapa(30, 30);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(jugador);
-        mapa.colocarUnidadEn(unAldeano, 19, 19);
+
+        Posicion posicionUnAldeano = new Posicion(19, 19);
+        Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
 
         jugador.construirCuartel(unAldeano, 20, 20);
         assertEquals(50, jugador.getOro());
@@ -52,8 +55,15 @@ public class AldeanoTest {
     public void testAldeanoNoPuedeConstruirDosCosasALaVez() {
         Mapa mapa = new Mapa(30, 30);
         Jugador unJugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(unJugador);
-        mapa.colocarUnidadEn(unAldeano, 19, 19);
+
+        Posicion posicionUnAldeano = new Posicion(19, 19);
+        Aldeano unAldeano = new Aldeano(unJugador, posicionUnAldeano);
+
+        unJugador.nuevoTurno();
+        unJugador.nuevoTurno();
+        unJugador.nuevoTurno();
+        unJugador.nuevoTurno();
+        unJugador.nuevoTurno();
 
         unJugador.construirCuartel(unAldeano, 20, 20);
         unJugador.construirCuartel(unAldeano, 18, 19);
@@ -63,7 +73,9 @@ public class AldeanoTest {
     public void testAldeanoEstaReparandoNoDaOro() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(jugador);
+
+        Posicion posicionUnAldeano = new Posicion(19, 19);
+        Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
         Castillo unCastillo = new Castillo(jugador);
 
         unCastillo.ataqueDeEspadachin();
@@ -88,7 +100,9 @@ public class AldeanoTest {
     public void testAldeanoReparaVidaCorrecta() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(jugador);
+
+        Posicion posicionUnAldeano = new Posicion(4, 4);
+        Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
         Castillo unCastillo = new Castillo(jugador);
 
         unCastillo.ataqueDeEspadachin();
@@ -110,7 +124,9 @@ public class AldeanoTest {
     public void testAldeanoNoReparaEdificioConVidaMaxima() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(jugador);
+
+        Posicion posicionUnAldeano = new Posicion(4, 4);
+        Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
         Castillo unCastillo = new Castillo(jugador);
 
         unAldeano.comenzarReparacion(unCastillo);
@@ -121,7 +137,9 @@ public class AldeanoTest {
     public void testAldeanoOcupadoReparandoException() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(jugador);
+
+        Posicion posicionUnAldeano = new Posicion(4, 4);
+        Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
         Castillo unCastillo = new Castillo(jugador);
         Castillo otroCastillo = new Castillo(jugador);
 
@@ -137,8 +155,9 @@ public class AldeanoTest {
     public void testAldeanoConstruyendoException() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Aldeano unAldeano = new Aldeano(jugador);
-        mapa.colocarUnidadEn(unAldeano, 11, 11);
+
+        Posicion posicionUnAldeano = new Posicion(11, 11);
+        Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
 
         Cuartel unCuartel = new Cuartel(null);
         Cuartel otroCuartel = new Cuartel(null);
@@ -154,11 +173,13 @@ public class AldeanoTest {
     public void testAldeanoSeMueveCorrectamenteHaciaAtras() {
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
-        Aldeano unAldeano = new Aldeano(unJugador);
 
-        mapa.colocarUnidadEn(unAldeano, 2, 2);
+        Posicion posicionUnAldeano = new Posicion(2, 2);
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionUnAldeano);
 
-        unAldeano.realizarMovimiento(mapa, 1, 1,unJugador);
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(2, 2);
+
+        unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
         assertEquals(unAldeano, mapa.getContenido(1, 1));
     }
 
@@ -166,9 +187,11 @@ public class AldeanoTest {
     public void testAldeanoSeMueveCorrectamenteHaciaAdelante() {
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
-        Aldeano unAldeano = new Aldeano(unJugador);
 
-        mapa.colocarUnidadEn(unAldeano, 2, 2);
+        Posicion posicionUnAldeano = new Posicion(2, 2);
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionUnAldeano);
+
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(2, 2);
 
         unAldeano.realizarMovimiento(mapa, 3, 3, unJugador);
         assertEquals(unAldeano, mapa.getContenido(3, 3));
@@ -178,9 +201,11 @@ public class AldeanoTest {
     public void testAldeanoNoPuedeMoverseMasDeUnCasillero() {
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
-        Aldeano unAldeano = new Aldeano(unJugador);
 
-        mapa.colocarUnidadEn(unAldeano, 2, 2);
+        Posicion posicionUnAldeano = new Posicion(2, 2);
+        Aldeano unAldeano = new Aldeano(unJugador, posicionUnAldeano);
+
+
 
         unAldeano.realizarMovimiento(mapa, 2, 2, unJugador);
     }
@@ -190,9 +215,8 @@ public class AldeanoTest {
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
 
-        Aldeano unAldeano = new Aldeano(unJugador);
-
-        mapa.colocarUnidadEn(unAldeano, 0, 0);
+        Posicion posicionUnAldeano = new Posicion(0, 0);
+        Aldeano unAldeano = new Aldeano(unJugador,posicionUnAldeano);
 
         unAldeano.realizarMovimiento(mapa, -1, -1, unJugador);
     }
@@ -201,12 +225,15 @@ public class AldeanoTest {
     public void testAldeanoNoPuedeMoverseAUnCasilleroOcupado() {
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa, 5, 5,null);
+        Posicion posicionUnAldeano = new Posicion(0, 0);
+        Posicion posicionOtroAldeano = new Posicion(1, 1);
 
-        Aldeano unAldeano = new Aldeano(unJugador);
-        Aldeano otroAldeano = new Aldeano(unJugador);
+        unJugador.sumarOro(1000);
 
-        mapa.colocarUnidadEn(unAldeano, 0, 0);
-        mapa.colocarUnidadEn(otroAldeano, 1, 1);
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionUnAldeano);
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicionOtroAldeano);
+
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(0,0);
 
         unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
     }
@@ -242,9 +269,9 @@ public class AldeanoTest {
 
         Mapa mapa = new Mapa(10, 10);
         Jugador unJugador = new Jugador(mapa,5,5,null);
-        Aldeano unAldeano = new Aldeano(null);
 
-        mapa.colocarUnidadEn(unAldeano, 1, 1);
+        Posicion posicionOtroAldeano = new Posicion(1, 1);
+        Aldeano unAldeano = new Aldeano(null, posicionOtroAldeano);
 
         unAldeano.realizarMovimiento(mapa, 1, 1, unJugador);
         assertEquals(unAldeano, mapa.getContenido(2, 2));
