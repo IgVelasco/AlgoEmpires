@@ -5,6 +5,7 @@ import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.OroInsuficiente;
+import modelo.excepciones.PosicionFueraDeRango;
 import modelo.juego.Jugador;
 import modelo.unidades.ArmaDeAsedio;
 
@@ -35,6 +36,8 @@ public class Castillo extends Estructura {
         if (oroDisponible < PRECIO_ARMA_DE_ASEDIO) {
             throw new OroInsuficiente();
         }
+        if (calcularDistancia(unaPosicion.getPosX(),unaPosicion.getPosY())>1)
+            throw new PosicionFueraDeRango();
         propietario.restarOro(PRECIO_ARMA_DE_ASEDIO);
         this.propietario.aumentarPoblacion();
         ArmaDeAsedio  armaDeAsedio = new ArmaDeAsedio(propietario, unaPosicion);

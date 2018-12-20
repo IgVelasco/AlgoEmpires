@@ -168,17 +168,15 @@ public class ArmaDeAsedioTest {
         jugador.nuevoTurno();
         jugador.sumarOro(100);
 
-        Posicion posicionUnaArma = new Posicion(0, 0);
+        Posicion posicionUnaArma = new Posicion(4, 4);
         jugador.construirAsedio(posicionUnaArma);
-        Castillo unCastillo = new Castillo(otroJugador);
 
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
 
-        ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(0,0);
+        ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(4,4);
 
-        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
+        unArmaDeAsedio.realizarMovimiento(mapa,3,3,jugador);
 
-        assertEquals(mapa.getContenido(1,0), unArmaDeAsedio);
+        assertEquals(mapa.getContenido(3,3), unArmaDeAsedio);
 
 
     }
@@ -208,26 +206,25 @@ public class ArmaDeAsedioTest {
     @Test
     public void testArmaDeAsedioSePuedeMoverDespuesDeDescargarYQuePaseElTurno() {
 
-        Mapa mapa = new Mapa(20, 20);
-        Jugador jugador = new Jugador(mapa, 5, 5, null);
-        Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+        Mapa mapa = new Mapa(30, 30);
+        Jugador jugador = new Jugador(mapa, 11, 11, null);
+        Jugador otroJugador = new Jugador(mapa, 5, 5, null);
 
         jugador.sumarOro(1000);
 
-        Posicion posicionUnaArma = new Posicion(0, 0);
+        Posicion posicionUnaArma = new Posicion(10, 10);
         jugador.construirAsedio(posicionUnaArma);
-        Castillo unCastillo = new Castillo(otroJugador);
 
 
-        mapa.colocarEstructuraEn(unCastillo, 1, 1, 4,1);
-        ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(0,0);
+        Castillo unCastillo = (Castillo) mapa.getContenido(5,5);
+        ArmaDeAsedio unArmaDeAsedio = (ArmaDeAsedio) mapa.getContenido(10,10);
 
         unArmaDeAsedio.cargarArma(jugador);
         unArmaDeAsedio.realizarAccionCorrespondiente();
         unArmaDeAsedio.atacar(unCastillo, jugador);
         unArmaDeAsedio.realizarAccionCorrespondiente();
-        unArmaDeAsedio.realizarMovimiento(mapa,1,0,jugador);
-        assertEquals(mapa.getContenido(1,0), unArmaDeAsedio);
+        unArmaDeAsedio.realizarMovimiento(mapa,11,10,jugador);
+        assertEquals(mapa.getContenido(11,10), unArmaDeAsedio);
     }
 
 

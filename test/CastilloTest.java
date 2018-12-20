@@ -39,9 +39,9 @@ public class CastilloTest {
 
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
 
-        Castillo unCastillo = new Castillo(unJugador);
+        Castillo unCastillo = (Castillo) mapa.getContenido(15,15);
 
-        Posicion posicionArmaDeAsedio = new Posicion(1, 1);
+        Posicion posicionArmaDeAsedio = new Posicion(14, 14);
 
         ArmaDeAsedio unArmaDeAsedio = unCastillo.crearArmaDeAsedio(1000, unJugador, posicionArmaDeAsedio );
         assertEquals(150, unArmaDeAsedio.getVida());
