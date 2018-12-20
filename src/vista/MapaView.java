@@ -5,6 +5,8 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import modelo.espacio.Casillero;
 import modelo.espacio.Contenible;
@@ -21,6 +23,8 @@ import modelo.unidades.Aldeano;
 import modelo.unidades.ArmaDeAsedio;
 import modelo.unidades.Arquero;
 import modelo.unidades.Espadachin;
+
+import java.io.File;
 
 public class MapaView extends GridPane {
     private static MapaView INSTANCIA;
@@ -128,11 +132,19 @@ public class MapaView extends GridPane {
             try {
                 accionSobreCasilla.realizarAccion(this, casilleroSeleccionada );
             } catch (PartidaTerminada e){
+
+                String musicFile = "src/vista/sonidos/victoria.mp3";
+
+                Media sound = new Media(new File(musicFile).toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(sound);
+                mediaPlayer.play();
+
                 JuegoVista juegoVista = JuegoVista.getInstancia();
                 juegoVista.actualizar(juego);
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setHeaderText("El jugador "+ e.getJugador().getNombre() + " gano la partida!");
                 alert.showAndWait();
+
                 this.aplicacion.restart();
             }
         }
