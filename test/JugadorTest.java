@@ -40,6 +40,7 @@ public class JugadorTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20 / 2, 0, null);
         unJugador.nuevoTurno();
+        unJugador.nuevoTurno();
 
         assertEquals(160, unJugador.getOro());
     }
@@ -50,8 +51,12 @@ public class JugadorTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 20 / 2, 0, null);
         unJugador.nuevoTurno();
+        Posicion posicion = new Posicion(0,0);
 
-        assertEquals(160, unJugador.getOro());
+        unJugador.crearAldeano(new PlazaCentral(unJugador), posicion);
+        unJugador.nuevoTurno();
+
+        assertEquals(155, unJugador.getOro());
     }
 
     @Test

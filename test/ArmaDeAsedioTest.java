@@ -165,6 +165,7 @@ public class ArmaDeAsedioTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
         Jugador otroJugador = new Jugador(mapa, 13, 5, null);
+        jugador.nuevoTurno();
         jugador.sumarOro(100);
 
         Posicion posicionUnaArma = new Posicion(0, 0);

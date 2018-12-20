@@ -43,18 +43,18 @@ public class CimientoTest {
     @Test
     public void testCimientoLiberaAlAldeanoDeSuConstruccion() {
 
-        Juego unJuego = new Juego(20, 20);
+        Juego unJuego = new Juego(40, 40);
 
         Jugador jugador = unJuego.getJugadorActual();
-        Posicion posicionAldeano = new Posicion(4, 4);
+        Posicion posicionAldeano = new Posicion(34, 34);
 
         jugador.crearAldeano(new PlazaCentral(jugador), posicionAldeano);
 
         Mapa mapa = unJuego.getMapa();
 
 
-        Aldeano unAldeano = (Aldeano) mapa.getContenido(4, 4);
-        jugador.construirCuartel(unAldeano,5,5);
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(34, 34);
+        jugador.construirCuartel(unAldeano,35,35);
 
         unJuego.siguienteTurno(); //Jug ok
         unJuego.siguienteTurno(); //jug not ok
@@ -66,23 +66,26 @@ public class CimientoTest {
         unJuego.siguienteTurno();
         unJuego.siguienteTurno();
 
-        assertEquals(345, jugador.getOro());
+        unJuego.siguienteTurno();
+        unJuego.siguienteTurno();
+
+        assertEquals(365, jugador.getOro());
     }
 
     @Test
     public void testCimientoPoneLaEstructuraEnSuLugar() {
-        Juego unJuego = new Juego(20, 20);
-
+        Juego unJuego = new Juego(40, 40);
         Jugador jugador = unJuego.getJugadorActual();
-        Posicion posicionAldeano = new Posicion(4, 4);
+        jugador.nuevoTurno();
+        Posicion posicionAldeano = new Posicion(34, 34);
         jugador.crearAldeano(new PlazaCentral(jugador), posicionAldeano);
         Mapa mapa = unJuego.getMapa();
 
 
-        Aldeano unAldeano = (Aldeano) mapa.getContenido(4, 4);
-        jugador.construirCuartel(unAldeano,5,5);
+        Aldeano unAldeano = (Aldeano) mapa.getContenido(34, 34);
+        jugador.construirCuartel(unAldeano,35,35);
 
-        Cimiento elCimiento = (Cimiento) mapa.getContenido(5,5);
+        Cimiento elCimiento = (Cimiento) mapa.getContenido(35,35);
         Cuartel cuartel = (Cuartel) elCimiento.getFuturaEstructura();
 
         unJuego.siguienteTurno(); //Jug ok
@@ -92,7 +95,7 @@ public class CimientoTest {
         unJuego.siguienteTurno(); //Jug ok
         unJuego.siguienteTurno(); //jug not ok
 
-        assertEquals(cuartel, mapa.getContenido(5,5));
+        assertEquals(cuartel, mapa.getContenido(35,35));
 
     }
 

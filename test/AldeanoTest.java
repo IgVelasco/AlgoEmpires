@@ -28,6 +28,7 @@ public class AldeanoTest {
     public void testAldeanoEstaConstruyendo() {
         Mapa mapa = new Mapa(30, 30);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
+        jugador.nuevoTurno();
 
         Posicion posicionUnAldeano = new Posicion(19, 19);
         Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);
@@ -73,6 +74,7 @@ public class AldeanoTest {
     public void testAldeanoEstaReparandoNoDaOro() {
         Mapa mapa = new Mapa(20, 20);
         Jugador jugador = new Jugador(mapa, 5, 5, null);
+        jugador.nuevoTurno();
 
         Posicion posicionUnAldeano = new Posicion(19, 19);
         Aldeano unAldeano = new Aldeano(jugador, posicionUnAldeano);

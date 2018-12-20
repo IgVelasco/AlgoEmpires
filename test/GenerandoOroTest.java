@@ -15,7 +15,9 @@ public class GenerandoOroTest {
         GenerandoOro unEstado = new GenerandoOro();
         Mapa unMapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(unMapa, 20 / 2, 0, null);
+        unJugador.nuevoTurno();
         Aldeano unAldeano = new Aldeano(unJugador, null);
+
 
         unEstado.realizarAccion(unAldeano);
 

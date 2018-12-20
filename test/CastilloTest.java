@@ -54,6 +54,7 @@ public class CastilloTest {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 10, 10, null);
+        otroJugador.nuevoTurno();
 
         Posicion posicionEspadachin = new Posicion(4,7);
 
@@ -75,6 +76,7 @@ public class CastilloTest {
         Mapa mapa = new Mapa(30, 30);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
         Jugador otroJugador = new Jugador(mapa, 20, 20, null);
+        otroJugador.nuevoTurno();
 
         Posicion posicionEspadachin = new Posicion(10,10);
 
@@ -94,6 +96,7 @@ public class CastilloTest {
     public void testCastilloNoAtacaUnidadDelMismoJugador() {
         Mapa mapa = new Mapa(20, 20);
         Jugador unJugador = new Jugador(mapa, 15, 15, null);
+        unJugador.nuevoTurno();
 
         Posicion posicionEspadachin = new Posicion(4,7);
 

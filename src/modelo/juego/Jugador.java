@@ -30,7 +30,7 @@ public class Jugador {
         castillo = new Castillo(this);
         PlazaCentral plazaInicial = new PlazaCentral(this);
         this.mapa = mapa;
-        this.oro = 175;
+        this.oro = 115;
         this.poblacionActual = 0;
         this.poblacionMaxima = 50;
 
