@@ -6,15 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.juego.Juego;
 import vista.MapaView;
-
-import java.io.File;
 
 public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
     Castillo castillo;
@@ -40,11 +37,12 @@ public class BotonCastilloEventHandler implements EventHandler<ActionEvent> {
             public void handle(ContextMenuEvent event) {
                 contextMenu.show(boton, event.getScreenX(), event.getScreenY());
 
-                String musicFile = "src/vista/sonidos/edificio.wav";
+                String rutaSonido = "/vista/sonidos/edificio.wav";
+                AudioClip sonidoCastillo = new AudioClip(
+                        BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+                );
 
-                Media sound = new Media(new File(musicFile).toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(sound);
-                mediaPlayer.play();
+                sonidoCastillo.play();
 
             }
         });

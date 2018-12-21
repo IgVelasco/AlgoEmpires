@@ -5,8 +5,7 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -15,8 +14,6 @@ import modelo.estados.aldeano.Construyendo;
 import modelo.estados.aldeano.GenerandoOro;
 import modelo.estados.ataque.ArmaCargada;
 import modelo.unidades.*;
-
-import java.io.File;
 
 
 public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent> {
@@ -89,7 +86,7 @@ public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent
         borderPane.setId("informacion");
         Scene scene = new Scene(borderPane);
 
-        scene.getStylesheets().addAll("file:src/vista/styleInformacion.css");
+        scene.getStylesheets().addAll("/vista/styleInformacion.css");
 
         Stage newWindow = new Stage();
         newWindow.setTitle("Infomacion de unidad");
@@ -97,11 +94,12 @@ public class MostrarInformacionUnidadHandler implements EventHandler<ActionEvent
 
         newWindow.show();
 
-        String musicFile = "src/vista/sonidos/sonido_info.mp3";
+        String rutaSonido = "/vista/sonidos/sonido_info.mp3";
+        AudioClip sonidoInfo = new AudioClip(
+                BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+        );
 
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        sonidoInfo.play();
 
     }
 }

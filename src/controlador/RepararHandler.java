@@ -1,10 +1,8 @@
 package controlador;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Estructura;
@@ -37,11 +35,12 @@ public class RepararHandler extends AccionSobreCasilla implements EventHandler<A
         try {
             juego.getJugadorActual().repararEstructura(aldeano, (Estructura) unContenible);
 
-            String musicFile = "src/vista/sonidos/reparar.mp3";
+            String rutaSonido = "/vista/sonidos/reparar.mp3";
+            AudioClip sonidoReparar = new AudioClip(
+                    BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+            );
 
-            Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
+            sonidoReparar.play();
 
         } catch (AldeanoOcupado e) {
             alertar("¡Aldeano ocupado!");

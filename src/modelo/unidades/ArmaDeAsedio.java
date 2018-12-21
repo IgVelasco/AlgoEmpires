@@ -7,7 +7,10 @@ import modelo.espacio.Posicion;
 import modelo.estados.ataque.ArmaCargada;
 import modelo.estados.ataque.ArmaDescargada;
 import modelo.estados.ataque.EstadosAtaque;
-import modelo.excepciones.*;
+import modelo.excepciones.ArmaCargadaNoSePuedeMover;
+import modelo.excepciones.ContenibleDelMismoJugador;
+import modelo.excepciones.ContenibleFueraDeRango;
+import modelo.excepciones.ContenibleNoPropia;
 import modelo.juego.Jugador;
 
 public class ArmaDeAsedio extends Accionables implements Atacante{

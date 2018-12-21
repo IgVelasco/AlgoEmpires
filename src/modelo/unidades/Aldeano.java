@@ -8,7 +8,6 @@ import modelo.estados.aldeano.GenerandoOro;
 import modelo.estados.aldeano.Reparando;
 import modelo.estructuras.Cimiento;
 import modelo.estructuras.Estructura;
-import modelo.excepciones.ContenibleFueraDeRango;
 import modelo.excepciones.ContenibleNoPropia;
 import modelo.excepciones.PosicionFueraDeRango;
 import modelo.juego.Jugador;

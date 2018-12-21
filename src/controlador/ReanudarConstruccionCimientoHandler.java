@@ -2,8 +2,7 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cimiento;
@@ -11,8 +10,6 @@ import modelo.juego.Juego;
 import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
-
-import java.io.File;
 
 public class ReanudarConstruccionCimientoHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
 
@@ -36,11 +33,12 @@ public class ReanudarConstruccionCimientoHandler extends AccionSobreCasilla impl
 
         unJuego.getJugadorActual().reanudarCimiento(this.cimiento, (Aldeano) unContenible);
 
-        String musicFile = "src/vista/sonidos/reparar.mp3";
+        String rutaSonido = "/vista/sonidos/reparar.mp3";
+        AudioClip sonidoReparar = new AudioClip(
+                BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+        );
 
-        Media sound = new Media(new File(musicFile).toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(sound);
-        mediaPlayer.play();
+        sonidoReparar.play();
 
         JuegoVista juegoVista = JuegoVista.getInstancia();
         juegoVista.actualizar(mapaView.getJuego());

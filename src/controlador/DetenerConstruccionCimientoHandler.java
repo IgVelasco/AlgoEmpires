@@ -2,11 +2,9 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cimiento;
 import modelo.juego.Juego;
-import modelo.unidades.Aldeano;
 import vista.JuegoVista;
 import vista.MapaView;
 

@@ -2,16 +2,13 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Castillo;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import vista.JuegoVista;
 import vista.MapaView;
-
-import java.io.File;
 
 public class CrearArmaDeAsedioHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     Castillo castillo;
@@ -32,11 +29,12 @@ public class CrearArmaDeAsedioHandler extends AccionSobreCasilla implements Even
         try {
             juego.getJugadorActual().crearArmaDeAsedio(posicion,castillo);
 
-            String musicFile = "src/vista/sonidos/cargar_arma.mp3";
+            String rutaSonido = "/vista/sonidos/cargar_arma.mp3";
+            AudioClip sonidoCrearArma = new AudioClip(
+                    BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+            );
 
-            Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
+            sonidoCrearArma.play();
 
         } catch (CasilleroOcupado e){
             alertar("Casillero Ocupado!");

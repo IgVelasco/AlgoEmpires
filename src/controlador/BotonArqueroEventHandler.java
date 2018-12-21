@@ -6,15 +6,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Casillero;
 import modelo.espacio.Posicion;
 import modelo.juego.Juego;
 import modelo.unidades.Arquero;
 import vista.MapaView;
-
-import java.io.File;
 
 public class BotonArqueroEventHandler extends BotonEventHandler {
     Button boton;
@@ -41,12 +38,12 @@ public class BotonArqueroEventHandler extends BotonEventHandler {
 
             @Override
             public void handle(ContextMenuEvent event) {
+                String rutaSonido = "/vista/sonidos/aldeano.mp3";
+                AudioClip sonidoArquero = new AudioClip(
+                        BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+                );
 
-                String musicFile = "src/vista/sonidos/aldeano.mp3";
-
-                Media sound = new Media(new File(musicFile).toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(sound);
-                mediaPlayer.play();
+                sonidoArquero.play();
 
                 contextMenu.show(boton, event.getScreenX(), event.getScreenY());
             }

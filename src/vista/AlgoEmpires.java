@@ -21,11 +21,11 @@ public class AlgoEmpires extends Application {
     private Stage escenario;
     private static final String TITULO_VENTANA = "Algo Empires";
     private static final String ICONO_VENTANA = "imagenes/icono.png";
-    private static final String TITULO_ESCENA = "file:src/vista/imagenes/titulo.png";
+    private static final String TITULO_ESCENA = "/vista/imagenes/titulo.png";
     private static final String SONIDO_INICIO = "sonidos/sonido_inicio.mp3";
     private static final int ANCHO = 715;
     private static final int ALTO = 488;
-    private static final String ARCHIVO_ESTILOS = "file:src/vista/style.css";
+    private static final String ARCHIVO_ESTILOS = "/vista/style.css";
 
     public static void main(String[] args) {
         Application.launch(args);

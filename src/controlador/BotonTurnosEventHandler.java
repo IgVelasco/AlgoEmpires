@@ -1,15 +1,10 @@
 package controlador;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import modelo.juego.Juego;
-import modelo.juego.Jugador;
 import vista.AlgoEmpires;
 import vista.JuegoVista;
-
-import java.applet.AudioClip;
 
 public class BotonTurnosEventHandler extends BotonEventHandler {
 

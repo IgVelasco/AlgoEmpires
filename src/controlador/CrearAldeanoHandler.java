@@ -2,16 +2,13 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Posicion;
 import modelo.estructuras.PlazaCentral;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import vista.JuegoVista;
 import vista.MapaView;
-
-import java.io.File;
 
 public class CrearAldeanoHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     PlazaCentral plazaCentral;
@@ -32,11 +29,12 @@ public class CrearAldeanoHandler extends AccionSobreCasilla implements EventHand
         try {
             juego.getJugadorActual().crearAldeano(plazaCentral, posicion);
 
-            String musicFile = "src/vista/sonidos/crear_aldeano.mp3";
+            String rutaSonido = "/vista/sonidos/crear_aldeano.mp3";
+            AudioClip sonidoCrearAldeano = new AudioClip(
+                    BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+            );
 
-            Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
+            sonidoCrearAldeano.play();
 
         }catch (CasilleroOcupado e){
             alertar("Casillero Ocupado!");

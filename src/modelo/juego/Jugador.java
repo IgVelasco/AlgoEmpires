@@ -1,6 +1,5 @@
 package modelo.juego;
 
-import modelo.espacio.Casillero;
 import modelo.espacio.Mapa;
 import modelo.espacio.Posicion;
 import modelo.estructuras.*;

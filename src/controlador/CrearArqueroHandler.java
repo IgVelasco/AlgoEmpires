@@ -2,16 +2,13 @@ package controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Posicion;
 import modelo.estructuras.Cuartel;
 import modelo.excepciones.*;
 import modelo.juego.Juego;
 import vista.JuegoVista;
 import vista.MapaView;
-
-import java.io.File;
 
 public class CrearArqueroHandler extends AccionSobreCasilla implements EventHandler<ActionEvent> {
     Cuartel cuartel;
@@ -32,11 +29,12 @@ public class CrearArqueroHandler extends AccionSobreCasilla implements EventHand
         try {
             juego.getJugadorActual().crearArquero(cuartel, posicion );
 
-            String musicFile = "src/vista/sonidos/crear_infante.wav";
+            String rutaSonido = "/vista/sonidos/crear_infante.wav";
+            AudioClip sonidoCrearInfante = new AudioClip(
+                    BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+            );
 
-            Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
+            sonidoCrearInfante.play();
 
         }catch (CasilleroOcupado e){
             alertar("Casillero Ocupado!");

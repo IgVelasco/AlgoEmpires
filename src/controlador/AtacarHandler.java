@@ -1,11 +1,8 @@
 package controlador;
 
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import java.io.File;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
+import javafx.scene.media.AudioClip;
 import modelo.espacio.Contenible;
 import modelo.espacio.Posicion;
 import modelo.excepciones.*;
@@ -35,11 +32,12 @@ public class AtacarHandler extends AccionSobreCasilla implements EventHandler<Ac
         try {
             atacante.atacar(unContenible, juego.getJugadorActual());
 
-            String musicFile = "src/vista/sonidos/sonido_ataque.mp3";
+            String rutaSonido = "/vista/sonidos/sonido_ataque.mp3";
+            AudioClip sonidoAtaque = new AudioClip(
+                    BotonEventHandler.class.getResource(rutaSonido).toExternalForm()
+            );
 
-            Media sound = new Media(new File(musicFile).toURI().toString());
-            MediaPlayer mediaPlayer = new MediaPlayer(sound);
-            mediaPlayer.play();
+            sonidoAtaque.play();
 
         } catch (ContenibleNoPropia e) {
             alertar("¡No te pertence!");
